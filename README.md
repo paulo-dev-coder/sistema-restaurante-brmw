@@ -139,7 +139,7 @@ A pesquisa de campo foi realizada em [DATA], no estabelecimento **A Frangueria**
   - **RN07:** O pedido confirmado deve conter ao menos um item e cada quantidade deve ser maior que zero.
   - **RN08:** O cliente pode agendar reserva de mesa; a reserva registra data e hora, quantidade de pessoas e situação.
   - **RN09:** A encomenda antecipada de frango é registrada como reserva de frango derivada de pedido e contém quantidade reservada, horário de retirada e situação.
- - **RN10:** Cada reserva de frango deve ser atendida por um ou mais lotes de frango produzidos no dia; a quantidade reservada não pode exceder a quantidade disponível nos lotes. Se uma reserva consumir mais de um lote, o sistema deve registrar a quantidade fornecida por lote.
+  - **RN10:** Cada reserva de frango deve ser atendida por um ou mais lotes de frango produzidos no dia; a quantidade reservada não pode exceder a quantidade disponível nos lotes. Se uma reserva consumir mais de um lote, o sistema deve registrar a quantidade fornecida por lote.
   - **RN11:** O pedido deve possuir registro de faturamento com data de pagamento, valor total, forma de pagamento e situação. São aceitos dinheiro, Pix e cartão; dados do cartão não devem ser armazenados.
   - **RN12:** O pedido só é encerrado após ser servido ou retirado e o registro financeiro ser realizado.
   - **RN13:** Alterações ou cancelamentos devem ser comunicados à equipe responsável e refletidos na situação do pedido ou reserva correspondente.
