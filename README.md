@@ -144,6 +144,7 @@ A pesquisa de campo foi realizada em [DATA], no estabelecimento **A Frangueria**
   - **RN12:** O pedido só é encerrado após ser servido ou retirado e o registro financeiro ser realizado.
   - **RN13:** Alterações ou cancelamentos devem ser comunicados à equipe responsável e refletidos na situação do pedido ou reserva correspondente.
   - **RN14:** A organização não realiza entrega domiciliar; os pedidos são consumidos no local ou retirados pelo cliente.
+
 - **Restrições organizacionais:**
   - **Equipe familiar reduzida:** os registros de funcionário correspondem aos membros da família autorizados; não há terceirizados ou voluntários segundo o contexto informado.
   - **Operação somente aos fins de semana:** o funcionamento informado é sábado e domingo, das 10h às 20h.
