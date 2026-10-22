@@ -35,19 +35,42 @@ RGM: 47962241*
 ## 1. Caracterização da Organização
 *(vale 7,5% — Dimensão Conceitual)*
 
+**(Em desenvolvimento)**
 - **Nome oficial do estabelecimento:** A Frangueria
 - **Natureza da organização:** A natureza da organização é um estabelecimento comercial familiar de pequeno porte que vende refeições completas, bebidas e frango assado com acompanhamentos. Seu modelo de negócio combina restaurante de prato feito e frangueria.
-- **Contexto e porte:** A organização é uma microempresa com fins lucrativos, direcionada à geração legítima de renda e à sustentabilidade do negócio. A operação é compacta e direcionada para o consumidor final. Não há funcionários terceirizados, prestadores de serviço externos ou voluntários; gestão, cozinha e atendimento são realizados colaborativamente pela própria família. O estabelecimento funciona aos sábados e domingos, das 10h às 20h, com produção concentrada e alto volume de atividade nesses dias.
-- **Problemas e necessidades identificados:** A organização não oferece entrega em domicílio. Isso limita o alcance geográfico, reduz oportunidades de faturamento e restringe o atendimento a consumidores que preferem receber os pedidos em casa. Na operação atual, os pedidos são anotados em uma caderneta, e a disponibilidade dos produtos é conferida pela família antes da confirmação.
+- **Contexto e porte:** A organização é uma microempresa com fins lucrativos, direcionada à geração legítima de renda e à sustentabilidade do negócio. A operação é compacta e direcionada para o consumidor final. Não há funcionários terceirizados, prestadores de serviço externos ou voluntários; gestão, cozinha e atendimento são realizados colaborativamente pela própria família. O estabelecimento funciona aos sábados e domingos, das 10h às 20h. A equipe é composta por quatro pessoas da família. A área exterior do restaurante contém seis mesas com a capacidade para aproximadamente quatro pessoas sentadas, enquanto o salão do restaurante apenas possui duas mesas com a capacidade para aproximadamente duas pessoas com a finalidade de otimizar o espaço do local. A operação concentra-se apenas nos fins de semana, em um dia típico de funcionamento, são registrados **cerca de [N] pedidos** (estimativa obtida na visita), com pico entre 12h e 14h. O controle é feito manualmente em caderneta, sem registro histórico estruturado.
+- **Problemas e necessidades identificados:** O primeiro problema identificado na organização consiste na realização do controle operacional em caderneta, o que dificulta recuperar o histórico de pedidos e valores aplicados. O segundo problema identificado na organização consiste na consolidação do faturamento diário sem retrabalho, pois a totalização depende de conferência manual, recálculo e transcrição de dados, aumentando o esforço operacional e o risco de erros ou omissões. O terceiro e último problema identificado na organização consiste na verificação a disponibilidade de produtos e lotes de frango de maneira confiável, o que pode favorecer rupturas de estoque, perdas por vencimento ou compras inadequadas. A ausência de entrega domiciliar na organização é uma característica do modelo de negócio, não é um problema de informação, e por isso não é tratada como requisito do sistema.
 - **Justificativa da escolha:** A escolha do estabelecimento fundamenta-se em três critérios. O primeiro é o acesso garantido à organização: um dos integrantes do grupo possui vínculo direto com os proprietários, o que viabiliza visitas, entrevistas e observação da rotina operacional. O segundo é o porte compatível com o escopo da disciplina: trata-se de microempresa familiar, com funcionamento aos sábados e domingos, das 10h às 20h, cuja operação enxuta permite mapear todos os processos sem a complexidade de organizações de maior porte, mantendo volume suficiente de dados para modelagem. O terceiro é o modelo de negócio misto, que combina restaurante de prato feito e frangueria, exigindo entidades específicas para controle de produção por lote e encomendas antecipadas, o que amplia a riqueza do exercício de modelagem.
 
 - **Evidências da organização:** A existência e o acesso à organização são comprovados pelos registros abaixo.
 
-- **Link público no Google Maps (Google Meu Negócio):**
+- **Endereço da organização:**
+Av. Celso Garcia, nº 1115 - Catumbi, São Paulo - SP
+
+- **Link público da organização no Google Maps (Google Meu Negócio):**
 https://maps.app.goo.gl/pjqxhT2Ltq6g1c2D7?g_st=ac
 
 - **Foto do local e da visita:**
+**(A foto será atualizada)**
 ![Foto retirada no salão do restaurante](images/foto-local.jpg)
+
+---
+
+### 1.1 Registro da pesquisa de campo
+
+**(Em desenvolvimento)**
+A pesquisa de campo foi realizada em [DATA], no estabelecimento **A Frangueria**, com duração de aproximadamente [X] horas. Participaram da visita [NOME DO INTEGRANTE] (integrante do grupo) e [NOME DO RESPONSÁVEL] (proprietário/responsável pelo atendimento). A abordagem combinou **entrevista semiestruturada** com **observação direta** da rotina de atendimento e preparo.
+
+**Informações confirmadas na visita:**
+
+- O atendimento ocorre apenas aos sábados e domingos, das 10h às 20h.
+- Os pedidos são anotados em caderneta; não há sistema informatizado.
+- A disponibilidade dos itens é conferida verbalmente com a cozinha antes da confirmação.
+- [CONFIRMAR: reservas de mesa ocorrem? Com que frequência?]
+- [CONFIRMAR: encomendas antecipadas de frango existem? Como são registradas?]
+- [CONFIRMAR: quais dados pessoais são efetivamente coletados?]
+- [CONFIRMAR: como é feito o fechamento do caixa ao final do dia?]
+- [CONFIRMAR: quem são os fornecedores de frango e insumos? Com que frequência a compra é feita?]
 
 ---
 
@@ -56,13 +79,17 @@ https://maps.app.goo.gl/pjqxhT2Ltq6g1c2D7?g_st=ac
 
 - **Principais processos mapeados e representados no DER:**
   - **Cadastro de pessoas e clientes:** são mantidos dados cadastrais de pessoas; quando a pessoa atua como cliente, há também registro de cliente. O cliente pode possuir telefones de contato.
+  - **Cadastro de fornecedores:** os fornecedores recorrentes (frango, bebidas, embalagens) são mantidos informalmente; o sistema deve permitir registrar nome, contato e itens fornecidos para agilizar a reposição.
   - **Atendimento e registro do pedido:** o funcionário (membro da família que opera o sistema) registra o pedido, sua data e hora de abertura, modalidade e identificador de mesa quando aplicável. O pedido é associado ao cliente.
   - **Composição do pedido:** cada pedido contém itens; cada item registra quantidade, valor aplicado e observação e se relaciona a um produto disponível no cardápio.
   - **Reserva de mesa:** o cliente agenda reserva com data e hora, quantidade de pessoas e situação.
+  - **Compra de frango e insumos:** semanalmente (ou conforme a escala de produção), o responsável verifica a necessidade de frango, temperos, embalagens e bebidas; a compra é feita em fornecedores fixos ou no comércio local, com registro em caderneta ou nota simples.
   - **Encomenda antecipada de frango:** o pedido pode originar uma reserva de frango, com quantidade reservada, horário de retirada e situação. A reserva é atendida a partir de lote da frangueria.
+  - **Recebimento da mercadoria:** na entrega, a equipe confere quantidade e qualidade; divergências são anotadas e comunicadas ao fornecedor. O sistema pode registrar data, itens e quantidade recebida.
   - **Registro financeiro:** o pedido possui registro de faturamento com data do pagamento, valor total, forma de pagamento e situação. São aceitos dinheiro, Pix e cartão; dados do cartão não são armazenados.
+  - **Fechamento do caixa do dia:** ao final do atendimento, a equipe soma as entradas por forma de pagamento (dinheiro, Pix e cartão), confere com os pedidos registrados e apura o total do dia. O sistema deve gerar um resumo por forma de pagamento e por período.
   - **Preparo, retirada e encerramento:** os itens são preparados conforme a ordem de recebimento e capacidade da equipe. Pedidos de retirada são identificados e avisados ao cliente por telefone quando prontos. O atendimento é encerrado após a entrega/serviço e o registro financeiro correspondente.
-- **Fluxogramas:** A organização optou por não inserir o fluxograma.
+- **Fluxograma:** A organização optou por não inserir o fluxograma.
 
 ---
 
@@ -112,7 +139,7 @@ https://maps.app.goo.gl/pjqxhT2Ltq6g1c2D7?g_st=ac
   - **RN07:** O pedido confirmado deve conter ao menos um item e cada quantidade deve ser maior que zero.
   - **RN08:** O cliente pode agendar reserva de mesa; a reserva registra data e hora, quantidade de pessoas e situação.
   - **RN09:** A encomenda antecipada de frango é registrada como reserva de frango derivada de pedido e contém quantidade reservada, horário de retirada e situação.
-  - **RN10:** Cada reserva de frango deve ser atendida por lote(s) da frangueria; a disponibilidade deve ser verificada pela equipe. O DER precisa explicitar a cardinalidade pretendida entre reserva e lote e a quantidade fornecida por lote, caso uma reserva possa consumir mais de um lote.
+ - **RN10:** Cada reserva de frango deve ser atendida por um ou mais lotes de frango produzidos no dia; a quantidade reservada não pode exceder a quantidade disponível nos lotes. Se uma reserva consumir mais de um lote, o sistema deve registrar a quantidade fornecida por lote.
   - **RN11:** O pedido deve possuir registro de faturamento com data de pagamento, valor total, forma de pagamento e situação. São aceitos dinheiro, Pix e cartão; dados do cartão não devem ser armazenados.
   - **RN12:** O pedido só é encerrado após ser servido ou retirado e o registro financeiro ser realizado.
   - **RN13:** Alterações ou cancelamentos devem ser comunicados à equipe responsável e refletidos na situação do pedido ou reserva correspondente.
@@ -316,7 +343,7 @@ As cardinalidades devem refletir a ocorrência mínima e máxima real, não simp
 A decomposição evita repetir dados do produto em cada pedido e permite preservar o valor aplicado no momento da venda. A separação Pessoa–Cliente e Pessoa–Funcionário facilita distinguir dados cadastrais de papéis, mas o DER deve representá-la como especialização ou vínculo 1:1 claramente definido. A modelagem inclui reservas e cadastro pessoal adicional porque aparecem no diagrama recebido; a pesquisa de campo deve confirmar que esses processos e dados existem e são necessários. CPF, e-mail, data de nascimento e salário-base não devem ser coletados sem finalidade operacional definida. A ausência de entidade de entrega é coerente com a regra de que o estabelecimento não oferece delivery.
 
 ---
-## 9. Uso de Inteligência Artificial
+## 9. Utilização de Inteligência Artificial
 
 O grupo utilizou o ChatGPT como apoio para *organizar e revisar a documentação do trabalho*, e não como fonte principal de informações sobre a organização. As informações sobre o funcionamento do estabelecimento e os seus processos foram confirmadas pelo grupo por meio da pesquisa de campo.
 
