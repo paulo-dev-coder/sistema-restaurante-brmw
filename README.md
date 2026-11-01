@@ -151,7 +151,7 @@ Resposta: [A PREENCHER]
 Resposta: [A PREENCHER]
 
 **22. O restaurante faz entrega em domicílio ou só atende no local e retirada?**
-Resposta: [A PREENCHER]
+Resposta: O restaurante apenas atende no local e retirada. Infelizmente, não realiza entrega em domicílios.
 
 ---
 
