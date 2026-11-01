@@ -45,24 +45,24 @@ RGM: 47962241*
 
 - **Problemas e necessidades identificados:**
 
-- **P1** — Histórico de pedidos inacessível: com o registro em caderneta, não é possível saber, por período, quantos pedidos foram feitos, qual o ticket médio, quais produtos mais saem e qual cliente pediu o quê. A recuperação depende de folhear páginas e recopiar dados.
+  - **P1** — Histórico de pedidos inacessível: com o registro em caderneta, não é possível saber, por período, quantos pedidos foram feitos, qual o ticket médio, quais produtos mais saem e qual cliente pediu o quê. A recuperação depende de folhear páginas e recopiar dados.
 
--- **P2** — Fechamento de caixa manual e sujeito a erro: a totalização por forma de pagamento (dinheiro, Pix, cartão) depende de conferência manual, recálculo e transcrição, aumentando o esforço operacional e o risco de erro ou omissão na conciliação com os pedidos.
+  - **P2** — Fechamento de caixa manual e sujeito a erro: a totalização por forma de pagamento (dinheiro, Pix, cartão) depende de conferência manual, recálculo e transcrição, aumentando o esforço operacional e o risco de erro ou omissão na conciliação com os pedidos.
 
-- **P3** — Disponibilidade de produtos e lotes de frango sem controle confiável: a conferência é verbal com a cozinha; não há registro de quanto frango resta no dia nem de qual lote atendeu cada encomenda, favorecendo ruptura, perda por vencimento e compra inadequada.
+  - **P3** — Disponibilidade de produtos e lotes de frango sem controle confiável: a conferência é verbal com a cozinha; não há registro de quanto frango resta no dia nem de qual lote atendeu cada encomenda, favorecendo ruptura, perda por vencimento e compra inadequada.
 
-- **P4** — Compras e fornecedores sem registro estruturado: as compras de frango, temperos, embalagens e bebidas ficam em caderneta ou nota simples, sem histórico por fornecedor, sem comparação de preço e sem saber com que frequência cada item é comprado.
+  - **P4** — Compras e fornecedores sem registro estruturado: as compras de frango, temperos, embalagens e bebidas ficam em caderneta ou nota simples, sem histórico por fornecedor, sem comparação de preço e sem saber com que frequência cada item é comprado.
 
-- **P5** — Recebimento e estoque de insumos sem conferência registrada: divergências de quantidade ou qualidade na entrega não ficam registradas; não há baixa organizada de insumos, nem alerta de estoque mínimo, o que leva a compras de emergência e perdas.
+  - **P5** — Recebimento e estoque de insumos sem conferência registrada: divergências de quantidade ou qualidade na entrega não ficam registradas; não há baixa organizada de insumos, nem alerta de estoque mínimo, o que leva a compras de emergência e perdas.
 
 
 - **Justificativa da escolha:** A escolha do estabelecimento fundamenta-se em três critérios.
 
-- **Primeiro, o acesso garantido à organização**. Um dos integrantes do grupo é filho dos proprietários, o que viabilizou a realização da entrevista com o responsável no ambiente da organização e a observação direta da rotina operacional. O vínculo familiar foi declarado à disciplina e não substitui a comprovação da entrevista, registrada na seção 1.1 com nome, data, local e foto.
+  - **Primeiro, o acesso garantido à organização**. Um dos integrantes do grupo é filho dos proprietários, o que viabilizou a realização da entrevista com o responsável no ambiente da organização e a observação direta da rotina operacional. O vínculo familiar foi declarado à disciplina e não substitui a comprovação da entrevista, registrada na seção 1.1 com nome, data, local e foto.
 
-- **Segundo, o porte compatível com o escopo da disciplina**. Trata-se de uma microempresa familiar com funcionamento aos sábados e domingos, das 10h às 20h, cuja operação — com [N] mesas, [N] pedidos por fim de semana e [N] fornecedores recorrentes — permite mapear todos os processos sem a complexidade de organizações de maior porte, mantendo volume suficiente de dados para a modelagem e para a massa de dados da seção 4.
+  - **Segundo, o porte compatível com o escopo da disciplina**. Trata-se de uma microempresa familiar com funcionamento aos sábados e domingos, das 10h às 20h, cuja operação — com [N] mesas, [N] pedidos por fim de semana e [N] fornecedores recorrentes — permite mapear todos os processos sem a complexidade de organizações de maior porte, mantendo volume suficiente de dados para a modelagem e para a massa de dados da seção 4.
 
-- **Terceiro, o modelo de negócio misto**. A combinação de restaurante de prato feito e frangaria exige entidades específicas para controle de produção por lote (LOTE_FRANGO) e para encomendas antecipadas com rateio por lote (RESERVA_FRANGO e RESERVA_LOTE), o que amplia a cobertura de processos em relação a um restaurante convencional e justifica a inclusão dessas entidades no DER.
+  - **Terceiro, o modelo de negócio misto**. A combinação de restaurante de prato feito e frangaria exige entidades específicas para controle de produção por lote (LOTE_FRANGO) e para encomendas antecipadas com rateio por lote (RESERVA_FRANGO e RESERVA_LOTE), o que amplia a cobertura de processos em relação a um restaurante convencional e justifica a inclusão dessas entidades no DER.
 
 
 - **Evidências da organização:** A existência e o acesso à organização são comprovados pelos registros abaixo.
