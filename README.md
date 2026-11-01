@@ -99,7 +99,7 @@ Resposta: A disponibilidade dos itens é conferida verbalmente com o dono ou a c
 **4. Vocês trabalham com reservas de mesa? Se sim, com que frequência, como são registradas e quais dados são pedidos?**
 Resposta: [A PREENCHER]
 
-*5. Vocês aceitam encomendas antecipadas de frango? Se sim, como são registradas, se pedem sinal e se existe prazo mínimo?*
+**5. Vocês aceitam encomendas antecipadas de frango? Se sim, como são registradas, se pedem sinal e se existe prazo mínimo?**
 Resposta: [A PREENCHER]
 
 **6. Quais dados pessoais vocês coletam dos clientes — nome, telefone, CPF, e-mail, data de nascimento? Quais desses são realmente necessários para a operação?**
