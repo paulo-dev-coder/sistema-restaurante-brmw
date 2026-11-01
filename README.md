@@ -36,10 +36,26 @@ RGM: 47962241*
 *(vale 7,5% — Dimensão Conceitual)*
 
 **(Em desenvolvimento)**
+
 - **Nome oficial do estabelecimento:** A Frangueria
+
 - **Natureza da organização:** A natureza da organização é um estabelecimento comercial familiar de pequeno porte que vende refeições completas, bebidas e frango assado com acompanhamentos. Seu modelo de negócio combina restaurante de prato feito e galeteria.
+
 - **Contexto e porte:** A organização é uma microempresa com fins lucrativos, direcionada à geração legítima de renda e à sustentabilidade do negócio. A operação é compacta e direcionada para o consumidor final. Não há funcionários terceirizados, prestadores de serviço externos ou voluntários; gestão, cozinha e atendimento são realizados colaborativamente pela própria família. O estabelecimento funciona aos sábados e domingos, das 10h às 20h. A equipe é composta por quatro pessoas da família. A área exterior do restaurante contém apenas [N] mesas com a capacidade para aproximadamente [N] pessoas sentadas, enquanto o salão do restaurante apenas possui [N] mesas com a capacidade para aproximadamente [N] pessoas com a finalidade de otimizar o espaço do local. A operação concentra-se apenas nos fins de semana, em um dia típico de funcionamento, são registrados cerca de [N] pedidos (estimativa obtida na visita), com pico entre 12h e 14h. O controle é feito manualmente em caderneta, sem registro histórico estruturado.
-- **Problemas e necessidades identificados:** O primeiro problema identificado na organização consiste na realização do controle operacional em caderneta, o que dificulta recuperar o histórico de pedidos e valores aplicados. O segundo problema identificado na organização consiste na consolidação do faturamento diário sem retrabalho, pois a totalização depende de conferência manual, recálculo e transcrição de dados, aumentando o esforço operacional e o risco de erros ou omissões. O terceiro e último problema identificado na organização consiste na verificação a disponibilidade de produtos e lotes de frango de maneira confiável, o que pode favorecer rupturas de estoque, perdas por vencimento ou compras inadequadas. A ausência de entrega domiciliar na organização é uma característica do modelo de negócio, não é um problema de informação, e por isso não é tratada como requisito do sistema.
+
+- **Problemas e necessidades identificados:**
+
+**P1** — Histórico de pedidos inacessível: com o registro em caderneta, não é possível saber, por período, quantos pedidos foram feitos, qual o ticket médio, quais produtos mais saem e qual cliente pediu o quê. A recuperação depende de folhear páginas e recopiar dados.
+
+**P2** — Fechamento de caixa manual e sujeito a erro: a totalização por forma de pagamento (dinheiro, Pix, cartão) depende de conferência manual, recálculo e transcrição, aumentando o esforço operacional e o risco de erro ou omissão na conciliação com os pedidos.
+
+**P3** — Disponibilidade de produtos e lotes de frango sem controle confiável: a conferência é verbal com a cozinha; não há registro de quanto frango resta no dia nem de qual lote atendeu cada encomenda, favorecendo ruptura, perda por vencimento e compra inadequada.
+
+**P4** — Compras e fornecedores sem registro estruturado: as compras de frango, temperos, embalagens e bebidas ficam em caderneta ou nota simples, sem histórico por fornecedor, sem comparação de preço e sem saber com que frequência cada item é comprado.
+
+**P5** — Recebimento e estoque de insumos sem conferência registrada: divergências de quantidade ou qualidade na entrega não ficam registradas; não há baixa organizada de insumos, nem alerta de estoque mínimo, o que leva a compras de emergência e perdas.
+
+
 - **Justificativa da escolha:** A escolha do estabelecimento fundamenta-se em três critérios. O primeiro é o acesso garantido à organização: um dos integrantes do grupo possui vínculo direto com os proprietários, o que viabiliza visitas, entrevistas e observação da rotina operacional. O segundo é o porte compatível com o escopo da disciplina: trata-se de uma microempresa familiar, com funcionamento aos sábados e domingos, das 10h às 20h, cuja operação enxuta permite mapear todos os processos sem a complexidade de organizações de maior porte, mantendo volume suficiente de dados para modelagem. O terceiro é o modelo de negócio misto, que combina restaurante de prato feito e frangaria, exigindo entidades específicas para controle de produção por lote e encomendas antecipadas, o que amplia a riqueza do exercício de modelagem.
 
 - **Evidências da organização:** A existência e o acesso à organização são comprovados pelos registros abaixo.
@@ -79,49 +95,55 @@ Resposta: [A PREENCHER]
 *5. Vocês aceitam encomendas antecipadas de frango? Se sim, como são registradas, se pedem sinal e se existe prazo mínimo?*
 Resposta: [A PREENCHER]
 
-*6. Quais dados pessoais vocês coletam dos clientes? Quais desses dados são realmente necessários para a operação?*
+**6. Quais dados pessoais vocês coletam dos clientes — nome, telefone, CPF, e-mail, data de nascimento? Quais desses são realmente necessários para a operação?**
 Resposta: [A PREENCHER]
 
-*7. Vocês guardam esses dados depois do atendimento? Por quanto tempo?*
+**7. Vocês guardam esses dados depois do atendimento? Por quanto tempo?**
 Resposta: [A PREENCHER]
 
-*8. Como é feito o fechamento do caixa ao final do dia? Quem faz e quanto tempo leva?*
+**8. Como é feito o fechamento do caixa ao final do dia? Quem faz, quanto tempo leva e quem tem acesso ao caixa e ao controle financeiro?**
 Resposta: [A PREENCHER]
 
-*9. As entradas são separadas por forma de pagamento? Como vocês conferem se o total bate com os pedidos?*
+**9. As entradas são separadas por forma de pagamento? Quais formas vocês aceitam hoje (dinheiro, Pix, cartão)? Como conferem se o total bate com os pedidos?**
 Resposta: [A PREENCHER]
 
-*10. Quem são os fornecedores de frango e insumos? Quantos são e com que frequência a compra é feita?*
+**10. Quem são os fornecedores de frango e insumos? Quantos são e com que frequência a compra é feita?**
 Resposta: [A PREENCHER]
 
-*11. Como a compra e o recebimento são registrados hoje? Alguém confere quantidade e qualidade na entrega?*
+**11. Como a compra e o recebimento são registrados hoje? Alguém confere quantidade e qualidade? O que fazem se a mercadoria vier faltando ou estragada?**
 Resposta: [A PREENCHER]
 
-*12. Quantas mesas há no salão interno e na área externa? Qual a capacidade total de pessoas sentadas?*
+**12. Quantas mesas há no salão interno e na área externa? Qual a capacidade total de pessoas sentadas?**
 Resposta: [A PREENCHER]
 
-*13. Em média, quantos pedidos são feitos em um sábado e em um domingo? E no pico entre 12h e 14h?*
+**13. Em média, quantos pedidos são feitos em um sábado e em um domingo? E no pico entre 12h e 14h?**
 Resposta: [A PREENCHER]
 
-*14. Quantos itens há no cardápio e quantos lotes de frango são preparados por dia?*
+**14. Quantos itens há no cardápio e quantos lotes de frango são preparados por dia?**
 Resposta: [A PREENCHER]
 
-*15. Quantas pessoas trabalham no restaurante e quem faz o quê (atendimento, cozinha, caixa)?*
+**15. Quantas pessoas trabalham no restaurante e quem faz o quê (atendimento, cozinha, caixa)?**
 Resposta: [A PREENCHER]
 
-*16. Como o cardápio é definido e atualizado hoje? Qual o preço médio de um prato e de uma bebida?*
+**16. Como o cardápio é definido e atualizado hoje? Qual o preço médio de um prato e de uma bebida?**
 Resposta: [A PREENCHER]
 
-*17. Vocês controlam estoque de frango, temperos, embalagens e bebidas? Existe quantidade mínima de segurança? Já faltou insumo de emergência?*
+**17. Vocês controlam estoque de frango, temperos, embalagens e bebidas? Existe quantidade mínima de segurança? Já faltou insumo de emergência?**
 Resposta: [A PREENCHER]
 
-*18. Há perdas por vencimento ou deterioração? Como isso é registrado?*
+**18. Há perdas por vencimento ou deterioração? Como isso é registrado?**
 Resposta: [A PREENCHER]
 
-*19. Existe alguma regra sobre cancelamento ou alteração de pedido? O pedido só é encerrado depois do pagamento?*
+**19. Existe alguma regra sobre cancelamento ou alteração de pedido? O pedido só é encerrado depois do pagamento?**
 Resposta: [A PREENCHER]
 
-*20. Vocês emitem nota ou cupom fiscal? Existem exigências da vigilância sanitária que afetam o preparo ou o armazenamento?*
+**20. Vocês emitem nota ou cupom fiscal? Existem exigências da vigilância sanitária que afetam o preparo ou o armazenamento?**
+Resposta: [A PREENCHER]
+
+**21. Quando uma encomenda de frango consome mais de um lote, como vocês registram de qual lote saiu cada parte?**
+Resposta: [A PREENCHER]
+
+**22. O restaurante faz entrega em domicílio ou só atende no local e retirada?**
 Resposta: [A PREENCHER]
 
 ---
