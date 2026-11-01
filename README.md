@@ -56,26 +56,77 @@ https://maps.app.goo.gl/pjqxhT2Ltq6g1c2D7?g_st=ac
 
 ---
 
-### 1.1 Registro da pesquisa de campo
+### 2. Registro da pesquisa de campo
 
 **(Em desenvolvimento)**
 
 A pesquisa de campo foi realizada em [DATA], no estabelecimento **A Frangueria**, com duração de aproximadamente [X] horas. Participaram da visita [NOME DO INTEGRANTE] (integrante do grupo) e [NOME DO RESPONSÁVEL] (proprietário/responsável pelo atendimento). A abordagem combinou entrevista semiestruturada com observação direta da rotina de atendimento e preparo.
 
-**Informações confirmadas na visita:**
+**As informações confirmadas na visita:**
 
-- O atendimento ocorre apenas aos sábados e domingos, das 10h às 20h.
-- Os pedidos são anotados em caderneta; não há sistema informatizado.
-- A disponibilidade dos itens é conferida verbalmente com a cozinha antes da confirmação.
-- [CONFIRMAR: reservas de mesa ocorrem? Com que frequência?]
-- [CONFIRMAR: encomendas antecipadas de frango existem? Como são registradas?]
-- [CONFIRMAR: quais dados pessoais são efetivamente coletados?]
-- [CONFIRMAR: como é feito o fechamento do caixa ao final do dia?]
-- [CONFIRMAR: quem são os fornecedores de frango e insumos? Com que frequência a compra é feita?]
+**1. Quais são os dias e horários de funcionamento do restaurante? Existe alguma exceção?**
+Resposta: O atendimento ocorre apenas aos sábados e domingos, das 10h às 20h. Nenhuma exceção.
+
+**2. Como os pedidos são registrados? Quem registra e onde são anotados?**
+Resposta: Os pedidos são anotados em caderneta pelo dono ou cozinheira do restaurante; não há sistema informatizado.
+
+**3. Como vocês verificam se um item está disponível antes de confirmar o pedido? Quem faz essa verificação?**
+Resposta: A disponibilidade dos itens é conferida verbalmente com o dono ou a cozinheira antes da confirmação.
+
+**4. Vocês trabalham com reservas de mesa? Se sim, com que frequência, como são registradas e quais dados são pedidos?**
+Resposta: [A PREENCHER]
+
+*5. Vocês aceitam encomendas antecipadas de frango? Se sim, como são registradas, se pedem sinal e se existe prazo mínimo?*
+Resposta: [A PREENCHER]
+
+*6. Quais dados pessoais vocês coletam dos clientes? Quais desses dados são realmente necessários para a operação?*
+Resposta: [A PREENCHER]
+
+*7. Vocês guardam esses dados depois do atendimento? Por quanto tempo?*
+Resposta: [A PREENCHER]
+
+*8. Como é feito o fechamento do caixa ao final do dia? Quem faz e quanto tempo leva?*
+Resposta: [A PREENCHER]
+
+*9. As entradas são separadas por forma de pagamento? Como vocês conferem se o total bate com os pedidos?*
+Resposta: [A PREENCHER]
+
+*10. Quem são os fornecedores de frango e insumos? Quantos são e com que frequência a compra é feita?*
+Resposta: [A PREENCHER]
+
+*11. Como a compra e o recebimento são registrados hoje? Alguém confere quantidade e qualidade na entrega?*
+Resposta: [A PREENCHER]
+
+*12. Quantas mesas há no salão interno e na área externa? Qual a capacidade total de pessoas sentadas?*
+Resposta: [A PREENCHER]
+
+*13. Em média, quantos pedidos são feitos em um sábado e em um domingo? E no pico entre 12h e 14h?*
+Resposta: [A PREENCHER]
+
+*14. Quantos itens há no cardápio e quantos lotes de frango são preparados por dia?*
+Resposta: [A PREENCHER]
+
+*15. Quantas pessoas trabalham no restaurante e quem faz o quê (atendimento, cozinha, caixa)?*
+Resposta: [A PREENCHER]
+
+*16. Como o cardápio é definido e atualizado hoje? Qual o preço médio de um prato e de uma bebida?*
+Resposta: [A PREENCHER]
+
+*17. Vocês controlam estoque de frango, temperos, embalagens e bebidas? Existe quantidade mínima de segurança? Já faltou insumo de emergência?*
+Resposta: [A PREENCHER]
+
+*18. Há perdas por vencimento ou deterioração? Como isso é registrado?*
+Resposta: [A PREENCHER]
+
+*19. Existe alguma regra sobre cancelamento ou alteração de pedido? O pedido só é encerrado depois do pagamento?*
+Resposta: [A PREENCHER]
+
+*20. Vocês emitem nota ou cupom fiscal? Existem exigências da vigilância sanitária que afetam o preparo ou o armazenamento?*
+Resposta: [A PREENCHER]
 
 ---
 
-## 2. Processos de Negócio
+## 3. Processos de Negócio
 *(vale 10% — Dimensão Procedimental)*
 
 - **Principais processos mapeados e representados no DER:**
@@ -94,10 +145,10 @@ A pesquisa de campo foi realizada em [DATA], no estabelecimento **A Frangueria**
 
 ---
 
-## 3. Requisitos do Sistema
+## 4. Requisitos do Sistema
 *(esta seção e a Seção 4 "Regras de Negócio" DIVIDEM 7,5% na dimensão conceitual — juntas valem 7,5%, não 7,5% cada — + 4% exclusivos desta seção na organização/documentação)*
 
-### 3.1 Requisitos Funcionais
+### 4.1 Requisitos Funcionais
 | Código | Requisito funcional |
 |--------|---------------------|
 | RF01 | Cadastrar produtos do cardápio com nome, descrição, preço, categoria e disponibilidade. |
@@ -113,7 +164,7 @@ A pesquisa de campo foi realizada em [DATA], no estabelecimento **A Frangueria**
 | RF11 | Consultar pedidos, reservas, disponibilidade de produtos e informações financeiras por seus dados de identificação e situação. |
 | RF12 | Acompanhar as situações de pedidos, reservas e faturamentos até a conclusão de cada atendimento. |
 
-### 3.2 Requisitos Não Funcionais
+### 4.2 Requisitos Não Funcionais
 | Código | Requisito não funcional |
 |--------|--------------------------|
 | RNF01 - Usabilidade | A tela de registro deve ser simples e utilizável pelos membros da família sem treinamento técnico. |
@@ -127,7 +178,7 @@ A pesquisa de campo foi realizada em [DATA], no estabelecimento **A Frangueria**
 
 ---
 
-## 4. Regras de Negócio
+## 5. Regras de Negócio
 *(esta seção DIVIDE com a Seção 3 "Requisitos do Sistema" os mesmos 7,5% da dimensão conceitual — juntas valem 7,5%, não 7,5% cada — + 4% exclusivos desta seção na documentação. "Regras de negócio" é o termo técnico usado em modelagem de dados para as regras de funcionamento de qualquer organização, com ou sem fins lucrativos)*
 
 - **Regras operacionais:**
@@ -156,7 +207,7 @@ A pesquisa de campo foi realizada em [DATA], no estabelecimento **A Frangueria**
 
 ---
 
-## 5. Dicionário de Dados Conceitual (Preliminar)
+## 6. Dicionário de Dados Conceitual (Preliminar)
 *(vale 10% — Dimensão Procedimental - Segue o modelo do arquivo 02-03g_Exemplo_Dicionario_Dados.pdf)*
 
 Abaixo estão as entidades e os atributos que aparecem no DER fornecido. Os identificadores são considerados chaves primárias; atributos `id_*` que apontam para outra entidade são referências (chaves estrangeiras) e devem ser mostrados como relacionamentos no modelo conceitual.
@@ -264,7 +315,7 @@ Abaixo estão as entidades e os atributos que aparecem no DER fornecido. Os iden
 
 ---
 
-## 6. Modelagem Conceitual (Entidades, Atributos, Relacionamentos)
+## 7. Modelagem Conceitual (Entidades, Atributos, Relacionamentos)
 *(vale 7,5% na dimensão conceitual)*
 
 ### Entidades reconhecidas
@@ -328,14 +379,14 @@ A notação do diagrama mostra mínimos e máximos junto às linhas. A leitura a
 
 ---
 
-## 7. Diagrama Entidade-Relacionamento (DER)
+## 8. Diagrama Entidade-Relacionamento (DER)
 *(vale 20% — é o item de maior peso da entrega)*
 
 - O diagrama inclui Pessoa, Cliente, Funcionário, Telefone, Pedido, Item_pedido, Produto, Faturamento, Reserva_mesa, Reserva_frango e Lote_frangueria.
 
 ---
 
-## 8. Justificativa Técnica
+## 9. Justificativa Técnica
 *(vale 7,5% — sozinho, é o subcritério de maior peso dentro da Dimensão Conceitual)*
 
 O modelo separa os conceitos que têm identidade e ciclo próprios. Pessoa concentra os dados cadastrais, enquanto Cliente representa seu papel nas compras; Funcionário identifica o operador que registra pedidos. Telefone foi separado para permitir mais de um contato por pessoa. Pedido é a transação principal, e Item_pedido resolve a relação muitos-para-muitos entre pedido e produto, além de guardar quantidade, valor aplicado e observação por item. Produto mantém o catálogo e a disponibilidade. Faturamento separa o registro financeiro do atendimento. Reserva_mesa e Reserva_frango representam dois processos específicos mostrados no DER, e Lote_frangueria permite relacionar as encomendas antecipadas à produção disponível.
@@ -345,7 +396,7 @@ As cardinalidades devem refletir a ocorrência mínima e máxima real, não simp
 A decomposição evita repetir dados do produto em cada pedido e permite preservar o valor aplicado no momento da venda. A separação Pessoa–Cliente e Pessoa–Funcionário facilita distinguir dados cadastrais de papéis, mas o DER deve representá-la como especialização ou vínculo 1:1 claramente definido. A modelagem inclui reservas e cadastro pessoal adicional porque aparecem no diagrama recebido; a pesquisa de campo deve confirmar que esses processos e dados existem e são necessários. CPF, e-mail, data de nascimento e salário-base não devem ser coletados sem finalidade operacional definida. A ausência de entidade de entrega é coerente com a regra de que o estabelecimento não oferece delivery.
 
 ---
-## 9. Utilização de Inteligência Artificial
+## 10. Utilização de Inteligência Artificial
 
 O grupo utilizou o ChatGPT como apoio para *organizar e revisar a documentação do trabalho*, e não como fonte principal de informações sobre a organização. As informações sobre o funcionamento do estabelecimento e os seus processos foram confirmadas pelo grupo por meio da pesquisa de campo.
 
