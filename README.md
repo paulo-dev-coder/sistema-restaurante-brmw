@@ -87,70 +87,91 @@ A pesquisa de campo foi realizada em [DATA], no estabelecimento **A Frangueria**
 
 **As informações confirmadas na visita:**
 
-**1. Quais são os dias e horários de funcionamento do restaurante? Existe alguma exceção?**
+- **1. Quais são os dias e horários de funcionamento do restaurante? Existe alguma exceção?**
+
 Resposta: O atendimento ocorre apenas aos sábados e domingos, das 10h às 20h. Nenhuma exceção.
 
-**2. Como os pedidos são registrados? Quem registra e onde são anotados?**
+- **2. Como os pedidos são registrados? Quem registra e onde são anotados?**
+
 Resposta: Os pedidos são anotados em caderneta pelo dono ou cozinheira do restaurante; não há sistema informatizado.
 
-**3. Como vocês verificam se um item está disponível antes de confirmar o pedido? Quem faz essa verificação?**
+- **3. Como vocês verificam se um item está disponível antes de confirmar o pedido? Quem faz essa verificação?**
+
 Resposta: A disponibilidade dos itens é conferida verbalmente com o dono ou a cozinheira antes da confirmação.
 
-**4. Vocês trabalham com reservas de mesa? Se sim, com que frequência, como são registradas e quais dados são pedidos?**
+- **4. Vocês trabalham com reservas de mesa? Se sim, com que frequência, como são registradas e quais dados são pedidos?**
+
 Resposta: [A PREENCHER]
 
-**5. Vocês aceitam encomendas antecipadas de frango? Se sim, como são registradas, se pedem sinal e se existe prazo mínimo?**
+- **5. Vocês aceitam encomendas antecipadas de frango? Se sim, como são registradas, se pedem sinal e se existe prazo mínimo?**
+
 Resposta: [A PREENCHER]
 
-**6. Quais dados pessoais vocês coletam dos clientes — nome, telefone, CPF, e-mail, data de nascimento? Quais desses são realmente necessários para a operação?**
+- **6. Quais dados pessoais vocês coletam dos clientes — nome, telefone, CPF, e-mail, data de nascimento? Quais desses são realmente necessários para a operação?**
+
 Resposta: [A PREENCHER]
 
-**7. Vocês guardam esses dados depois do atendimento? Por quanto tempo?**
+- **7. Vocês guardam esses dados depois do atendimento? Por quanto tempo?**
+
 Resposta: [A PREENCHER]
 
-**8. Como é feito o fechamento do caixa ao final do dia? Quem faz, quanto tempo leva e quem tem acesso ao caixa e ao controle financeiro?**
+- **8. Como é feito o fechamento do caixa ao final do dia? Quem faz, quanto tempo leva e quem tem acesso ao caixa e ao controle financeiro?**
+
 Resposta: [A PREENCHER]
 
-**9. As entradas são separadas por forma de pagamento? Quais formas vocês aceitam hoje (dinheiro, Pix, cartão)? Como conferem se o total bate com os pedidos?**
+- **9. As entradas são separadas por forma de pagamento? Quais formas vocês aceitam hoje (dinheiro, Pix, cartão)? Como conferem se o total bate com os pedidos?**
+
 Resposta: [A PREENCHER]
 
-**10. Quem são os fornecedores de frango e insumos? Quantos são e com que frequência a compra é feita?**
+- **10. Quem são os fornecedores de frango e insumos? Quantos são e com que frequência a compra é feita?**
+
 Resposta: [A PREENCHER]
 
-**11. Como a compra e o recebimento são registrados hoje? Alguém confere quantidade e qualidade? O que fazem se a mercadoria vier faltando ou estragada?**
+- **11. Como a compra e o recebimento são registrados hoje? Alguém confere quantidade e qualidade? O que fazem se a mercadoria vier faltando ou estragada?**
+
 Resposta: [A PREENCHER]
 
-**12. Quantas mesas há no salão interno e na área externa? Qual a capacidade total de pessoas sentadas?**
+- **12. Quantas mesas há no salão interno e na área externa? Qual a capacidade total de pessoas sentadas?**
+  
 Resposta: [A PREENCHER]
 
-**13. Em média, quantos pedidos são feitos em um sábado e em um domingo? E no pico entre 12h e 14h?**
+- **13. Em média, quantos pedidos são feitos em um sábado e em um domingo? E no pico entre 12h e 14h?**
+  
 Resposta: [A PREENCHER]
 
-**14. Quantos itens há no cardápio e quantos lotes de frango são preparados por dia?**
+- **14. Quantos itens há no cardápio e quantos lotes de frango são preparados por dia?**
+  
 Resposta: [A PREENCHER]
 
-**15. Quantas pessoas trabalham no restaurante e quem faz o quê (atendimento, cozinha, caixa)?**
+- **15. Quantas pessoas trabalham no restaurante e quem faz o quê (atendimento, cozinha, caixa)?**
+  
 Resposta: [A PREENCHER]
 
-**16. Como o cardápio é definido e atualizado hoje? Qual o preço médio de um prato e de uma bebida?**
+- **16. Como o cardápio é definido e atualizado hoje? Qual o preço médio de um prato e de uma bebida?**
 Resposta: [A PREENCHER]
 
-**17. Vocês controlam estoque de frango, temperos, embalagens e bebidas? Existe quantidade mínima de segurança? Já faltou insumo de emergência?**
+- **17. Vocês controlam estoque de frango, temperos, embalagens e bebidas? Existe quantidade mínima de segurança? Já faltou insumo de emergência?**
+
 Resposta: [A PREENCHER]
 
-**18. Há perdas por vencimento ou deterioração? Como isso é registrado?**
+- **18. Há perdas por vencimento ou deterioração? Como isso é registrado?**
+
 Resposta: [A PREENCHER]
 
-**19. Existe alguma regra sobre cancelamento ou alteração de pedido? O pedido só é encerrado depois do pagamento?**
+- **19. Existe alguma regra sobre cancelamento ou alteração de pedido? O pedido só é encerrado depois do pagamento?**
+
 Resposta: [A PREENCHER]
 
-**20. Vocês emitem nota ou cupom fiscal? Existem exigências da vigilância sanitária que afetam o preparo ou o armazenamento?**
+- **20. Vocês emitem nota ou cupom fiscal? Existem exigências da vigilância sanitária que afetam o preparo ou o armazenamento?**
+
 Resposta: [A PREENCHER]
 
-**21. Quando uma encomenda de frango consome mais de um lote, como vocês registram de qual lote saiu cada parte?**
+- **21. Quando uma encomenda de frango consome mais de um lote, como vocês registram de qual lote saiu cada parte?**
+
 Resposta: [A PREENCHER]
 
-**22. O restaurante faz entrega em domicílio ou só atende no local e retirada?**
+- **22. O restaurante faz entrega em domicílio ou só atende no local e retirada?**
+
 Resposta: O restaurante apenas atende no local e retirada. Infelizmente, não realiza entrega em domicílios.
 
 ---
