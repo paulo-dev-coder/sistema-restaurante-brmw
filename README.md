@@ -47,7 +47,7 @@ RGM: 47962241*
 
 - **P1** — Histórico de pedidos inacessível: com o registro em caderneta, não é possível saber, por período, quantos pedidos foram feitos, qual o ticket médio, quais produtos mais saem e qual cliente pediu o quê. A recuperação depende de folhear páginas e recopiar dados.
 
-- **P2** — Fechamento de caixa manual e sujeito a erro: a totalização por forma de pagamento (dinheiro, Pix, cartão) depende de conferência manual, recálculo e transcrição, aumentando o esforço operacional e o risco de erro ou omissão na conciliação com os pedidos.
+-- **P2** — Fechamento de caixa manual e sujeito a erro: a totalização por forma de pagamento (dinheiro, Pix, cartão) depende de conferência manual, recálculo e transcrição, aumentando o esforço operacional e o risco de erro ou omissão na conciliação com os pedidos.
 
 - **P3** — Disponibilidade de produtos e lotes de frango sem controle confiável: a conferência é verbal com a cozinha; não há registro de quanto frango resta no dia nem de qual lote atendeu cada encomenda, favorecendo ruptura, perda por vencimento e compra inadequada.
 
