@@ -99,82 +99,80 @@ Resposta: Os pedidos são anotados em caderneta pelo dono ou cozinheira do resta
 
 Resposta: A disponibilidade dos itens é conferida verbalmente com o dono ou a cozinheira antes da confirmação.
 
-- **4. Vocês trabalham com reservas de mesa? Se sim, com que frequência, como são registradas e quais dados são pedidos?**
+**4. Vocês trabalham com reservas de mesa? Se sim, com que frequência, como são registradas e quais dados são pedidos?**
 
-Resposta: [A PREENCHER]
+Resposta: Não há reserva de mesa na organização até o momento.
 
-- **5. Vocês aceitam encomendas antecipadas de frango? Se sim, como são registradas, se pedem sinal e se existe prazo mínimo?**
+**5. Vocês aceitam encomendas antecipadas de frango? Se sim, como são registradas, se pedem sinal e se existe prazo mínimo?**
 
-Resposta: [A PREENCHER]
+Resposta: Sim. Há clientes que fazem encomendas antecipadas de frango. O registro é feito por telefone ou presencialmente, com anotação do dia e do horário de retirada. Não há cobrança de sinal nem prazo mínimo formal.
 
-- **6. Quais dados pessoais vocês coletam dos clientes — nome, telefone, CPF, e-mail, data de nascimento? Quais desses são realmente necessários para a operação?**
+**6. Quais dados pessoais vocês coletam dos clientes — nome, telefone, CPF, e-mail, data de nascimento? Quais desses são realmente necessários para a operação?**
 
-Resposta: [A PREENCHER]
+Resposta: São coletados apenas nome e telefone. Não são coletados CPF, e-mail nem data de nascimento.
 
-- **7. Vocês guardam esses dados depois do atendimento? Por quanto tempo?**
+**7. Vocês guardam esses dados depois do atendimento? Por quanto tempo?**
 
-Resposta: [A PREENCHER]
+Resposta: Sim. Os dados são mantidos em papel e no telefone por tempo prolongado, sem prazo definido de descarte.
 
-- **8. Como é feito o fechamento do caixa ao final do dia? Quem faz, quanto tempo leva e quem tem acesso ao caixa e ao controle financeiro?**
+**8. Como é feito o fechamento do caixa ao final do dia? Quem faz, quanto tempo leva e quem tem acesso ao caixa e ao controle financeiro?**
 
-Resposta: [A PREENCHER]
+Resposta: O proprietário permanece com o dinheiro e realiza a conferência do troco ao final do dia. O acesso ao caixa e ao controle financeiro é do proprietário.
 
-- **9. As entradas são separadas por forma de pagamento? Quais formas vocês aceitam hoje (dinheiro, Pix, cartão)? Como conferem se o total bate com os pedidos?**
+**9. As entradas são separadas por forma de pagamento? Quais formas vocês aceitam hoje (dinheiro, Pix, cartão)? Como conferem se o total bate com os pedidos?**
 
-Resposta: [A PREENCHER]
+Resposta: As entradas são separadas por forma de pagamento de dois modos: manual, com anotação em papel, e digital, com registro no terminal de pagamento ou no aplicativo da operadora da maquininha. As formas aceitas são Pix, dinheiro, cartão de débito e cartão de crédito. Segundo a entrevistada, os valores sempre conferem com os pedidos.
 
-- **10. Quem são os fornecedores de frango e insumos? Quantos são e com que frequência a compra é feita?**
+**10. Quem são os fornecedores de frango e insumos? Quantos são e com que frequência a compra é feita?**
 
-Resposta: [A PREENCHER]
+Resposta: Há três fornecedores de frango, que entregam semanalmente.
 
-- **11. Como a compra e o recebimento são registrados hoje? Alguém confere quantidade e qualidade? O que fazem se a mercadoria vier faltando ou estragada?**
+**11. Como a compra e o recebimento são registrados hoje? Alguém confere quantidade e qualidade? O que fazem se a mercadoria vier faltando ou estragada?**
 
-Resposta: [A PREENCHER]
+Resposta: O proprietário recebe a mercadoria e confere junto com os entregadores. Não há registro formal de divergências.
 
-- **12. Quantas mesas há no salão interno e na área externa? Qual a capacidade total de pessoas sentadas?**
-  
-Resposta: [A PREENCHER]
+**12. Quantas mesas há no salão interno e na área externa? Qual a capacidade total de pessoas sentadas?**
 
-- **13. Em média, quantos pedidos são feitos em um sábado e em um domingo? E no pico entre 12h e 14h?**
-  
-Resposta: [A PREENCHER]
+Resposta: São 10 mesas na área externa e 5 mesas no salão interno, totalizando 15 mesas. A capacidade total de pessoas sentadas não foi informada.
 
-- **14. Quantos itens há no cardápio e quantos lotes de frango são preparados por dia?**
-  
-Resposta: [A PREENCHER]
+**13. Em média, quantos pedidos são feitos em um sábado e em um domingo? E no pico entre 12h e 14h?**
 
-- **15. Quantas pessoas trabalham no restaurante e quem faz o quê (atendimento, cozinha, caixa)?**
-  
-Resposta: [A PREENCHER]
+Resposta: São registrados, em média, 50 a 60 pedidos por semana, o que corresponde a aproximadamente 25 a 30 pedidos por dia de funcionamento. O volume específico do pico não foi informado.
+
+**14. Quantos itens há no cardápio e quantos lotes de frango são preparados por dia?**
+
+Resposta: O cardápio tem 30 itens. São preparados 10 lotes de frango por dia.
+
+**15. Quantas pessoas trabalham no restaurante e quem faz o quê (atendimento, cozinha, caixa)?**
+
+Resposta: A equipe é composta por três pessoas: uma responsável pela cozinha; uma que corta o frango, cuida da recepção e realiza o pagamento; e uma responsável pelas mesas e pela limpeza da frente do restaurante.
 
 - **16. Como o cardápio é definido e atualizado hoje? Qual o preço médio de um prato e de uma bebida?**
 Resposta: [A PREENCHER]
 
 - **17. Vocês controlam estoque de frango, temperos, embalagens e bebidas? Existe quantidade mínima de segurança? Já faltou insumo de emergência?**
 
-Resposta: [A PREENCHER]
+Resposta: Sim. Há controle de estoque de frango, temperos, embalagens e bebidas, com quantidade mínima de segurança definida. Nunca faltou insumo a ponto de exigir compra de emergência.
 
 - **18. Há perdas por vencimento ou deterioração? Como isso é registrado?**
 
-Resposta: [A PREENCHER]
+Resposta: Sim, já houve perdas por vencimento ou deterioração. O material é descartado e não há registro dessas perdas.
 
 - **19. Existe alguma regra sobre cancelamento ou alteração de pedido? O pedido só é encerrado depois do pagamento?**
 
-Resposta: [A PREENCHER]
+Resposta: Não existe regra formal de cancelamento. Segundo a entrevistada, cancelamentos são raros.
 
-- **20. Vocês emitem nota ou cupom fiscal? Existem exigências da vigilância sanitária que afetam o preparo ou o armazenamento?**
+**- 20. Vocês emitem nota ou cupom fiscal? Existem exigências da vigilância sanitária que afetam o preparo ou o armazenamento?**
 
-Resposta: [A PREENCHER]
+Resposta: Sim, há emissão de cupom fiscal. A entrevistada declara não haver exigências formais da vigilância sanitária aplicáveis ao estabelecimento, embora a equipe mantenha a cozinha limpa por iniciativa própria.
 
-- **21. Quando uma encomenda de frango consome mais de um lote, como vocês registram de qual lote saiu cada parte?**
+**- 21. Quando uma encomenda de frango consome mais de um lote, como vocês registram de qual lote saiu cada parte?**
 
-Resposta: [A PREENCHER]
+Resposta: A quantidade máxima é de 2 a 3 frangos por pessoa. A organização não registra de qual lote saiu cada parte da encomenda.
 
-- **22. O restaurante faz entrega em domicílio ou só atende no local e retirada?**
+**- 22. O restaurante faz entrega em domicílio ou só atende no local e retirada?**
 
 Resposta: O restaurante apenas atende no local e retirada. Infelizmente, não realiza entrega em domicílios.
-
----
 
 ## 3. Processos de Negócio
 *(vale 10% — Dimensão Procedimental)*
