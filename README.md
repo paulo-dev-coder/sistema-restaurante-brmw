@@ -99,51 +99,51 @@ Resposta: Os pedidos são registrados no computador, controlado pelo representan
 
 Resposta: Os pedidos são efetuados presencialmente pelo cliente, até que o produto esteja disponível. Quando o produto acaba, as vendas são encerradas. A verificação é feita pela cozinheira, com acompanhamento do representante da empresa.
 
-**4. Vocês trabalham com reservas de mesa? Se sim, com que frequência, como são registradas e quais dados são pedidos?**
+- **4. Vocês trabalham com reservas de mesa? Se sim, com que frequência, como são registradas e quais dados são pedidos?**
 
 Resposta: Não há reserva de mesa na organização até o momento.
 
-**5. Vocês aceitam encomendas antecipadas de frango? Se sim, como são registradas, se pedem sinal e se existe prazo mínimo?**
+- **5. Vocês aceitam encomendas antecipadas de frango? Se sim, como são registradas, se pedem sinal e se existe prazo mínimo?**
 
 Resposta: Sim, são aceitas encomendas com pagamento antecipado e marcação do horário de retirada. O registro é feito na máquina de pagamento, com uma via para controle da empresa e uma via para o cliente, que serve como comprovante legal e para recebimento do produto.
 
-**6. Quais dados pessoais vocês coletam dos clientes — nome, telefone, CPF, e-mail, data de nascimento? Quais desses são realmente necessários para a operação?**
+- **6. Quais dados pessoais vocês coletam dos clientes — nome, telefone, CPF, e-mail, data de nascimento? Quais desses são realmente necessários para a operação?**
 
 Resposta: São coletados apenas nome e telefone. Não são coletados CPF, e-mail nem data de nascimento.
 
-**7. Vocês guardam esses dados depois do atendimento? Por quanto tempo?**
+- **7. Vocês guardam esses dados depois do atendimento? Por quanto tempo?**
 
 Resposta: Sim. Os dados são mantidos no computador por tempo indeterminado, sem prazo definido de descarte.
 
-**8. Como é feito o fechamento do caixa ao final do dia? Quem faz, quanto tempo leva e quem tem acesso ao caixa e ao controle financeiro?**
+- **8. Como é feito o fechamento do caixa ao final do dia? Quem faz, quanto tempo leva e quem tem acesso ao caixa e ao controle financeiro?**
 
 Resposta: O caixa é fechado pela máquina de pagamento, em cerca de 5 minutos ao final do dia, pelo tesoureiro, representante da empresa.
 
-**9. As entradas são separadas por forma de pagamento? Quais formas vocês aceitam hoje (dinheiro, Pix, cartão)? Como conferem se o total bate com os pedidos?**
+- **9. As entradas são separadas por forma de pagamento? Quais formas vocês aceitam hoje (dinheiro, Pix, cartão)? Como conferem se o total bate com os pedidos?**
 
 Resposta: As entradas são controladas pela máquina de pagamento e pelo total em dinheiro. As formas aceitas são Pix, dinheiro, cartão de débito e cartão de crédito. Segundo o entrevistado, os valores sempre conferem com os pedidos.
 
-**10. Quem são os fornecedores de frango e insumos? Quantos são e com que frequência a compra é feita?**
+- **10. Quem são os fornecedores de frango e insumos? Quantos são e com que frequência a compra é feita?**
 
 Resposta: Os fornecedores são frigoríficos e um atacadista de alimentos. As compras são feitas uma vez por semana.
 
-**11. Como a compra e o recebimento são registrados hoje? Alguém confere quantidade e qualidade? O que fazem se a mercadoria vier faltando ou estragada?**
+- **11. Como a compra e o recebimento são registrados hoje? Alguém confere quantidade e qualidade? O que fazem se a mercadoria vier faltando ou estragada?**
 
 Resposta: As compras são conferidas pelo tesoureiro. A mercadoria não consumida é descartada. Não há registro formal de divergências.
 
-**12. Quantas mesas há no salão interno e na área externa? Qual a capacidade total de pessoas sentadas?**
+- **12. Quantas mesas há no salão interno e na área externa? Qual a capacidade total de pessoas sentadas?**
 
 Resposta: São 5 mesas na área externa e 2 mesas no salão interno, totalizando 7 mesas. A capacidade total de pessoas sentadas é de aproximadamente 24 pessoas.
 
-**13. Em média, quantos pedidos são feitos em um sábado e em um domingo?**
+- **13. Em média, quantos pedidos são feitos em um sábado e em um domingo?**
 
 Resposta: Em média, são feitos de 20 a 28 pedidos por semana, o que corresponde a aproximadamente 10 a 14 pedidos por dia de funcionamento.
 
-**14. Quantos itens há no cardápio e quantos lotes de frango são preparados por dia?**
+- **14. Quantos itens há no cardápio e quantos lotes de frango são preparados por dia?**
 
 Resposta: O cardápio tem cinco itens de refeição. São preparados 14 frangos no sábado e 24 frangos no domingo.
 
-**15. Quantas pessoas trabalham no restaurante e quem faz o quê (atendimento, cozinha, caixa)?**
+- **15. Quantas pessoas trabalham no restaurante e quem faz o quê (atendimento, cozinha, caixa)?**
 
 Resposta: A equipe é composta por três pessoas: uma responsável pela cozinha; um no caixa; e uma responsável pelo atendimento.
 
