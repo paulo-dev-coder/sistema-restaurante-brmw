@@ -41,21 +41,28 @@ RGM: 47962241*
 
 - **Natureza da organização:** A natureza da organização é um estabelecimento comercial familiar de pequeno porte que vende refeições completas, bebidas e frango assado com acompanhamentos. Seu modelo de negócio combina restaurante de prato feito e galeteria.
 
-- **Contexto e porte:** A organização é uma microempresa com fins lucrativos, direcionada à geração legítima de renda e à sustentabilidade do negócio. A operação é compacta e direcionada para o consumidor final. Não há funcionários terceirizados, prestadores de serviço externos ou voluntários; gestão, cozinha e atendimento são realizados colaborativamente pela própria família. O estabelecimento funciona aos sábados e domingos, das 10h às 20h. A equipe é composta por quatro pessoas da família. A área exterior do restaurante contém apenas [N] mesas com a capacidade para aproximadamente [N] pessoas sentadas, enquanto o salão do restaurante apenas possui [N] mesas com a capacidade para aproximadamente [N] pessoas com a finalidade de otimizar o espaço do local. A operação concentra-se apenas nos fins de semana, em um dia típico de funcionamento, são registrados cerca de [N] pedidos (estimativa obtida na visita), com pico entre 12h e 14h. O controle é feito manualmente em caderneta, sem registro histórico estruturado.
+- **Contexto e porte:** A organização é uma microempresa com fins lucrativos, direcionada à geração legítima de renda e à sustentabilidade do negócio. A operação é compacta e voltada ao consumidor final. Não há funcionários terceirizados, prestadores de serviço externos ou voluntários; a gestão, a cozinha e o atendimento são realizados pelos próprios membros da família.
+
+O estabelecimento funciona aos sábados e domingos, das 10h às 20h, com possibilidade de extensão do horário quando ainda houver clientes no local. A equipe é composta por três pessoas: uma responsável pela cozinha, uma pelo caixa e uma pelo atendimento. A área externa do restaurante possui 5 mesas, e o salão interno possui 2 mesas, totalizando 7 mesas com capacidade para aproximadamente 24 pessoas sentadas.
+
+A operação concentra-se apenas nos fins de semana. Em um dia típico de funcionamento, são registrados de 10 a 14 pedidos, o equivalente a 20 a 28 pedidos por semana. O registro dos pedidos é feito no computador, sob controle do representante legal da empresa, e os recebimentos são anotados na máquina de pagamento, que faz e controla as transações. Não há integração entre os dois registros, o que impede a consulta consolidada do histórico de pedidos e recebimentos.
 
 - **Problemas e necessidades identificados:**
 
-  - **P1** —  Registro de pedidos fragmentado e sem consulta gerencial
+  - **P1 —  Registro de pedidos fragmentado e sem consulta gerencial**
     - Histórico de pedidos inacessível: com o registro em caderneta, não é possível saber, por período, quantos pedidos foram feitos, qual o ticket médio, quais produtos mais saem e qual cliente pediu o quê. A recuperação depende de folhear páginas e recopiar dados;
 
-  - **P2** — Fechamento de caixa manual e sujeito a erro: a totalização por forma de pagamento (dinheiro, Pix, cartão) depende de conferência manual, recálculo e transcrição, aumentando o esforço operacional e o risco de erro ou omissão na conciliação com os pedidos;
+  - **P2 — Conciliação manual entre máquina e dinheiro em espécie**
+    - Fechamento de caixa manual e sujeito a erro: a totalização por forma de pagamento (dinheiro, Pix, cartão) depende de conferência manual, recálculo e transcrição, aumentando o esforço operacional e o risco de erro ou omissão na conciliação com os pedidos;
 
-  - **P3** — Disponibilidade de produtos e lotes de frango sem controle confiável: a conferência é verbal com a cozinha; não há registro de quanto frango resta no dia nem de qual lote atendeu cada encomenda, favorecendo ruptura, perda por vencimento e compra inadequada;
+  - **P3 —  Perdas e rastreio de lote sem registro**
+    - Há controle de disponibilidade (cozinheira com acompanhamento do representante) e de estoque com quantidade mínima de segurança. Porém, as perdas por vencimento ou deterioração são descartadas sem registro, e não há vínculo entre a encomenda e o lote de origem. O impacto é a impossibilidade de medir perdas e de rastrear a origem do produto servido;
 
-  - **P4** — Compras e fornecedores sem registro estruturado: as compras de frango, temperos, embalagens e bebidas ficam em caderneta ou nota simples, sem histórico por fornecedor, sem comparação de preço e sem saber com que frequência cada item é comprado;
+  - **P4 — Falta de histórico de compras por fornecedor e produto**
+    - As compras são semanais, calculadas para o consumo, e conferidas pelo tesoureiro. Não há, porém, registro estruturado por fornecedor e por produto que permita comparar preços ao longo do tempo, identificar frequência de compra ou apoiar negociação. O impacto é a dependência de memória e de anotações dispersas para decisões de compra;
 
-  - **P5** — Recebimento e estoque de insumos sem conferência registrada: divergências de quantidade ou qualidade na entrega não ficam registradas; não há baixa organizada de insumos, nem alerta de estoque mínimo, o que leva a compras de emergência e perdas.
-
+  - **P5 — Divergências e descartes sem registro**
+    - O recebimento é conferido pelo tesoureiro, mas divergências de quantidade ou qualidade não são registradas formalmente. A mercadoria não consumida é descartada sem registro. O impacto é a impossibilidade de rastrear perdas, cobrar fornecedores ou ajustar o planejamento de compras.
 
 - **Justificativa da escolha:** A escolha do estabelecimento fundamenta-se em três critérios:
 
