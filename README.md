@@ -137,7 +137,7 @@ Resposta: São 5 mesas na área externa e 2 mesas no salão interno, totalizando
 
 **13. Em média, quantos pedidos são feitos em um sábado e em um domingo?**
 
-Resposta: Em media, são feitos de 20 a 28 pedidos por semana, o que corresponde a aproximadamente 10 a 14 pedidos por dia de funcionamento.
+Resposta: Em média, são feitos de 20 a 28 pedidos por semana, o que corresponde a aproximadamente 10 a 14 pedidos por dia de funcionamento.
 
 **14. Quantos itens há no cardápio e quantos lotes de frango são preparados por dia?**
 
@@ -148,7 +148,7 @@ Resposta: O cardápio tem cinco itens de refeição. São preparados 14 frangos 
 Resposta: A equipe é composta por três pessoas: uma responsável pela cozinha; um no caixa; e uma responsável pelo atendimento.
 
 - **16. Como o cardápio é definido e atualizado hoje? Qual o preço médio de um prato e de uma bebida?**
-Resposta: O cardápio é fixo, com poucas alterações. O preço médio do conjunto (prato + bebida) fica entre R$25.00 e R$30.00. O preço médio da bebida isolada varia de R$4.00 a R$15.00, dependendo do tipo.
+Resposta: O cardápio é fixo, com poucas alterações. O preço médio do conjunto (prato + bebida) fica entre R$25,00 e R$30,00. O preço médio da bebida isolada varia de R$4,00 a R$15,00, dependendo do tipo.
 
 - **17. Vocês controlam estoque de frango, temperos, embalagens e bebidas? Existe quantidade mínima de segurança? Já faltou insumo de emergência?**
 
