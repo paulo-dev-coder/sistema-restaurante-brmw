@@ -89,15 +89,15 @@ A pesquisa de campo foi realizada em [DATA], no estabelecimento **A Frangueria**
 
 - **1. Quais são os dias e horários de funcionamento do restaurante? Existe alguma exceção?**
 
-Resposta: O atendimento ocorre apenas aos sábados e domingos, das 10h às 20h. Nenhuma exceção.
+Resposta: O atendimento ocorre apenas aos sábados e domingos, das 10h às 20h. Existe uma exceção: quando ainda há clientes, o horário pode ser estendido.
 
 - **2. Como os pedidos são registrados? Quem registra e onde são anotados?**
 
-Resposta: Os pedidos são anotados em caderneta pelo dono ou cozinheira do restaurante; não há sistema informatizado.
+Resposta: Os pedidos são registrados no computador, controlado pelo representante legal da empresa, e anotados na máquina de pagamentos, que faz e controla os recebimentos.
 
 - **3. Como vocês verificam se um item está disponível antes de confirmar o pedido? Quem faz essa verificação?**
 
-Resposta: A disponibilidade dos itens é conferida verbalmente com o dono ou a cozinheira antes da confirmação.
+Resposta: Os pedidos são efetuados presencialmente pelo cliente, até que o produto esteja disponível. Quando o produto acaba, as vendas são encerradas. A verificação é feita pela cozinheira, com acompanhamento do representante da empresa.
 
 **4. Vocês trabalham com reservas de mesa? Se sim, com que frequência, como são registradas e quais dados são pedidos?**
 
@@ -105,7 +105,7 @@ Resposta: Não há reserva de mesa na organização até o momento.
 
 **5. Vocês aceitam encomendas antecipadas de frango? Se sim, como são registradas, se pedem sinal e se existe prazo mínimo?**
 
-Resposta: Sim. Há clientes que fazem encomendas antecipadas de frango. O registro é feito por telefone ou presencialmente, com anotação do dia e do horário de retirada. Não há cobrança de sinal nem prazo mínimo formal.
+Resposta: Sim, são aceitas encomendas com pagamento antecipado e marcação do horário de retirada. O registro é feito na máquina de pagamento, com uma via para controle da empresa e uma via para o cliente, que serve como comprovante legal e para recebimento do produto.
 
 **6. Quais dados pessoais vocês coletam dos clientes — nome, telefone, CPF, e-mail, data de nascimento? Quais desses são realmente necessários para a operação?**
 
@@ -113,66 +113,66 @@ Resposta: São coletados apenas nome e telefone. Não são coletados CPF, e-mail
 
 **7. Vocês guardam esses dados depois do atendimento? Por quanto tempo?**
 
-Resposta: Sim. Os dados são mantidos em papel e no telefone por tempo prolongado, sem prazo definido de descarte.
+Resposta: Sim. Os dados são mantidos no computador por tempo indeterminado, sem prazo definido de descarte.
 
 **8. Como é feito o fechamento do caixa ao final do dia? Quem faz, quanto tempo leva e quem tem acesso ao caixa e ao controle financeiro?**
 
-Resposta: O proprietário permanece com o dinheiro e realiza a conferência do troco ao final do dia. O acesso ao caixa e ao controle financeiro é do proprietário.
+Resposta: O caixa é fechado pela máquina de pagamento, em cerca de 5 minutos ao final do dia, pelo tesoureiro, representante da empresa.
 
 **9. As entradas são separadas por forma de pagamento? Quais formas vocês aceitam hoje (dinheiro, Pix, cartão)? Como conferem se o total bate com os pedidos?**
 
-Resposta: As entradas são separadas por forma de pagamento de dois modos: manual, com anotação em papel, e digital, com registro no terminal de pagamento ou no aplicativo da operadora da maquininha. As formas aceitas são Pix, dinheiro, cartão de débito e cartão de crédito. Segundo a entrevistada, os valores sempre conferem com os pedidos.
+Resposta: As entradas são controladas pela máquina de pagamento e pelo total em dinheiro. As formas aceitas são Pix, dinheiro, cartão de débito e cartão de crédito. Segundo o entrevistado, os valores sempre conferem com os pedidos.
 
 **10. Quem são os fornecedores de frango e insumos? Quantos são e com que frequência a compra é feita?**
 
-Resposta: Há três fornecedores de frango, que entregam semanalmente.
+Resposta: Os fornecedores são frigoríficos e um atacadista de alimentos. As compras são feitas uma vez por semana.
 
 **11. Como a compra e o recebimento são registrados hoje? Alguém confere quantidade e qualidade? O que fazem se a mercadoria vier faltando ou estragada?**
 
-Resposta: O proprietário recebe a mercadoria e confere junto com os entregadores. Não há registro formal de divergências.
+Resposta: As compras são conferidas pelo tesoureiro. A mercadoria não consumida é descartada. Não há registro formal de divergências.
 
 **12. Quantas mesas há no salão interno e na área externa? Qual a capacidade total de pessoas sentadas?**
 
-Resposta: São 10 mesas na área externa e 5 mesas no salão interno, totalizando 15 mesas. A capacidade total de pessoas sentadas não foi informada.
+Resposta: São 5 mesas na área externa e 2 mesas no salão interno, totalizando 7 mesas. A capacidade total de pessoas sentadas é de aproximadamente 24 pessoas.
 
-**13. Em média, quantos pedidos são feitos em um sábado e em um domingo? E no pico entre 12h e 14h?**
+**13. Em média, quantos pedidos são feitos em um sábado e em um domingo?**
 
-Resposta: São registrados, em média, 50 a 60 pedidos por semana, o que corresponde a aproximadamente 25 a 30 pedidos por dia de funcionamento. O volume específico do pico não foi informado.
+Resposta: Em media, são feitos de 20 a 28 pedidos por semana, o que corresponde a aproximadamente 10 a 14 pedidos por dia de funcionamento.
 
 **14. Quantos itens há no cardápio e quantos lotes de frango são preparados por dia?**
 
-Resposta: O cardápio tem 30 itens. São preparados 10 lotes de frango por dia.
+Resposta: O cardápio tem cinco itens de refeição. São preparados 14 frangos no sábado e 24 frangos no domingo.
 
 **15. Quantas pessoas trabalham no restaurante e quem faz o quê (atendimento, cozinha, caixa)?**
 
-Resposta: A equipe é composta por três pessoas: uma responsável pela cozinha; uma que corta o frango, cuida da recepção e realiza o pagamento; e uma responsável pelas mesas e pela limpeza da frente do restaurante.
+Resposta: A equipe é composta por três pessoas: uma responsável pela cozinha; um no caixa; e uma responsável pelo atendimento.
 
 - **16. Como o cardápio é definido e atualizado hoje? Qual o preço médio de um prato e de uma bebida?**
-Resposta: [A PREENCHER]
+Resposta: O cardápio é fixo, com poucas alterações. O preço médio do conjunto (prato + bebida) fica entre R$25.00 e R$30.00. O preço médio da bebida isolada varia de R$4.00 a R$15.00, dependendo do tipo.
 
 - **17. Vocês controlam estoque de frango, temperos, embalagens e bebidas? Existe quantidade mínima de segurança? Já faltou insumo de emergência?**
 
-Resposta: Sim. Há controle de estoque de frango, temperos, embalagens e bebidas, com quantidade mínima de segurança definida. Nunca faltou insumo a ponto de exigir compra de emergência.
+Resposta: Sim, há controle de estoque de frango, temperos, embalagens e bebidas, com quantidade mínima de segurança definida. As compras são feitas semanalmente, calculadas para o consumo, juntamente com as embalagens. Os insumos são controlados, nunca faltou insumo a ponto de exigir compra de emergência.
 
 - **18. Há perdas por vencimento ou deterioração? Como isso é registrado?**
 
-Resposta: Sim, já houve perdas por vencimento ou deterioração. O material é descartado e não há registro dessas perdas.
+Resposta: Sim, já houve perdas por vencimento ou deterioração. O material é descartado, mas não há registro dessas perdas.
 
 - **19. Existe alguma regra sobre cancelamento ou alteração de pedido? O pedido só é encerrado depois do pagamento?**
 
-Resposta: Não existe regra formal de cancelamento. Segundo a entrevistada, cancelamentos são raros.
+Resposta: Não existe regra formal de cancelamento. O pedido apenas é efetuado e liberado após o pagamento.
 
 **- 20. Vocês emitem nota ou cupom fiscal? Existem exigências da vigilância sanitária que afetam o preparo ou o armazenamento?**
 
-Resposta: Sim, há emissão de cupom fiscal. A entrevistada declara não haver exigências formais da vigilância sanitária aplicáveis ao estabelecimento, embora a equipe mantenha a cozinha limpa por iniciativa própria.
+Resposta: Sim, há emissão de nota fiscal permanente. Todas as exigências da vigilância sanitária são cumpridas, incluindo o armazenamento dos alimentos em freezer e em caixas com isolamento.
 
 **- 21. Quando uma encomenda de frango consome mais de um lote, como vocês registram de qual lote saiu cada parte?**
 
-Resposta: A quantidade máxima é de 2 a 3 frangos por pessoa. A organização não registra de qual lote saiu cada parte da encomenda.
+Resposta: A organização não registra de qual lote saiu cada parte da encomenda, o registro é pela nota de saída.
 
 **- 22. O restaurante faz entrega em domicílio ou só atende no local e retirada?**
 
-Resposta: O restaurante apenas atende no local e retirada. Infelizmente, não realiza entrega em domicílios.
+Resposta: O restaurante apenas atende no local e retirada. Não realiza entrega em domicílios.
 
 ## 3. Processos de Negócio
 *(vale 10% — Dimensão Procedimental)*
