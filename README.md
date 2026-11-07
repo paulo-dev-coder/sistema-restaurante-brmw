@@ -66,26 +66,27 @@ A operação concentra-se apenas nos fins de semana. Em um dia típico de funcio
 
 - **Justificativa da escolha:** A escolha do estabelecimento fundamenta-se em três critérios:
 
-- **Primeiro, o acesso garantido à organização.** Um dos integrantes do grupo é filho dos proprietários, o que viabilizou a realização da entrevista com o responsável no ambiente da organização e a observação direta da rotina operacional. O vínculo familiar foi declarado à disciplina e não substitui a comprovação da entrevista, registrada na seção 1.1 com nome, data, local e foto.
+  - **Primeiro, o acesso garantido à organização.** Um dos integrantes do grupo é filho dos proprietários, o que viabilizou a realização da entrevista com o responsável no ambiente da organização e a observação direta da rotina operacional. O vínculo familiar foi declarado à disciplina e não substitui a comprovação da entrevista, registrada na seção 1.1 com nome, data, local e foto.
 
-- **Segundo, o porte compatível com o escopo da disciplina.** Trata-se de uma microempresa familiar com funcionamento aos sábados e domingos, das 10h às 20h, cuja operação — com 7 mesas, 20 a 28 pedidos por fim de semana e fornecedores recorrentes (frigoríficos e um atacadista de alimentos) — permite mapear todos os processos sem a complexidade de organizações de maior porte, mantendo volume suficiente de dados para a modelagem e para a massa de dados da seção 4.
+  - **Segundo, o porte compatível com o escopo da disciplina.** Trata-se de uma microempresa familiar com funcionamento aos sábados e domingos, das 10h às 20h, cuja operação — com 7 mesas, 20 a 28 pedidos por fim de semana e fornecedores recorrentes (frigoríficos e um atacadista de alimentos) — permite mapear todos os processos sem a complexidade de organizações de maior porte, mantendo volume suficiente de dados para a modelagem e para a massa de dados da seção 4.
 
-- **Terceiro, o modelo de negócio misto.** A combinação de restaurante de prato feito e frangaria exige entidades específicas para controle de produção por lote (LOTE_FRANGO) e para encomendas antecipadas (RESERVA_FRANGO), sem rateio por lote, conforme levantamento. Essa estrutura amplia a cobertura de processos em relação a um restaurante convencional e justifica a inclusão dessas entidades no DER.
+  - **Terceiro, o modelo de negócio misto.** A combinação de restaurante de prato feito e frangaria exige entidades específicas para controle de produção por lote (LOTE_FRANGO) e para encomendas antecipadas (RESERVA_FRANGO), sem rateio por lote, conforme levantamento. Essa estrutura amplia a cobertura de processos em relação a um restaurante convencional e justifica a inclusão dessas entidades no DER.
 
 - **Evidências da organização:** A existência e o acesso à organização são comprovados pelos registros abaixo.
 
-- **Endereço da organização:**
+  - **Endereço da organização:**
 Av. Celso Garcia, nº 1115 - Catumbi, São Paulo - SP
 
-- **Link público da organização no Google Maps (Google Meu Negócio):**
+  - **Link público da organização no Google Maps (Google Meu Negócio):**
 https://maps.app.goo.gl/pjqxhT2Ltq6g1c2D7?g_st=ac
 
-- **Foto do local e da visita:**
-**(A foto será atualizada)**
-![Foto retirada no salão do restaurante](images/foto-local.jpg)
+  - **Foto do local e da visita:**
+  **(A foto será atualizada)**
+  ![Foto retirada no salão do restaurante](images/foto-local.jpg)
 
-- **Foto da entrevista**
-**(A foto será adicionada)**
+  - **Foto da entrevista**
+  **(A foto será adicionada)**
+
 ---
 
 ### 2. Registro da pesquisa de campo
