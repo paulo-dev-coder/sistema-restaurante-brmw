@@ -225,18 +225,22 @@ A pesquisa de campo foi realizada em [DATA], no estabelecimento **A Frangueria**
 *(vale 10% — Dimensão Procedimental)*
 
 - **Principais processos mapeados e representados no DER:**
-  - **Cadastro de pessoas e clientes:** são mantidos dados cadastrais de pessoas; quando a pessoa atua como cliente, há também registro de cliente. O cliente pode possuir telefones de contato.
-  - **Cadastro de fornecedores:** os fornecedores recorrentes (frango, bebidas, embalagens) são mantidos informalmente; o sistema deve permitir registrar nome, contato e itens fornecidos para agilizar a reposição.
-  - **Atendimento e registro do pedido:** o funcionário (membro da família que opera o sistema) registra o pedido, sua data e hora de abertura, modalidade e identificador de mesa quando aplicável. O pedido é associado ao cliente.
-  - **Composição do pedido:** cada pedido contém itens; cada item registra quantidade, valor aplicado e observação e se relaciona a um produto disponível no cardápio.
-  - **Reserva de mesa:** o cliente agenda reserva com data e hora, quantidade de pessoas e situação.
-  - **Compra de frango e insumos:** semanalmente (ou conforme a escala de produção), o responsável verifica a necessidade de frango, temperos, embalagens e bebidas; a compra é feita em fornecedores fixos ou no comércio local, com registro em caderneta ou nota simples.
-  - **Encomenda antecipada de frango:** o pedido pode originar uma reserva de frango, com quantidade reservada, horário de retirada e situação. A reserva é atendida a partir de lote da frangueria.
-  - **Recebimento da mercadoria:** na entrega, a equipe confere quantidade e qualidade; divergências são anotadas e comunicadas ao fornecedor. O sistema pode registrar data, itens e quantidade recebida.
-  - **Registro financeiro:** o pedido possui registro de faturamento com data do pagamento, valor total, forma de pagamento e situação. São aceitos dinheiro, Pix e cartão; dados do cartão não são armazenados.
-  - **Fechamento do caixa do dia:** no final do atendimento, a equipe soma as entradas por forma de pagamento (dinheiro, Pix e cartão), confere com os pedidos registrados e apura o total do dia. O sistema deve gerar um resumo por forma de pagamento e por período.
-  - **Preparo, retirada e encerramento:** os itens são preparados conforme a ordem de recebimento e capacidade da equipe. Pedidos de retirada são identificados e avisados ao cliente por telefone quando prontos. O atendimento é encerrado após a entrega/serviço e o registro financeiro correspondente.
-- **Fluxograma:** A organização optou por não inserir o fluxograma.
+  - **Cadastro de pessoas, clientes e telefones:** nome, telefone com número e tipo; cliente com data de cadastro.
+  - **Cadastro de funcionários:** nome, cargo, situação.
+  - **Cadastro de produtos do cardápio:** nome, descrição, preço, categoria, disponibilidade.
+  - **Cadastro de insumos:** frango, temperos, embalagens, bebidas; unidade, quantidade em estoque, estoque mínimo.
+  - **Cadastro de fornecedores:** nome, contato, itens fornecidos.
+  - **Compra de frango e insumos:** data, fornecedor, itens, quantidade, valor unitário, valor total, situação.
+  - **Recebimento da mercadoria:** data, compra, itens conferidos pelo tesoureiro, quantidade recebida, divergências.
+  - **Movimentação de estoque:** entrada por recebimento, saída por consumo, ajuste; quantidade, data, motivo, descarte de perdas.
+  - **Atendimento e registro do pedido:** data/hora de abertura, tipo de consumo (local/retirada), mesa quando local, cliente, funcionário responsável, situação.
+  - **Composição do pedido:** produto, quantidade, valor aplicado, observação.
+  - **Encomenda antecipada de frango:** pedido de origem, quantidade, horário de retirada, pagamento antecipado, duas vias (empresa e cliente), situação.
+  - **Produção de frango por lote:** data de produção, quantidade produzida (14 sábado, 24 domingo), quantidade disponível, produto.
+  - **Faturamento ou pagamento:** pedido, data de pagamento, valor total, forma (dinheiro, Pix, débito, crédito), situação; sem armazenar dados de cartão.
+  - **Fechamento do caixa do dia:** data, tesoureiro responsável, fechamento pela máquina, conferência do dinheiro em espécie, divergências.
+  - **Preparo e retirada:** ordem de preparo, aviso ao cliente, encerramento após serviço e pagamento.
+  - **Fluxograma:** A organização optou por não inserir o fluxograma.
 
 ---
 
