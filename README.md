@@ -174,15 +174,15 @@ Resposta: Sim, já houve perdas por vencimento ou deterioração. O material é 
 
 Resposta: Não existe regra formal de cancelamento. O pedido apenas é efetuado e liberado após o pagamento.
 
-**- 20. Vocês emitem nota ou cupom fiscal? Existem exigências da vigilância sanitária que afetam o preparo ou o armazenamento?**
+- **20. Vocês emitem nota ou cupom fiscal? Existem exigências da vigilância sanitária que afetam o preparo ou o armazenamento?**
 
 Resposta: Sim, há emissão de nota fiscal permanente. Todas as exigências da vigilância sanitária são cumpridas, incluindo o armazenamento dos alimentos em freezer e em caixas com isolamento.
 
-**- 21. Quando uma encomenda de frango consome mais de um lote, como vocês registram de qual lote saiu cada parte?**
+- **21. Quando uma encomenda de frango consome mais de um lote, como vocês registram de qual lote saiu cada parte?**
 
 Resposta: A organização não registra de qual lote saiu cada parte da encomenda, o registro é pela nota de saída.
 
-**- 22. O restaurante faz entrega em domicílio ou só atende no local e retirada?**
+- **22. O restaurante faz entrega em domicílio ou só atende no local e retirada?**
 
 Resposta: O restaurante apenas atende no local e retirada. Não realiza entrega em domicílios.
 
