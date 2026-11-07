@@ -45,18 +45,20 @@ RGM: 47962241*
 
 O estabelecimento funciona aos sábados e domingos, das 10h às 20h, com possibilidade de extensão do horário quando ainda houver clientes no local. A equipe é composta por três pessoas: uma responsável pela cozinha, uma pelo caixa e uma pelo atendimento. A área externa do restaurante possui 5 mesas, e o salão interno possui 2 mesas, totalizando 7 mesas com capacidade para aproximadamente 24 pessoas sentadas.
 
-A operação concentra-se apenas nos fins de semana. Em um dia típico de funcionamento, são registrados de 10 a 14 pedidos, o equivalente a 20 a 28 pedidos por semana. O registro dos pedidos é feito no computador, sob controle do representante legal da empresa, e os recebimentos são anotados na máquina de pagamento, que faz e controla as transações. Não há integração entre os dois registros, o que impede a consulta consolidada do histórico de pedidos e recebimentos.
+A operação concentra-se apenas nos fins de semana. Em um dia típico de funcionamento, são registrados de 10 a 14 pedidos, o equivalente a 20 a 28 pedidos por semana. O cardápio é fixo, com 5 itens de refeição, e são preparados 14 frangos no sábado e 24 no domingo. Os fornecedrores são frigoríficos e um atacadista de alimentos, com compra semanal. O preço médio do conjunto, ou seja, a refeição e a bebida, fica entre R$25,00 e R$30,00. O preço médio da bebida isolada varia de R$4,00 a R$15,00.
+
+O registro dos pedidos é feito no computador, sob controle do representante legal da empresa, e os recebimentos são anotados na máquina de pagamento, que faz e controla as transações.
 
 - **Problemas e necessidades identificados:**
 
   - **P1 —  Registro de pedidos fragmentado e sem consulta gerencial**
-    - Histórico de pedidos inacessível: com o registro em caderneta, não é possível saber, por período, quantos pedidos foram feitos, qual o ticket médio, quais produtos mais saem e qual cliente pediu o quê. A recuperação depende de folhear páginas e recopiar dados;
+    - Os pedidos são registrados no computador, sob controle do representante legal, e os recebimentos são anotados na máquina de pagamento. Não há integração entre os dois registros. O impacto é a impossibilidade de consolidar, em uma única consulta, pedidos e valores recebidos por período, cliente, produto ou forma de pagamento. A recuperação de histórico depende de consulta manual a cada um dos sistemas;
 
   - **P2 — Conciliação manual entre máquina e dinheiro em espécie**
-    - Fechamento de caixa manual e sujeito a erro: a totalização por forma de pagamento (dinheiro, Pix, cartão) depende de conferência manual, recálculo e transcrição, aumentando o esforço operacional e o risco de erro ou omissão na conciliação com os pedidos;
+    - O fechamento do caixa é feito pela máquina de pagamento em cerca de 5 minutos, pelo tesoureiro. No entanto, o total em dinheiro é conferido separadamente, sem registro integrado à máquina. O impacto é a ausência de conciliação formal entre os dois meios, o que dificulta identificar divergências entre os valores registrados e os efetivamente recebidos;
 
   - **P3 —  Perdas e rastreio de lote sem registro**
-    - Há controle de disponibilidade (cozinheira com acompanhamento do representante) e de estoque com quantidade mínima de segurança. Porém, as perdas por vencimento ou deterioração são descartadas sem registro, e não há vínculo entre a encomenda e o lote de origem. O impacto é a impossibilidade de medir perdas e de rastrear a origem do produto servido;
+    - Há controle de disponibilidade e de estoque com quantidade mínima de segurança a partir da supervisão da cozinheira com acompanhamento do representante. Porém, as perdas por vencimento ou deterioração são descartadas sem registro, e não há vínculo entre a encomenda e o lote de origem. O impacto é a impossibilidade de medir perdas e de rastrear a origem do produto servido;
 
   - **P4 — Falta de histórico de compras por fornecedor e produto**
     - As compras são semanais, calculadas para o consumo, e conferidas pelo tesoureiro. Não há, porém, registro estruturado por fornecedor e por produto que permita comparar preços ao longo do tempo, identificar frequência de compra ou apoiar negociação. O impacto é a dependência de memória e de anotações dispersas para decisões de compra;
@@ -158,7 +160,7 @@ Resposta: O cardápio tem cinco itens de refeição. São preparados 14 frangos 
 Resposta: A equipe é composta por três pessoas: uma responsável pela cozinha; um no caixa; e uma responsável pelo atendimento.
 
 - **16. Como o cardápio é definido e atualizado hoje? Qual o preço médio de um prato e de uma bebida?**
-Resposta: O cardápio é fixo, com poucas alterações. O preço médio do conjunto (prato + bebida) fica entre R$25,00 e R$30,00. O preço médio da bebida isolada varia de R$4,00 a R$15,00, dependendo do tipo.
+Resposta: O cardápio é fixo, com poucas alterações. O preço médio do conjunto (prato + bebida) fica entre R$25,00 e R$30,00. O preço médio da bebida isolada varia de R$4,00 a R$15,00 dependendo do tipo.
 
 - **17. Vocês controlam estoque de frango, temperos, embalagens e bebidas? Existe quantidade mínima de segurança? Já faltou insumo de emergência?**
 
