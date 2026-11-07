@@ -149,7 +149,7 @@ A pesquisa de campo foi realizada em [DATA], no estabelecimento **A Frangueria**
 
 - **13. Em média, quantos pedidos são feitos em um sábado e em um domingo?**
 
-  **Resposta:** Em média, são feitos de 20 a 28 pedidos por semana, o que corresponde a aproximadamente 10 a 14 pedidos por dia de funcionamento.
+  - **Resposta:** Em média, são feitos de 20 a 28 pedidos por semana, o que corresponde a aproximadamente 10 a 14 pedidos por dia de funcionamento.
 
 - **14. Quantos itens há no cardápio e quantos lotes de frango são preparados por dia?**
 
