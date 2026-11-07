@@ -51,19 +51,19 @@ RGM: 47962241*
 
 - **Problemas e necessidades identificados:**
 
-  - **P1 —  Registro de pedidos fragmentado e sem consulta gerencial**
+  - **P1 —  Registro de pedidos fragmentado e sem consulta gerencial:**
     - Os pedidos são registrados no computador, sob controle do representante legal, e os recebimentos são anotados na máquina de pagamento. Não há integração entre os dois registros. O impacto é a impossibilidade de consolidar, em uma única consulta, pedidos e valores recebidos por período, cliente, produto ou forma de pagamento. A recuperação de histórico depende de consulta manual a cada um dos sistemas;
 
-  - **P2 — Conciliação manual entre máquina e dinheiro em espécie**
+  - **P2 — Conciliação manual entre máquina e dinheiro em espécie:**
     - O fechamento do caixa é feito pela máquina de pagamento em cerca de 5 minutos, pelo tesoureiro. No entanto, o total em dinheiro é conferido separadamente, sem registro integrado à máquina. O impacto é a ausência de conciliação formal entre os dois meios, o que dificulta identificar divergências entre os valores registrados e os efetivamente recebidos;
 
-  - **P3 —  Perdas e rastreio de lote sem registro**
+  - **P3 —  Perdas e rastreio de lote sem registro:**
     - Há controle de disponibilidade e de estoque com quantidade mínima de segurança a partir da supervisão da cozinheira com acompanhamento do representante. Porém, as perdas por vencimento ou deterioração são descartadas sem registro, e não há vínculo entre a encomenda e o lote de origem. O impacto é a impossibilidade de medir perdas e de rastrear a origem do produto servido;
 
-  - **P4 — Falta de histórico de compras por fornecedor e produto**
+  - **P4 — Falta de histórico de compras por fornecedor e produto:**
     - As compras são semanais, calculadas para o consumo, e conferidas pelo tesoureiro. Não há, porém, registro estruturado por fornecedor e por produto que permita comparar preços ao longo do tempo, identificar frequência de compra ou apoiar negociação. O impacto é a dependência de memória e de anotações dispersas para decisões de compra;
 
-  - **P5 — Divergências e descartes sem registro**
+  - **P5 — Divergências e descartes sem registro:**
     - O recebimento é conferido pelo tesoureiro, mas divergências de quantidade ou qualidade não são registradas formalmente. A mercadoria não consumida é descartada sem registro. O impacto é a impossibilidade de rastrear perdas, cobrar fornecedores ou ajustar o planejamento de compras.
 
 - **Justificativa da escolha:** A escolha do estabelecimento fundamenta-se em três critérios:
