@@ -92,13 +92,13 @@ RGM: 47962241*
 | Controle de ingredientes por receita | A organização controla disponibilidade e estoque, mas não faz baixa automática de ingredientes por prato |
 | Módulo fiscal completo | A emissão de nota fiscal é registrada como processo (Q20), mas o sistema modelado não substitui o emissor fiscal; registra o faturamento e a referência à nota |
 
-*Observações sobre o escopo*
+- **Observações sobre o escopo do sistema:**
 
-- O escopo não se limita aos problemas P1–P5. Os problemas justificam prioridades, mas o banco cobre também cadastro, compras, estoque e recebimento.
-- A produção de frango por lote (14 no sábado, 24 no domingo) está no escopo porque serve ao controle de disponibilidade — não ao rastreio de encomendas.
-- O fechamento de caixa está no escopo com escopo reduzido: registra o fechamento da máquina e a conferência do dinheiro pelo tesoureiro, sem conciliação automática entre os dois.
-- O escopo é coerente com o DER revisado: 17 entidades (após remoção de RESERVA_MESA e RESERVA_LOTE).
+  - O escopo não se limita aos problemas P1–P5. Os problemas justificam prioridades, mas o banco cobre também cadastro, compras, estoque e recebimento;
 
+  - A produção de frango por lote está no escopo porque serve para o controle de disponibilidade, não para o rastreio de encomendas;
+
+  - O fechamento de caixa está no escopo com escopo reduzido: registra o fechamento da máquina e a conferência do dinheiro pelo tesoureiro, sem conciliação automática entre os dois.
 
 - **Justificativa da escolha:** A escolha do estabelecimento fundamenta-se em três critérios:
 
