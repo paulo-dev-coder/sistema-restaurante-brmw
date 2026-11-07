@@ -66,6 +66,40 @@ RGM: 47962241*
   - **P5 — Divergências e descartes sem registro:**
     - O recebimento é conferido pelo tesoureiro, mas divergências de quantidade ou qualidade não são registradas formalmente. A mercadoria não consumida é descartada sem registro. O impacto é a impossibilidade de rastrear perdas, cobrar fornecedores ou ajustar o planejamento de compras.
 
+- **Escopo do sistema**:
+
+*Áreas cobertas pelo sistema:*
+
+| Área | Dados incluídos | Entidades no DER |
+| :--- | :--- | :--- |
+| Cadastro de pessoas | Nome, telefone, vínculo como cliente ou funcionário | PESSOA, CLIENTE, FUNCIONARIO, TELEFONE |
+| Catálogo | Produtos do cardápio (5 itens de refeição + bebidas), preços, categorias, disponibilidade; insumos (frango, temperos, embalagens, bebidas) com estoque e mínimo | PRODUTO, INSUMO |
+| Compras e fornecedores | Fornecedores (frigoríficos e atacadista), compras semanais, itens comprados, valores | FORNECEDOR, COMPRA, ITEM_COMPRA |
+| Recebimento e estoque | Conferência pelo tesoureiro, movimentações de entrada/saída/ajuste, perdas e descartes | RECEBIMENTO, MOVIMENTACAO_ESTOQUE |
+| Pedidos | Registro no computador: data/hora, tipo de consumo, cliente, funcionário, itens, quantidades, valores, observações | PEDIDO, ITEM_PEDIDO |
+| Encomendas de frango | Pagamento antecipado, horário de retirada, duas vias (empresa e cliente), vínculo com a nota de saída | RESERVA_FRANGO, LOTE_FRANGO |
+| Faturamento | Forma de pagamento (Pix, dinheiro, débito, crédito), valor, data, situação | FATURAMENTO |
+| Fechamento de caixa | Fechamento pela máquina, conferência do dinheiro em espécie pelo tesoureiro | FECHAMENTO_CAIXA |
+
+*O que não compõe o escopo do sistema e a sua razão:*
+
+| Item excluído | Justificativa |
+| :--- | :--- |
+| Delivery / entrega em domicílio | A organização não realiza entrega; atende apenas no local e por retirada (Q22). Registrado como regra RN12 |
+| Reserva de mesa | A organização não trabalha com reserva de mesa (Q4). A entidade RESERVA_MESA foi removida do DER |
+| Rateio de encomenda por lote | A organização não registra de qual lote saiu cada parte da encomenda; o registro é a nota de saída (Q21). A entidade RESERVA_LOTE foi removida do DER |
+| CPF, e-mail e data de nascimento | Não são coletados; a organização coleta apenas nome e telefone (Q6). Esses atributos foram removidos de PESSOA |
+| Controle de ingredientes por receita | A organização controla disponibilidade e estoque, mas não faz baixa automática de ingredientes por prato |
+| Módulo fiscal completo | A emissão de nota fiscal é registrada como processo (Q20), mas o sistema modelado não substitui o emissor fiscal; registra o faturamento e a referência à nota |
+
+*Observações sobre o escopo*
+
+- O escopo não se limita aos problemas P1–P5. Os problemas justificam prioridades, mas o banco cobre também cadastro, compras, estoque e recebimento.
+- A produção de frango por lote (14 no sábado, 24 no domingo) está no escopo porque serve ao controle de disponibilidade — não ao rastreio de encomendas.
+- O fechamento de caixa está no escopo com escopo reduzido: registra o fechamento da máquina e a conferência do dinheiro pelo tesoureiro, sem conciliação automática entre os dois.
+- O escopo é coerente com o DER revisado: 17 entidades (após remoção de RESERVA_MESA e RESERVA_LOTE).
+
+
 - **Justificativa da escolha:** A escolha do estabelecimento fundamenta-se em três critérios:
 
   - **Primeiro, o acesso garantido à organização.** Um dos integrantes do grupo é filho dos proprietários, o que viabilizou a realização da entrevista com o responsável no ambiente da organização e a observação direta da rotina operacional. O vínculo familiar foi declarado à disciplina e não substitui a comprovação da entrevista, registrada na seção 1.1 com nome, data, local e foto;
