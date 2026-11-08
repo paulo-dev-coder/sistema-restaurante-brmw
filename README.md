@@ -72,25 +72,27 @@ RGM: 47962241*
 
 | Área | Dados incluídos | Entidades no DER |
 | :--- | :--- | :--- |
-| Cadastro de pessoas | Nome, telefone, vínculo como cliente ou funcionário | PESSOA, CLIENTE, FUNCIONARIO, TELEFONE |
-| Catálogo | Produtos do cardápio (5 itens de refeição + bebidas), preços, categorias, disponibilidade; insumos (frango, temperos, embalagens, bebidas) com estoque e mínimo | PRODUTO, INSUMO |
-| Compras e fornecedores | Fornecedores (frigoríficos e atacadista), compras semanais, itens comprados, valores | FORNECEDOR, COMPRA, ITEM_COMPRA |
-| Recebimento e estoque | Conferência pelo tesoureiro, movimentações de entrada/saída/ajuste, perdas e descartes | RECEBIMENTO, MOVIMENTACAO_ESTOQUE |
-| Pedidos | Registro no computador: data/hora, tipo de consumo, cliente, funcionário, itens, quantidades, valores, observações | PEDIDO, ITEM_PEDIDO |
-| Encomendas de frango | Pagamento antecipado, horário de retirada, duas vias (empresa e cliente), vínculo com a nota de saída | RESERVA_FRANGO, LOTE_FRANGO |
-| Faturamento | Forma de pagamento (Pix, dinheiro, débito, crédito), valor, data, situação | FATURAMENTO |
-| Fechamento de caixa | Fechamento pela máquina, conferência do dinheiro em espécie pelo tesoureiro | FECHAMENTO_CAIXA |
+| **Cadastro de pessoas** | Nome, telefone, vínculo como cliente ou funcionário | PESSOA, CLIENTE, FUNCIONARIO, TELEFONE |
+| **Gestão de mesas** | Número, localização (externa/interna), capacidade e status de ocupação | MESA |
+| **Catálogo** | Produtos do cardápio (5 itens de refeição + bebidas), preços, categorias, disponibilidade; insumos (frango, temperos, embalagens, bebidas) com estoque e mínimo | PRODUTO, INSUMO |
+| **Compras e fornecedores** | Fornecedores (frigoríficos e atacadista), compras semanais, itens comprados, valores | FORNECEDOR, COMPRA, ITEM_COMPRA |
+| **Recebimento e estoque** | Conferência pelo tesoureiro, movimentações de entrada/saída/ajuste, perdas e descartes | RECEBIMENTO, MOVIMENTACAO_ESTOQUE |
+| **Pedidos** | Registro no computador: data/hora, tipo de consumo, cliente, funcionário, itens, quantidades, valores, observações | PEDIDO, ITEM_PEDIDO |
+| **Encomendas de frango** | Pagamento antecipado, horário de retirada, duas vias (empresa e cliente), vínculo com a nota de saída | RESERVA_FRANGO, LOTE_FRANGO |
+| **Faturamento** | Forma de pagamento (Pix, dinheiro, débito, crédito), valor, data, situação | FATURAMENTO |
+| **Emissão fiscal** | Número, série, data de emissão e tipo de nota gerada | NOTA_FISCAL |
+| **Fechamento de caixa** | Fechamento pela máquina, conferência do dinheiro em espécie pelo tesoureiro | FECHAMENTO_CAIXA |
 
 *O que não compõe o escopo do sistema e a sua razão:*
 
 | Item excluído | Justificativa |
 | :--- | :--- |
-| Delivery / entrega em domicílio | A organização não realiza entrega; atende apenas no local e por retirada (Q22). Registrado como regra RN12 |
-| Reserva de mesa | A organização não trabalha com reserva de mesa (Q4). A entidade RESERVA_MESA foi removida do DER |
-| Rateio de encomenda por lote | A organização não registra de qual lote saiu cada parte da encomenda; o registro é a nota de saída (Q21). A entidade RESERVA_LOTE foi removida do DER |
-| CPF, e-mail e data de nascimento | Não são coletados; a organização coleta apenas nome e telefone (Q6). Esses atributos foram removidos de PESSOA |
-| Controle de ingredientes por receita | A organização controla disponibilidade e estoque, mas não faz baixa automática de ingredientes por prato |
-| Módulo fiscal completo | A emissão de nota fiscal é registrada como processo (Q20), mas o sistema modelado não substitui o emissor fiscal; registra o faturamento e a referência à nota |
+| **Delivery / entrega em domicílio** | A organização não realiza entrega; atende apenas no local e por retirada (Q22). Registrado como regra **RN12**. |
+| **Reserva de mesa** | A organização não trabalha com reserva de mesa (Q4). A entidade RESERVA_MESA foi removida do DER. |
+| **Rateio de encomenda por lote** | A organização não registra de qual lote saiu cada parte da encomenda; o registro é a nota de saída (Q21). A entidade RESERVA_LOTE foi removida. |
+| **CPF, e-mail e data de nascimento** | Não são coletados; a organização coleta apenas nome e telefone (Q6). Esses atributos foram removidos de PESSOA. |
+| **Controle de ingredientes por receita** | A organização controla disponibilidade e estoque de forma geral, mas não faz baixa automática de ingredientes por prato. |
+| **Emissão fiscal pelo sistema** | O sistema modelado **armazena** os dados da nota fiscal (NOTA_FISCAL) para vinculá-la ao faturamento e ao pedido, mas **não substitui o emissor fiscal** (a máquina de pagamento). |
 
 - **Observações sobre o escopo do sistema:**
 
