@@ -91,6 +91,8 @@ https://maps.app.goo.gl/pjqxhT2Ltq6g1c2D7?g_st=ac
     ![Foto retirada no área inferior do restaurante](images/foto_cozinha_2.jpg)
 
   - **Fotos da visita à organização:**
+    ![Foto retirada na área exterior do restaurante](images/foto_visita_1.jpg)
+    ![Foto retirada na área exterior do restaurante](images/foto_visita_2.jpg)
 
   - **Fotos da entrevista:**
     ![Foto retirada na área exterior do restaurante](images/foto_entrevista_1.jpg)
