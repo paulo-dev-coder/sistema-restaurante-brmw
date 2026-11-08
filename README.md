@@ -77,20 +77,20 @@ Av. Celso Garcia, nº 1115 - Catumbi, São Paulo - SP
 https://maps.app.goo.gl/pjqxhT2Ltq6g1c2D7?g_st=ac
 
   - **Fotos do local:**
-    ![Foto retirada na área exterior do restaurante, registrando a entrada principal, o letreiro com o cardápio de pratos e o balcão de atendimento.](images/foto_fachada.jpg)
-    ![Foto retirada na área de produção do restaurante, evidenciando o forno rotativo em funcionamento com a preparação diária dos frangos assados.](images/foto_forno_rotativo.jpg)
-    ![Foto retirada na área exterior do restaurante, registrando a disposição das mesas e cadeiras de madeira utilizadas para o atendimento aos clientes.](images/foto_salão_externo.jpg)
-    ![Foto retirada na área interna da cozinha, mostrando os refrigeradores e freezers utilizados para o armazenamento seguro de bebidas e alimentos perecíveis.](images/foto_armazenamento.jpg)
-    ![Foto retirada na área interna da cozinha, evidenciando o espaço de preparo, o fogão e os recipientes utilizados para armazenar os insumos.](images/foto_cozinha_1.jpg)
-    ![Foto retirada na área interna da cozinha, evidenciando a bancada de inox, o fogão e os utensílios de preparo das refeições.](images/foto_cozinha_2.jpg)
+    ![Foto retirada na área exterior do restaurante, registrando a entrada principal, o letreiro com o cardápio de pratos e o balcão de atendimento.](evidencias/foto_fachada.jpg)
+    ![Foto retirada na área de produção do restaurante, evidenciando o forno rotativo em funcionamento com a preparação diária dos frangos assados.](evidencias/foto_forno_rotativo.jpg)
+    ![Foto retirada na área exterior do restaurante, registrando a disposição das mesas e cadeiras de madeira utilizadas para o atendimento aos clientes.](evidencias/foto_salão_externo.jpg)
+    ![Foto retirada na área interna da cozinha, mostrando os refrigeradores e freezers utilizados para o armazenamento seguro de bebidas e alimentos perecíveis.](evidencias/foto_armazenamento.jpg)
+    ![Foto retirada na área interna da cozinha, evidenciando o espaço de preparo, o fogão e os recipientes utilizados para armazenar os insumos.](evidencias/foto_cozinha_1.jpg)
+    ![Foto retirada na área interna da cozinha, evidenciando a bancada de inox, o fogão e os utensílios de preparo das refeições.](evidencias/foto_cozinha_2.jpg)
 
   - **Fotos da visita à organização:**
-    ![Foto retirada na área exterior do restaurante, em frente ao letreiro e ao cardápio oficial, registrando a realização da entrevista com o proprietário.](images/foto_visita_1.jpg)
-    ![Foto retirada na área interna do restaurante, em frente ao refrigerador de bebidas, evidenciando o estoque de produtos disponíveis para venda, registrando a realização da entrevista com o proprietário.](images/foto_visita_2.jpg)
+    ![Foto retirada na área exterior do restaurante, em frente ao letreiro e ao cardápio oficial, registrando a realização da entrevista com o proprietário.](evidencias/foto_visita_1.jpg)
+    ![Foto retirada na área interna do restaurante, em frente ao refrigerador de bebidas, evidenciando o estoque de produtos disponíveis para venda, registrando a realização da entrevista com o proprietário.](evidencias/foto_visita_2.jpg)
 
   - **Fotos da entrevista:**
-    ![ Foto retirada no escritório administrativo do restaurante, durante a entrevista semiestruturada, com destaque para o computador e os materiais de anotação.](images/foto_entrevista_1.jpg)
-    ![Foto retirada no escritório administrativo, registrando o momento em que o integrante do grupo anota as respostas fornecidas pelo proprietário sobre a rotina operacional.](images/foto_entrevista_2.jpg)
+    ![ Foto retirada no escritório administrativo do restaurante, durante a entrevista semiestruturada, com destaque para o computador e os materiais de anotação.](evidencias/foto_entrevista_1.jpg)
+    ![Foto retirada no escritório administrativo, registrando o momento em que o integrante do grupo anota as respostas fornecidas pelo proprietário sobre a rotina operacional.](evidencias/foto_entrevista_2.jpg)
 
 ---
 
