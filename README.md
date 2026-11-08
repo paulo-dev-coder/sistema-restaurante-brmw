@@ -82,12 +82,21 @@ Av. Celso Garcia, nº 1115 - Catumbi, São Paulo - SP
   - **Link público da organização no Google Maps (Google Meu Negócio):**
 https://maps.app.goo.gl/pjqxhT2Ltq6g1c2D7?g_st=ac
 
-  - **Fotos do local e da visita:**
-  **(A foto será atualizada)**
-  ![Foto retirada no salão do restaurante](images/foto-local.jpg)
+  - **Fotos do local:**
+    - ![Foto retirada na área exterior do restaurante](images/foto_fachada.jpg)
+    - ![Foto retirada na área exterior do restaurante](images/foto_forno_rotativo.jpg)
+    - ![Foto retirada na área exterior do restaurante](images/foto_salão_externo.jpg)
+    - ![Foto retirada no área inferior do restaurante](images/foto_armazenamento.jpg)
+    - ![Foto retirada no área inferior do restaurante](images/foto_cozinha_1.jpg)
+    - ![Foto retirada no área inferior do restaurante](images/foto_cozinha_2.jpg)
 
-  - **Fotos da entrevista**
-  **(A foto será adicionada)**
+  - **Fotos da visita à organização:**
+    - ![Foto retirada na área exterior do restaurante](images/foto_visita_1.jpg)
+    - ![Foto retirada na área inferior do restaurante](images/foto_visita_2.jpg) 
+
+  - **Fotos da entrevista:**
+    - ![Foto retirada na área exterior do restaurante](images/foto_entrevista_1.jpg)
+    - ![Foto retirada na área exterior do restaurante](images/foto_entrevista_2.jpg)
 
 ---
 
