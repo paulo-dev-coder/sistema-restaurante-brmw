@@ -35,8 +35,6 @@ RGM: 47962241*
 ## 1. Caracterização da Organização
 *(vale 7,5% — Dimensão Conceitual)*
 
-**(Em desenvolvimento)**
-
 - **Nome oficial do estabelecimento:** A Frangueria
 
 - **Natureza da organização:** A natureza da organização é um estabelecimento comercial familiar de pequeno porte que vende refeições completas, bebidas e frango assado com acompanhamentos. Seu modelo de negócio combina restaurante de prato feito e galeteria.
@@ -66,41 +64,7 @@ RGM: 47962241*
   - **P5 — Divergências e descartes sem registro:**
     - O recebimento é conferido pelo tesoureiro, mas divergências de quantidade ou qualidade não são registradas formalmente. A mercadoria não consumida é descartada sem registro. O impacto é a impossibilidade de rastrear perdas, cobrar fornecedores ou ajustar o planejamento de compras.
 
-- **Escopo do sistema**:
-
-*Áreas cobertas pelo sistema:*
-
-| Área | Dados incluídos | Entidades no DER |
-| :--- | :--- | :--- |
-| **Cadastro de pessoas** | Nome, telefone, vínculo como cliente ou funcionário | PESSOA, CLIENTE, FUNCIONARIO, TELEFONE |
-| **Gestão de mesas** | Número, localização (externa/interna), capacidade e status de ocupação | MESA |
-| **Catálogo** | Produtos do cardápio (5 itens de refeição + bebidas), preços, categorias, disponibilidade; insumos (frango, temperos, embalagens, bebidas) com estoque e mínimo | PRODUTO, INSUMO |
-| **Compras e fornecedores** | Fornecedores (frigoríficos e atacadista), compras semanais, itens comprados, valores | FORNECEDOR, COMPRA, ITEM_COMPRA |
-| **Recebimento e estoque** | Conferência pelo tesoureiro, movimentações de entrada/saída/ajuste, perdas e descartes | RECEBIMENTO, MOVIMENTACAO_ESTOQUE |
-| **Pedidos** | Registro no computador: data/hora, tipo de consumo, cliente, funcionário, itens, quantidades, valores, observações | PEDIDO, ITEM_PEDIDO |
-| **Encomendas de frango** | Pagamento antecipado, horário de retirada, duas vias (empresa e cliente), vínculo com a nota de saída | RESERVA_FRANGO, LOTE_FRANGO |
-| **Faturamento** | Forma de pagamento (Pix, dinheiro, débito, crédito), valor, data, situação | FATURAMENTO |
-| **Emissão fiscal** | Número, série, data de emissão e tipo de nota gerada | NOTA_FISCAL |
-| **Fechamento de caixa** | Fechamento pela máquina, conferência do dinheiro em espécie pelo tesoureiro | FECHAMENTO_CAIXA |
-
-*O que não compõe o escopo do sistema e a sua razão:*
-
-| Item excluído | Justificativa |
-| :--- | :--- |
-| **Delivery / entrega em domicílio** | A organização não realiza entrega; atende apenas no local e por retirada (Q22). Registrado como regra **RN12**. |
-| **Reserva de mesa** | A organização não trabalha com reserva de mesa (Q4). A entidade RESERVA_MESA foi removida do DER. |
-| **Rateio de encomenda por lote** | A organização não registra de qual lote saiu cada parte da encomenda; o registro é a nota de saída (Q21). A entidade RESERVA_LOTE foi removida. |
-| **CPF, e-mail e data de nascimento** | Não são coletados; a organização coleta apenas nome e telefone (Q6). Esses atributos foram removidos de PESSOA. |
-| **Controle de ingredientes por receita** | A organização controla disponibilidade e estoque de forma geral, mas não faz baixa automática de ingredientes por prato. |
-| **Emissão fiscal pelo sistema** | O sistema modelado **armazena** os dados da nota fiscal (NOTA_FISCAL) para vinculá-la ao faturamento e ao pedido, mas **não substitui o emissor fiscal** (a máquina de pagamento). |
-
-- **Observações sobre o escopo do sistema:**
-
-  - O escopo não se limita aos problemas P1–P5. Os problemas justificam prioridades, mas o banco cobre também cadastro, compras, estoque e recebimento;
-
-  - A produção de frango por lote está no escopo porque serve para o controle de disponibilidade, não para o rastreio de encomendas;
-
-  - O fechamento de caixa está no escopo com escopo reduzido: registra o fechamento da máquina e a conferência do dinheiro pelo tesoureiro, sem conciliação automática entre os dois.
+- **Escopo do sistema**: O banco de dados deve reunir todos os dados da organização, e não apenas os dados de apenas um setor ou processo. A modelagem cobre o ciclo completo da operação, sendo: cadastro de pessoas, clientes e funcionários, gestão de mesas, catálogo de produtos e insumos, compras e recebimento de mercadoria, controle de estoque, registro de pedidos e itens, encomendas antecipadas de frango, faturamento, emissão de nota fiscal e fechamento de caixa.
 
 - **Justificativa da escolha:** A escolha do estabelecimento fundamenta-se em três critérios:
 
@@ -118,20 +82,26 @@ Av. Celso Garcia, nº 1115 - Catumbi, São Paulo - SP
   - **Link público da organização no Google Maps (Google Meu Negócio):**
 https://maps.app.goo.gl/pjqxhT2Ltq6g1c2D7?g_st=ac
 
-  - **Foto do local e da visita:**
+  - **Fotos do local e da visita:**
   **(A foto será atualizada)**
   ![Foto retirada no salão do restaurante](images/foto-local.jpg)
 
-  - **Foto da entrevista**
+  - **Fotos da entrevista**
   **(A foto será adicionada)**
 
 ---
 
 ### 2. Registro da pesquisa de campo
 
-**(Em desenvolvimento)**
+A pesquisa de campo foi realizada em **01 de novembro de 2026**, no estabelecimento **A Frangueria**, com duração de aproximadamente **45 minutos**. Participaram da visita **Paulo Sergio Olivastro**, um integrante do grupo e **Sergio Olivastro**, o proprietário e representante legal da organização.
 
-A pesquisa de campo foi realizada em [DATA], no estabelecimento **A Frangueria**, com duração de aproximadamente [X] horas. Participaram da visita [NOME DO INTEGRANTE] (integrante do grupo) e [NOME DO RESPONSÁVEL] (proprietário/responsável pelo atendimento). A abordagem combinou entrevista semiestruturada com observação direta da rotina de atendimento e preparo.
+**Observações:**
+
+- Durante a visita ao ambiente da organização, foi possível observar a rotina real e validar as informações prestadas:
+  - **Horário e movimento da organização:** A visita foi iniciada às 10h10. Por essa razão, o salão estava vazio, sem clientes no momento, o que permitiu visualizar a preparação inicial, a organização do espaço e a conferência do caixa antes do início do movimento.
+  - **Caixa:** A recepção possui um computador, onde o representante legal registra as informações, acompanhado de uma calculadora e um porta-notas com documentos fiscais.
+  - **Produção:** O forno rotativo estava em operação com vários frangos assando, evidenciando a produção diária em lotes.
+  - **Estrutura e estoque:** O ambiente possui freezers e geladeiras para armazenamento de bebidas e insumos, cumprindo as exigências sanitárias. A cozinha estava organizada com utensílios e potes de armazenamento.
 
 **As informações confirmadas na visita:**
 
