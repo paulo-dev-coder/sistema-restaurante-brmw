@@ -11,7 +11,15 @@
 
 ---
 
-## Metadados
+## Metadados dos estudantes
+
+| Nome completo do aluno | RGM |
+| :--- | :--- |
+| Alessa Araújo Ctvrtnik | 49508610 |
+| João Vitor Mendes Almeida | 49744453 |
+| Matheus Ferreira da Silva | 47903520 |
+| Otávio Teixeira Lopes da Silva| 47880414 |
+| Paulo Sergio Olivastro | 47962241 |
 
 - *Alessa Araújo Ctvrtnik
   <br>
@@ -32,7 +40,7 @@ RGM: 47962241*
 ## Link do dicionário de dados em HTML
 - https://paulo-dev-coder.github.io/sistema-restaurante-brmw/
 
-## 1. Caracterização da Organização
+## 1. Relatório Técnico Final
 *(vale 7,5% — Dimensão Conceitual)*
 
 - **Nome oficial do estabelecimento:** A Frangueria
