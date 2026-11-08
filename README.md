@@ -27,6 +27,8 @@
 ## 1. Relatório Técnico Final
 *(vale 7,5% — Dimensão Conceitual)*
 
+### 1.1 Revisão do Modelo Conceitual
+
 - **Nome oficial do estabelecimento:** A Frangueria
 
 - **Natureza da organização:** A natureza da organização é um estabelecimento comercial familiar de pequeno porte que vende refeições completas, bebidas e frango assado com acompanhamentos. Seu modelo de negócio combina restaurante de prato feito e galeteria.
@@ -92,109 +94,24 @@ https://maps.app.goo.gl/pjqxhT2Ltq6g1c2D7?g_st=ac
 
 ---
 
-### 2. Registro da pesquisa de campo
+#### 2. Relato da entrevista
 
-A pesquisa de campo foi realizada em **01 de novembro de 2026**, no estabelecimento **A Frangueria**, com duração de aproximadamente **45 minutos**. Participaram da visita **Paulo Sergio Olivastro**, um integrante do grupo e **Sergio Olivastro**, o proprietário e representante legal da organização.
+**Quem:** A entrevista foi realizada com **Sergio Olivastro**, o proprietário e representante legal do restaurante. Quem participou da visita foi o integrante do grupo **Paulo Sergio Olivastro**.
 
-**Observações:**
+**Quando e onde:** A visita técnica e a entrevista semiestruturada ocorreram no dia **01 de novembro de 2026**, no ambiente da organização, com duração de aproximadamente **45 minutos**. A entrevista foi realizada presencialmente no escritório administrativo do restaurante, com observação direta da rotina de abertura, preparo e organização.
 
-- Durante a visita ao ambiente da organização, foi possível observar a rotina real e validar as informações prestadas:
-  - **Horário e movimento da organização:** A visita foi iniciada às 10h10. Por essa razão, o salão estava vazio, sem clientes no momento, o que permitiu visualizar a preparação inicial, a organização do espaço e a conferência do caixa antes do início do movimento.
-  - **Caixa:** A recepção possui um computador, onde o representante legal registra as informações, acompanhado de uma calculadora e um porta-notas com documentos fiscais.
-  - **Produção:** O forno rotativo estava em operação com vários frangos assando, evidenciando a produção diária em lotes.
-  - **Estrutura e estoque:** O ambiente possui freezers e geladeiras para armazenamento de bebidas e insumos, cumprindo as exigências sanitárias. A cozinha estava organizada com utensílios e potes de armazenamento.
+**Comprovação:** A presença no local e a realização da entrevista estão documentadas por fotos em JPG, armazenadas na pasta `evidencias/` do repositório. O levantamento completo, com as 22 perguntas e respostas, está disponível no arquivo [`levantamento/levantamento.md`](levantamento/levantamento.md).
 
-**As informações confirmadas na visita:**
+**O que foi levantado e o que mudou em relação à primeira entrega:** 
+A entrevista com o representante legal permitiu corrigir e refinar diversas premissas da Entrega 1, que inicialmente haviam sido baseadas em uma conversa informal com a cozinheira. As principais mudanças foram:
+- **Registro de pedidos:** Na primeira entrega, acreditava-se que era feito em caderneta; constatou-se que o controle é feito no **computador** sob controle do representante e na **máquina de pagamento**. Essa fragmentação justifica o problema P1.
+- **Fechamento de caixa:** constatou-se que a máquina de pagamento já realiza o fechamento automático em 5 minutos, restando ao tesoureiro a conferência manual do dinheiro em espécie, justificando o P2.
+- **Mesas:** o número real foi confirmado em **7 mesas**, 5 externas e 2 internas, com capacidade para 24 pessoas. A mesa foi promovida a entidade própria no DER.
+- **Cardápio e produção:** o restaurante tem **5 itens de refeição fixos** e produz lotes diários de **14 frangos no sábado e 24 no domingo**.
+- **Nota fiscal e vigilância sanitária:** foi confirmada a emissão permanente de nota fiscal, exigindo a entidade `NOTA_FISCAL` e o cumprimento das regras sanitárias.
+- **Exclusões:** confirmou-se que **não há reserva de mesa** e **não há rateio de lote por encomenda**. A coleta de dados pessoais limita-se a **nome e telefone**.
 
-- **1. Quais são os dias e horários de funcionamento do restaurante? Existe alguma exceção?**
-
-  - **Resposta:** O atendimento ocorre apenas aos sábados e domingos, das 10h às 20h. Existe uma exceção: quando ainda há clientes, o horário pode ser estendido.
-
-- **2. Como os pedidos são registrados? Quem registra e onde são anotados?**
-
-  - **Resposta:** Os pedidos são registrados no computador, controlado pelo representante legal da empresa, e anotados na máquina de pagamentos, que faz e controla os recebimentos.
-
-- **3. Como vocês verificam se um item está disponível antes de confirmar o pedido? Quem faz essa verificação?**
-
-  - **Resposta:** Os pedidos são efetuados presencialmente pelo cliente, até que o produto esteja disponível. Quando o produto acaba, as vendas são encerradas. A verificação é feita pela cozinheira, com acompanhamento do representante da empresa.
-
-- **4. Vocês trabalham com reservas de mesa? Se sim, com que frequência, como são registradas e quais dados são pedidos?**
-
-  - **Resposta:** Não há reserva de mesa na organização até o momento.
-
-- **5. Vocês aceitam encomendas antecipadas de frango? Se sim, como são registradas, se pedem sinal e se existe prazo mínimo?**
-
-  - **Resposta:** Sim, são aceitas encomendas com pagamento antecipado e marcação do horário de retirada. O registro é feito na máquina de pagamento, com uma via para controle da empresa e uma via para o cliente, que serve como comprovante legal e para recebimento do produto.
-
-- **6. Quais dados pessoais vocês coletam dos clientes — nome, telefone, CPF, e-mail, data de nascimento? Quais desses são realmente necessários para a operação?**
-
-  - **Resposta:** São coletados apenas nome e telefone. Não são coletados CPF, e-mail nem data de nascimento.
-
-- **7. Vocês guardam esses dados depois do atendimento? Por quanto tempo?**
-
-  - **Resposta:** Sim. Os dados são mantidos no computador por tempo indeterminado, sem prazo definido de descarte.
-
-- **8. Como é feito o fechamento do caixa ao final do dia? Quem faz, quanto tempo leva e quem tem acesso ao caixa e ao controle financeiro?**
-
-  - **Resposta:** O caixa é fechado pela máquina de pagamento, em cerca de 5 minutos ao final do dia, pelo tesoureiro, representante da empresa.
-
-- **9. As entradas são separadas por forma de pagamento? Quais formas vocês aceitam hoje (dinheiro, Pix, cartão)? Como conferem se o total bate com os pedidos?**
-
-  - **Resposta:** As entradas são controladas pela máquina de pagamento e pelo total em dinheiro. As formas aceitas são Pix, dinheiro, cartão de débito e cartão de crédito. Segundo o entrevistado, os valores sempre conferem com os pedidos.
-
-- **10. Quem são os fornecedores de frango e insumos? Quantos são e com que frequência a compra é feita?**
-
-  - **Resposta:** Os fornecedores são frigoríficos e um atacadista de alimentos. As compras são feitas uma vez por semana.
-
-- **11. Como a compra e o recebimento são registrados hoje? Alguém confere quantidade e qualidade? O que fazem se a mercadoria vier faltando ou estragada?**
-
-  - **Resposta:** As compras são conferidas pelo tesoureiro. A mercadoria não consumida é descartada. Não há registro formal de divergências.
-
-- **12. Quantas mesas há no salão interno e na área externa? Qual a capacidade total de pessoas sentadas?**
-
-  - **Resposta:** São 5 mesas na área externa e 2 mesas no salão interno, totalizando 7 mesas. A capacidade total de pessoas sentadas é de aproximadamente 24 pessoas.
-
-- **13. Em média, quantos pedidos são feitos em um sábado e em um domingo?**
-
-  - **Resposta:** Em média, são feitos de 20 a 28 pedidos por semana, o que corresponde a aproximadamente 10 a 14 pedidos por dia de funcionamento.
-
-- **14. Quantos itens há no cardápio e quantos lotes de frango são preparados por dia?**
-
-  - **Resposta:** O cardápio tem cinco itens de refeição. São preparados 14 frangos no sábado e 24 frangos no domingo.
-
-- **15. Quantas pessoas trabalham no restaurante e quem faz o quê (atendimento, cozinha, caixa)?**
-
-  - **Resposta:** A equipe é composta por três pessoas: uma responsável pela cozinha; um no caixa; e uma responsável pelo atendimento.
-
-- **16. Como o cardápio é definido e atualizado hoje? Qual o preço médio de um prato e de uma bebida?**
-
-  - **Resposta:** O cardápio é fixo, com poucas alterações. O preço médio do conjunto (prato + bebida) fica entre R$25,00 e R$30,00. O preço médio da bebida isolada varia de R$4,00 a R$15,00 dependendo do tipo.
-
-- **17. Vocês controlam estoque de frango, temperos, embalagens e bebidas? Existe quantidade mínima de segurança? Já faltou insumo de emergência?**
-
-  - **Resposta:** Sim, há controle de estoque de frango, temperos, embalagens e bebidas, com quantidade mínima de segurança definida. As compras são feitas semanalmente, calculadas para o consumo, juntamente com as embalagens. Os insumos são controlados, nunca faltou insumo a ponto de exigir compra de emergência.
-
-- **18. Há perdas por vencimento ou deterioração? Como isso é registrado?**
-
-  - **Resposta:** Sim, já houve perdas por vencimento ou deterioração. O material é descartado, mas não há registro dessas perdas.
-
-- **19. Existe alguma regra sobre cancelamento ou alteração de pedido? O pedido só é encerrado depois do pagamento?**
-
-  - **Resposta:** Não existe regra formal de cancelamento. O pedido apenas é efetuado e liberado após o pagamento.
-
-- **20. Vocês emitem nota ou cupom fiscal? Existem exigências da vigilância sanitária que afetam o preparo ou o armazenamento?**
-
-  - **Resposta:** Sim, há emissão de nota fiscal permanente. Todas as exigências da vigilância sanitária são cumpridas, incluindo o armazenamento dos alimentos em freezer e em caixas com isolamento.
-
-- **21. Quando uma encomenda de frango consome mais de um lote, como vocês registram de qual lote saiu cada parte?**
-
-  - **Resposta:** A organização não registra de qual lote saiu cada parte da encomenda, o registro é pela nota de saída.
-
-- **22. O restaurante faz entrega em domicílio ou só atende no local e retirada?**
-
-  - **Resposta:** O restaurante apenas atende no local e retirada. Não realiza entrega em domicílios.
-
-## 3. Processos de Negócio
+## 3. Processos de negócio
 *(vale 10% — Dimensão Procedimental)*
 
 - **Principais processos mapeados e representados no DER:**
@@ -217,7 +134,7 @@ A pesquisa de campo foi realizada em **01 de novembro de 2026**, no estabelecime
 
 ---
 
-## 4. Requisitos do Sistema
+## 4. Requisitos do sistema
 *(esta seção e a Seção 4 "Regras de Negócio" DIVIDEM 7,5% na dimensão conceitual — juntas valem 7,5%, não 7,5% cada — + 4% exclusivos desta seção na organização/documentação)*
 
 ### 4.1 Requisitos Funcionais
@@ -250,7 +167,7 @@ A pesquisa de campo foi realizada em **01 de novembro de 2026**, no estabelecime
 
 ---
 
-## 5. Regras de Negócio
+## 5. Regras de negócio
 *(esta seção DIVIDE com a Seção 3 "Requisitos do Sistema" os mesmos 7,5% da dimensão conceitual — juntas valem 7,5%, não 7,5% cada — + 4% exclusivos desta seção na documentação. "Regras de negócio" é o termo técnico usado em modelagem de dados para as regras de funcionamento de qualquer organização, com ou sem fins lucrativos)*
 
 - **Regras operacionais:**
@@ -279,7 +196,7 @@ A pesquisa de campo foi realizada em **01 de novembro de 2026**, no estabelecime
 
 ---
 
-## 6. Dicionário de Dados Conceitual (Preliminar)
+## 6. Dicionário de dados conceitual (Preliminar)
 *(vale 10% — Dimensão Procedimental - Segue o modelo do arquivo 02-03g_Exemplo_Dicionario_Dados.pdf)*
 
 Abaixo estão as entidades e os atributos que aparecem no DER fornecido. Os identificadores são considerados chaves primárias; atributos `id_*` que apontam para outra entidade são referências (chaves estrangeiras) e devem ser mostrados como relacionamentos no modelo conceitual.
