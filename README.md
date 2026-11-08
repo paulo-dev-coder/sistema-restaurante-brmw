@@ -226,7 +226,7 @@ A pesquisa de campo foi realizada em [DATA], no estabelecimento **A Frangueria**
 
 - **Principais processos mapeados e representados no DER:**
   - **Cadastro de pessoas, clientes e telefones:** nome, telefone com número e tipo; cliente com data de cadastro.
-  - **Cadastro de funcionários:** nome, cargo, situação.
+  - **Cadastro de funcionários:** nome, salário, cargo, situação.
   - **Cadastro de produtos do cardápio:** nome, descrição, preço, categoria, disponibilidade.
   - **Cadastro de insumos:** frango, temperos, embalagens, bebidas; unidade, quantidade em estoque, estoque mínimo.
   - **Cadastro de fornecedores:** nome, contato, itens fornecidos.
