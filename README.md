@@ -21,22 +21,6 @@
 | Otávio Teixeira Lopes da Silva| 47880414 |
 | Paulo Sergio Olivastro | 47962241 |
 
-- *Alessa Araújo Ctvrtnik
-  <br>
-RGM: 49508610*
-- *João Vitor Mendes Almeida
-  <br>
-RGM: 49744453*
-- *Matheus Ferreira da Silva
-  <br>
-RGM: 47903520*
-- *Otávio Teixeira Lopes da Silva
-  <br>
-RGM: 47880414*
-- *Paulo Sergio Olivastro
-  <br>
-RGM: 47962241*
-
 ## Link do dicionário de dados em HTML
 - https://paulo-dev-coder.github.io/sistema-restaurante-brmw/
 
