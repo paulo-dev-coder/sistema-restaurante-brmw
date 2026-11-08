@@ -13,7 +13,7 @@
 
 ## Metadados dos estudantes
 
-| Nome completo do aluno | RGM |
+| Nome completo do(a) estudante | RGM |
 | :--- | :--- |
 | Alessa Araújo Ctvrtnik | 49508610 |
 | João Vitor Mendes Almeida | 49744453 |
