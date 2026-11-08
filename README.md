@@ -74,7 +74,7 @@ RGM: 47962241*
 
   - **Terceiro, o modelo de negócio misto.** A combinação de restaurante de prato feito e frangaria exige entidades específicas para controle de produção por lote (LOTE_FRANGO) e para encomendas antecipadas (RESERVA_FRANGO), sem rateio por lote, conforme levantamento. Essa estrutura amplia a cobertura de processos em relação a um restaurante convencional e justifica a inclusão dessas entidades no DER.
 
-- **Evidências da organização:** A existência e o acesso à organização são comprovados pelos registros abaixo.
+- **Evidências da organização:** A existência, o acesso e a entrevista à organização são comprovados pelos registros abaixo.
 
   - **Endereço da organização:**
 Av. Celso Garcia, nº 1115 - Catumbi, São Paulo - SP
