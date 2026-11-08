@@ -1,5 +1,5 @@
-# Entrega 1 — Modelo Conceitual (DER)
-### Modelagem de dados para um sistema de uma organização de pequeno porte
+# Entrega 2 — Modelo Lógico, Implementação SQL e Apresentação Final
+### Modelagem de dados para um sistema de uma organização de pequeno porte - A Frangueria
 
 > Este arquivo é o esqueleto do **README.md** do repositório GitHub do seu grupo.
 > Preencha cada seção abaixo. Não apague os títulos — apenas substitua as instruções em *itálico* pelo conteúdo do seu projeto.
