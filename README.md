@@ -334,7 +334,7 @@ As consultas gerenciais (G01 a G07) alimentam diretamente um *dashboard* no Powe
 
 **Tabela de rastreabilidade:**
 
-| Problema Declarado | Tabelas envolvidas | Consulta no script |
+| Problema declarado | Tabelas envolvidas | Consulta no script |
 | :--- | :--- | :--- |
 | **P1 — Registro de pedidos fragmentado** | PEDIDO, ITEM_PEDIDO, FATURAMENTO | G01, G03 |
 | **P2 — Conciliação manual de caixa** | FATURAMENTO, FECHAMENTO_CAIXA | G02 |
