@@ -327,9 +327,9 @@ Os dados estão estruturados para permitir consultas gerenciais e painéis (Dash
 
 **Potencial para Business Intelligence:**
 As consultas gerenciais (G01 a G07) alimentam diretamente um *dashboard* no Power BI ou Google Data Studio. O gestor pode acompanhar em tempo real:
-- **Visão de Vendas:** Faturamento por dia, ticket médio por fim de semana e formas de pagamento mais utilizadas.
-- **Visão de Estoque:** Alertas visuais de insumos que precisam ser comprados (abaixo do mínimo).
-- **Visão Financeira:** Conciliação automatizada entre o que foi faturado e o que entrou por dinheiro/cartão.
+- **Visão de vendas:** Faturamento por dia, ticket médio por fim de semana e formas de pagamento mais utilizadas.
+- **Visão de estoque:** Alertas visuais de insumos que precisam ser comprados (abaixo do mínimo).
+- **Visão financeira:** Conciliação automatizada entre o que foi faturado e o que entrou por dinheiro e cartão.
 
 **Aplicações analíticas e de Inteligência Artificial:**
 - **Previsão de demanda:** Com a série histórica de `ITEM_PEDIDO` e a data, um modelo preditivo pode prever quantos frangos assar no próximo fim de semana, cruzando com feriados ou clima, reduzindo o desperdício (P3).
