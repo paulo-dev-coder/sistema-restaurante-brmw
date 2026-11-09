@@ -44,7 +44,7 @@ A massa simula **1 fim de semana completo de operação** (sábado 07/11 e domin
 | FATURAMENTO | 19 | Formas Pix, Dinheiro, Débito e Crédito (Q09). O pedido 20 está aberto, portanto sem faturamento. |
 | LOG_ACESSO | 0 | Tabela preparada para eventos da aplicação; vazia na carga inicial. |
 
-**Total de registros de negócio:** 12 + 6 + 9 + 3 + 7 + 6 + 20 + 33 + 3 + 2 + 4 + 2 + 2 + 3 + 2 + 4 + 3 + 2 + 19 = **142 registros**.
+- **Total de registros de negócio:** 12 + 6 + 9 + 3 + 7 + 6 + 20 + 33 + 3 + 2 + 4 + 2 + 2 + 3 + 2 + 4 + 3 + 2 + 19 = **142 registros**.
 
 ---
 
