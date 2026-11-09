@@ -348,7 +348,7 @@ O modelo lógico Rrlacional foi construído a partir da conversão do DER (Model
 > 
 > Para tentar resolver o problema no diagrama, utilizou-se o tipo genérico `VARCHAR` e o tipo `FLOAT` para dinheiro e quantidades.
 
-Abaixo está a descrição textual do modelo lógico para fins de auditoria e conferência, contendo as tabelas, colunas, tipos de dados, chaves primárias (PK), chaves estrangeiras (FK) e a conversão das cardinalidades. *(Nota: As restrições de integridade como NOT NULL, UNIQUE, CHECK e DEFAULT estão documentadas no Dicionário de Dados e implementadas no Script SQL).*
+Abaixo está a descrição textual do modelo lógico para fins de auditoria e conferência, contendo as tabelas, colunas, tipos de dados, chaves primárias (PK), chaves estrangeiras (FK) e a conversão das cardinalidades.
 
 ### 2.1 Estrutura das tabelas e tipos de Dados
 
