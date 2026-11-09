@@ -8,7 +8,7 @@
 -- RESERVA_FRANGO, LOTE_FRANGO, INSUMO, FORNECEDOR, COMPRA, ITEM_COMPRA,
 -- RECEBIMENTO, MOVIMENTACAO_ESTOQUE, NOTA_FISCAL, FECHAMENTO_CAIXA, FATURAMENTO.
 -- Dados 100% ficticios, incluindo clientes, telefones e valores.
--- Volume demonstrativo: 40 pedidos simulando os dois fins de semana.
+-- Volume demonstrativo: 20 pedidos simulando um fim de semana.
 -- O volume é fictício e serve somente para demonstração acadêmica.
 -- ===========================================================================
 
@@ -280,24 +280,23 @@ INSERT INTO PRODUTO (nome, descricao, preco, categoria) VALUES
 -- 3. Estoque e fornecedores
 
 INSERT INTO INSUMO (nome, unidade, qtd_estoque, estoque_minimo) VALUES 
-('Frango Cru', 'Kg', 21.0, 10.0),    -- 23 entrada - 2 saída = 21
-('Carvao', 'Kg', 50.0, 5.0),          -- 50 entrada
-('Embalagem', 'Unidade', 100.0, 20.0), -- 100 entrada
-('Tempero', 'Kg', 1.0, 2.0);          -- CORRIGIDO: 1,0 < 2,0 (dispara G07)
+('Frango Cru', 'Kg', 21.0, 10.0),    
+('Carvao', 'Kg', 50.0, 5.0),          
+('Embalagem', 'Unidade', 100.0, 20.0), 
+('Tempero', 'Kg', 1.0, 2.0);          
 
 INSERT INTO FORNECEDOR (nome, contato, cnpj) VALUES 
 ('Frigorifico Boi Branco', '1140028922', '11.111.111/0001-11'),
 ('Atacadao Distribuidor', '11912345678', '22.222.222/0001-22');
 
--- Compra 2 = 250.00 (itens: 50*3 + 100*1 = 250)
 INSERT INTO COMPRA (data_compra, valor_total, situacao, id_fornecedor) VALUES 
 ('2026-11-06', 500.00, 'Recebida', 1),
 ('2026-11-06', 250.00, 'Recebida', 2);
 
 INSERT INTO ITEM_COMPRA (quantidade, valor_unitario, id_compra, id_insumo) VALUES 
-(25.0, 20.00, 1, 1),   -- 25 kg frango × 20,00 = 500,00
-(50.0, 3.00, 2, 2),    -- 50 kg carvão × 3,00 = 150,00
-(100.0, 1.00, 2, 3);   -- 100 unid embalagem × 1,00 = 100,00 → Total = 250,00
+(25.0, 20.00, 1, 1),   
+(50.0, 3.00, 2, 2),    
+(100.0, 1.00, 2, 3);   
 
 INSERT INTO RECEBIMENTO (data_recebimento, divergencia, id_compra, id_funcionario) VALUES 
 ('2026-11-06', 'Faltou 2kg de frango', 1, 1),
@@ -312,8 +311,8 @@ INSERT INTO MOVIMENTACAO_ESTOQUE (data_movimento, quantidade, tipo, motivo, id_i
 -- 4. Produção e pedidos
 
 INSERT INTO LOTE_FRANGO (data_producao, qnt_produzida, qnt_disponivel, id_produto) VALUES 
-('2026-11-07', 14, 2, 1),    -- 14 produzidos - 12 vendidos = 2
-('2026-11-08', 24, 14, 1);   -- 24 produzidos - 10 vendidos = 14
+('2026-11-07', 14, 2, 1),    
+('2026-11-08', 24, 14, 1);   
 
 -- Pedidos no sábado (10 pedidos)
 
@@ -369,15 +368,16 @@ INSERT INTO ITEM_PEDIDO (quantidade, valor_aplicado, id_pedido, id_produto) VALU
 
 -- 6. Reservas, notas e faturamento
 
+-- CORRIGIDO: Apenas os pedidos 3 e 13 têm reserva antecipada (o pedido 20 é Local/Aberto)
 INSERT INTO RESERVA_FRANGO (qnt_reservada, horario_retirada, pagamento_antecipado, situacao, id_pedido) VALUES 
 (1, '2026-11-07 18:00:00', TRUE, 'Retirado', 3),
-(1, '2026-11-08 18:00:00', TRUE, 'Retirado', 13),
-(1, '2026-11-08 18:00:00', TRUE, 'Pendente', 20);
+(1, '2026-11-08 18:00:00', TRUE, 'Retirado', 13);
 
+-- CORRIGIDO: Todas as notas emitidas em 07/11
 INSERT INTO NOTA_FISCAL (numero, serie, data_emissao, tipo) VALUES 
-('000101', '1', '2026-11-07 13:15:00', 'Venda'),
-('000102', '1', '2026-11-08 13:45:00', 'Venda'),
-('000103', '1', '2026-11-08 19:00:00', 'Venda');
+('000101', '1', '2026-11-07 11:50:00', 'Venda'),
+('000102', '1', '2026-11-07 12:20:00', 'Venda'),
+('000103', '1', '2026-11-07 12:50:00', 'Venda');
 
 INSERT INTO FATURAMENTO (data_pagamento, valor_total, forma_pagamento, id_pedido, id_nota_fiscal) VALUES 
 ('2026-11-07 11:45:00', 57.00, 'Pix', 1, 1),
@@ -400,9 +400,6 @@ INSERT INTO FATURAMENTO (data_pagamento, valor_total, forma_pagamento, id_pedido
 ('2026-11-08 18:15:00', 55.00, 'Dinheiro', 18, NULL),
 ('2026-11-08 19:15:00', 49.00, 'Cartao de Credito', 19, NULL);
 
--- Sábado: Dinheiro 53+63+45=161 | Pix 57+105+53+60=275 | Cartão 45+45+102=192
--- Domingo: Dinheiro 49+45+55=149 | Pix 45+98+57=200 | Cartão 45+60+49=154
-
 INSERT INTO FECHAMENTO_CAIXA (data_fechamento, valor_dinheiro, valor_pix, valor_cartao, id_funcionario) VALUES 
 ('2026-11-07', 161.00, 275.00, 192.00, 1),
 ('2026-11-08', 149.00, 200.00, 154.00, 1);
@@ -411,6 +408,9 @@ INSERT INTO FECHAMENTO_CAIXA (data_fechamento, valor_dinheiro, valor_pix, valor_
 
 UPDATE FATURAMENTO SET id_fechamento = 1 WHERE id_pedido IN (1,2,3,4,5,6,7,8,9,10);
 UPDATE FATURAMENTO SET id_fechamento = 2 WHERE id_pedido IN (11,12,13,14,15,16,17,18,19);
+
+-- CORRIGIDO: Mesa 5 fica ocupada porque o pedido 20 está em aberto (A07)
+UPDATE MESA SET status = 'Ocupada' WHERE id_mesa = 5;
 
 -- ===========================================================================
 -- ETAPA 5: SELECT COM JOIN (Relacionamentos)
@@ -443,6 +443,9 @@ DELETE FROM CLIENTE
 WHERE id_cliente = LAST_INSERT_ID() 
   AND NOT EXISTS (SELECT 1 FROM PEDIDO p WHERE p.id_cliente = CLIENTE.id_cliente);
 
+-- CORRIGIDO: Limpa a PESSOA órfã (Mantendo PESSOA = 12 no final)
+DELETE FROM PESSOA WHERE id_pessoa = @id_novo_cliente;
+
 -- ===========================================================================
 -- ETAPA 7: CONSULTAS GERENCIAIS (G01 a G10)
 -- ===========================================================================
@@ -455,11 +458,13 @@ SELECT forma_pagamento, SUM(valor_total) AS Total_Arrecadado
 FROM FATURAMENTO
 GROUP BY forma_pagamento;
 
--- G03 — Produtos mais vendidos
-SELECT p.nome AS Produto, SUM(ip.quantidade) AS Total_Vendido
+-- G03 — Produtos mais vendidos (CORRIGIDO: Apenas pedidos concluídos)
+SELECT pr.nome AS Produto, SUM(ip.quantidade) AS Total_Vendido
 FROM ITEM_PEDIDO ip
-JOIN PRODUTO p ON ip.id_produto = p.id_produto
-GROUP BY p.nome
+JOIN PRODUTO pr ON ip.id_produto = pr.id_produto
+JOIN PEDIDO pe ON ip.id_pedido = pe.id_pedido
+WHERE pe.situacao = 'Concluido'
+GROUP BY pr.nome
 ORDER BY Total_Vendido DESC;
 
 -- G04 — Valor comprado por fornecedor
