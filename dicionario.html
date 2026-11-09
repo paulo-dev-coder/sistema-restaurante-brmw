@@ -1,0 +1,2711 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Dados de atendimento, pagamentos, compras e estoque da A Frangueria."><title>Dicionário de Dados — A Frangueria</title>
+<style>:root {
+  color-scheme: light;
+  --ink: #22201e;
+  --muted: #514a44;
+  --accent: #7a2e0e;
+  --rule: #c9b8a8;
+  --heading: #f3e3d3;
+  --stripe: #fbf6f1;
+  --mono: "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+  --sans: Arial, Helvetica, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-padding-top: 20px; }
+body { margin: 0; background: #f1efec; color: var(--ink); font: 15px/1.47 var(--sans); }
+a { color: var(--accent); text-underline-offset: .17em; }
+a:hover { color: #4d200d; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.paper { max-width: 936px; padding: 25px clamp(26px, 5vw, 64px) 33px; margin: 24px auto; background: white; border: 1px solid #ded8d0; }
+.skip { position: absolute; top: 9px; left: 10px; transform: translateY(-180%); padding: .4rem .65rem; background: white; z-index: 2; }
+.skip:focus { transform: none; }
+.running { display: flex; justify-content: space-between; align-items: center; gap: 12px; border-bottom: 1px solid var(--rule); color: var(--muted); font-size: .79rem; padding-bottom: 5px; }
+.print { flex: 0 0 auto; color: var(--accent); font: inherit; padding: 3px 8px; border: 1px solid var(--rule); border-radius: 3px; background: white; cursor: pointer; }
+.print:hover { background: var(--stripe); }
+.document-head h1 { color: var(--accent); font-size: clamp(1.8rem, 4.2vw, 2.48rem); line-height: 1.1; margin: 21px 0 5px; }
+.subtitle { margin: 0 0 .75rem; color: var(--muted); font-size: 1rem; }
+.intro { margin: .62rem 0 .65rem; }
+.summary { margin: .65rem 0 1.35rem; }
+.summary h2 { font-size: 1rem; color: var(--ink); margin: 0 0 .22rem; }
+.summary ol { list-style: none; padding: 0; margin: 0; }
+.summary li + li { margin-top: .16rem; }
+.summary a { font-size: .89rem; color: #3d3732; text-decoration: none; }
+.summary a:hover { color: var(--accent); text-decoration: underline; }
+.summary li:last-child a[data-guide] { color: var(--accent); font-weight: 700; }
+
+.chapter { margin: 1.4rem 0; }
+.section-head { margin: 0 0 .46rem; }
+h2, h3 { color: var(--accent); line-height: 1.23; }
+h2 { font-size: 1.38rem; margin: 0; }
+h3 { font-size: 1.06rem; margin: 1.04rem 0 .36rem; }
+h4 { font-size: .93rem; color: var(--ink); line-height: 1.25; margin: .65rem 0 .22rem; }
+p, ul, ol { margin: .32rem 0 .65rem; }
+ul, ol { padding-left: 1.3rem; }
+li + li { margin-top: .23rem; }
+strong { font-weight: 700; }
+code { font: .9em/1.34 var(--mono); color: #282321; overflow-wrap: anywhere; }
+td:first-child > code, td:first-child > a > code { font-weight: 700; }
+.table-wrap { max-width: 100%; overflow-x: auto; margin: .38rem 0 .65rem; }
+table { border-collapse: collapse; width: 100%; text-align: left; font-size: .85rem; line-height: 1.38; }
+th, td { padding: 4px 6px; border: 1px solid var(--rule); vertical-align: top; }
+th { text-align: left; font-weight: 700; color: var(--accent); }
+thead { background: var(--heading); }
+tbody tr:nth-child(even) { background: var(--stripe); }
+.table-meta tbody th { color: var(--ink); width: 24%; }
+.table-meta tbody td { font-size: .86rem; }
+.table-fields { min-width: 670px; }
+.table-fields th:nth-child(n+2):nth-child(-n+5), .table-fields td:nth-child(n+2):nth-child(-n+5) { white-space: nowrap; }
+.table-fields td:nth-child(1) { width: 19%; }
+.table-fields td:nth-child(4) { width: 14%; }
+.table-fields td:nth-child(6) { width: 39%; }
+.table-indexes { min-width: 515px; }
+.table-indexes td:nth-child(1) { width: 29%; }
+.table-indexes td:nth-child(1) code { overflow-wrap: normal; }
+.table-indexes td:nth-child(3) { width: 25%; }
+.table-relationships { min-width: 600px; }
+.table-relationships td:nth-child(3), .table-relationships td:nth-child(4) { white-space: nowrap; }
+.table-wide { min-width: 540px; }
+.table-access { min-width: 710px; }
+.table-access th:first-child { width: 16%; }
+.table-log { min-width: 530px; }
+.table-log th:nth-child(-n+4), .table-log td:nth-child(-n+4) { white-space: nowrap; }
+.table-entities td:nth-child(2) { width: 28%; }
+.table-entities a { text-decoration: none; }
+.table-entities a:hover { text-decoration: underline; }
+.entity-card { margin: .95rem 0 1.22rem; }
+.entity-card h3, .guide-card h3 { margin-bottom: .24rem; }
+.entity-card h3 code { color: inherit; font-size: .9em; font-weight: 700; }
+.formation, .reading { margin: .16rem 0; font-size: .86rem; }
+.formation code { font-weight: 700; }
+.reading { color: var(--muted); }
+.guide-card { margin: 0 0 1rem; }
+.guide-card td:first-child { width: 22%; }
+.guide-card td:first-child code { white-space: nowrap; }
+.guide-intro { border-left: 3px solid var(--rule); padding: 6px 9px; background: var(--stripe); }
+pre { margin: .7rem 0; padding: 9px 12px; background: var(--stripe); border: 1px solid var(--rule); overflow: auto; }
+blockquote { margin: .55rem 0; padding-left: .7rem; border-left: 3px solid var(--rule); }
+.document-foot { border-top: 1px solid var(--rule); display: flex; gap: 9px; justify-content: space-between; flex-wrap: wrap; margin-top: 1.15rem; padding-top: 7px; color: var(--muted); font-size: .79rem; }
+
+@media screen and (max-width: 950px) {
+  .paper { margin: 0 auto; border: 0; }
+}
+@media screen and (max-width: 600px) {
+  body { font-size: 14px; }
+  .paper { padding: 13px 15px 19px; }
+  .running { font-size: .72rem; }
+  .document-head h1 { margin-top: 15px; }
+  .subtitle { font-size: .93rem; }
+  h2 { font-size: 1.22rem; }
+  .table-meta tbody th { width: 31%; }
+  .table-entities { min-width: 415px; }
+}
+
+@page {
+  size: A4;
+  margin: 15mm 15.9mm 13.5mm;
+  @top-left {
+    content: "A Frangueria - Restaurante | Dicionário de Dados v0.5";
+    font: 7.5pt Arial, Helvetica, sans-serif;
+    color: #514a44;
+    vertical-align: bottom;
+    border-bottom: .5pt solid #c9b8a8;
+    margin-bottom: 3mm;
+    padding-bottom: 1.1mm;
+  }
+  @top-right {
+    content: "Página " counter(page);
+    font: 7.5pt Arial, Helvetica, sans-serif;
+    color: #514a44;
+    vertical-align: bottom;
+    border-bottom: .5pt solid #c9b8a8;
+    margin-bottom: 3mm;
+    padding-bottom: 1.1mm;
+  }
+}
+
+@media print {
+  html { print-color-adjust: exact; }
+  body { background: white; font: 9.35pt/1.34 var(--sans); }
+  .paper { max-width: none; margin: 0; padding: 0; border: 0; }
+  .running, .skip, .print, .document-foot { display: none; }
+  .document-head h1 { font-size: 22pt; margin: 0 0 3pt; }
+  .subtitle { font-size: 10pt; margin-bottom: 5pt; }
+  .summary { margin: 5pt 0 9pt; }
+  .summary h2 { font-size: 9pt; }
+  .summary a { font-size: 8.15pt; }
+  .chapter { margin: 10pt 0 0; }
+  h2 { font-size: 13.6pt; }
+  h3 { font-size: 10.8pt; }
+  h4 { font-size: 9pt; }
+  .section-head, h3, h4, .formation, .reading { break-after: avoid; }
+  .entity-card { margin: 7pt 0 8pt; }
+  .formation, .reading { font-size: 8.3pt; }
+  .table-wrap { overflow: visible; margin: 3pt 0 5pt; }
+  table, .table-meta tbody td { font-size: 7.9pt; }
+  th, td { padding: 2.3pt 3pt; border-width: .45pt; }
+  .table-fields, .table-indexes, .table-relationships, .table-wide, .table-entities, .table-access, .table-log { min-width: 0; }
+  thead { display: table-header-group; }
+  tr { break-inside: avoid; }
+  p, li { orphans: 2; widows: 2; }
+  a { color: inherit; }
+  .guide-chapter { break-before: page; }
+}
+</style></head>
+<body id="topo">
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<div class="paper">
+<header class="document-head">
+  <div class="running">
+    <span>A Frangueria - Restaurante | Dicionário de Dados v0.6</span>
+    <button class="print" type="button" onclick="window.print()">Imprimir</button>
+  </div>
+  <h1>Dicionário de Dados</h1>
+  <p class="subtitle">Sistema de gestão de pedidos e atendimento · A Frangueria - Restaurante</p>
+  <div class="table-wrap"><table class="table-meta" aria-label="Dados do documento"><tbody>
+    <tr><th scope="row">Versão do modelo</th><td>0.6 · Edição de entrega</td></tr>
+    <tr><th scope="row">Data da revisão</th><td><time datetime="2026-11-08">08/11/2026</time></td></tr>
+    <tr><th scope="row">SGBD</th><td>MySQL 8.4 LTS · InnoDB · <a href="#ambiente">ver seção 3</a></td></tr>
+    <tr><th scope="row">Escopo</th><td>19 entidades de negócio, 100 campos e 21 vínculos físicos</td></tr>
+  </tbody></table></div>
+  <p class="intro">Dados de atendimento, pagamentos, compras e estoque da A Frangueria.</p>
+</header>
+<nav class="summary" aria-labelledby="indice-titulo"><h2 id="indice-titulo">Sumário</h2><ol><li><a href="#escopo">1. Modelo conceitual</a></li><li><a href="#fluxo">2. Fluxo de dados</a></li><li><a href="#ambiente">3. Ambiente de banco de dados</a></li><li><a href="#convencoes">4. Convenções</a></li><li><a href="#relacionamentos">5. Cardinalidades e relacionamentos</a></li><li><a href="#entidades">6. Entidades e atributos</a></li><li><a href="#integridade">7. Segurança, auditoria e regras de integridade</a></li><li><a href="#levantamento">8. Dados do levantamento</a></li><li><a href="#referencias">9. Referências</a></li></ol></nav>
+  <main id="conteudo"><section class="chapter" id="escopo" aria-labelledby="titulo-escopo">
+    <div class="section-head"><h2 id="titulo-escopo">1. Modelo conceitual</h2></div>
+    <p>Neste dicionário, organizamos os dados que a A Frangueria usa para atender pedidos, receber pagamentos, fechar o caixa e controlar compras e estoque. Os modelos conceitual e lógico descrevem as entidades e seus vínculos. O levantamento explica como a equipe usa esses dados na rotina do restaurante.</p>
+<p>São <strong>19 entidades de negócio</strong>. A mesa identifica onde o cliente foi atendido. A nota fiscal pertence ao faturamento que registra o pagamento do pedido. O log de acesso é uma tabela técnica separada.</p>
+<p>Nome e telefone servem para identificar o cliente e entrar em contato. A encomenda guarda o horário de retirada e indica se o pagamento foi antecipado. O valor pago e a forma de pagamento ficam no faturamento.</p>
+<div class="entity-index"><div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Entidades do modelo"><table class="table-entities">
+<thead>
+<tr>
+<th scope="col">Entidade</th>
+<th scope="col">Tabela física</th>
+<th scope="col">Finalidade</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pessoa</td>
+<td><a href="#entidade-pessoa"><code>pessoa</code></a></td>
+<td>Cadastro comum a clientes e membros da equipe.</td>
+</tr>
+<tr>
+<td>Telefone</td>
+<td><a href="#entidade-telefone"><code>telefone</code></a></td>
+<td>Contatos da pessoa.</td>
+</tr>
+<tr>
+<td>Cliente</td>
+<td><a href="#entidade-cliente"><code>cliente</code></a></td>
+<td>Papel de consumidor associado a uma pessoa.</td>
+</tr>
+<tr>
+<td>Funcionário</td>
+<td><a href="#entidade-funcionario"><code>funcionario</code></a></td>
+<td>Papel operacional de um membro da equipe.</td>
+</tr>
+<tr>
+<td>Pedido</td>
+<td><a href="#entidade-pedido"><code>pedido</code></a></td>
+<td>Atendimento no local ou para retirada.</td>
+</tr>
+<tr>
+<td>Item do pedido</td>
+<td><a href="#entidade-item_pedido"><code>item_pedido</code></a></td>
+<td>Linha de produto, quantidade e preço praticado.</td>
+</tr>
+<tr>
+<td>Produto</td>
+<td><a href="#entidade-produto"><code>produto</code></a></td>
+<td>Item do cardápio.</td>
+</tr>
+<tr>
+<td>Faturamento</td>
+<td><a href="#entidade-faturamento"><code>faturamento</code></a></td>
+<td>Registro financeiro de um pedido.</td>
+</tr>
+<tr>
+<td>Reserva de frango</td>
+<td><a href="#entidade-reserva_frango"><code>reserva_frango</code></a></td>
+<td>Encomenda antecipada associada a um pedido de retirada.</td>
+</tr>
+<tr>
+<td>Lote de frango</td>
+<td><a href="#entidade-lote_frango"><code>lote_frango</code></a></td>
+<td>Produção e disponibilidade de frango preparado.</td>
+</tr>
+<tr>
+<td>Fechamento de caixa</td>
+<td><a href="#entidade-fechamento_caixa"><code>fechamento_caixa</code></a></td>
+<td>Apuração diária feita pelo tesoureiro, com os recebimentos separados por forma de pagamento.</td>
+</tr>
+<tr>
+<td>Fornecedor</td>
+<td><a href="#entidade-fornecedor"><code>fornecedor</code></a></td>
+<td>Cadastro de quem fornece frango e outros insumos.</td>
+</tr>
+<tr>
+<td>Compra</td>
+<td><a href="#entidade-compra"><code>compra</code></a></td>
+<td>Registro de aquisição junto a um fornecedor.</td>
+</tr>
+<tr>
+<td>Item da compra</td>
+<td><a href="#entidade-item_compra"><code>item_compra</code></a></td>
+<td>Linha de insumo e seu custo.</td>
+</tr>
+<tr>
+<td>Insumo</td>
+<td><a href="#entidade-insumo"><code>insumo</code></a></td>
+<td>Material de consumo ou revenda acompanhado em estoque.</td>
+</tr>
+<tr>
+<td>Recebimento</td>
+<td><a href="#entidade-recebimento"><code>recebimento</code></a></td>
+<td>Conferência da entrega de uma compra.</td>
+</tr>
+<tr>
+<td>Movimentação de estoque</td>
+<td><a href="#entidade-movimentacao_estoque"><code>movimentacao_estoque</code></a></td>
+<td>Evento que altera o saldo de um insumo.</td>
+</tr>
+<tr>
+<td>Mesa</td>
+<td><a href="#entidade-mesa"><code>mesa</code></a></td>
+<td>Cadastro das mesas físicas do restaurante.</td>
+</tr>
+<tr>
+<td>Nota fiscal</td>
+<td><a href="#entidade-nota_fiscal"><code>nota_fiscal</code></a></td>
+<td>Registro do documento fiscal emitido para um faturamento.</td>
+</tr>
+</tbody></table></div>
+</div>
+  </section>
+<section class="chapter" id="fluxo" aria-labelledby="titulo-fluxo">
+    <div class="section-head"><h2 id="titulo-fluxo">2. Fluxo de dados</h2></div>
+    <p>A cozinha confere a disponibilidade e o representante acompanha os pedidos no computador. Nas encomendas, a equipe combina o horário de retirada e a maquininha emite o comprovante em duas vias. A equipe efetiva e libera o pedido depois do pagamento. No fim do dia, o tesoureiro fecha o caixa. <a href="https://github.com/paulo-dev-coder/sistema-restaurante-brmw/blob/bc1489922b1b13ed4109464b275d2beb76bc3945/README.md#L90-L183">Levantamento, Q2, Q3, Q5, Q8 e Q19</a></p>
+<p>O tesoureiro também confere as compras. Cada recebimento identifica quem fez a conferência e registra a diferença encontrada. A quantidade aceita entra no estoque. O consumo e o descarte alteram o estoque de insumos. O frango pronto tem seu saldo no lote de produção. <a href="https://github.com/paulo-dev-coder/sistema-restaurante-brmw/blob/bc1489922b1b13ed4109464b275d2beb76bc3945/README.md#L90-L183">Levantamento, Q11, Q17 e Q18</a></p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Fluxo de dados"><table class="">
+<thead>
+<tr>
+<th scope="col">Etapa</th>
+<th scope="col">Processo</th>
+<th scope="col">Entidades envolvidas</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Identificar operador e cliente. Na retirada, verificar o telefone.</td>
+<td>Pessoa, funcionário, cliente, telefone</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Abrir o pedido com itens, associar a mesa quando usada e agendar a encomenda.</td>
+<td>Pedido, item do pedido, produto, mesa, encomenda</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Registrar o pagamento, efetivar e liberar o atendimento. Cadastrar a nota quando for emitida.</td>
+<td>Faturamento, pedido, encomenda, nota fiscal</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Registrar a produção e ajustar a disponibilidade do frango pronto no lote.</td>
+<td>Produto, lote de frango</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Registrar a compra, quem conferiu a entrega, as entradas aceitas e as perdas de insumos.</td>
+<td>Fornecedor, compra, item da compra, funcionário, recebimento, insumo, movimentação de estoque</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Vincular os pagamentos apurados ao fechamento e somar dinheiro, Pix e cartão.</td>
+<td>Fechamento de caixa, faturamento, funcionário</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Registrar operações relevantes e tentativas de acesso.</td>
+<td>Log de acesso</td>
+</tr>
+</tbody></table></div>
+
+  </section>
+<section class="chapter" id="ambiente" aria-labelledby="titulo-ambiente">
+    <div class="section-head"><h2 id="titulo-ambiente">3. Ambiente de banco de dados</h2></div>
+    <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Ambiente de banco de dados"><table class="">
+<thead>
+<tr>
+<th scope="col">Configuração</th>
+<th scope="col">Proposta</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SGBD</td>
+<td>MySQL 8.4 LTS, com tabelas <code>InnoDB</code> e modo SQL estrito.</td>
+</tr>
+<tr>
+<td>Codificação e ordenação</td>
+<td><code>utf8mb4</code> com collation <code>utf8mb4_0900_as_cs</code>, sensível a acentos e maiúsculas. Usar a mesma configuração no banco e nas tabelas.</td>
+</tr>
+<tr>
+<td>Fuso de negócio</td>
+<td><code>America/Sao_Paulo</code>. Os campos <code>dh_</code> usam <code>datetime(6)</code> e guardam UTC. A aplicação converte os horários na entrada e na exibição. As datas civis <code>dt_</code> usam <code>date</code> e são informadas no calendário local. A apuração do projeto usa o deslocamento <code>-03:00</code> do período demonstrado.</td>
+</tr>
+</tbody></table></div>
+
+  </section>
+<section class="chapter" id="convencoes" aria-labelledby="titulo-convencoes">
+    <div class="section-head"><h2 id="titulo-convencoes">4. Convenções</h2></div>
+    <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Convenções"><table class="">
+<thead>
+<tr>
+<th scope="col">Configuração</th>
+<th scope="col">Proposta</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Nomes físicos</td>
+<td><code>snake_case</code>, em minúsculas, sem acentos. Os prefixos <code>id_</code>, <code>nm_</code>, <code>nr_</code>, <code>cd_</code>, <code>dt_</code>, <code>dh_</code>, <code>qt_</code>, <code>tp_</code>, <code>ds_</code>, <code>vr_</code> e <code>fl_</code> indicam, respectivamente, identificador, nome, número nominal, código, data, data e hora, quantidade, tipo ou situação, descrição, valor e indicador lógico.</td>
+</tr>
+<tr>
+<td>Chaves</td>
+<td><code>PK</code> é chave primária. <code>FK</code> referencia a chave primária da tabela indicada. <code>UQ</code> é <code>UNIQUE</code>. Cada PK numérica usa <code>bigint AUTO_INCREMENT</code>. As FKs usam <code>bigint</code> com a mesma sinalização das PKs e comportamento restritivo no InnoDB.</td>
+</tr>
+<tr>
+<td>Nulabilidade e defaults</td>
+<td><strong>Sim</strong> significa <code>NOT NULL</code>. <strong>Não</strong> permite <code>NULL</code>. <code>—</code> indica ausência de valor padrão de negócio. <code>AUTO_INCREMENT</code> gera a PK. Onde indicado, <code>DEFAULT (UTC_TIMESTAMP(6))</code> fornece o instante inicial em UTC.</td>
+</tr>
+<tr>
+<td>Índices</td>
+<td><code>PRIMARY KEY</code> e <code>UNIQUE</code> criam os índices correspondentes. Os índices adicionais das fichas usam B-tree. O InnoDB exige índice para cada FK. Um índice composto atende à FK quando ela é seu prefixo inicial.</td>
+</tr>
+<tr>
+<td>Validação</td>
+<td>Usar <code>CHECK</code> para domínios da própria linha, inclusive indicadores <code>tinyint</code> restritos a <code>0</code> e <code>1</code>. As FKs do InnoDB são verificadas no comando. Mínimos de cardinalidade, especialização e condições sobre FKs opcionais são validados por operações transacionais antes do <code>COMMIT</code>.</td>
+</tr>
+</tbody></table></div>
+<h3>4.1 Símbolos da formação e do domínio</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Convenções"><table class="">
+<thead>
+<tr>
+<th scope="col">Símbolo</th>
+<th scope="col">Leitura</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>=</code></td>
+<td>É composto de.</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>Une elementos da formação.</td>
+</tr>
+<tr>
+<td><code>( )</code></td>
+<td>Indica um campo opcional, que pode ter exigência condicional.</td>
+</tr>
+<tr>
+<td><code>@</code></td>
+<td>Identifica a chave primária.</td>
+</tr>
+<tr>
+<td><code>[a | b]</code></td>
+<td>Indica alternativas de valor.</td>
+</tr>
+<tr>
+<td><code>{ }</code> e <code>n{ }m</code></td>
+<td>Indicam repetição e, quando informados, seus limites.</td>
+</tr>
+<tr>
+<td><code>//</code></td>
+<td>Identifica um grupo.</td>
+</tr>
+<tr>
+<td><code>**</code></td>
+<td>Indica um comentário.</td>
+</tr>
+</tbody></table></div>
+<p>A formação usa os mesmos nomes físicos da tabela de campos.</p>
+<h3>4.2 Prefixos dos atributos</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Convenções"><table class="">
+<thead>
+<tr>
+<th scope="col">Prefixo</th>
+<th scope="col">Significado</th>
+<th scope="col">Exemplo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id_</code></td>
+<td>Identificador</td>
+<td><code>id_pedido</code></td>
+</tr>
+<tr>
+<td><code>nm_</code> e <code>nr_</code></td>
+<td>Nome e número nominal</td>
+<td><code>nm_pessoa</code>, <code>nr_telefone</code></td>
+</tr>
+<tr>
+<td><code>cd_</code></td>
+<td>Código</td>
+<td><code>cd_categoria</code></td>
+</tr>
+<tr>
+<td><code>dt_</code> e <code>dh_</code></td>
+<td>Data e data com hora</td>
+<td><code>dt_compra</code>, <code>dh_pagamento</code></td>
+</tr>
+<tr>
+<td><code>qt_</code> e <code>vr_</code></td>
+<td>Quantidade e valor</td>
+<td><code>qt_item</code>, <code>vr_total</code></td>
+</tr>
+<tr>
+<td><code>tp_</code></td>
+<td>Tipo ou situação</td>
+<td><code>tp_consumo</code>, <code>tp_situacao</code></td>
+</tr>
+<tr>
+<td><code>ds_</code> e <code>fl_</code></td>
+<td>Descrição e indicador lógico</td>
+<td><code>ds_observacao</code>, <code>fl_disponivel</code></td>
+</tr>
+</tbody></table></div>
+<h3>4.3 Nomenclatura dos objetos do banco</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Convenções"><table class="">
+<thead>
+<tr>
+<th scope="col">Objeto</th>
+<th scope="col">Padrão</th>
+<th scope="col">Exemplo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tabela e coluna</td>
+<td><code>snake_case</code> em minúsculas, sem acentos</td>
+<td><a href="#entidade-item_pedido"><code>item_pedido</code></a></td>
+</tr>
+<tr>
+<td>Chave primária</td>
+<td><code>PRIMARY</code> no catálogo do MySQL</td>
+<td><code>PRIMARY KEY (id_pedido)</code></td>
+</tr>
+<tr>
+<td>Chave estrangeira</td>
+<td><code>fk_&lt;tabela&gt;_&lt;coluna&gt;</code></td>
+<td><code>fk_pedido_id_cliente</code></td>
+</tr>
+<tr>
+<td>Unicidade</td>
+<td><code>uq_&lt;tabela&gt;_&lt;colunas&gt;</code></td>
+<td><code>uq_faturamento_id_pedido</code></td>
+</tr>
+<tr>
+<td>Índice adicional</td>
+<td><code>idx_&lt;tabela&gt;_&lt;número&gt;</code></td>
+<td><code>idx_pedido_1</code></td>
+</tr>
+</tbody></table></div>
+
+  </section>
+<section class="chapter" id="relacionamentos" aria-labelledby="titulo-relacionamentos">
+    <div class="section-head"><h2 id="titulo-relacionamentos">5. Cardinalidades e relacionamentos</h2></div>
+    <p><code>A → B</code> indica quantos registros de B podem estar associados a <strong>um</strong> registro de A. <code>N</code> indica vários. O DER marca a especialização de <code>pessoa</code> como <code>(t,d)</code>, total e disjunta. Cada pessoa pertence a <strong>exatamente um</strong> dos subtipos, cliente ou funcionário, ao fim da transação. A tabela mostra <code>(0,1)</code> para cada vínculo individual, e a regra conjunta exige um dos dois.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Cardinalidades e relacionamentos"><table class="table-relationships">
+<thead>
+<tr>
+<th scope="col">A</th>
+<th scope="col">B</th>
+<th scope="col">A → B</th>
+<th scope="col">B → A</th>
+<th scope="col">Referência e regra</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="#entidade-pessoa"><code>pessoa</code></a></td>
+<td><a href="#entidade-telefone"><code>telefone</code></a></td>
+<td>(0,N)</td>
+<td>(1,1)</td>
+<td><code>telefone.id_pessoa</code> obrigatório.</td>
+</tr>
+<tr>
+<td><a href="#entidade-pessoa"><code>pessoa</code></a></td>
+<td><a href="#entidade-cliente"><code>cliente</code></a></td>
+<td>(0,1)</td>
+<td>(1,1)</td>
+<td>Especialização por <code>cliente.id_pessoa</code> obrigatório e único.</td>
+</tr>
+<tr>
+<td><a href="#entidade-pessoa"><code>pessoa</code></a></td>
+<td><a href="#entidade-funcionario"><code>funcionario</code></a></td>
+<td>(0,1)</td>
+<td>(1,1)</td>
+<td>Especialização por <code>funcionario.id_pessoa</code> obrigatório e único.</td>
+</tr>
+<tr>
+<td><a href="#entidade-cliente"><code>cliente</code></a></td>
+<td><a href="#entidade-pedido"><code>pedido</code></a></td>
+<td>(0,N)</td>
+<td>(1,1)</td>
+<td><code>pedido.id_cliente</code> obrigatório. Para retirada, exigir telefone cadastrado na abertura e na efetivação.</td>
+</tr>
+<tr>
+<td><a href="#entidade-funcionario"><code>funcionario</code></a></td>
+<td><a href="#entidade-pedido"><code>pedido</code></a></td>
+<td>(0,N)</td>
+<td>(1,1)</td>
+<td><code>pedido.id_funcionario</code> identifica o registrador.</td>
+</tr>
+<tr>
+<td><a href="#entidade-mesa"><code>mesa</code></a></td>
+<td><a href="#entidade-pedido"><code>pedido</code></a></td>
+<td>(0,N)</td>
+<td>(0,1)</td>
+<td><code>pedido.id_mesa</code> referencia a mesa usada. Fica nulo em retirada.</td>
+</tr>
+<tr>
+<td><a href="#entidade-pedido"><code>pedido</code></a></td>
+<td><a href="#entidade-item_pedido"><code>item_pedido</code></a></td>
+<td>(1,N)</td>
+<td>(1,1)</td>
+<td><code>item_pedido.id_pedido</code> obrigatório. Todo pedido salvo, inclusive aberto, tem pelo menos um item.</td>
+</tr>
+<tr>
+<td><a href="#entidade-produto"><code>produto</code></a></td>
+<td><a href="#entidade-item_pedido"><code>item_pedido</code></a></td>
+<td>(0,N)</td>
+<td>(1,1)</td>
+<td><code>item_pedido.id_produto</code> obrigatório.</td>
+</tr>
+<tr>
+<td><a href="#entidade-pedido"><code>pedido</code></a></td>
+<td><a href="#entidade-faturamento"><code>faturamento</code></a></td>
+<td>(0,1)</td>
+<td>(1,1)</td>
+<td><code>faturamento.id_pedido</code> obrigatório e único.</td>
+</tr>
+<tr>
+<td><a href="#entidade-pedido"><code>pedido</code></a></td>
+<td><a href="#entidade-reserva_frango"><code>reserva_frango</code></a></td>
+<td>(0,1)</td>
+<td>(1,1)</td>
+<td><code>reserva_frango.id_pedido</code> obrigatório e único.</td>
+</tr>
+<tr>
+<td><a href="#entidade-produto"><code>produto</code></a></td>
+<td><a href="#entidade-lote_frango"><code>lote_frango</code></a></td>
+<td>(0,N)</td>
+<td>(1,1)</td>
+<td><code>lote_frango.id_produto</code> obrigatório e restrito a produtos de frango elegíveis.</td>
+</tr>
+<tr>
+<td><a href="#entidade-funcionario"><code>funcionario</code></a></td>
+<td><a href="#entidade-fechamento_caixa"><code>fechamento_caixa</code></a></td>
+<td>(0,N)</td>
+<td>(1,1)</td>
+<td><code>fechamento_caixa.id_funcionario</code> obrigatório. O tesoureiro é o responsável relatado pela operação.</td>
+</tr>
+<tr>
+<td><a href="#entidade-fechamento_caixa"><code>fechamento_caixa</code></a></td>
+<td><a href="#entidade-faturamento"><code>faturamento</code></a></td>
+<td>(0,N)</td>
+<td>(0,1)</td>
+<td><code>faturamento.id_fechamento</code> é preenchido quando o pagamento entra na apuração.</td>
+</tr>
+<tr>
+<td><a href="#entidade-faturamento"><code>faturamento</code></a></td>
+<td><a href="#entidade-nota_fiscal"><code>nota_fiscal</code></a></td>
+<td>(0,1)</td>
+<td>(1,1)</td>
+<td><code>nota_fiscal.id_faturamento</code> obrigatório e único.</td>
+</tr>
+<tr>
+<td><a href="#entidade-fornecedor"><code>fornecedor</code></a></td>
+<td><a href="#entidade-compra"><code>compra</code></a></td>
+<td>(0,N)</td>
+<td>(1,1)</td>
+<td><code>compra.id_fornecedor</code> obrigatório.</td>
+</tr>
+<tr>
+<td><a href="#entidade-compra"><code>compra</code></a></td>
+<td><a href="#entidade-item_compra"><code>item_compra</code></a></td>
+<td>(1,N)</td>
+<td>(1,1)</td>
+<td><code>item_compra.id_compra</code> obrigatório. Toda compra salva tem pelo menos um item.</td>
+</tr>
+<tr>
+<td><a href="#entidade-insumo"><code>insumo</code></a></td>
+<td><a href="#entidade-item_compra"><code>item_compra</code></a></td>
+<td>(0,N)</td>
+<td>(1,1)</td>
+<td><code>item_compra.id_insumo</code> obrigatório.</td>
+</tr>
+<tr>
+<td><a href="#entidade-compra"><code>compra</code></a></td>
+<td><a href="#entidade-recebimento"><code>recebimento</code></a></td>
+<td>(0,1)</td>
+<td>(1,1)</td>
+<td><code>recebimento.id_compra</code> obrigatório e único.</td>
+</tr>
+<tr>
+<td><a href="#entidade-funcionario"><code>funcionario</code></a></td>
+<td><a href="#entidade-recebimento"><code>recebimento</code></a></td>
+<td>(0,N)</td>
+<td>(1,1)</td>
+<td><code>recebimento.id_funcionario</code> identifica o funcionário responsável pela conferência.</td>
+</tr>
+<tr>
+<td><a href="#entidade-recebimento"><code>recebimento</code></a></td>
+<td><a href="#entidade-movimentacao_estoque"><code>movimentacao_estoque</code></a></td>
+<td>(1,N)</td>
+<td>(0,1)</td>
+<td>Cada recebimento tem ao menos uma entrada aceita. <code>movimentacao_estoque.id_recebimento</code> é obrigatório para <code>entrada_compra</code> e nulo nos demais tipos.</td>
+</tr>
+<tr>
+<td><a href="#entidade-insumo"><code>insumo</code></a></td>
+<td><a href="#entidade-movimentacao_estoque"><code>movimentacao_estoque</code></a></td>
+<td>(0,N)</td>
+<td>(1,1)</td>
+<td><code>movimentacao_estoque.id_insumo</code> obrigatório. O movimento altera o saldo desse insumo.</td>
+</tr>
+</tbody></table></div>
+
+  </section>
+<section class="chapter" id="entidades" aria-labelledby="titulo-entidades">
+    <div class="section-head"><h2 id="titulo-entidades">6. Entidades e atributos</h2></div>
+    <article class="entity-card" id="entidade-pessoa" aria-labelledby="titulo-pessoa">
+      <h3 id="titulo-pessoa">6.1 Pessoa (tabela <code>pessoa</code>)</h3>
+      <p class="reading">O cadastro guarda o nome da pessoa e serve de base para seu registro como cliente ou funcionário.</p>
+      <p class="formation"><strong>Formação de leitura</strong> <code>pessoa = @id_pessoa + nm_pessoa</code></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Campos de pessoa"><table class="table-fields">
+<thead>
+<tr>
+<th scope="col">Atributo</th>
+<th scope="col">Tipo físico</th>
+<th scope="col">Obrig.</th>
+<th scope="col">Padrão</th>
+<th scope="col">Chave</th>
+<th scope="col">Regra / domínio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id_pessoa</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+<td>Identificador interno.</td>
+</tr>
+<tr>
+<td><code>nm_pessoa</code></td>
+<td><code>varchar(120)</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Nome para identificação no atendimento. Texto sem espaços externos e com pelo menos um caractere útil. Homônimos são permitidos.</td>
+</tr>
+</tbody></table></div>
+
+      <h4>Índices e restrições</h4>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Índices e restrições de pessoa"><table class="table-indexes">
+<thead>
+<tr>
+<th scope="col">Objeto</th>
+<th scope="col">Tipo</th>
+<th scope="col">Colunas</th>
+<th scope="col">Finalidade</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PRIMARY</code></td>
+<td>Chave primária</td>
+<td><code>id_pessoa</code></td>
+<td>Identifica cada registro de forma única.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>pessoa_<wbr>1</code></td>
+<td>Índice B-tree</td>
+<td><code>nm_pessoa</code></td>
+<td>Localizar uma pessoa pelo nome.</td>
+</tr>
+</tbody></table></div>
+
+    </article>
+<article class="entity-card" id="entidade-telefone" aria-labelledby="titulo-telefone">
+      <h3 id="titulo-telefone">6.2 Telefone (tabela <code>telefone</code>)</h3>
+      <p class="reading">Cada número pertence ao cadastro de uma pessoa. O atendimento pode consultá-lo para entrar em contato.</p>
+      <p class="formation"><strong>Formação de leitura</strong> <code>telefone = @id_telefone + id_pessoa + nr_telefone + (tp_telefone)</code></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Campos de telefone"><table class="table-fields">
+<thead>
+<tr>
+<th scope="col">Atributo</th>
+<th scope="col">Tipo físico</th>
+<th scope="col">Obrig.</th>
+<th scope="col">Padrão</th>
+<th scope="col">Chave</th>
+<th scope="col">Regra / domínio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id_telefone</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+<td>Identificador do contato.</td>
+</tr>
+<tr>
+<td><code>id_pessoa</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>FK</td>
+<td>Referência a <code>pessoa</code>.</td>
+</tr>
+<tr>
+<td><code>nr_telefone</code></td>
+<td><code>varchar(16)</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Número de contato normalizado, com código do país. Formato MySQL <code>REGEXP_LIKE(nr_telefone, &#39;^[+][1-9][0-9]{7,14}$&#39;)</code>. UQ com <code>id_pessoa</code>. O mesmo número pode atender pessoas diferentes.</td>
+</tr>
+<tr>
+<td><code>tp_telefone</code></td>
+<td><code>varchar(12)</code></td>
+<td class="optional">Não</td>
+<td>—</td>
+<td>—</td>
+<td>Classificação opcional. Domínio proposto <code>celular</code>, <code>fixo</code>, <code>outro</code>.</td>
+</tr>
+</tbody></table></div>
+
+      <h4>Índices e restrições</h4>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Índices e restrições de telefone"><table class="table-indexes">
+<thead>
+<tr>
+<th scope="col">Objeto</th>
+<th scope="col">Tipo</th>
+<th scope="col">Colunas</th>
+<th scope="col">Finalidade</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PRIMARY</code></td>
+<td>Chave primária</td>
+<td><code>id_telefone</code></td>
+<td>Identifica cada registro de forma única.</td>
+</tr>
+<tr>
+<td><code>fk_<wbr>telefone_<wbr>id_<wbr>pessoa</code></td>
+<td>Chave estrangeira</td>
+<td><code>id_pessoa</code> → <code>pessoa</code></td>
+<td>Mostra de quem é o número usado para avisar a retirada.</td>
+</tr>
+<tr>
+<td><code>uq_<wbr>telefone_<wbr>id_<wbr>pessoa_<wbr>nr_<wbr>telefone</code></td>
+<td><code>UNIQUE</code></td>
+<td><code>id_pessoa</code>, <code>nr_telefone</code></td>
+<td>Um mesmo número é registrado uma vez por pessoa.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>telefone_<wbr>1</code></td>
+<td>Índice B-tree</td>
+<td><code>nr_telefone</code></td>
+<td>Localizar registros de contato pelo número.</td>
+</tr>
+</tbody></table></div>
+
+    </article>
+<article class="entity-card" id="entidade-cliente" aria-labelledby="titulo-cliente">
+      <h3 id="titulo-cliente">6.3 Cliente (tabela <code>cliente</code>)</h3>
+      <p class="reading">O cadastro de cliente vincula a pessoa a seus pedidos e registra quando ela foi cadastrada.</p>
+      <p class="formation"><strong>Formação de leitura</strong> <code>cliente = @id_cliente + id_pessoa + dt_cadastro</code></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Campos de cliente"><table class="table-fields">
+<thead>
+<tr>
+<th scope="col">Atributo</th>
+<th scope="col">Tipo físico</th>
+<th scope="col">Obrig.</th>
+<th scope="col">Padrão</th>
+<th scope="col">Chave</th>
+<th scope="col">Regra / domínio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id_cliente</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+<td>Identificador do cadastro de cliente.</td>
+</tr>
+<tr>
+<td><code>id_pessoa</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>FK, UQ</td>
+<td>Referência a <code>pessoa</code>.</td>
+</tr>
+<tr>
+<td><code>dt_cadastro</code></td>
+<td><code>date</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Data local de criação do cadastro, informada pela aplicação no fuso de negócio.</td>
+</tr>
+</tbody></table></div>
+
+      <h4>Índices e restrições</h4>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Índices e restrições de cliente"><table class="table-indexes">
+<thead>
+<tr>
+<th scope="col">Objeto</th>
+<th scope="col">Tipo</th>
+<th scope="col">Colunas</th>
+<th scope="col">Finalidade</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PRIMARY</code></td>
+<td>Chave primária</td>
+<td><code>id_cliente</code></td>
+<td>Identifica cada registro de forma única.</td>
+</tr>
+<tr>
+<td><code>fk_<wbr>cliente_<wbr>id_<wbr>pessoa</code></td>
+<td>Chave estrangeira</td>
+<td><code>id_pessoa</code> → <code>pessoa</code></td>
+<td>Usa o nome da pessoa no cadastro de cliente.</td>
+</tr>
+<tr>
+<td><code>uq_<wbr>cliente_<wbr>id_<wbr>pessoa</code></td>
+<td><code>UNIQUE</code></td>
+<td><code>id_pessoa</code></td>
+<td>Um cadastro de cliente por pessoa.</td>
+</tr>
+</tbody></table></div>
+
+    </article>
+<article class="entity-card" id="entidade-funcionario" aria-labelledby="titulo-funcionario">
+      <h3 id="titulo-funcionario">6.4 Funcionário (tabela <code>funcionario</code>)</h3>
+      <p class="reading">O cadastro identifica o funcionário responsável por registrar um pedido ou um fechamento de caixa.</p>
+      <p class="formation"><strong>Formação de leitura</strong> <code>funcionario = @id_funcionario + id_pessoa + nm_cargo + (vr_salario_base) + tp_situacao</code></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Campos de funcionario"><table class="table-fields">
+<thead>
+<tr>
+<th scope="col">Atributo</th>
+<th scope="col">Tipo físico</th>
+<th scope="col">Obrig.</th>
+<th scope="col">Padrão</th>
+<th scope="col">Chave</th>
+<th scope="col">Regra / domínio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id_funcionario</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+<td>Identificador operacional.</td>
+</tr>
+<tr>
+<td><code>id_pessoa</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>FK, UQ</td>
+<td>Referência a <code>pessoa</code>.</td>
+</tr>
+<tr>
+<td><code>nm_cargo</code></td>
+<td><code>varchar(60)</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Função exercida. Texto não vazio. A permissão vem da conta autenticada.</td>
+</tr>
+<tr>
+<td><code>vr_salario_base</code></td>
+<td><code>decimal(14,2)</code></td>
+<td class="optional">Não</td>
+<td>—</td>
+<td>—</td>
+<td>Salário-base em reais, quando informado. <code>CHECK &gt;= 0</code> se preenchido. Visível apenas para administração autorizada.</td>
+</tr>
+<tr>
+<td><code>tp_situacao</code></td>
+<td><code>varchar(10)</code></td>
+<td class="required">Sim</td>
+<td><code>ativo</code></td>
+<td>—</td>
+<td><code>ativo</code>, <code>inativo</code>. Inativação preserva a autoria histórica.</td>
+</tr>
+</tbody></table></div>
+
+      <h4>Índices e restrições</h4>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Índices e restrições de funcionario"><table class="table-indexes">
+<thead>
+<tr>
+<th scope="col">Objeto</th>
+<th scope="col">Tipo</th>
+<th scope="col">Colunas</th>
+<th scope="col">Finalidade</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PRIMARY</code></td>
+<td>Chave primária</td>
+<td><code>id_funcionario</code></td>
+<td>Identifica cada registro de forma única.</td>
+</tr>
+<tr>
+<td><code>fk_<wbr>funcionario_<wbr>id_<wbr>pessoa</code></td>
+<td>Chave estrangeira</td>
+<td><code>id_pessoa</code> → <code>pessoa</code></td>
+<td>Liga a função da equipe ao cadastro da pessoa.</td>
+</tr>
+<tr>
+<td><code>uq_<wbr>funcionario_<wbr>id_<wbr>pessoa</code></td>
+<td><code>UNIQUE</code></td>
+<td><code>id_pessoa</code></td>
+<td>Um cadastro de funcionário por pessoa.</td>
+</tr>
+</tbody></table></div>
+
+    </article>
+<article class="entity-card" id="entidade-pedido" aria-labelledby="titulo-pedido">
+      <h3 id="titulo-pedido">6.5 Pedido (tabela <code>pedido</code>)</h3>
+      <p class="reading">Todo pedido identifica o cliente e o funcionário que o registrou. A mesa identifica onde servir um pedido de consumo no local.</p>
+      <p class="formation"><strong>Formação de leitura</strong> <code>pedido = @id_pedido + id_cliente + id_funcionario + dh_abertura + tp_consumo + (id_mesa) + tp_situacao</code></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Campos de pedido"><table class="table-fields">
+<thead>
+<tr>
+<th scope="col">Atributo</th>
+<th scope="col">Tipo físico</th>
+<th scope="col">Obrig.</th>
+<th scope="col">Padrão</th>
+<th scope="col">Chave</th>
+<th scope="col">Regra / domínio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id_pedido</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+<td>Identificador do pedido.</td>
+</tr>
+<tr>
+<td><code>id_cliente</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>FK</td>
+<td>Referência a <code>cliente</code>. Identifica o cliente em todo pedido, no local ou para retirada.</td>
+</tr>
+<tr>
+<td><code>id_funcionario</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>FK</td>
+<td>Referência a <code>funcionario</code>. Identifica quem abriu o registro, sob controle do representante legal.</td>
+</tr>
+<tr>
+<td><code>dh_abertura</code></td>
+<td><code>datetime(6)</code></td>
+<td class="required">Sim</td>
+<td><code>(UTC_TIMESTAMP(6))</code></td>
+<td>—</td>
+<td>Instante de abertura.</td>
+</tr>
+<tr>
+<td><code>tp_consumo</code></td>
+<td><code>varchar(10)</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td><code>local</code>, <code>retirada</code>.</td>
+</tr>
+<tr>
+<td><code>id_mesa</code></td>
+<td><code>bigint</code></td>
+<td class="optional">Não</td>
+<td>—</td>
+<td>FK</td>
+<td>Referência a <code>mesa</code>. Usar quando o pedido no local ocupar uma mesa. Em <code>retirada</code>, o campo é nulo.</td>
+</tr>
+<tr>
+<td><code>tp_situacao</code></td>
+<td><code>varchar(16)</code></td>
+<td class="required">Sim</td>
+<td><code>aberto</code></td>
+<td>—</td>
+<td><code>aberto</code>, <code>confirmado</code>, <code>em_preparo</code>, <code>pronto</code>, <code>concluido</code>, <code>cancelado</code>. <code>aberto</code> já tem pelo menos um item. <code>confirmado</code> representa o pedido efetivado após pagamento.</td>
+</tr>
+</tbody></table></div>
+
+      <h4>Índices e restrições</h4>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Índices e restrições de pedido"><table class="table-indexes">
+<thead>
+<tr>
+<th scope="col">Objeto</th>
+<th scope="col">Tipo</th>
+<th scope="col">Colunas</th>
+<th scope="col">Finalidade</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PRIMARY</code></td>
+<td>Chave primária</td>
+<td><code>id_pedido</code></td>
+<td>Identifica cada registro de forma única.</td>
+</tr>
+<tr>
+<td><code>fk_<wbr>pedido_<wbr>id_<wbr>cliente</code></td>
+<td>Chave estrangeira</td>
+<td><code>id_cliente</code> → <code>cliente</code></td>
+<td>Localiza o contato do cliente quando há retirada.</td>
+</tr>
+<tr>
+<td><code>fk_<wbr>pedido_<wbr>id_<wbr>funcionario</code></td>
+<td>Chave estrangeira</td>
+<td><code>id_funcionario</code> → <code>funcionario</code></td>
+<td>Identifica quem abriu o pedido.</td>
+</tr>
+<tr>
+<td><code>fk_<wbr>pedido_<wbr>id_<wbr>mesa</code></td>
+<td>Chave estrangeira</td>
+<td><code>id_mesa</code> → <code>mesa</code></td>
+<td>Localiza a mesa ocupada pelo pedido no salão.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>pedido_<wbr>1</code></td>
+<td>Índice B-tree</td>
+<td><code>id_cliente</code>, <code>dh_abertura</code></td>
+<td>Consultar o histórico de um cliente por data.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>pedido_<wbr>2</code></td>
+<td>Índice B-tree</td>
+<td><code>id_funcionario</code></td>
+<td>Localizar pedidos abertos por um funcionário.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>pedido_<wbr>3</code></td>
+<td>Índice B-tree</td>
+<td><code>id_mesa</code></td>
+<td>Localizar pedidos atendidos em uma mesa.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>pedido_<wbr>4</code></td>
+<td>Índice B-tree</td>
+<td><code>dh_abertura</code></td>
+<td>Selecionar pedidos por período.</td>
+</tr>
+</tbody></table></div>
+
+    </article>
+<article class="entity-card" id="entidade-item_pedido" aria-labelledby="titulo-item_pedido">
+      <h3 id="titulo-item_pedido">6.6 Item do pedido (tabela <code>item_pedido</code>)</h3>
+      <p class="reading">Cada linha guarda o produto, a quantidade e o preço usado naquele pedido. A cozinha também pode consultar a observação de preparo.</p>
+      <p class="formation"><strong>Formação de leitura</strong> <code>item_pedido = @id_item_pedido + id_pedido + id_produto + qt_item + vr_unitario_aplicado + (ds_observacao)</code></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Campos de item_pedido"><table class="table-fields">
+<thead>
+<tr>
+<th scope="col">Atributo</th>
+<th scope="col">Tipo físico</th>
+<th scope="col">Obrig.</th>
+<th scope="col">Padrão</th>
+<th scope="col">Chave</th>
+<th scope="col">Regra / domínio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id_item_pedido</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+<td>Identificador da linha.</td>
+</tr>
+<tr>
+<td><code>id_pedido</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>FK</td>
+<td>Referência a <code>pedido</code>.</td>
+</tr>
+<tr>
+<td><code>id_produto</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>FK</td>
+<td>Referência a <code>produto</code>.</td>
+</tr>
+<tr>
+<td><code>qt_item</code></td>
+<td><code>int</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Quantidade de porções ou unidades. <code>CHECK &gt; 0</code>.</td>
+</tr>
+<tr>
+<td><code>vr_unitario_aplicado</code></td>
+<td><code>decimal(14,2)</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Preço unitário em reais no momento da venda. <code>CHECK &gt;= 0</code>. O subtotal é <code>qt_item × vr_unitario_aplicado</code>.</td>
+</tr>
+<tr>
+<td><code>ds_observacao</code></td>
+<td><code>varchar(300)</code></td>
+<td class="optional">Não</td>
+<td>—</td>
+<td>—</td>
+<td>Instrução de preparo quando necessária.</td>
+</tr>
+</tbody></table></div>
+
+      <h4>Índices e restrições</h4>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Índices e restrições de item_pedido"><table class="table-indexes">
+<thead>
+<tr>
+<th scope="col">Objeto</th>
+<th scope="col">Tipo</th>
+<th scope="col">Colunas</th>
+<th scope="col">Finalidade</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PRIMARY</code></td>
+<td>Chave primária</td>
+<td><code>id_item_pedido</code></td>
+<td>Identifica cada registro de forma única.</td>
+</tr>
+<tr>
+<td><code>fk_<wbr>item_<wbr>pedido_<wbr>id_<wbr>pedido</code></td>
+<td>Chave estrangeira</td>
+<td><code>id_pedido</code> → <code>pedido</code></td>
+<td>Mantém cada linha na venda que a originou.</td>
+</tr>
+<tr>
+<td><code>fk_<wbr>item_<wbr>pedido_<wbr>id_<wbr>produto</code></td>
+<td>Chave estrangeira</td>
+<td><code>id_produto</code> → <code>produto</code></td>
+<td>Indica qual item do cardápio foi vendido.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>item_<wbr>pedido_<wbr>1</code></td>
+<td>Índice B-tree</td>
+<td><code>id_pedido</code></td>
+<td>Listar os itens de um pedido.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>item_<wbr>pedido_<wbr>2</code></td>
+<td>Índice B-tree</td>
+<td><code>id_produto</code></td>
+<td>Encontrar pedidos que incluem um produto.</td>
+</tr>
+</tbody></table></div>
+
+    </article>
+<article class="entity-card" id="entidade-produto" aria-labelledby="titulo-produto">
+      <h3 id="titulo-produto">6.7 Produto (tabela <code>produto</code>)</h3>
+      <p class="reading">O atendimento consulta o preço atual e a disponibilidade do produto no cardápio.</p>
+      <p class="formation"><strong>Formação de leitura</strong> <code>produto = @id_produto + nm_produto + (ds_produto) + vr_preco + cd_categoria + fl_disponivel</code></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Campos de produto"><table class="table-fields">
+<thead>
+<tr>
+<th scope="col">Atributo</th>
+<th scope="col">Tipo físico</th>
+<th scope="col">Obrig.</th>
+<th scope="col">Padrão</th>
+<th scope="col">Chave</th>
+<th scope="col">Regra / domínio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id_produto</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+<td>Identificador do item de cardápio.</td>
+</tr>
+<tr>
+<td><code>nm_produto</code></td>
+<td><code>varchar(120)</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Nome de exibição. Texto não vazio.</td>
+</tr>
+<tr>
+<td><code>ds_produto</code></td>
+<td><code>varchar(300)</code></td>
+<td class="optional">Não</td>
+<td>—</td>
+<td>—</td>
+<td>Descrição para o cardápio.</td>
+</tr>
+<tr>
+<td><code>vr_preco</code></td>
+<td><code>decimal(14,2)</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Preço atual de venda em reais. <code>CHECK &gt;= 0</code>.</td>
+</tr>
+<tr>
+<td><code>cd_categoria</code></td>
+<td><code>varchar(30)</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Domínio <code>refeicao</code>, <code>frango_assado</code>, <code>bebida</code>, <code>acompanhamento</code>, <code>outro</code>. Usar <code>frango_assado</code> para frango inteiro elegível a encomenda e produção por lote.</td>
+</tr>
+<tr>
+<td><code>fl_disponivel</code></td>
+<td><code>tinyint</code></td>
+<td class="required">Sim</td>
+<td><code>0</code></td>
+<td>—</td>
+<td><code>CHECK IN (0,1)</code>. Disponibilidade conferida pela cozinheira com acompanhamento do representante. O item deixa de ser vendido quando se esgota.</td>
+</tr>
+</tbody></table></div>
+
+      <h4>Índices e restrições</h4>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Índices e restrições de produto"><table class="table-indexes">
+<thead>
+<tr>
+<th scope="col">Objeto</th>
+<th scope="col">Tipo</th>
+<th scope="col">Colunas</th>
+<th scope="col">Finalidade</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PRIMARY</code></td>
+<td>Chave primária</td>
+<td><code>id_produto</code></td>
+<td>Identifica cada registro de forma única.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>produto_<wbr>1</code></td>
+<td>Índice B-tree</td>
+<td><code>cd_categoria</code>, <code>nm_produto</code></td>
+<td>Listar os produtos de uma categoria por nome.</td>
+</tr>
+</tbody></table></div>
+
+    </article>
+<article class="entity-card" id="entidade-faturamento" aria-labelledby="titulo-faturamento">
+      <h3 id="titulo-faturamento">6.8 Faturamento (tabela <code>faturamento</code>)</h3>
+      <p class="reading">O faturamento registra o valor, a forma de pagamento e a situação financeira do pedido. Ele pode ser ligado ao fechamento em que foi apurado.</p>
+      <p class="formation"><strong>Formação de leitura</strong> <code>faturamento = @id_faturamento + id_pedido + (dh_pagamento) + vr_total + (tp_forma_pagamento) + tp_situacao + (id_fechamento)</code></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Campos de faturamento"><table class="table-fields">
+<thead>
+<tr>
+<th scope="col">Atributo</th>
+<th scope="col">Tipo físico</th>
+<th scope="col">Obrig.</th>
+<th scope="col">Padrão</th>
+<th scope="col">Chave</th>
+<th scope="col">Regra / domínio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id_faturamento</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+<td>Identificador do registro financeiro.</td>
+</tr>
+<tr>
+<td><code>id_pedido</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>FK, UQ</td>
+<td>Referência a <code>pedido</code>.</td>
+</tr>
+<tr>
+<td><code>dh_pagamento</code></td>
+<td><code>datetime(6)</code></td>
+<td class="optional">Não</td>
+<td>—</td>
+<td>—</td>
+<td>Data e hora do pagamento. Obrigatória quando o pagamento é confirmado.</td>
+</tr>
+<tr>
+<td><code>vr_total</code></td>
+<td><code>decimal(14,2)</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Valor integral do registro em reais. <code>CHECK &gt;= 0</code>. Corresponde ao total do pedido no fluxo inicial.</td>
+</tr>
+<tr>
+<td><code>tp_forma_pagamento</code></td>
+<td><code>varchar(20)</code></td>
+<td class="optional">Não</td>
+<td>—</td>
+<td>—</td>
+<td><code>dinheiro</code>, <code>pix</code>, <code>cartao_debito</code>, <code>cartao_credito</code>. Obrigatória quando o pagamento é confirmado.</td>
+</tr>
+<tr>
+<td><code>tp_situacao</code></td>
+<td><code>varchar(12)</code></td>
+<td class="required">Sim</td>
+<td><code>pendente</code></td>
+<td>—</td>
+<td><code>pendente</code>, <code>pago</code>, <code>cancelado</code>. <code>cancelado</code> encerra um registro sem pagamento.</td>
+</tr>
+<tr>
+<td><code>id_fechamento</code></td>
+<td><code>bigint</code></td>
+<td class="optional">Não</td>
+<td>—</td>
+<td>FK</td>
+<td>Referência a <code>fechamento_caixa</code>. Identifica o fechamento que apurou o recebimento. Nulo até a apuração.</td>
+</tr>
+</tbody></table></div>
+
+      <h4>Índices e restrições</h4>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Índices e restrições de faturamento"><table class="table-indexes">
+<thead>
+<tr>
+<th scope="col">Objeto</th>
+<th scope="col">Tipo</th>
+<th scope="col">Colunas</th>
+<th scope="col">Finalidade</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PRIMARY</code></td>
+<td>Chave primária</td>
+<td><code>id_faturamento</code></td>
+<td>Identifica cada registro de forma única.</td>
+</tr>
+<tr>
+<td><code>fk_<wbr>faturamento_<wbr>id_<wbr>pedido</code></td>
+<td>Chave estrangeira</td>
+<td><code>id_pedido</code> → <code>pedido</code></td>
+<td>Identifica o pedido a que pertence o registro financeiro.</td>
+</tr>
+<tr>
+<td><code>fk_<wbr>faturamento_<wbr>id_<wbr>fechamento</code></td>
+<td>Chave estrangeira</td>
+<td><code>id_fechamento</code> → <code>fechamento_caixa</code></td>
+<td>Identifica a apuração diária em que o pagamento foi incluído.</td>
+</tr>
+<tr>
+<td><code>uq_<wbr>faturamento_<wbr>id_<wbr>pedido</code></td>
+<td><code>UNIQUE</code></td>
+<td><code>id_pedido</code></td>
+<td>Até um faturamento por pedido.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>faturamento_<wbr>1</code></td>
+<td>Índice B-tree</td>
+<td><code>dh_pagamento</code></td>
+<td>Consultar pagamentos por data.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>faturamento_<wbr>2</code></td>
+<td>Índice B-tree</td>
+<td><code>id_fechamento</code></td>
+<td>Consultar os pagamentos apurados em um fechamento.</td>
+</tr>
+</tbody></table></div>
+
+    </article>
+<article class="entity-card" id="entidade-reserva_frango" aria-labelledby="titulo-reserva_frango">
+      <h3 id="titulo-reserva_frango">6.9 Reserva de frango (tabela <code>reserva_frango</code>)</h3>
+      <p class="reading">A encomenda informa quantos frangos foram reservados, quando serão retirados e se houve pagamento antecipado.</p>
+      <p class="formation"><strong>Formação de leitura</strong> <code>reserva_frango = @id_reserva_frango + id_pedido + qt_reservada + dh_retirada_prevista + tp_situacao + fl_pagamento_antecipado</code></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Campos de reserva_frango"><table class="table-fields">
+<thead>
+<tr>
+<th scope="col">Atributo</th>
+<th scope="col">Tipo físico</th>
+<th scope="col">Obrig.</th>
+<th scope="col">Padrão</th>
+<th scope="col">Chave</th>
+<th scope="col">Regra / domínio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id_reserva_frango</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+<td>Identificador da encomenda.</td>
+</tr>
+<tr>
+<td><code>id_pedido</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>FK, UQ</td>
+<td>Referência a <code>pedido</code>.</td>
+</tr>
+<tr>
+<td><code>qt_reservada</code></td>
+<td><code>int</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Quantidade de frangos encomendados. <code>CHECK &gt; 0</code>.</td>
+</tr>
+<tr>
+<td><code>dh_retirada_prevista</code></td>
+<td><code>datetime(6)</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Dia e hora combinados para retirada.</td>
+</tr>
+<tr>
+<td><code>tp_situacao</code></td>
+<td><code>varchar(14)</code></td>
+<td class="required">Sim</td>
+<td><code>registrada</code></td>
+<td>—</td>
+<td><code>registrada</code>, <code>confirmada</code>, <code>retirada</code>, <code>cancelada</code>.</td>
+</tr>
+<tr>
+<td><code>fl_pagamento_antecipado</code></td>
+<td><code>tinyint</code></td>
+<td class="required">Sim</td>
+<td><code>0</code></td>
+<td>—</td>
+<td><code>CHECK IN (0,1)</code>. Recebe <code>1</code> na transação que confirma um pagamento anterior à retirada. Se a encomenda for cadastrada depois de um pagamento válido, o indicador já começa em <code>1</code>. A efetivação muda a situação da encomenda para <code>confirmada</code>.</td>
+</tr>
+</tbody></table></div>
+
+      <h4>Índices e restrições</h4>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Índices e restrições de reserva_frango"><table class="table-indexes">
+<thead>
+<tr>
+<th scope="col">Objeto</th>
+<th scope="col">Tipo</th>
+<th scope="col">Colunas</th>
+<th scope="col">Finalidade</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PRIMARY</code></td>
+<td>Chave primária</td>
+<td><code>id_reserva_frango</code></td>
+<td>Identifica cada registro de forma única.</td>
+</tr>
+<tr>
+<td><code>fk_<wbr>reserva_<wbr>frango_<wbr>id_<wbr>pedido</code></td>
+<td>Chave estrangeira</td>
+<td><code>id_pedido</code> → <code>pedido</code></td>
+<td>Liga o horário de retirada aos itens e ao pagamento do pedido.</td>
+</tr>
+<tr>
+<td><code>uq_<wbr>reserva_<wbr>frango_<wbr>id_<wbr>pedido</code></td>
+<td><code>UNIQUE</code></td>
+<td><code>id_pedido</code></td>
+<td>Até uma encomenda por pedido.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>reserva_<wbr>frango_<wbr>1</code></td>
+<td>Índice B-tree</td>
+<td><code>dh_retirada_prevista</code></td>
+<td>Consultar as retiradas previstas por data e horário.</td>
+</tr>
+</tbody></table></div>
+
+    </article>
+<article class="entity-card" id="entidade-lote_frango" aria-labelledby="titulo-lote_frango">
+      <h3 id="titulo-lote_frango">6.10 Lote de frango (tabela <code>lote_frango</code>)</h3>
+      <p class="reading">O lote registra quantos frangos foram produzidos e quantos ainda estão disponíveis.</p>
+      <p class="formation"><strong>Formação de leitura</strong> <code>lote_frango = @id_lote + id_produto + dt_producao + qt_produzida + qt_disponivel</code></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Campos de lote_frango"><table class="table-fields">
+<thead>
+<tr>
+<th scope="col">Atributo</th>
+<th scope="col">Tipo físico</th>
+<th scope="col">Obrig.</th>
+<th scope="col">Padrão</th>
+<th scope="col">Chave</th>
+<th scope="col">Regra / domínio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id_lote</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+<td>Identificador próprio do lote.</td>
+</tr>
+<tr>
+<td><code>id_produto</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>FK</td>
+<td>Referência a <code>produto</code>. Tipo de frango produzido.</td>
+</tr>
+<tr>
+<td><code>dt_producao</code></td>
+<td><code>date</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Data local da produção.</td>
+</tr>
+<tr>
+<td><code>qt_produzida</code></td>
+<td><code>int</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Frangos inicialmente produzidos. <code>CHECK &gt; 0</code>.</td>
+</tr>
+<tr>
+<td><code>qt_disponivel</code></td>
+<td><code>int</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Frangos ainda disponíveis. <code>CHECK 0 &lt;= qt_disponivel &lt;= qt_produzida</code>. Começa igual à produção. A cozinha atualiza o saldo no próprio lote.</td>
+</tr>
+</tbody></table></div>
+
+      <h4>Índices e restrições</h4>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Índices e restrições de lote_frango"><table class="table-indexes">
+<thead>
+<tr>
+<th scope="col">Objeto</th>
+<th scope="col">Tipo</th>
+<th scope="col">Colunas</th>
+<th scope="col">Finalidade</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PRIMARY</code></td>
+<td>Chave primária</td>
+<td><code>id_lote</code></td>
+<td>Identifica cada registro de forma única.</td>
+</tr>
+<tr>
+<td><code>fk_<wbr>lote_<wbr>frango_<wbr>id_<wbr>produto</code></td>
+<td>Chave estrangeira</td>
+<td><code>id_produto</code> → <code>produto</code></td>
+<td>Identifica o produto que saiu da cozinha nesse lote.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>lote_<wbr>frango_<wbr>1</code></td>
+<td>Índice B-tree</td>
+<td><code>id_produto</code>, <code>dt_producao</code></td>
+<td>Consultar os lotes de um produto por data de produção.</td>
+</tr>
+</tbody></table></div>
+
+    </article>
+<article class="entity-card" id="entidade-fechamento_caixa" aria-labelledby="titulo-fechamento_caixa">
+      <h3 id="titulo-fechamento_caixa">6.11 Fechamento de caixa (tabela <code>fechamento_caixa</code>)</h3>
+      <p class="reading">O tesoureiro registra o dia do fechamento e os totais em dinheiro, Pix e cartão.</p>
+      <p class="formation"><strong>Formação de leitura</strong> <code>fechamento_caixa = @id_fechamento + id_funcionario + dt_fechamento + vr_total_dinheiro + vr_total_pix + vr_total_cartao + (ds_observacao)</code></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Campos de fechamento_caixa"><table class="table-fields">
+<thead>
+<tr>
+<th scope="col">Atributo</th>
+<th scope="col">Tipo físico</th>
+<th scope="col">Obrig.</th>
+<th scope="col">Padrão</th>
+<th scope="col">Chave</th>
+<th scope="col">Regra / domínio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id_fechamento</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+<td>Identificador da conferência.</td>
+</tr>
+<tr>
+<td><code>id_funcionario</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>FK</td>
+<td>Referência a <code>funcionario</code>. Identifica o funcionário ativo que fez a apuração. A aplicação associa o funcionário à conta de tesouraria autorizada.</td>
+</tr>
+<tr>
+<td><code>dt_fechamento</code></td>
+<td><code>date</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>UQ</td>
+<td>Dia de operação conferido. UQ para um fechamento por dia.</td>
+</tr>
+<tr>
+<td><code>vr_total_dinheiro</code></td>
+<td><code>decimal(14,2)</code></td>
+<td class="required">Sim</td>
+<td><code>0</code></td>
+<td>—</td>
+<td>Total apurado dos pagamentos em espécie vinculados, sem fundo de troco. <code>CHECK &gt;= 0</code>.</td>
+</tr>
+<tr>
+<td><code>vr_total_pix</code></td>
+<td><code>decimal(14,2)</code></td>
+<td class="required">Sim</td>
+<td><code>0</code></td>
+<td>—</td>
+<td>Total apurado dos pagamentos via Pix vinculados. <code>CHECK &gt;= 0</code>.</td>
+</tr>
+<tr>
+<td><code>vr_total_cartao</code></td>
+<td><code>decimal(14,2)</code></td>
+<td class="required">Sim</td>
+<td><code>0</code></td>
+<td>—</td>
+<td>Soma dos pagamentos vinculados por cartão de débito e crédito. <code>CHECK &gt;= 0</code>.</td>
+</tr>
+<tr>
+<td><code>ds_observacao</code></td>
+<td><code>varchar(400)</code></td>
+<td class="optional">Não</td>
+<td>—</td>
+<td>—</td>
+<td>Nota operacional sobre o fechamento.</td>
+</tr>
+</tbody></table></div>
+
+      <h4>Índices e restrições</h4>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Índices e restrições de fechamento_caixa"><table class="table-indexes">
+<thead>
+<tr>
+<th scope="col">Objeto</th>
+<th scope="col">Tipo</th>
+<th scope="col">Colunas</th>
+<th scope="col">Finalidade</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PRIMARY</code></td>
+<td>Chave primária</td>
+<td><code>id_fechamento</code></td>
+<td>Identifica cada registro de forma única.</td>
+</tr>
+<tr>
+<td><code>fk_<wbr>fechamento_<wbr>caixa_<wbr>id_<wbr>funcionario</code></td>
+<td>Chave estrangeira</td>
+<td><code>id_funcionario</code> → <code>funcionario</code></td>
+<td>Identifica quem registrou o fechamento do dia.</td>
+</tr>
+<tr>
+<td><code>uq_<wbr>fechamento_<wbr>caixa_<wbr>dt_<wbr>fechamento</code></td>
+<td><code>UNIQUE</code></td>
+<td><code>dt_fechamento</code></td>
+<td>Um fechamento por dia de operação.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>fechamento_<wbr>caixa_<wbr>1</code></td>
+<td>Índice B-tree</td>
+<td><code>id_funcionario</code></td>
+<td>Localizar fechamentos pelo funcionário responsável.</td>
+</tr>
+</tbody></table></div>
+
+    </article>
+<article class="entity-card" id="entidade-fornecedor" aria-labelledby="titulo-fornecedor">
+      <h3 id="titulo-fornecedor">6.12 Fornecedor (tabela <code>fornecedor</code>)</h3>
+      <p class="reading">O cadastro identifica o fornecedor e reúne os dados disponíveis para contato comercial.</p>
+      <p class="formation"><strong>Formação de leitura</strong> <code>fornecedor = @id_fornecedor + nm_fornecedor + (ds_contato) + (nr_cnpj)</code></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Campos de fornecedor"><table class="table-fields">
+<thead>
+<tr>
+<th scope="col">Atributo</th>
+<th scope="col">Tipo físico</th>
+<th scope="col">Obrig.</th>
+<th scope="col">Padrão</th>
+<th scope="col">Chave</th>
+<th scope="col">Regra / domínio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id_fornecedor</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+<td>Identificador interno.</td>
+</tr>
+<tr>
+<td><code>nm_fornecedor</code></td>
+<td><code>varchar(150)</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Nome comercial ou razão social de uso no cadastro. Texto não vazio.</td>
+</tr>
+<tr>
+<td><code>ds_contato</code></td>
+<td><code>varchar(120)</code></td>
+<td class="optional">Não</td>
+<td>—</td>
+<td>—</td>
+<td>Canal comercial de contato. A estrutura final do campo depende dos canais utilizados.</td>
+</tr>
+<tr>
+<td><code>nr_cnpj</code></td>
+<td><code>varchar(20)</code></td>
+<td class="optional">Não</td>
+<td>—</td>
+<td>UQ</td>
+<td>Identificador cadastral da empresa, quando pertinente. Guardar sem pontuação, em maiúsculas, com UQ para valor preenchido.</td>
+</tr>
+</tbody></table></div>
+
+      <h4>Índices e restrições</h4>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Índices e restrições de fornecedor"><table class="table-indexes">
+<thead>
+<tr>
+<th scope="col">Objeto</th>
+<th scope="col">Tipo</th>
+<th scope="col">Colunas</th>
+<th scope="col">Finalidade</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PRIMARY</code></td>
+<td>Chave primária</td>
+<td><code>id_fornecedor</code></td>
+<td>Identifica cada registro de forma única.</td>
+</tr>
+<tr>
+<td><code>uq_<wbr>fornecedor_<wbr>nr_<wbr>cnpj</code></td>
+<td><code>UNIQUE</code></td>
+<td><code>nr_cnpj</code></td>
+<td>Evita repetir um CNPJ informado.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>fornecedor_<wbr>1</code></td>
+<td>Índice B-tree</td>
+<td><code>nm_fornecedor</code></td>
+<td>Localizar fornecedores pelo nome comercial.</td>
+</tr>
+</tbody></table></div>
+
+    </article>
+<article class="entity-card" id="entidade-compra" aria-labelledby="titulo-compra">
+      <h3 id="titulo-compra">6.13 Compra (tabela <code>compra</code>)</h3>
+      <p class="reading">A compra identifica o fornecedor e registra a data, o valor total e a situação da aquisição.</p>
+      <p class="formation"><strong>Formação de leitura</strong> <code>compra = @id_compra + id_fornecedor + dt_compra + vr_total + tp_situacao</code></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Campos de compra"><table class="table-fields">
+<thead>
+<tr>
+<th scope="col">Atributo</th>
+<th scope="col">Tipo físico</th>
+<th scope="col">Obrig.</th>
+<th scope="col">Padrão</th>
+<th scope="col">Chave</th>
+<th scope="col">Regra / domínio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id_compra</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+<td>Identificador da compra.</td>
+</tr>
+<tr>
+<td><code>id_fornecedor</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>FK</td>
+<td>Referência a <code>fornecedor</code>.</td>
+</tr>
+<tr>
+<td><code>dt_compra</code></td>
+<td><code>date</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Data efetiva da compra.</td>
+</tr>
+<tr>
+<td><code>vr_total</code></td>
+<td><code>decimal(14,2)</code></td>
+<td class="required">Sim</td>
+<td><code>0</code></td>
+<td>—</td>
+<td>Total em reais. <code>CHECK &gt;= 0</code>. Atualizado na mesma transação dos itens.</td>
+</tr>
+<tr>
+<td><code>tp_situacao</code></td>
+<td><code>varchar(12)</code></td>
+<td class="required">Sim</td>
+<td><code>aberta</code></td>
+<td>—</td>
+<td><code>aberta</code>, <code>registrada</code>, <code>recebida</code>, <code>encerrada</code>, <code>cancelada</code>. <code>recebida</code> indica entrega integral. <code>encerrada</code> indica que a compra teve seu único recebimento com diferença nas quantidades.</td>
+</tr>
+</tbody></table></div>
+
+      <h4>Índices e restrições</h4>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Índices e restrições de compra"><table class="table-indexes">
+<thead>
+<tr>
+<th scope="col">Objeto</th>
+<th scope="col">Tipo</th>
+<th scope="col">Colunas</th>
+<th scope="col">Finalidade</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PRIMARY</code></td>
+<td>Chave primária</td>
+<td><code>id_compra</code></td>
+<td>Identifica cada registro de forma única.</td>
+</tr>
+<tr>
+<td><code>fk_<wbr>compra_<wbr>id_<wbr>fornecedor</code></td>
+<td>Chave estrangeira</td>
+<td><code>id_fornecedor</code> → <code>fornecedor</code></td>
+<td>Permite consultar de quem foi feita a compra.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>compra_<wbr>1</code></td>
+<td>Índice B-tree</td>
+<td><code>id_fornecedor</code>, <code>dt_compra</code></td>
+<td>Consultar compras de um fornecedor por data.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>compra_<wbr>2</code></td>
+<td>Índice B-tree</td>
+<td><code>dt_compra</code></td>
+<td>Consultar compras por período.</td>
+</tr>
+</tbody></table></div>
+
+    </article>
+<article class="entity-card" id="entidade-item_compra" aria-labelledby="titulo-item_compra">
+      <h3 id="titulo-item_compra">6.14 Item da compra (tabela <code>item_compra</code>)</h3>
+      <p class="reading">Cada linha registra o insumo comprado, a quantidade e o valor por unidade.</p>
+      <p class="formation"><strong>Formação de leitura</strong> <code>item_compra = @id_item_compra + id_compra + id_insumo + qt_comprada + vr_unitario</code></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Campos de item_compra"><table class="table-fields">
+<thead>
+<tr>
+<th scope="col">Atributo</th>
+<th scope="col">Tipo físico</th>
+<th scope="col">Obrig.</th>
+<th scope="col">Padrão</th>
+<th scope="col">Chave</th>
+<th scope="col">Regra / domínio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id_item_compra</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+<td>Identificador da linha.</td>
+</tr>
+<tr>
+<td><code>id_compra</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>FK</td>
+<td>Referência a <code>compra</code>.</td>
+</tr>
+<tr>
+<td><code>id_insumo</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>FK</td>
+<td>Referência a <code>insumo</code>.</td>
+</tr>
+<tr>
+<td><code>qt_comprada</code></td>
+<td><code>decimal(14,3)</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Quantidade na unidade de estoque do insumo. <code>CHECK &gt; 0</code>.</td>
+</tr>
+<tr>
+<td><code>vr_unitario</code></td>
+<td><code>decimal(14,4)</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Custo em reais por unidade de estoque. <code>CHECK &gt;= 0</code>.</td>
+</tr>
+</tbody></table></div>
+
+      <h4>Índices e restrições</h4>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Índices e restrições de item_compra"><table class="table-indexes">
+<thead>
+<tr>
+<th scope="col">Objeto</th>
+<th scope="col">Tipo</th>
+<th scope="col">Colunas</th>
+<th scope="col">Finalidade</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PRIMARY</code></td>
+<td>Chave primária</td>
+<td><code>id_item_compra</code></td>
+<td>Identifica cada registro de forma única.</td>
+</tr>
+<tr>
+<td><code>fk_<wbr>item_<wbr>compra_<wbr>id_<wbr>compra</code></td>
+<td>Chave estrangeira</td>
+<td><code>id_compra</code> → <code>compra</code></td>
+<td>Reúne as linhas compradas do fornecedor.</td>
+</tr>
+<tr>
+<td><code>fk_<wbr>item_<wbr>compra_<wbr>id_<wbr>insumo</code></td>
+<td>Chave estrangeira</td>
+<td><code>id_insumo</code> → <code>insumo</code></td>
+<td>Identifica o insumo e a unidade usada no estoque.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>item_<wbr>compra_<wbr>1</code></td>
+<td>Índice B-tree</td>
+<td><code>id_compra</code></td>
+<td>Listar os itens de uma compra.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>item_<wbr>compra_<wbr>2</code></td>
+<td>Índice B-tree</td>
+<td><code>id_insumo</code></td>
+<td>Consultar o histórico de custo de um insumo.</td>
+</tr>
+</tbody></table></div>
+
+    </article>
+<article class="entity-card" id="entidade-insumo" aria-labelledby="titulo-insumo">
+      <h3 id="titulo-insumo">6.15 Insumo (tabela <code>insumo</code>)</h3>
+      <p class="reading">O cadastro informa a unidade do insumo, o saldo atual e a quantidade mínima usada para planejar compras.</p>
+      <p class="formation"><strong>Formação de leitura</strong> <code>insumo = @id_insumo + nm_insumo + cd_unidade + qt_estoque + qt_estoque_minimo</code></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Campos de insumo"><table class="table-fields">
+<thead>
+<tr>
+<th scope="col">Atributo</th>
+<th scope="col">Tipo físico</th>
+<th scope="col">Obrig.</th>
+<th scope="col">Padrão</th>
+<th scope="col">Chave</th>
+<th scope="col">Regra / domínio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id_insumo</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+<td>Identificador do insumo.</td>
+</tr>
+<tr>
+<td><code>nm_insumo</code></td>
+<td><code>varchar(120)</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Nome de uso no estoque. Texto não vazio.</td>
+</tr>
+<tr>
+<td><code>cd_unidade</code></td>
+<td><code>varchar(8)</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Unidade de referência. Domínio inicial proposto <code>un</code>, <code>kg</code>, <code>l</code>.</td>
+</tr>
+<tr>
+<td><code>qt_estoque</code></td>
+<td><code>decimal(14,3)</code></td>
+<td class="required">Sim</td>
+<td><code>0</code></td>
+<td>—</td>
+<td>Saldo atual mantido pelas movimentações. <code>CHECK &gt;= 0</code>.</td>
+</tr>
+<tr>
+<td><code>qt_estoque_minimo</code></td>
+<td><code>decimal(14,3)</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Limite de reposição informado para o insumo. <code>CHECK &gt;= 0</code>.</td>
+</tr>
+</tbody></table></div>
+
+      <h4>Índices e restrições</h4>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Índices e restrições de insumo"><table class="table-indexes">
+<thead>
+<tr>
+<th scope="col">Objeto</th>
+<th scope="col">Tipo</th>
+<th scope="col">Colunas</th>
+<th scope="col">Finalidade</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PRIMARY</code></td>
+<td>Chave primária</td>
+<td><code>id_insumo</code></td>
+<td>Identifica cada registro de forma única.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>insumo_<wbr>1</code></td>
+<td>Índice B-tree</td>
+<td><code>nm_insumo</code></td>
+<td>Localizar insumos pelo nome.</td>
+</tr>
+</tbody></table></div>
+
+    </article>
+<article class="entity-card" id="entidade-recebimento" aria-labelledby="titulo-recebimento">
+      <h3 id="titulo-recebimento">6.16 Recebimento (tabela <code>recebimento</code>)</h3>
+      <p class="reading">O recebimento registra a compra conferida, quem fez a conferência e as divergências. As quantidades aceitas entram no estoque.</p>
+      <p class="formation"><strong>Formação de leitura</strong> <code>recebimento = @id_recebimento + id_compra + id_funcionario + dh_recebimento + (ds_divergencia)</code></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Campos de recebimento"><table class="table-fields">
+<thead>
+<tr>
+<th scope="col">Atributo</th>
+<th scope="col">Tipo físico</th>
+<th scope="col">Obrig.</th>
+<th scope="col">Padrão</th>
+<th scope="col">Chave</th>
+<th scope="col">Regra / domínio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id_recebimento</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+<td>Identificador do recebimento.</td>
+</tr>
+<tr>
+<td><code>id_compra</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>FK, UQ</td>
+<td>Referência a <code>compra</code>. Permite um recebimento por compra.</td>
+</tr>
+<tr>
+<td><code>id_funcionario</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>FK</td>
+<td>Referência a <code>funcionario</code>. Identifica quem conferiu a entrega. O funcionário deve estar ativo no momento do registro.</td>
+</tr>
+<tr>
+<td><code>dh_recebimento</code></td>
+<td><code>datetime(6)</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Instante em que a entrega foi conferida.</td>
+</tr>
+<tr>
+<td><code>ds_divergencia</code></td>
+<td><code>varchar(500)</code></td>
+<td class="optional">Não</td>
+<td>—</td>
+<td>—</td>
+<td>Descrição da diferença de quantidade ou qualidade. Identificar o insumo e o que foi recusado, se aplicável. <code>NULL</code> significa nenhuma divergência relatada na conferência.</td>
+</tr>
+</tbody></table></div>
+
+      <h4>Índices e restrições</h4>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Índices e restrições de recebimento"><table class="table-indexes">
+<thead>
+<tr>
+<th scope="col">Objeto</th>
+<th scope="col">Tipo</th>
+<th scope="col">Colunas</th>
+<th scope="col">Finalidade</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PRIMARY</code></td>
+<td>Chave primária</td>
+<td><code>id_recebimento</code></td>
+<td>Identifica cada registro de forma única.</td>
+</tr>
+<tr>
+<td><code>fk_<wbr>recebimento_<wbr>id_<wbr>compra</code></td>
+<td>Chave estrangeira</td>
+<td><code>id_compra</code> → <code>compra</code></td>
+<td>Mostra a qual compra pertence cada entrega conferida.</td>
+</tr>
+<tr>
+<td><code>fk_<wbr>recebimento_<wbr>id_<wbr>funcionario</code></td>
+<td>Chave estrangeira</td>
+<td><code>id_funcionario</code> → <code>funcionario</code></td>
+<td>Identifica quem fez a conferência da entrega.</td>
+</tr>
+<tr>
+<td><code>uq_<wbr>recebimento_<wbr>id_<wbr>compra</code></td>
+<td><code>UNIQUE</code></td>
+<td><code>id_compra</code></td>
+<td>Até um recebimento por compra.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>recebimento_<wbr>1</code></td>
+<td>Índice B-tree</td>
+<td><code>dh_recebimento</code></td>
+<td>Pesquisar conferências em um período.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>recebimento_<wbr>2</code></td>
+<td>Índice B-tree</td>
+<td><code>id_funcionario</code></td>
+<td>Pesquisar conferências pelo funcionário responsável.</td>
+</tr>
+</tbody></table></div>
+
+    </article>
+<article class="entity-card" id="entidade-movimentacao_estoque" aria-labelledby="titulo-movimentacao_estoque">
+      <h3 id="titulo-movimentacao_estoque">6.17 Movimentação de estoque (tabela <code>movimentacao_estoque</code>)</h3>
+      <p class="reading">A movimentação registra quanto entrou ou saiu do estoque de um insumo. O tipo e o motivo ajudam a distinguir compras, consumo e perdas.</p>
+      <p class="formation"><strong>Formação de leitura</strong> <code>movimentacao_estoque = @id_movimentacao + id_insumo + (id_recebimento) + dh_movimento + qt_movimento + tp_movimento + (cd_motivo)</code></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Campos de movimentacao_estoque"><table class="table-fields">
+<thead>
+<tr>
+<th scope="col">Atributo</th>
+<th scope="col">Tipo físico</th>
+<th scope="col">Obrig.</th>
+<th scope="col">Padrão</th>
+<th scope="col">Chave</th>
+<th scope="col">Regra / domínio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id_movimentacao</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+<td>Identificador do evento de estoque.</td>
+</tr>
+<tr>
+<td><code>id_insumo</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>FK</td>
+<td>Referência a <code>insumo</code>. Identifica o insumo cujo saldo muda.</td>
+</tr>
+<tr>
+<td><code>id_recebimento</code></td>
+<td><code>bigint</code></td>
+<td class="optional">Não</td>
+<td>—</td>
+<td>FK</td>
+<td>Referência a <code>recebimento</code>. A rotina de estoque exige vínculo em <code>entrada_compra</code> e <code>NULL</code> nos demais tipos.</td>
+</tr>
+<tr>
+<td><code>dh_movimento</code></td>
+<td><code>datetime(6)</code></td>
+<td class="required">Sim</td>
+<td><code>(UTC_TIMESTAMP(6))</code></td>
+<td>—</td>
+<td>Instante efetivo da movimentação.</td>
+</tr>
+<tr>
+<td><code>qt_movimento</code></td>
+<td><code>decimal(14,3)</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Magnitude positiva na unidade do insumo. <code>CHECK &gt; 0</code>. O tipo define o efeito no saldo.</td>
+</tr>
+<tr>
+<td><code>tp_movimento</code></td>
+<td><code>varchar(18)</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Aumentam saldo <code>saldo_inicial</code>, <code>entrada_compra</code>, <code>ajuste_entrada</code>. Reduzem saldo <code>consumo</code>, <code>perda</code>, <code>ajuste_saida</code>.</td>
+</tr>
+<tr>
+<td><code>cd_motivo</code></td>
+<td><code>varchar(25)</code></td>
+<td class="optional">Não</td>
+<td>—</td>
+<td>—</td>
+<td>Obrigatório para <code>perda</code> (<code>vencimento</code>, <code>deterioracao</code>, <code>sobra</code>, <code>outro</code>) e para ajustes (<code>inventario</code>, <code>correcao</code>, <code>devolucao</code>). Nulo para os demais tipos.</td>
+</tr>
+</tbody></table></div>
+
+      <h4>Índices e restrições</h4>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Índices e restrições de movimentacao_estoque"><table class="table-indexes">
+<thead>
+<tr>
+<th scope="col">Objeto</th>
+<th scope="col">Tipo</th>
+<th scope="col">Colunas</th>
+<th scope="col">Finalidade</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PRIMARY</code></td>
+<td>Chave primária</td>
+<td><code>id_movimentacao</code></td>
+<td>Identifica cada registro de forma única.</td>
+</tr>
+<tr>
+<td><code>fk_<wbr>movimentacao_<wbr>estoque_<wbr>id_<wbr>insumo</code></td>
+<td>Chave estrangeira</td>
+<td><code>id_insumo</code> → <code>insumo</code></td>
+<td>Identifica o insumo cujo saldo mudou.</td>
+</tr>
+<tr>
+<td><code>fk_<wbr>movimentacao_<wbr>estoque_<wbr>id_<wbr>recebimento</code></td>
+<td>Chave estrangeira</td>
+<td><code>id_recebimento</code> → <code>recebimento</code></td>
+<td>Identifica a entrega que deu origem à entrada no estoque.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>movimentacao_<wbr>estoque_<wbr>1</code></td>
+<td>Índice B-tree</td>
+<td><code>id_insumo</code>, <code>dh_movimento</code></td>
+<td>Consultar o extrato de um insumo por data.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>movimentacao_<wbr>estoque_<wbr>2</code></td>
+<td>Índice B-tree</td>
+<td><code>id_recebimento</code></td>
+<td>Localizar entradas de estoque por recebimento.</td>
+</tr>
+<tr>
+<td><code>idx_<wbr>movimentacao_<wbr>estoque_<wbr>3</code></td>
+<td>Índice B-tree</td>
+<td><code>tp_movimento</code>, <code>dh_movimento</code></td>
+<td>Consultar movimentações por tipo e período.</td>
+</tr>
+</tbody></table></div>
+
+    </article>
+<article class="entity-card" id="entidade-mesa" aria-labelledby="titulo-mesa">
+      <h3 id="titulo-mesa">6.18 Mesa (tabela <code>mesa</code>)</h3>
+      <p class="reading">O atendimento identifica cada mesa pelo número e pode consultar a localização e a capacidade.</p>
+      <p class="formation"><strong>Formação de leitura</strong> <code>mesa = @id_mesa + nr_mesa + tp_localizacao + (qt_capacidade) + tp_situacao</code></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Campos de mesa"><table class="table-fields">
+<thead>
+<tr>
+<th scope="col">Atributo</th>
+<th scope="col">Tipo físico</th>
+<th scope="col">Obrig.</th>
+<th scope="col">Padrão</th>
+<th scope="col">Chave</th>
+<th scope="col">Regra / domínio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id_mesa</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+<td>Identificador da mesa.</td>
+</tr>
+<tr>
+<td><code>nr_mesa</code></td>
+<td><code>varchar(12)</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>UQ</td>
+<td>Número ou código visível para o atendimento. UQ. Texto não vazio.</td>
+</tr>
+<tr>
+<td><code>tp_localizacao</code></td>
+<td><code>varchar(10)</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td><code>interna</code>, <code>externa</code>.</td>
+</tr>
+<tr>
+<td><code>qt_capacidade</code></td>
+<td><code>smallint</code></td>
+<td class="optional">Não</td>
+<td>—</td>
+<td>—</td>
+<td>Número de lugares da mesa, quando registrado. <code>CHECK &gt; 0</code> se preenchido.</td>
+</tr>
+<tr>
+<td><code>tp_situacao</code></td>
+<td><code>varchar(14)</code></td>
+<td class="required">Sim</td>
+<td><code>livre</code></td>
+<td>—</td>
+<td><code>livre</code>, <code>ocupada</code>, <code>indisponivel</code>. Situação atual de uso.</td>
+</tr>
+</tbody></table></div>
+
+      <h4>Índices e restrições</h4>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Índices e restrições de mesa"><table class="table-indexes">
+<thead>
+<tr>
+<th scope="col">Objeto</th>
+<th scope="col">Tipo</th>
+<th scope="col">Colunas</th>
+<th scope="col">Finalidade</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PRIMARY</code></td>
+<td>Chave primária</td>
+<td><code>id_mesa</code></td>
+<td>Identifica cada registro de forma única.</td>
+</tr>
+<tr>
+<td><code>uq_<wbr>mesa_<wbr>nr_<wbr>mesa</code></td>
+<td><code>UNIQUE</code></td>
+<td><code>nr_mesa</code></td>
+<td>Distingue as mesas pelo número ou código.</td>
+</tr>
+</tbody></table></div>
+
+    </article>
+<article class="entity-card" id="entidade-nota_fiscal" aria-labelledby="titulo-nota_fiscal">
+      <h3 id="titulo-nota_fiscal">6.19 Nota fiscal (tabela <code>nota_fiscal</code>)</h3>
+      <p class="reading">O cadastro guarda o número, a série e a data da nota fiscal emitida para o faturamento.</p>
+      <p class="formation"><strong>Formação de leitura</strong> <code>nota_fiscal = @id_nota + id_faturamento + nr_nota + nr_serie + dt_emissao + tp_documento</code></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Campos de nota_fiscal"><table class="table-fields">
+<thead>
+<tr>
+<th scope="col">Atributo</th>
+<th scope="col">Tipo físico</th>
+<th scope="col">Obrig.</th>
+<th scope="col">Padrão</th>
+<th scope="col">Chave</th>
+<th scope="col">Regra / domínio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id_nota</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>AUTO_INCREMENT</td>
+<td>PK</td>
+<td>Identificador interno da nota.</td>
+</tr>
+<tr>
+<td><code>id_faturamento</code></td>
+<td><code>bigint</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>FK, UQ</td>
+<td>Referência a <code>faturamento</code>. Identifica o faturamento que originou a nota.</td>
+</tr>
+<tr>
+<td><code>nr_nota</code></td>
+<td><code>varchar(30)</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Número do documento externo. Texto não vazio, preserva zeros à esquerda.</td>
+</tr>
+<tr>
+<td><code>nr_serie</code></td>
+<td><code>varchar(12)</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Série indicada no documento externo. Texto não vazio.</td>
+</tr>
+<tr>
+<td><code>dt_emissao</code></td>
+<td><code>date</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Data de emissão informada no documento.</td>
+</tr>
+<tr>
+<td><code>tp_documento</code></td>
+<td><code>varchar(24)</code></td>
+<td class="required">Sim</td>
+<td>—</td>
+<td>—</td>
+<td>Tipo informado no documento. Texto não vazio.</td>
+</tr>
+</tbody></table></div>
+
+      <h4>Índices e restrições</h4>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Índices e restrições de nota_fiscal"><table class="table-indexes">
+<thead>
+<tr>
+<th scope="col">Objeto</th>
+<th scope="col">Tipo</th>
+<th scope="col">Colunas</th>
+<th scope="col">Finalidade</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PRIMARY</code></td>
+<td>Chave primária</td>
+<td><code>id_nota</code></td>
+<td>Identifica cada registro de forma única.</td>
+</tr>
+<tr>
+<td><code>fk_<wbr>nota_<wbr>fiscal_<wbr>id_<wbr>faturamento</code></td>
+<td>Chave estrangeira</td>
+<td><code>id_faturamento</code> → <code>faturamento</code></td>
+<td>Identifica o pagamento que originou o documento fiscal.</td>
+</tr>
+<tr>
+<td><code>uq_<wbr>nota_<wbr>fiscal_<wbr>id_<wbr>faturamento</code></td>
+<td><code>UNIQUE</code></td>
+<td><code>id_faturamento</code></td>
+<td>Até uma nota por faturamento.</td>
+</tr>
+</tbody></table></div>
+
+    </article>
+  </section>
+<section class="chapter" id="integridade" aria-labelledby="titulo-integridade">
+    <div class="section-head"><h2 id="titulo-integridade">7. Segurança, auditoria e regras de integridade</h2></div>
+    <h3>7.1 Regras do modelo</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Segurança e auditoria"><table class="">
+<thead>
+<tr>
+<th scope="col">Tema</th>
+<th scope="col">Regra</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pessoa</td>
+<td>Cada pessoa é cadastrada como cliente ou funcionário. O cadastro da pessoa e do subtipo escolhido é concluído na mesma transação.</td>
+</tr>
+<tr>
+<td>Pedido</td>
+<td>Todo pedido tem um cliente, um funcionário responsável e pelo menos um item. A equipe confirma o pagamento para efetivar e liberar o pedido. Na retirada, o cliente deve ter telefone cadastrado.</td>
+</tr>
+<tr>
+<td>Mesa</td>
+<td>Quando o pedido no local ocupa uma mesa, o atendimento registra essa mesa. Na retirada, <code>id_mesa</code> fica nulo.</td>
+</tr>
+<tr>
+<td>Encomenda</td>
+<td>Cada pedido admite até uma encomenda de frango. A quantidade deve corresponder aos frangos encomendados e o cadastro guarda o horário combinado para a retirada. O sistema indica se o pagamento foi confirmado antes desse horário.</td>
+</tr>
+<tr>
+<td>Pagamento e nota fiscal</td>
+<td>Cada faturamento pertence a um pedido. Quando a nota fiscal é registrada, ela identifica o faturamento correspondente. Cada faturamento admite até uma nota fiscal.</td>
+</tr>
+<tr>
+<td>Fechamento</td>
+<td>A tesouraria confere os pagamentos antes de fechar o dia. A rotina vincula os pagamentos confirmados do dia que ainda estão sem fechamento e totaliza dinheiro, Pix e cartão. O total de cartão inclui débito e crédito.</td>
+</tr>
+<tr>
+<td>Compra e recebimento</td>
+<td>Toda compra tem pelo menos um item e admite até um recebimento. O recebimento guarda o funcionário responsável e é registrado junto com as entradas aceitas. Diferenças de quantidade ou qualidade ficam no campo de divergência.</td>
+</tr>
+<tr>
+<td>Estoque</td>
+<td>Cada movimento altera o saldo de um insumo. Entradas e baixas usam a unidade do cadastro. Cada lote pertence a um produto da categoria <code>frango_assado</code> e começa com saldo igual à produção. A cozinha atualiza a disponibilidade no próprio lote.</td>
+</tr>
+</tbody></table></div>
+<h3>7.2 Acesso por operação</h3>
+<p>Os perfis definem o que cada pessoa pode consultar ou registrar no sistema.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Segurança e auditoria"><table class="table-access">
+<thead>
+<tr>
+<th scope="col">Operação</th>
+<th scope="col">Atendimento</th>
+<th scope="col">Cozinha</th>
+<th scope="col">Caixa / tesouraria</th>
+<th scope="col">Administração</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Nome e telefone</td>
+<td>Cadastra clientes e consulta o contato para a retirada.</td>
+<td>—</td>
+<td>—</td>
+<td>Mantém os dados de cadastro.</td>
+</tr>
+<tr>
+<td>Pedidos, encomendas e mesas</td>
+<td>Registra pedido, mesa e retirada.</td>
+<td>Consulta itens, quantidades e horários de preparo.</td>
+<td>Consulta o valor do pedido para cobrar.</td>
+<td>Mantém o cadastro de mesas.</td>
+</tr>
+<tr>
+<td>Cardápio e produção</td>
+<td>Consulta preços e disponibilidade.</td>
+<td>Registra lotes e atualiza a disponibilidade.</td>
+<td>Consulta o cardápio.</td>
+<td>Mantém produtos e preços.</td>
+</tr>
+<tr>
+<td>Pagamento, nota fiscal e fechamento</td>
+<td>Consulta a confirmação do pagamento.</td>
+<td>Consulta os pedidos liberados.</td>
+<td>Registra pagamento, nota fiscal e fechamento.</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Compras, recebimentos e estoque</td>
+<td>—</td>
+<td>Registra consumo e perdas de insumos.</td>
+<td>Registra compras e recebimentos.</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Dados da equipe e auditoria</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>Mantém os acessos, consulta o log e tem acesso restrito ao salário-base.</td>
+</tr>
+</tbody></table></div>
+<p>O travessão indica operação fora das permissões do perfil. Nome e telefone são usados para identificar e contatar o cliente. O faturamento guarda a forma de pagamento. Senhas, dados do cartão e valores de campos pessoais ficam fora do log.</p>
+<h3>7.3 Log de acesso</h3>
+<p>A tabela técnica <code>a_frangueria.log_acesso</code> registra a operação, o horário, a conta responsável quando identificada e o resultado. As rotinas registram os sucessos que geram eventos. A aplicação identifica a conta autenticada, registra recusas e erros e associa cada conferência ao funcionário responsável. A administração consulta o histórico.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Segurança e auditoria"><table class="table-log">
+<thead>
+<tr>
+<th scope="col">Campo</th>
+<th scope="col">Tipo</th>
+<th scope="col">Obrigatório</th>
+<th scope="col">Padrão</th>
+<th scope="col">Significado</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id_evento</code></td>
+<td><code>bigint</code></td>
+<td>Sim</td>
+<td>AUTO_INCREMENT</td>
+<td>PK do evento.</td>
+</tr>
+<tr>
+<td><code>dh_evento</code></td>
+<td><code>datetime(6)</code></td>
+<td>Sim</td>
+<td><code>(UTC_TIMESTAMP(6))</code></td>
+<td>Data e hora em UTC.</td>
+</tr>
+<tr>
+<td><code>id_ator</code></td>
+<td><code>char(36)</code></td>
+<td>Não</td>
+<td>—</td>
+<td>Identificador da conta, quando conhecida.</td>
+</tr>
+<tr>
+<td><code>cd_operacao</code></td>
+<td><code>varchar(48)</code></td>
+<td>Sim</td>
+<td>—</td>
+<td>Ação registrada.</td>
+</tr>
+<tr>
+<td><code>cd_recurso</code></td>
+<td><code>varchar(40)</code></td>
+<td>Sim</td>
+<td>—</td>
+<td>Recurso consultado ou alterado.</td>
+</tr>
+<tr>
+<td><code>id_registro</code></td>
+<td><code>bigint</code></td>
+<td>Não</td>
+<td>—</td>
+<td>Identificador interno do registro afetado, quando houver.</td>
+</tr>
+<tr>
+<td><code>tp_resultado</code></td>
+<td><code>varchar(12)</code></td>
+<td>Sim</td>
+<td>—</td>
+<td><code>sucesso</code>, <code>negado</code>, <code>erro</code>.</td>
+</tr>
+</tbody></table></div>
+<p><strong>Formação.</strong> <code>log_acesso = @id_evento + dh_evento + (id_ator) + cd_operacao + cd_recurso + (id_registro) + tp_resultado</code>.</p>
+<p><strong>Índices.</strong> PK, (<code>dh_evento</code>) e (<code>id_ator</code>, <code>dh_evento</code>).</p>
+
+  </section>
+<section class="chapter" id="levantamento" aria-labelledby="titulo-levantamento">
+    <div class="section-head"><h2 id="titulo-levantamento">8. Dados do levantamento</h2></div>
+    <div class="table-wrap" tabindex="0" role="region" aria-label="Tabela · Dados do levantamento"><table class="">
+<thead>
+<tr>
+<th scope="col">Tema</th>
+<th scope="col">O que foi relatado</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Atendimento</td>
+<td>A Frangueria atende no local e para retirada. São cinco mesas externas e duas internas, com capacidade total aproximada de 24 lugares. Q12 e Q22.</td>
+</tr>
+<tr>
+<td>Encomendas e pagamentos</td>
+<td>As encomendas de frango são pagas antecipadamente e têm horário combinado para retirada. O restaurante aceita dinheiro, Pix, cartão de débito e cartão de crédito. Q5 e Q9.</td>
+</tr>
+<tr>
+<td>Contatos</td>
+<td>O restaurante coleta nome e telefone e guarda os contatos no computador. Q6 e Q7.</td>
+</tr>
+<tr>
+<td>Compras e estoque</td>
+<td>As compras são semanais e o tesoureiro confere a mercadoria. A equipe controla estoque mínimo e relatou perdas por vencimento ou deterioração. Q10, Q11, Q17 e Q18.</td>
+</tr>
+<tr>
+<td>Nota fiscal</td>
+<td>O restaurante relata emitir nota fiscal. Q20.</td>
+</tr>
+</tbody></table></div>
+
+  </section>
+<section class="chapter" id="referencias" aria-labelledby="titulo-referencias">
+    <div class="section-head"><h2 id="titulo-referencias">9. Referências</h2></div>
+    <ul>
+<li><a href="diagramas/der-a-frangueria-conceitual.pdf">DER conceitual da A Frangueria</a>, p. 1.</li>
+<li><a href="diagramas/der-a-frangueria-logico.pdf">DER lógico da A Frangueria</a>.</li>
+<li>Levantamento de campo, perguntas Q1 a Q22. <a href="https://github.com/paulo-dev-coder/sistema-restaurante-brmw/blob/bc1489922b1b13ed4109464b275d2beb76bc3945/README.md#L90-L183">Pesquisa de campo no README</a></li>
+<li>Documentação do <a href="https://dev.mysql.com/doc/refman/8.4/en/">MySQL 8.4</a>.</li>
+</ul>
+
+  </section></main>
+  <footer class="document-foot"><span>A Frangueria · Dicionário de Dados · v0.6</span><a href="#topo">Voltar ao sumário ↑</a></footer>
+</div>
+</body></html>
