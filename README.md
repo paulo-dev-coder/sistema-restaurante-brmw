@@ -94,7 +94,7 @@ https://maps.app.goo.gl/pjqxhT2Ltq6g1c2D7?g_st=ac
 
 ---
 
-#### 2. Relato da entrevista
+## 2. Relato da entrevista
 
 **Quem:** A entrevista foi realizada com **Sergio Olivastro**, o proprietário e representante legal do restaurante. Quem participou da visita foi o integrante do grupo **Paulo Sergio Olivastro**.
 
