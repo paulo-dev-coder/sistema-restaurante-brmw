@@ -461,16 +461,84 @@ A massa foi construída manualmente com base no levantamento, e não gerada por 
 
 ## 6. Utilização de Inteligência Artificial
 
-O grupo utilizou o ChatGPT como apoio para *organizar e revisar a documentação do trabalho*, e não como fonte principal de informações sobre a organização. As informações sobre o funcionamento do estabelecimento e os seus processos foram confirmadas pelo grupo por meio da pesquisa de campo.
+O grupo utilizou ferramentas de inteligência artificial como apoio para organizar e revisar a documentação do trabalho, e não como fonte principal de informações sobre a organização. As informações sobre o funcionamento do estabelecimento e seus processos foram confirmadas pelo grupo por meio da pesquisa de campo, e a inteligência artificial não foi utilizada como evidência de fatos.
 
-- *Ferramenta e etapa:* ChatGPT, Gemini e DeepSeek na organização e revisão do texto do README e na elaboração desta seção.
-- *Motivação:* melhorar a clareza e a organização da documentação e atender aos itens solicitados no roteiro.
-- *Prompt utilizado, em formulação aproximada:* “Ajude a organizar e revisar o texto do trabalho, mantendo as informações fornecidas pelo grupo. Não invente dados sobre a organização e indique o que precisa ser confirmado pela pesquisa de campo.”
-- *Resposta recebida:* sugestões de estrutura e redação para apresentar os processos, requisitos e regras de negócio, além de apontamentos sobre dados e relações do modelo que precisam ser confirmados.
-- *Fontes consultadas e verificadas:* Nenhuma foi utilizada como fonte de dados sobre a organização. As informações factuais devem ser verificadas pelo grupo com os responsáveis, durante a visita ou entrevista, e comparadas com a observação da rotina do estabelecimento. Não considerar sugestões da IA como confirmação de fatos.
-- *Trechos rejeitados ou corrigidos:* afirmações ou detalhes que não correspondessem ao que o grupo observou ou ouviu devem ser removidos ou corrigidos. Também devem ser revisados os pontos que o próprio documento indica como pendentes de confirmação, como a existência de reservas de mesa e de frango, a necessidade de coletar dados pessoais e as cardinalidades do DER.
-- *Justificativa da escolha final:* o grupo aproveitou a IA como apoio de redação e organização, mantendo no trabalho apenas informações que consiga validar. As decisões sobre os processos reais e o modelo devem ser tomadas pelo grupo com base na pesquisa de campo.
-- *Reflexão crítica:* a IA pode produzir texto claro e convincente mesmo quando não conhece a realidade específica da organização. Também pode sugerir regras ou estruturas genéricas que não se aplicam ao estabelecimento. Por isso, suas respostas foram tratadas como sugestões, e não como evidências; cabe ao grupo conferir os fatos e revisar o conteúdo antes da entrega.
+### 6.1 Ferramenta e etapa
+
+Foram utilizadas as ferramentas **ChatGPT (GPT-4), Gemini e DeepSeek** nas seguintes etapas do trabalho:
+
+- Revisão e organização do texto do `README.md`.
+- Estruturação dos processos de negócio, requisitos funcionais e regras de negócio.
+- Verificação de coerência entre o DER conceitual, o modelo lógico e o dicionário de dados.
+- Organização das seções 1.2 a 1.6 e da seção 4 (Massa de Dados).
+
+### 6.2 Motivação
+
+O grupo recorreu à inteligência artificial para melhorar a clareza da documentação, corrigir inconsistências entre seções e garantir que todos os itens exigidos pelo esqueleto da Entrega 2 fossem atendidos. A inteligência artificial também foi usada para revisar a redação dos problemas (P1 a P5) e das regras de negócio (RN01 a RN24), mantendo o vocabulário técnico adequado.
+
+### 6.3 Prompts utilizados
+
+**Prompt 1 (ChatGPT — revisão do README):**
+> *"Analise o README.md do repositório e a correção da Issue #1. Verifique se os problemas P1 a P5 cobrem os processos de compras, recebimento e estoque. Não invente dados — se algo precisar de confirmação, indique o que perguntar na pesquisa de campo."*
+
+**Prompt 2 (ChatGPT — regras de negócio):**
+> *"Revise as regras de negócio RN01 a RN25 do README. Aponte regras que estão no condicional, que não têm código, ou que não estão vinculadas a um problema (P1 a P5) ou a uma restrição organizacional. Não crie regras novas sem base no levantamento."*
+
+**Prompt 3 (Gemini — conversão conceitual/lógico):**
+> *"Compare o DER conceitual com o modelo lógico e aponte inconsistências de cardinalidade, chaves estrangeiras ou entidades ausentes. Considere que a organização não faz delivery, não tem reserva de mesa e não registra rateio por lote."*
+
+**Prompt 4 (DeepSeek — massa de dados):**
+> *"Ajude a estruturar uma massa de dados fictícia para um restaurante que faz 20 a 28 pedidos por fim de semana, tem 7 mesas, 3 funcionários e vende frango assado. Não use nomes reais."*
+
+### 6.4 Resposta recebida
+
+As ferramentas retornaram sugestões de estrutura, correções de redação e apontamentos de inconsistência. Os principais pontos aproveitados foram:
+
+- **Reorganização do bloco de problemas:** A inteligência artificial sugeriu separar os problemas em P1 (histórico de pedidos), P2 (fechamento de caixa), P3 (perdas e lote), P4 (compras e fornecedores) e P5 (recebimento e estoque), o que foi mantido no README final.
+- **Correção do DER:** A inteligência artificial apontou que `RESERVA_LOTE` não fazia sentido, pois a organização não registra rateio por lote (Q21), e que `RESERVA_MESA` não deveria existir (Q4).
+- **Ajuste de cardinalidades:** A inteligência artificial apontou cardinalidades `(1,n)` nos dois lados de alguns relacionamentos, o que foi corrigido no DER final.
+- **Remoção de dados pessoais:** A inteligência artificial sugeriu remover `cpf`, `email` e `data_nascimento` de `PESSOA` após a confirmação de que a organização coleta apenas nome e telefone (Q6).
+- **Organização das consultas SQL:** A inteligência artificial sugeriu estruturar as consultas gerenciais (G01 a G10) e de auditoria (A01 a A08) em seções separadas, o que foi aplicado no script.
+
+### 6.5 Fontes consultadas e verificadas
+
+A inteligência artificial citou fontes técnicas e normativas que foram verificadas pelo grupo e utilizadas apenas como apoio para decisões técnicas, não como fonte de dados sobre a organização:
+
+| Fonte citada | Onde foi verificada | Uso no trabalho |
+| :--- | :--- | :--- |
+| **MySQL 8.0 Reference Manual** | Documentação oficial em `dev.mysql.com` | Tipos `DECIMAL(10,2)` e `CHECK` constraints |
+| **LGPD — Lei nº 13.709/2018** | Site do Planalto | Justificativa para coleta mínima de dados (RN18) |
+| **Boas práticas de modelagem relacional** | Material da disciplina + brModelo | Normalização (1FN, 2FN, 3FN) |
+
+Nenhuma fonte sobre a organização foi aceita sem confirmação. As respostas da inteligência artificial sobre o funcionamento do restaurante foram descartadas e substituídas pelas respostas da entrevista e da visita técnica.
+
+### 6.6 Trechos rejeitados ou corrigidos
+
+| Sugestão da IA | Decisão do grupo | Justificativa |
+| :--- | :--- | :--- |
+| Criar entidade `ENDERECO` para delivery | **Rejeitada** | O restaurante não faz delivery (Q22, RN12). |
+| Criar entidade `PAGAMENTO` separada de `FATURAMENTO` | **Rejeitada** | O pagamento é único por pedido e consolidado no fechamento (Q08 e Q19). |
+| Manter `RESERVA_MESA` no DER | **Rejeitada** | A organização não trabalha com reserva de mesa (Q4). |
+| Manter `RESERVA_LOTE` no DER | **Rejeitada** | A organização não registra rateio por lote (Q21). |
+| Criar `nivel_acesso` em `FUNCIONARIO` | **Rejeitada** | A operação familiar não separa perfis formais; o acesso é feito pelo proprietário (Q08). |
+| Usar `VARCHAR(50)` em todos os campos | **Corrigida** | O grupo definiu tamanhos específicos por campo no SQL (ex: `VARCHAR(20)` para telefone, `VARCHAR(100)` para nome). |
+| Usar `FLOAT` para valores monetários | **Corrigida** | O grupo substituiu por `DECIMAL(10,2)` no SQL para evitar erros de arredondamento. |
+| Criar trigger de baixa automática de estoque | **Rejeitada** | A organização não faz controle automatizado de ingredientes por receita. |
+| Adicionar `canal_atendimento` em `PEDIDO` | **Rejeitada** | O restaurante não faz delivery nem atende por app (Q22); o único canal é o presencial/retirada. |
+
+### 6.7 Justificativa da escolha final
+
+O grupo manteve da IA apenas as sugestões que **coincidiam com o que foi observado na pesquisa de campo** ou que eram boas práticas técnicas verificáveis (ex: uso de `DECIMAL`, normalização, nomes padronizados). Toda sugestão que conflitava com as respostas do proprietário foi rejeitada.
+
+A versão final dos problemas (P1 a P5), das regras de negócio (RN01 a RN24), do DER e do script SQL foi definida pelo grupo, com base na entrevista e na visita técnica, e **não pela IA**. A IA foi usada como ferramenta de redação e revisão, não como fonte de verdade.
+
+### 6.8 Reflexão crítica
+
+A inteligência artificial produziu textos claros e bem estruturados, mas demonstrou três limitações claras neste trabalho:
+
+1. **Tendência a generalizar:** sugeriu processos e entidades genéricas (ex: `ENDERECO`, `PAGAMENTO`, `DELIVERY`) que não se aplicam ao porte e ao modelo de negócio da A Frangueria.
+2. **Falta de contexto da entrevista:** não sabia que a organização coleta apenas nome e telefone, que não tem reserva de mesa e que não faz delivery — precisou ser corrigida em todos esses pontos.
+3. **Uso do condicional na redação:** a IA escreveu trechos como "devem ser removidos" em vez de registrar o que foi efetivamente removido, o que **já havia sido apontado como problema na correção da Entrega 1** e precisou ser reescrito pelo grupo.
   
 ---
 
