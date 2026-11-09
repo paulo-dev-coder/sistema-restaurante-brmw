@@ -50,7 +50,7 @@
     - O fechamento do caixa é feito pela máquina de pagamento em cerca de 5 minutos, pelo tesoureiro. No entanto, o total em dinheiro é conferido separadamente, sem registro integrado à máquina. O impacto é a ausência de conciliação formal entre os dois meios, o que dificulta identificar divergências entre os valores registrados e os efetivamente recebidos;
 
   - **P3 —  Perdas e rastreio de lote sem registro:**
-    - Há controle de disponibilidade e de estoque com quantidade mínima de segurança a partir da supervisão da cozinheira com acompanhamento do representante. Porém, as perdas por vencimento ou deterioração são descartadas sem registro, e não há vínculo entre a encomenda e o lote de origem. O impacto é a impossibilidade de medir perdas e de rastrear a origem do produto servido;
+    - Há controle de disponibilidade e de estoque com quantidade mínima de segurança a partir da supervisão da cozinheira com acompanhamento do representante. Porém, as perdas por vencimento ou deterioração são descartadas sem registro, e não há vínculo entre a encomenda e o lote de origem. O impacto é a impossibilidade de medir perdas e de controlar com precisão a quantidade de frango produzida e vendida;
 
   - **P4 — Falta de histórico de compras por fornecedor e produto:**
     - As compras são semanais, calculadas para o consumo, e conferidas pelo tesoureiro. Não há, porém, registro estruturado por fornecedor e por produto que permita comparar preços ao longo do tempo, identificar frequência de compra ou apoiar negociação. O impacto é a dependência de memória e de anotações dispersas para decisões de compra;
@@ -246,93 +246,105 @@ Conforme exigido no esqueleto da Entrega 2, abaixo estão registrados os apontam
 
 ---
 
-### 1.2 Conversão do modelo conceitual para o modelo lógico
+### 1.2 Conversão do Modelo Conceitual para o Modelo Lógico
 
-A conversão do DER para o Modelo Lógico Relacional seguiu as regras formais de mapeamento:
-- **Entidades → Tabelas:** As 19 entidades do modelo conceitual, incluindo as duas entidades associativas, foram convertidas em 19 tabelas.
-- **Atributos → Colunas:** Atributos simples tornaram-se colunas. O atributo multivalorado `Telefone` foi convertido em uma tabela própria (`TELEFONE`). Não houve atributos compostos.
-- **Relacionamentos 1:N → Chaves Estrangeiras:** A chave primária (PK) da tabela do lado "1" foi inserida como chave estrangeira (FK) na tabela do lado "N" (ex: `id_cliente` em `PEDIDO`, `id_fornecedor` em `COMPRA`).
-- **Relacionamentos 1:1 → Chaves Estrangeiras Únicas:** A FK foi inserida na tabela com a cardinalidade obrigatória e recebeu a restrição `UNIQUE` (ex: `id_pedido` em `RESERVA_FRANGO` e `FATURAMENTO`; `id_compra` em `RECEBIMENTO`).
-- **Relacionamentos N:N → Tabelas Associativas:** Os relacionamentos muitos-para-muitos (`ITEM_PEDIDO` e `ITEM_COMPRA`) foram convertidos em tabelas independentes, contendo suas próprias PKs e as FKs das tabelas que conectam.
-- **Generalização/Especialização:** Adotou-se a estratégia de **uma tabela para cada entidade**. A superclasse `PESSOA` mantém os dados comuns, enquanto as subclasses `CLIENTE` e `FUNCIONARIO` possuem suas próprias tabelas com PKs próprias e uma FK (`id_pessoa`) apontando para a superclasse. Essa escolha é ideal pois a especialização é **parcial** (uma pessoa pode existir sem ser cliente ou funcionário) e **sobreposta** (um funcionário pode ser cliente).
+O modelo lógico foi obtido a partir do DER conceitual aplicando as regras formais de conversão. O resultado são **19 tabelas**: 17 provenientes de entidades e 2 tabelas associativas (`ITEM_PEDIDO` e `ITEM_COMPRA`).
 
-### 1.3 Definição de chaves primárias e estrangeiras
+- **Entidades → Tabelas:** Cada entidade (PESSOA, CLIENTE, FUNCIONARIO, TELEFONE, MESA, PEDIDO, RESERVA_FRANGO, PRODUTO, LOTE_FRANGO, INSUMO, FORNECEDOR, COMPRA, RECEBIMENTO, MOVIMENTACAO_ESTOQUE, NOTA_FISCAL, FATURAMENTO e FECHAMENTO_CAIXA) foi convertida em uma tabela relacional, com uma chave primária inteira própria (`id_<entidade>`).
+- **Atributos → Colunas:** Cada atributo virou uma coluna com tipo SQL. Como a ferramenta brModeloWeb não oferece o tipo `DECIMAL` nem permite especificar tamanhos para `VARCHAR`, o diagrama lógico exibe `FLOAT` e `VARCHAR`. No entanto, o script SQL e o dicionário de dados são a referência oficial, utilizando `DECIMAL(10,2)` para valores monetários e tamanhos específicos para os textos.
+- **Generalização/Especialização:** A herança de PESSOA foi convertida adotando a estratégia de **uma tabela para cada entidade**. `CLIENTE` e `FUNCIONARIO` possuem suas próprias chaves primárias e uma chave estrangeira (`id_pessoa`) apontando para a tabela genérica. Essa escolha é ideal pois evita valores nulos excessivos e representa a realidade da organização.
+- **Relacionamentos 1:1:** Resolvidos pela inserção da chave estrangeira na tabela dependente, acompanhada da restrição `UNIQUE` para garantir que o vínculo não se repita (ex: `id_pessoa` em CLIENTE e FUNCIONARIO; `id_pedido` em RESERVA_FRANGO e FATURAMENTO; `id_compra` em RECEBIMENTO).
+- **Relacionamentos 1:N:** A chave primária da tabela do lado “1” foi propagada como chave estrangeira na tabela do lado “N” (ex: `id_mesa` em PEDIDO; `id_fornecedor` em COMPRA; `id_insumo` em MOVIMENTACAO_ESTOQUE).
+- **Relacionamentos N:N → Tabelas Associativas:** Os dois relacionamentos muitos-para-muitos foram convertidos em tabelas próprias:
+  - `PEDIDO N:N PRODUTO` → **ITEM_PEDIDO** (contém `quantidade`, `valor_aplicado` e `observacao`).
+  - `COMPRA N:N INSUMO` → **ITEM_COMPRA** (contém `quantidade` e `valor_unitario`).
 
-Abaixo está a estrutura de chaves definida para cada tabela no Modelo Lógico:
+### 1.3 Definição de Chaves Primárias e Estrangeiras
 
-| Tabela | Chave Primária (PK) | Chaves Estrangeiras (FKs) |
-| :--- | :--- | :--- |
-| **PESSOA** | `id_pessoa` | — |
-| **CLIENTE** | `id_cliente` | `id_pessoa` (FK, UNIQUE) |
-| **FUNCIONARIO** | `id_funcionario` | `id_pessoa` (FK, UNIQUE) |
-| **TELEFONE** | `id_telefone` | `id_pessoa` (FK) |
-| **MESA** | `id_mesa` | — |
-| **PEDIDO** | `id_pedido` | `id_cliente`, `id_funcionario`, `id_mesa` (opcional) |
-| **ITEM_PEDIDO** | `id_item_pedido` | `id_pedido`, `id_produto` |
-| **RESERVA_FRANGO** | `id_reserva_frango` | `id_pedido` (FK, UNIQUE) |
-| **PRODUTO** | `id_produto` | — |
-| **LOTE_FRANGO** | `id_lote` | `id_produto` (FK) |
-| **INSUMO** | `id_insumo` | — |
-| **FORNECEDOR** | `id_fornecedor` | — |
-| **COMPRA** | `id_compra` | `id_fornecedor` (FK) |
-| **ITEM_COMPRA** | `id_item_compra` | `id_compra`, `id_insumo` |
-| **RECEBIMENTO** | `id_recebimento` | `id_compra` (FK, UNIQUE), `id_funcionario` (FK) |
-| **MOVIMENTACAO_ESTOQUE**| `id_movimentacao` | `id_insumo` (FK), `id_recebimento` (FK, opcional) |
-| **NOTA_FISCAL** | `id_nota` | — |
-| **FATURAMENTO** | `id_faturamento` | `id_pedido` (FK, UNIQUE), `id_nota_fiscal` (FK), `id_fechamento` (FK) |
-| **FECHAMENTO_CAIXA** | `id_fechamento` | `id_funcionario` (FK) |
+**Chaves primárias (PKs):**
+Todas as tabelas de entidades utilizam chaves substitutas do tipo `INT AUTO_INCREMENT`. Nenhum dado de negócio como nome ou telefone serve como chave, pois estes se repetem ou mudam com o tempo. Um inteiro curto e sem significado agiliza as buscas e nunca precisa ser alterado. 
 
-### 1.4 Processo de normalização (1FN, 2FN e 3FN)
+As tabelas associativas (`ITEM_PEDIDO` e `ITEM_COMPRA`) utilizam chave primária composta, ou seja as duas FKs juntas, o que impede que o mesmo produto/insumo apareça repetido no mesmo pedido compra.
 
-O modelo foi submetido às três primeiras formas normais para eliminar redundâncias e anomalias de inserção, atualização e exclusão:
-- **Primeira Forma Normal (1FN):** Todos os atributos são atômicos. O atributo multivalorado de telefone foi isolado na tabela `TELEFONE`. A repetição de itens em um pedido foi resolvida com a tabela associativa `ITEM_PEDIDO`. Não há grupos repetitivos.
-- **Segunda Forma Normal (2FN):** Não existem dependências parciais. Nas tabelas associativas (`ITEM_PEDIDO` e `ITEM_COMPRA`), os atributos `quantidade` e `valor` dependem integralmente da chave da relação, e não de apenas parte dela. Como adotamos chaves primárias próprias (surrogadas), a 2FN é atendida por consequência.
-- **Terceira Forma Normal (3FN):** Não existem dependências transitivas. Os dados do fornecedor não estão na tabela `COMPRA` (estão em `FORNECEDOR`); os dados do produto não estão em `ITEM_PEDIDO` (estão em `PRODUTO`); e o endereço/cargo do funcionário não está em `FECHAMENTO_CAIXA`.
-- **Justificativa:** A normalização foi essencial para garantir que alterações de preço em um produto não afetem o histórico de vendas antigas (o `valor_aplicado` fica congelado no `ITEM_PEDIDO`), para evitar a duplicação de dados de clientes em pedidos, e para permitir que a organização cresça (ex: adicionar mais fornecedores) sem retrabalho estrutural.
+**Resumo de chaves e restrições:**
 
-### 1.5 Justificativas técnicas das decisões
+| Tabela | Chave Primária | Chaves Estrangeiras (FKs) | Restrições fundamentais (Regras) |
+| :--- | :--- | :--- | :--- |
+| **PESSOA** | `id_pessoa` | — | — |
+| **CLIENTE** | `id_cliente` | `id_pessoa` → PESSOA | `id_pessoa` é **UNIQUE** (Relação 1:1) |
+| **FUNCIONARIO** | `id_funcionario` | `id_pessoa` → PESSOA | `id_pessoa` é **UNIQUE** (Relação 1:1) |
+| **TELEFONE** | `id_telefone` | `id_pessoa` → PESSOA | — |
+| **MESA** | `id_mesa` | — | — |
+| **PEDIDO** | `id_pedido` | `id_cliente` → CLIENTE<br>`id_funcionario` → FUNCIONARIO<br>`id_mesa` → MESA | `id_mesa` aceita **NULL** (para retiradas, conforme RN02) |
+| **ITEM_PEDIDO** | `(id_pedido, id_produto)` | `id_pedido` → PEDIDO<br>`id_produto` → PRODUTO | PK Composta. Evita produto repetido no pedido. |
+| **RESERVA_FRANGO**| `id_reserva_frango` | `id_pedido` → PEDIDO | `id_pedido` é **UNIQUE** (Relação 1:1, conforme RN08) |
+| **PRODUTO** | `id_produto` | — | — |
+| **LOTE_FRANGO** | `id_lote` | `id_produto` → PRODUTO | — |
+| **INSUMO** | `id_insumo` | — | — |
+| **FORNECEDOR** | `id_fornecedor` | — | — |
+| **COMPRA** | `id_compra` | `id_fornecedor` → FORNECEDOR | — |
+| **ITEM_COMPRA** | `(id_compra, id_insumo)` | `id_compra` → COMPRA<br>`id_insumo` → INSUMO | PK Composta. Evita insumo repetido na compra. |
+| **RECEBIMENTO** | `id_recebimento` | `id_compra` → COMPRA<br>`id_funcionario` → FUNCIONARIO| `id_compra` é **UNIQUE** (Relação 1:1, conforme RN14) |
+| **MOV. ESTOQUE** | `id_movimentacao`| `id_insumo` → INSUMO<br>`id_recebimento` → RECEBIMENTO| `id_recebimento` aceita **NULL** (saídas/ajustes sem compra, conforme RN15) |
+| **NOTA_FISCAL** | `id_nota` | — | — |
+| **FATURAMENTO** | `id_faturamento` | `id_pedido` → PEDIDO<br>`id_nota_fiscal` → NOTA_FISCAL<br>`id_fechamento` → FECHAMENTO_CAIXA | `id_pedido` é **UNIQUE** (1:1)<br>`id_nota_fiscal` aceita NULL (emitida depois) |
+| **FECHAMENTO_CAIXA**| `id_fechamento` | `id_funcionario` → FUNCIONARIO | — |
 
-- **Chaves primárias (PKs):** Optou-se pelo uso de chaves substitutas (surrogadas) auto-incrementais (ex: `id_pedido` em vez de usar a data do pedido). Isso garante estabilidade (o ID nunca muda), melhor desempenho na indexação e independência das regras de negócio.
-- **Chaves estrangeiras (FKs) e Relacionamentos:** As FKs garantem a integridade referencial. A opção por permitir `NULL` em chaves como `id_mesa` (na tabela `PEDIDO`) foi intencional: atende à **RN02** (pedidos de retirada não ocupam mesa). O `id_recebimento` em `MOVIMENTACAO_ESTOQUE` também aceita `NULL` para atender à **RN15** (ajustes manuais e descartes não vêm de uma compra).
-- **Restrições de integridade:**
-  - *Obrigatoriedade (NOT NULL):* Aplicada a campos essenciais como `nome` em `PESSOA` (**RN03**) e `data_hora_abertura` em `PEDIDO`.
-  - *Unicidade (UNIQUE):* Aplicada às FKs de relacionamentos 1:1, como `id_pessoa` em `CLIENTE`, `id_pedido` em `FATURAMENTO` e `id_compra` em `RECEBIMENTO`, garantindo que um pagamento pertença a apenas um pedido.
-  - *Valores Permitidos (CHECK):* Restringe domínios para evitar erros, como `forma_pagamento` em `FATURAMENTO` (aceitar apenas Pix, Dinheiro, Débito, Crédito - **RN09**) e `tipo` em `MOVIMENTACAO_ESTOQUE` (Entrada, Saída, Ajuste - **RN15**).
-  - *Valores Padrão (DEFAULT):* Facilita a operação definindo estados iniciais, como `situacao = 'Aberto'` em `PEDIDO`, `situacao = 'Pendente'` em `FATURAMENTO` e `disponibilidade = true` em `PRODUTO`.
-- **Decisão arquitetural:** A opção por tabelas separadas para `CLIENTE` e `FUNCIONARIO` evita valores nulos excessivos (que ocorreriam se fosse uma tabela única) e mantém a integridade dos dados cadastrais básicos em `PESSOA`.
+**Justificativa das FKs:** As FKs garantem a integridade referencial (o banco recusa um pedido de um cliente inexistente). As chaves estrangeiras não utilizam exclusão em cascata (`RESTRICT`), pois o histórico financeiro e de movimentações deve ser preservado (conforme RN24).
+
+### 1.4 Processo de Normalização (1FN, 2FN e 3FN)
+
+O modelo foi submetido às três formas normais para eliminar redundâncias e anomalias de atualização:
+
+- **1ª Forma Normal (1FN):** Todos os atributos são atômicos (não há listas dentro de células). O atributo multivalorado de Telefone foi isolado na tabela `TELEFONE`. A repetição de produtos em um pedido foi resolvida com a tabela associativa `ITEM_PEDIDO`.
+- **2ª Forma Normal (2FN):** Aplica-se às tabelas com chave composta. Em `ITEM_PEDIDO`, a `quantidade` e o `valor_aplicado` dependem do par `(id_pedido, id_produto)` inteiro. O nome ou o preço atual do produto não ficam aqui, pois dependeriam apenas do `id_produto` (parte da chave), então foram alocados corretamente em `PRODUTO`.
+- **3ª Forma Normal (3FN):** Não há dependências transitivas. O `LOTE_FRANGO` não guarda as informações do produto frango, apenas o `id_produto`. O `PEDIDO` não guarda os dados do cliente (nome/telefone), apenas o `id_cliente`. O `FATURAMENTO` aponta diretamente para o `PEDIDO`, não para o `CLIENTE`.
+
+### 1.5 Justificativas Técnicas das Decisões
+
+- **Chaves:** O uso de `INT AUTO_INCREMENT` nas PKs garante estabilidade. As FKs com restrição `UNIQUE` (em CLIENTE, FUNCIONARIO, RESERVA_FRANGO, FATURAMENTO e RECEBIMENTO) são a forma relacional de garantir os relacionamentos 1:1 desenhados no DER.
+- **Restrições de Integridade (CHECK e DEFAULT):**
+  - `DEFAULT 1` na coluna `disponibilidade` (tabela PRODUTO): Garante que um produto recém-cadastrado já nasça disponível para venda.
+  - `CHECK` em `forma_pagamento` (tabela FATURAMENTO): Restringe os valores a Pix, Dinheiro, Cartão de Débito e Cartão de Crédito, conforme a **RN09**.
+  - `CHECK` em `tipo` (tabela MOVIMENTACAO_ESTOQUE): Restringe a Entrada, Saída ou Ajuste, conforme a **RN15**.
+- **Decisão arquitetural (Evitar FLOAT no SQL):** Apesar de o modelo lógico exibir `FLOAT`, o script SQL do MySQL utilizará `DECIMAL(10,2)` para todos os valores monetários. Isso evita o erro de arredondamento que o `FLOAT` acumula em somas de relatórios.
+- **Ausência de Dados Desnecessários:** Conforme **RN18**, a tabela PESSOA contém apenas `nome`, e a tabela TELEFONE contém apenas o número e tipo. Atributos como CPF, e-mail e data de nascimento não foram criados, respeitando a LGPD e o porte da organização.
 
 ### 1.6 Proposta de Arquitetura Analítica para BI e IA
 
-**Informações estratégicas e KPIs:**
-O banco de dados foi estruturado para permitir que a gestão do restaurante extraia as seguintes métricas:
-1. **Ticket Médio:** Valor médio gasto por pedido (por dia, fim de semana ou mês).
-2. **Faturamento por Forma de Pagamento:** Divisão das receitas entre Pix, Dinheiro, Débito e Crédito.
-3. **Produtos Mais Vendidos:** Ranking dos pratos e bebidas com maior saída.
-4. **Taxa de Perda e Descarte:** Volume de insumos descartados por vencimento versus consumo real.
-5. **Insumos Abaixo do Estoque Mínimo:** Lista de compras urgentes.
-6. **Desempenho de Fornecedores:** Frequência de divergências registradas no recebimento por fornecedor.
+**Informações Estratégicas e KPIs:**
+Os dados estão estruturados para permitir consultas gerenciais e painéis (Dashboards) de BI, focando nos gargalos identificados na entrevista.
+
+| KPI / Métrica | Fórmula / Definição | Período | Tabelas envolvidas | Consulta SQL |
+| :--- | :--- | :--- | :--- | :--- |
+| **KPI 1 — Ticket Médio** | `Soma do valor_total / Quantidade de pedidos` | Mensal | PEDIDO, FATURAMENTO | G01 |
+| **KPI 2 — Faturamento por Forma de Pagamento** | `Soma dos valores agrupados por forma_pagamento` | Mensal | FATURAMENTO | G02 |
+| **KPI 3 — Produtos Mais Vendidos** | `Soma da quantidade vendida por produto (Top 10)` | Mensal | ITEM_PEDIDO, PRODUTO | G03 |
+| **KPI 4 — Compras por Fornecedor** | `Soma do valor pago por fornecedor` | Mensal | COMPRA, FORNECEDOR | G04 |
+| **KPI 5 — Divergências de Recebimento** | `Contagem de recebimentos com divergência / Total` | Mensal | RECEBIMENTO | G05 |
+| **KPI 6 — Taxa de Perda/Descarte** | `Soma de descartes (motivo) / Total movimentado` | Mensal | MOVIMENTACAO_ESTOQUE | G06 |
+| **KPI 7 — Insumos Abaixo do Estoque Mínimo** | `Contagem de insumos onde qtd_estoque < estoque_minimo` | Diário | INSUMO | G07 |
 
 **Potencial para Business Intelligence:**
-A estrutura relacional permite a criação de *dashboards* (painéis visuais) no Power BI ou Google Data Studio. O gestor poderá visualizar em tempo real o faturamento do fim de semana, a evolução do custo dos insumos e o histórico de vendas por período, substituindo a conferência manual da máquina de pagamento por relatórios consolidados.
+As consultas gerenciais (G01 a G07) alimentam diretamente um *dashboard* no Power BI ou Google Data Studio. O gestor pode acompanhar em tempo real:
+- **Visão de Vendas:** Faturamento por dia, ticket médio por fim de semana e formas de pagamento mais utilizadas.
+- **Visão de Estoque:** Alertas visuais de insumos que precisam ser comprados (abaixo do mínimo).
+- **Visão Financeira:** Conciliação automatizada entre o que foi faturado e o que entrou por dinheiro/cartão.
 
 **Aplicações analíticas e de Inteligência Artificial:**
-- **Previsão de demanda:** Com o histórico de pedidos, um modelo de IA pode prever quantos frangos devem ser assados no próximo sábado com base no clima, feriados ou média histórica, reduzindo perdas e rupturas.
-- **Análise de cesta de compras:** Identificar quais bebidas são frequentemente compradas junto com o frango assado, sugerindo combos promocionais.
-- **Precificação dinâmica:** Análise de elasticidade para sugerir ajustes de preços em itens com baixa margem ou pouca saída.
+- **Previsão de demanda:** Com a série histórica de `ITEM_PEDIDO` e a data, um modelo preditivo pode prever quantos frangos assar no próximo fim de semana, cruzando com feriados ou clima, reduzindo o desperdício (P3).
+- **Reposição inteligente:** Cruzar o consumo histórico de insumos (`MOVIMENTACAO_ESTOQUE`) com o prazo de entrega dos fornecedores para recomendar o momento exato de compra.
+- **Detecção de anomalias financeiras:** A IA pode analisar os `FECHAMENTO_CAIXA` e cruzar com o `FATURAMENTO` da máquina para identificar se a conferência manual do tesoureiro deixou passar alguma divergência (P2).
 
-**Rastreabilidade (Problemas e KPIs → Tabelas e Consultas SQL):**
+**Tabela de rastreabilidade:**
 
-| Problema ou KPI | Tabelas envolvidas | Consulta no script |
+| Problema Declarado | Tabelas envolvidas | Consulta no script |
 | :--- | :--- | :--- |
-| **P1** — Histórico de pedidos inacessível | PEDIDO, ITEM_PEDIDO, FATURAMENTO | G01 |
-| **P2** — Conciliação de caixa | FATURAMENTO, FECHAMENTO_CAIXA | G02 |
-| **P3** — Perdas sem registro | MOVIMENTACAO_ESTOQUE, INSUMO | G03 |
-| **P4** — Histórico de compras | FORNECEDOR, COMPRA, ITEM_COMPRA | G04 |
-| **P5** — Divergências de recebimento | RECEBIMENTO, FUNCIONARIO | G05 |
-| **KPI** — Ticket Médio | PEDIDO, ITEM_PEDIDO | G06 |
-| **KPI** — Faturamento por Forma de Pagamento | FATURAMENTO | G07 |
-| **KPI** — Produtos mais vendidos | ITEM_PEDIDO, PRODUTO | G08 |
-| **KPI** — Insumos abaixo do estoque mínimo | INSUMO, MOVIMENTACAO_ESTOQUE | G09 |
+| **P1 — Registro de pedidos fragmentado** | PEDIDO, ITEM_PEDIDO, FATURAMENTO | G01, G03 |
+| **P2 — Conciliação manual de caixa** | FATURAMENTO, FECHAMENTO_CAIXA | G02 |
+| **P3 — Perdas e lote de frango sem registro** | LOTE_FRANGO, MOVIMENTACAO_ESTOQUE, INSUMO | G06, G07 |
+| **P4 — Falta de histórico de compras** | FORNECEDOR, COMPRA, ITEM_COMPRA | G04 |
+| **P5 — Divergências e descartes sem registro** | RECEBIMENTO, MOVIMENTACAO_ESTOQUE | G05, G06 |
 
 ---
 
@@ -348,144 +360,9 @@ O modelo lógico Rrlacional foi construído a partir da conversão do DER (Model
 > 
 > Para tentar resolver o problema no diagrama, utilizou-se o tipo genérico `VARCHAR` e o tipo `FLOAT` para dinheiro e quantidades.
 
-Abaixo está a descrição textual do modelo lógico para fins de auditoria e conferência, contendo as tabelas, colunas, tipos de dados, chaves primárias (PK), chaves estrangeiras (FK) e a conversão das cardinalidades.
+---
 
-### 2.1 Estrutura das tabelas e tipos de Dados
-
-**Módulo de Pessoas**
-*   **PESSOA** 
-    *   `id_pessoa` (INT, PK)
-    *   `nome` (VARCHAR(100))
-*   **CLIENTE** *(Especialização 1:1)*
-    *   `id_cliente` (INT, PK)
-    *   `data_cadastro` (DATE)
-    *   `id_pessoa` (INT, FK -> PESSOA)
-*   **FUNCIONARIO** *(Especialização 1:1)*
-    *   `id_funcionario` (INT, PK)
-    *   `cargo` (VARCHAR(50))
-    *   `salario_base` (FLOAT)
-    *   `status` (VARCHAR(20))
-    *   `id_pessoa` (INT, FK -> PESSOA)
-*   **TELEFONE** *(1:N)*
-    *   `id_telefone` (INT, PK)
-    *   `numero` (VARCHAR(20))
-    *   `tipo_telefone` (VARCHAR(20))
-    *   `id_pessoa` (INT, FK -> PESSOA)
-
-**Módulo de Atendimento e Vendas**
-*   **MESA**
-    *   `id_mesa` (INT, PK)
-    *   `numero` (INT)
-    *   `localizacao` (VARCHAR(20))
-    *   `capacidade` (INT)
-    *   `status` (VARCHAR(20))
-*   **PEDIDO**
-    *   `id_pedido` (INT, PK)
-    *   `data_hora_abertura` (DATETIME)
-    *   `tipo_consumo` (VARCHAR(20))
-    *   `situacao` (VARCHAR(30))
-    *   `id_cliente` (INT, FK -> CLIENTE)
-    *   `id_funcionario` (INT, FK -> FUNCIONARIO)
-    *   `id_mesa` (INT, FK -> MESA, aceita NULL)
-*   **ITEM_PEDIDO** *(Tabela Associativa N:N)*
-    *   `id_item_pedido` (INT, PK)
-    *   `quantidade` (INT)
-    *   `valor_aplicado` (FLOAT)
-    *   `observacao` (VARCHAR(255))
-    *   `id_pedido` (INT, FK -> PEDIDO)
-    *   `id_produto` (INT, FK -> PRODUTO)
-*   **RESERVA_FRANGO** *(Relacionamento 1:1 com PEDIDO)*
-    *   `id_reserva_frango` (INT, PK)
-    *   `qnt_reservada` (INT)
-    *   `horario_retirada` (DATETIME)
-    *   `pagamento_antecipado` (BOOLEAN/CHAR(1))
-    *   `situacao` (VARCHAR(30))
-    *   `id_pedido` (INT, FK -> PEDIDO)
-
-**Módulo de Produção e Estoque**
-*   **PRODUTO**
-    *   `id_produto` (INT, PK)
-    *   `nome` (VARCHAR(100))
-    *   `descricao` (VARCHAR(255))
-    *   `preco` (FLOAT)
-    *   `categoria` (VARCHAR(50))
-    *   `disponibilidade` (BOOLEAN)
-*   **LOTE_FRANGO** *(1:N com PRODUTO)*
-    *   `id_lote` (INT, PK)
-    *   `data_producao` (DATE)
-    *   `qnt_produzida` (INT)
-    *   `qnt_disponivel` (INT)
-    *   `id_produto` (INT, FK -> PRODUTO)
-*   **INSUMO**
-    *   `id_insumo` (INT, PK)
-    *   `nome` (VARCHAR(100))
-    *   `unidade` (VARCHAR(10))
-    *   `qtd_estoque` (FLOAT)
-    *   `estoque_minimo` (FLOAT)
-*   **FORNECEDOR**
-    *   `id_fornecedor` (INT, PK)
-    *   `nome` (VARCHAR(100))
-    *   `contato` (VARCHAR(50))
-    *   `cnpj` (VARCHAR(18))
-*   **COMPRA** *(1:N com FORNECEDOR)*
-    *   `id_compra` (INT, PK)
-    *   `data_compra` (DATE)
-    *   `valor_total` (FLOAT)
-    *   `situacao` (VARCHAR(30))
-    *   `id_fornecedor` (INT, FK -> FORNECEDOR)
-*   **ITEM_COMPRA** *(Tabela Associativa N:N)*
-    *   `id_item_compra` (INT, PK)
-    *   `quantidade` (FLOAT)
-    *   `valor_unitario` (FLOAT)
-    *   `id_compra` (INT, FK -> COMPRA)
-    *   `id_insumo` (INT, FK -> INSUMO)
-*   **RECEBIMENTO** *(1:1 com COMPRA e 1:N com FUNCIONARIO)*
-    *   `id_recebimento` (INT, PK)
-    *   `data_recebimento` (DATE)
-    *   `divergencia` (VARCHAR(255), aceita NULL)
-    *   `id_compra` (INT, FK -> COMPRA)
-    *   `id_funcionario` (INT, FK -> FUNCIONARIO)
-*   **MOVIMENTACAO_ESTOQUE** *(1:N com INSUMO e RECEBIMENTO)*
-    *   `id_movimentacao` (INT, PK)
-    *   `data_movimento` (DATETIME)
-    *   `quantidade` (FLOAT)
-    *   `tipo` (VARCHAR(20))
-    *   `motivo` (VARCHAR(100))
-    *   `id_insumo` (INT, FK -> INSUMO)
-    *   `id_recebimento` (INT, FK -> RECEBIMENTO, aceita NULL)
-
-**Módulo Financeiro e Fiscal**
-*   **NOTA_FISCAL**
-    *   `id_nota` (INT, PK)
-    *   `numero` (VARCHAR(20))
-    *   `serie` (VARCHAR(5))
-    *   `data_emissao` (DATETIME)
-    *   `tipo` (VARCHAR(30))
-*   **FECHAMENTO_CAIXA** *(1:N com FUNCIONARIO)*
-    *   `id_fechamento` (INT, PK)
-    *   `data_fechamento` (DATE)
-    *   `valor_dinheiro` (FLOAT)
-    *   `valor_pix` (FLOAT)
-    *   `valor_cartao` (FLOAT)
-    *   `observacao` (VARCHAR(255))
-    *   `id_funcionario` (INT, FK -> FUNCIONARIO)
-*   **FATURAMENTO** *(1:1 com PEDIDO, 1:1 com NOTA_FISCAL, 1:N com FECHAMENTO)*
-    *   `id_faturamento` (INT, PK)
-    *   `data_pagamento` (DATETIME)
-    *   `valor_total` (FLOAT)
-    *   `forma_pagamento` (VARCHAR(30))
-    *   `situacao` (VARCHAR(30))
-    *   `id_pedido` (INT, FK -> PEDIDO)
-    *   `id_nota_fiscal` (INT, FK -> NOTA_FISCAL, aceita NULL)
-    *   `id_fechamento` (INT, FK -> FECHAMENTO_CAIXA, aceita NULL)
-
-### 2.2 Conversão de Cardinalidades (Resumo do Modelo Lógico)
-
-- **1:1 (Um para Um):** Resolvidos pela inserção da FK na tabela dependente com a restrição `UNIQUE`. Exemplo: `CLIENTE` herda `id_pessoa` (UNIQUE); `RESERVA_FRANGO` possui `id_pedido` (UNIQUE); `FATURAMENTO` possui `id_pedido` (UNIQUE).
-- **1:N (Um para Muitos):** Resolvidos pela inserção da FK na tabela do lado "N". Exemplo: `PEDIDO` recebe `id_cliente`, `id_funcionario` e `id_mesa`; `COMPRA` recebe `id_fornecedor`; `MOVIMENTACAO_ESTOQUE` recebe `id_insumo`.
-- **N:N (Muitos para Muitos):** Resolvidos pela criação de tabelas associativas. Exemplo: `ITEM_PEDIDO` (conecta PEDIDO e PRODUTO) e `ITEM_COMPRA` (conecta COMPRA e INSUMO). Ambas possuem chaves primárias próprias.
-
-## 10. Utilização de Inteligência Artificial
+## 6. Utilização de Inteligência Artificial
 
 O grupo utilizou o ChatGPT como apoio para *organizar e revisar a documentação do trabalho*, e não como fonte principal de informações sobre a organização. As informações sobre o funcionamento do estabelecimento e os seus processos foram confirmadas pelo grupo por meio da pesquisa de campo.
 
