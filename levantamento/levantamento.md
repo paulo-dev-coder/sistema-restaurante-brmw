@@ -1,4 +1,4 @@
-# Levantamento de Requisitos — A Frangueria
+# Levantamento de requisitos — A Frangueria
 
 **Organização:** A Frangueria (Restaurante e Galeteria)  
 **Endereço:** Av. Celso Garcia, nº 1115 — Catumbi, São Paulo/SP  
