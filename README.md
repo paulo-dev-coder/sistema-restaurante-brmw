@@ -459,7 +459,7 @@ A massa foi construída manualmente com base no levantamento, e não gerada por 
 ### Link do dicionário de dados em HTML
   - https://paulo-dev-coder.github.io/sistema-restaurante-brmw/
 
-## 6. Utilização de Inteligência Artificial
+## 6. Utilização de inteligência artificial
 
 O grupo utilizou ferramentas de inteligência artificial como apoio para organizar e revisar a documentação do trabalho, e não como fonte principal de informações sobre a organização. As informações sobre o funcionamento do estabelecimento e seus processos foram confirmadas pelo grupo por meio da pesquisa de campo, e a inteligência artificial não foi utilizada como evidência de fatos.
 
