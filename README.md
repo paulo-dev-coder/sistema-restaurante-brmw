@@ -362,6 +362,22 @@ O modelo lógico Rrlacional foi construído a partir da conversão do DER (Model
 
 ---
 
+## 3. Script SQL Completo
+
+O script SQL completo do projeto está disponível no repositório no arquivo:
+
+- **Arquivo do script SQL: [`docs/script.sql`](docs/script.sql)**
+
+### 3.1 Validação do script SQL
+
+O script foi testado do zero em uma instância MySQL 8.0.46 local. Todos os testes, contagens, consultas de auditoria e justificativas de volume estão documentados no arquivo:
+
+- **Arquivo da validação do script SQL: [`validacao.md`](validacao.md)**
+
+---
+
+## 4.
+
 ## 6. Utilização de Inteligência Artificial
 
 O grupo utilizou o ChatGPT como apoio para *organizar e revisar a documentação do trabalho*, e não como fonte principal de informações sobre a organização. As informações sobre o funcionamento do estabelecimento e os seus processos foram confirmadas pelo grupo por meio da pesquisa de campo.
