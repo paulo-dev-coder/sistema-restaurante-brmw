@@ -108,12 +108,13 @@ O vínculo familiar entre o entrevistador e o proprietário foi declarado à dis
 - **17. Vocês controlam estoque de frango, temperos, embalagens e bebidas? Existe quantidade mínima de segurança? Já faltou insumo de emergência?**
 
   - **Resposta:** Sim, há controle de estoque de frango, temperos, embalagens e bebidas, com quantidade mínima de segurança definida. As compras são feitas semanalmente, calculadas para o consumo, juntamente com as embalagens. Os insumos são controlados, nunca faltou insumo a ponto de exigir compra de emergência.
+ 
 
 - **18. Há perdas por vencimento ou deterioração? Como isso é registrado?**
 
-### Bloco I — Regras e restrições
-
   - **Resposta:** Sim, já houve perdas por vencimento ou deterioração. O material é descartado, mas não há registro dessas perdas.
+ 
+### Bloco I — Regras e restrições
 
 - **19. Existe alguma regra sobre cancelamento ou alteração de pedido? O pedido só é encerrado depois do pagamento?**
 
