@@ -1,4 +1,5 @@
 # Entrega 2 — Modelo Lógico, Implementação SQL e Apresentação Final
+
 ### Modelagem de dados para um sistema de uma organização de pequeno porte
 
 > Este arquivo é o esqueleto do **README.md** do repositório GitHub do seu grupo.
@@ -25,7 +26,6 @@
 - https://paulo-dev-coder.github.io/sistema-restaurante-brmw/
 
 ## 1. Relatório Técnico Final
-*(vale 7,5% — Dimensão Conceitual)*
 
 ### 1.1 Revisão do Modelo Conceitual
 
@@ -117,7 +117,6 @@ A entrevista com o representante legal (Sergio Olivastro) e a revisão do escopo
 ---
 
 ## 3. Processos de negócio
-*(vale 10% — Dimensão Procedimental)*
 
 **Principais processos mapeados e representados no DER:**
 
@@ -149,7 +148,6 @@ A entrevista com o representante legal (Sergio Olivastro) e a revisão do escopo
 ---
 
 ## 4. Requisitos do sistema
-*(esta seção e a Seção 4 "Regras de Negócio" DIVIDEM 7,5% na dimensão conceitual — juntas valem 7,5%, não 7,5% cada — + 4% exclusivos desta seção na organização/documentação)*
 
 ### 4.1 Requisitos funcionais
 
@@ -227,182 +225,11 @@ A entrevista com o representante legal (Sergio Olivastro) e a revisão do escopo
   - **Sem reserva de mesa e sem delivery:** esses processos não integram o escopo porque não ocorrem na organização (conforme pesquisa de campo).
 ---
 
-## 6. Dicionário de dados conceitual (Preliminar)
-*(vale 10% — Dimensão Procedimental - Segue o modelo do arquivo 02-03g_Exemplo_Dicionario_Dados.pdf)*
 
-Abaixo estão as entidades e os atributos que aparecem no DER fornecido. Os identificadores são considerados chaves primárias; atributos `id_*` que apontam para outra entidade são referências (chaves estrangeiras) e devem ser mostrados como relacionamentos no modelo conceitual.
+## 6. Notação do DER Conceitual
 
-**Entidade: Pessoa**
-
-| Atributo | Descrição | Regra de negócio associada |
-|----------|-----------|------------------------------|
-| id_pessoa | Identificador da pessoa. | Deve identificar unicamente cada pessoa. |
-| nome | Nome da pessoa. | Necessário para identificação. |
-
-**Entidade: Cliente**
-
-| Atributo | Descrição | Regra de negócio associada |
-|----------|-----------|------------------------------|
-| id_cliente | Identificador do cliente. | Deve identificar unicamente cada cliente. |
-| data_cadastro | Data de cadastro do cliente. | Registrar quando o cliente for incluído. |
-
-**Entidade: Funcionário**
-
-| Atributo | Descrição | Regra de negócio associada |
-|----------|-----------|------------------------------|
-| id_funcionario | Identificador do funcionário. | Deve identificar unicamente cada operador cadastrado. |
-| cargo | Função exercida. | Deve refletir a função na organização. |
-| salario_base | Salário-base registrado. | Dado restrito; confirmar se é necessário ao sistema proposto. |
-| status | Situação do cadastro/atividade. | Deve indicar se o funcionário está ativo ou inativo. |
-
-**Entidade: Telefone**
-
-| Atributo | Descrição | Regra de negócio associada |
-|----------|-----------|------------------------------|
-| id_telefone | Identificador do telefone. | Deve identificar unicamente cada registro de telefone. |
-| numero | Número de telefone. | Usado para contato quando necessário, especialmente em retirada. |
-| tipo_telefone | Classificação do telefone. | Deve indicar o tipo adotado pela organização. |
-| id_pessoa | Pessoa proprietária do telefone. | Deve referenciar uma Pessoa existente. |
-
-**Entidade: Pedido**
-
-| Atributo | Descrição | Regra de negócio associada |
-|----------|-----------|------------------------------|
-| id_pedido | Identificador do pedido. | Deve identificar unicamente cada pedido. |
-| data_hora_abertura | Data e hora da abertura. | Registrar no momento da criação. |
-| tipo_consumo | Modalidade de atendimento. | Indicar consumo no local ou retirada. |
-| identificador_mesa | Mesa associada ao pedido. | Aplicável ao consumo no local; não se aplica à retirada. |
-| status | Situação atual do pedido. | Deve registrar o histórico de estados do pedido. |
-
-**Entidade: Item_pedido**
-
-| Atributo | Descrição | Regra de negócio associada |
-|----------|-----------|------------------------------|
-| id_item | Identificador do item do pedido. | Deve identificar unicamente cada item. |
-| quantidade | Quantidade do produto solicitado. | Deve ser maior que zero. |
-| valor_aplicado | Valor aplicado ao item no momento do pedido. | Deve permitir preservar o valor praticado na transação. |
-| observacao | Observação específica do item. | Opcional, quando houver instruções para o preparo. |
-
-**Entidade: Produto**
-
-| Atributo | Descrição | Regra de negócio associada |
-|----------|-----------|------------------------------|
-| id_produto | Identificador do produto. | Deve identificar unicamente cada produto. |
-| nome | Nome do item do cardápio. | Obrigatório para identificação. |
-| descricao | Descrição do produto. | Descrever o item quando necessário. |
-| preco | Preço de venda vigente. | Deve estar informado para venda. |
-| categoria | Categoria do cardápio. | Deve corresponder a uma categoria utilizada pela organização. |
-| disponibilidade | Situação de disponibilidade do produto. | Deve ser conferida com a equipe; não implica baixa automática de ingredientes. |
-
-**Entidade: Reserva_mesa**
-
-| Atributo | Descrição | Regra de negócio associada |
-|----------|-----------|------------------------------|
-| id_reserva | Identificador da reserva de mesa. | Deve identificar unicamente cada reserva. |
-| data_hora | Data e hora agendadas. | Devem ser registradas para organizar o atendimento. |
-| qnt_pessoas | Quantidade de pessoas. | Deve ser maior que zero. |
-| status | Situação da reserva. | Indicar o estado adotado pela organização. |
-
-**Entidade: Reserva_frango**
-
-| Atributo | Descrição | Regra de negócio associada |
-|----------|-----------|------------------------------|
-| id_reserva_frango | Identificador da reserva de frango. | Deve identificar unicamente cada encomenda antecipada. |
-| qnt_reservada | Quantidade reservada. | Deve ser maior que zero e compatível com a disponibilidade. |
-| horario_retirada | Horário previsto para retirada. | Deve ser registrado para organizar a entrega ao cliente no local. |
-| status | Situação da reserva. | Indicar o estado adotado pela organização. |
-
-**Entidade: Lote_frangueria**
-
-| Atributo | Descrição | Regra de negócio associada |
-|----------|-----------|------------------------------|
-| id_produto | Identificador exibido no DER para o lote/produto. | Confirmar o nome e a função: não deve colidir com a chave `id_produto` da entidade Produto. Recomenda-se identificador próprio, como `id_lote`. |
-| nome | Nome do item/lote. | Identificar o lote ou produto da frangueria. |
-| descricao | Descrição do lote/item. | Complementar a identificação, se necessário. |
-| preco | Preço associado. | Esclarecer se é preço unitário ou do lote. |
-| categoria | Categoria do item. | Deve corresponder a uma categoria utilizada pela organização. |
-| disponibilidade | Situação de disponibilidade do lote. | Conferida pela equipe; definir como a quantidade restante será controlada. |
-
-**Entidade: Faturamento**
-
-| Atributo | Descrição | Regra de negócio associada |
-|----------|-----------|------------------------------|
-| id_faturamento | Identificador do registro financeiro. | Deve identificar unicamente cada registro. |
-| data_pagamento | Data do pagamento. | Registrar quando o pagamento ocorrer. |
-| valor_total | Valor total registrado. | Deve corresponder ao valor devido pelo pedido, conforme regra adotada. |
-| forma_pagamento | Meio utilizado para pagar. | Valores aceitos: dinheiro, Pix ou cartão; não armazenar dados do cartão. |
-| status | Situação do faturamento. | Indicar se está pendente, pago, estornado ou outra situação definida pela organização. |
-
----
-
-## 7. Modelagem Conceitual (Entidades, Atributos, Relacionamentos)
-*(vale 7,5% na dimensão conceitual)*
-
-### Entidades reconhecidas
-
-- **Pessoa:** mantém os dados cadastrais comuns usados pelo diagrama.
-- **Cliente:** representa a pessoa no papel de consumidor e concentra a data de cadastro.
-- **Funcionário:** representa o membro da família que atende e registra pedidos. Não implica contratação externa; cargo, situação e salário-base constam no DER, embora a necessidade de armazenar salário deva ser validada.
-- **Telefone:** permite registrar contatos associados à pessoa.
-- **Pedido:** representa uma solicitação de consumo local ou retirada.
-- **Item_pedido:** entidade associativa que registra cada linha de produto solicitada e seus dados próprios.
-- **Produto:** representa os itens disponíveis no cardápio.
-- **Faturamento:** registra os dados financeiros vinculados ao pedido.
-- **Reserva_mesa:** registra o agendamento de atendimento de mesa.
-- **Reserva_frango:** representa a encomenda antecipada de frango assado derivada de pedido.
-- **Lote_frangueria:** representa o lote/registro de disponibilidade usado para atender reservas de frango.
-
-### Atributos e classificações
-
-Os atributos identificadores são as chaves primárias indicadas pelo ponto preenchido no DER. Os atributos que ligam entidades devem ser implementados como referências relacionais; em um DER conceitual, a ligação é representada pelo relacionamento correspondente.
-
-| Entidade | Atributos do DER |
-|----------|------------------|
-| Pessoa | `id_pessoa` (identificador), `nome` (descritivos/cadastrais). |
-| Cliente | `id_cliente` (identificador), `data_cadastro` (cadastral). |
-| Funcionário | `id_funcionario` (identificador), `cargo`, `salario_base`, `status` (cadastrais/operacionais). |
-| Telefone | `id_telefone` (identificador), `numero`, `tipo_telefone`, `id_pessoa` (referência a Pessoa). |
-| Pedido | `id_pedido` (identificador), `data_hora_abertura`, `tipo_consumo`, `identificador_mesa`, `status` (operacionais). |
-| Item_pedido | `id_item` (identificador), `quantidade`, `valor_aplicado`, `observacao` (atributos da linha do pedido). |
-| Produto | `id_produto` (identificador), `nome`, `descricao`, `preco`, `categoria`, `disponibilidade` (cadastrais/operacionais). |
-| Reserva_mesa | `id_reserva` (identificador), `data_hora`, `qnt_pessoas`, `status` (operacionais). |
-| Reserva_frango | `id_reserva_frango` (identificador), `qnt_reservada`, `horario_retirada`, `status` (operacionais). |
-| Lote_frangueria | `id_produto` (identificador como está desenhado; recomenda-se renomear para `id_lote`), `nome`, `descricao`, `preco`, `categoria`, `disponibilidade`. |
-| Faturamento | `id_faturamento` (identificador), `data_pagamento`, `valor_total`, `forma_pagamento`, `status` (financeiros/operacionais). |
-
-### Relacionamentos e cardinalidades representados
-
-A notação do diagrama mostra mínimos e máximos junto às linhas. A leitura abaixo acompanha os rótulos e cardinalidades visíveis; algumas associações precisam ser revistas para evitar cardinalidades obrigatórias inconsistentes com o fluxo real.
-
-- **Pessoa possui Telefone:** o diagrama indica (1,n) junto a Pessoa e (0,n) junto a Telefone. A leitura pretendida parece ser uma Pessoa possuir zero ou muitos telefones e cada Telefone pertencer a uma Pessoa; recomenda-se corrigir a cardinalidade do lado de Telefone para (1,1), pois um registro de telefone não deve ficar sem pessoa.
-- **Pessoa relaciona-se com Cliente:** o DER indica (1,n) nos dois lados. Isso permitiria vários vínculos em ambos os sentidos; se Cliente for uma especialização de Pessoa, a cardinalidade adequada costuma ser Pessoa (0,1) Cliente e Cliente (1,1) Pessoa. O grupo deve escolher entre especialização e relacionamento e ajustar o desenho, evitando a relação genérica ambígua.
-- **Cliente agenda Reserva_mesa:** o diagrama indica (1,n) para Cliente e (0,n) para Reserva_mesa. Para permitir clientes sem reservas e exigir que cada reserva tenha um cliente, recomenda-se Cliente (0,n) e Reserva_mesa (1,1).
-- **Cliente realiza Pedido:** o diagrama indica (1,n) em ambos os lados. Para permitir cadastro de clientes sem pedidos e exigir um cliente em cada pedido, recomenda-se Cliente (0,n) e Pedido (1,1).
-- **Funcionário registra Pedido:** o desenho associa funcionário e pedido pelo relacionamento “registra” e mostra (1,n) nos dois lados. A regra de registro sugere Funcionário (0,n) Pedido e Pedido (1,1) Funcionário, salvo se a pesquisa confirmar que pedidos podem ser registrados por mais de um funcionário.
-- **Pedido contém Item_pedido:** o diagrama indica (1,n) dos dois lados. A regra natural é Pedido (1,n) Item_pedido e Item_pedido (1,1) Pedido. Cada item pertence a um único pedido.
-- **Item_pedido relaciona-se com Produto:** o desenho indica (1,n) nas duas pontas. A regra pretendida é Item_pedido (1,1) Produto e Produto (0,n) Item_pedido: cada linha identifica um produto, que pode aparecer em muitos pedidos ou ainda não ter sido vendido.
-- **Pedido possui Faturamento:** o desenho indica (1,n) em ambos os lados. Se houver um único registro consolidado por pedido, usar Pedido (0,1) Faturamento e Faturamento (1,1) Pedido. Se houver pagamentos parciais ou parcelas, a cardinalidade pode ser Pedido (0,n) Faturamento e deve ser acompanhada por valores por pagamento.
-- **Pedido deriva Reserva_frango:** o diagrama indica (1,n) nas duas pontas. Se a reserva for um detalhe opcional de um pedido, usar Pedido (0,1) Reserva_frango e Reserva_frango (1,1) Pedido; se um pedido puder conter várias reservas, ajustar conforme o processo observado.
-- **Reserva_frango fornece-se por Lote_frangueria:** o desenho mostra (1,n) dos dois lados. A cardinalidade deve refletir a operação real: uma reserva pode consumir um ou mais lotes, e um lote pode atender várias reservas; se quantidades forem alocadas por lote, o relacionamento precisa de atributo associativo `quantidade_fornecida`.
-- **Pessoa e Funcionário:** o diagrama os relaciona pela relação “gera”, com (1,n) nos dois lados. O significado precisa ser definido. Se funcionário for papel/subtipo de Pessoa, prefira especialização Pessoa–Funcionário com correspondência 1:1; “gera” não deixa claro o vínculo de cadastro.
-
-### Restrições e políticas organizacionais aplicadas ao modelo
-
-- Tipo de consumo deve indicar local ou retirada; mesa aplica-se ao consumo local. Para retirada, deve existir telefone de contato associado à pessoa/cliente.
-- A equipe confere a disponibilidade de produto antes de confirmar o pedido. Quantidade de item e quantidade reservada devem ser positivas.
-- Valor aplicado no item preserva o preço usado naquela venda, mesmo que o preço cadastrado do produto mude posteriormente.
-- Reservas de mesa e reservas antecipadas de frango estão incluídas porque aparecem no DER; validar por pesquisa de campo que ambos os processos são reais e definir estados válidos.
-- O faturamento registra forma, data, valor e situação sem armazenar dados de cartão. Definir se há um ou vários faturamentos por pedido.
-- Dados como CPF, e-mail, data de nascimento e salário-base devem ter finalidade confirmada e acesso restrito; remover do modelo se não forem necessários ao processo pesquisado.
-- O DER deve corrigir identificadores duplicados ou ambíguos, em especial `id_produto` usado também em Lote_frangueria, e explicitar as chaves que hoje aparecem apenas como linhas de relacionamento.
-- O negócio não oferece delivery; não se deve introduzir endereço de entrega. A disponibilidade de lotes não representa, por si só, controle automatizado de estoque.
-
----
-
-## 8. Diagrama Entidade-Relacionamento (DER)
-*(vale 20% — é o item de maior peso da entrega)*
-
-- O diagrama inclui Pessoa, Cliente, Funcionário, Telefone, Pedido, Item_pedido, Produto, Faturamento, Reserva_mesa, Reserva_frango e Lote_frangueria.
+- **Ferramenta utilizada para criar o DER:** BRModeloWeb
+- **Imagem do diagrama de entidade e relacionamento:** ![Diagrama de entidade e relacionamento do restaurante](./DER%20conceitual/Modelagem%20de%20banco%20de%20dados%20-%20Diagrama%20de%20caso%20e%20relacionamento.jpg)
 
 ---
 
