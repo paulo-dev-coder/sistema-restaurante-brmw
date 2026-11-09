@@ -346,7 +346,7 @@ As consultas gerenciais (G01 a G07) alimentam diretamente um *dashboard* no Powe
 
 ## 2. Modelo lógico relacional
 
-O modelo lógico Rrlacional foi construído a partir da conversão do DER (Modelo conceitual), aplicando as regras de mapeamento de relacionamentos 1:1, 1:N, N:N e a estratégia de especialização. 
+O modelo lógico relacional foi construído a partir da conversão do DER (Modelo conceitual), aplicando as regras de mapeamento de relacionamentos 1:1, 1:N, N:N e a estratégia de especialização. 
 
 - **Ferramenta utilizada para criar o DER lógico:** BRModeloWeb
 - **Arquivo do DER lógico:** ![Modelo lógico do diagrama de entidade e relacionamento do restaurante](./DER%20logico/Modelagem%20de%20banco%20de%20dados%20-%20Modelo%20lógico%20do%20diagrama%20de%20caso%20e%20relacionamento.jpg)
