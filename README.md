@@ -372,7 +372,7 @@ O script SQL completo do projeto está disponível no repositório no arquivo:
 
 O script foi testado do zero em uma instância MySQL 8.0.46 local. Todos os testes, contagens, consultas de auditoria e justificativas de volume estão documentados no arquivo:
 
-- **Arquivo da validação do script SQL: [`validacao.md`](validacao.md)**
+- **Arquivo da validação do script SQL: [`validacao.md`](docs/validacao.md)**
 
 ---
 
