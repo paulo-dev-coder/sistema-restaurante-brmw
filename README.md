@@ -242,17 +242,17 @@ Conforme exigido no esqueleto da Entrega 2, abaixo estão registrados os apontam
 
 ---
 
-### 1.2 Conversão do Modelo Conceitual para o Modelo Lógico
+### 1.2 Conversão do modelo conceitual para o modelo lógico
 
 A conversão do DER para o Modelo Lógico Relacional seguiu as regras formais de mapeamento:
-- **Entidades → Tabelas:** As 19 entidades do modelo conceitual (incluindo as 2 associativas) foram convertidas em 19 tabelas.
+- **Entidades → Tabelas:** As 19 entidades do modelo conceitual, incluindo as duas entidades associativas, foram convertidas em 19 tabelas.
 - **Atributos → Colunas:** Atributos simples tornaram-se colunas. O atributo multivalorado `Telefone` foi convertido em uma tabela própria (`TELEFONE`). Não houve atributos compostos.
 - **Relacionamentos 1:N → Chaves Estrangeiras:** A chave primária (PK) da tabela do lado "1" foi inserida como chave estrangeira (FK) na tabela do lado "N" (ex: `id_cliente` em `PEDIDO`, `id_fornecedor` em `COMPRA`).
 - **Relacionamentos 1:1 → Chaves Estrangeiras Únicas:** A FK foi inserida na tabela com a cardinalidade obrigatória e recebeu a restrição `UNIQUE` (ex: `id_pedido` em `RESERVA_FRANGO` e `FATURAMENTO`; `id_compra` em `RECEBIMENTO`).
 - **Relacionamentos N:N → Tabelas Associativas:** Os relacionamentos muitos-para-muitos (`ITEM_PEDIDO` e `ITEM_COMPRA`) foram convertidos em tabelas independentes, contendo suas próprias PKs e as FKs das tabelas que conectam.
 - **Generalização/Especialização:** Adotou-se a estratégia de **uma tabela para cada entidade**. A superclasse `PESSOA` mantém os dados comuns, enquanto as subclasses `CLIENTE` e `FUNCIONARIO` possuem suas próprias tabelas com PKs próprias e uma FK (`id_pessoa`) apontando para a superclasse. Essa escolha é ideal pois a especialização é **parcial** (uma pessoa pode existir sem ser cliente ou funcionário) e **sobreposta** (um funcionário pode ser cliente).
 
-### 1.3 Definição de Chaves Primárias e Estrangeiras
+### 1.3 Definição de chaves primárias e estrangeiras
 
 Abaixo está a estrutura de chaves definida para cada tabela no Modelo Lógico:
 
@@ -278,7 +278,7 @@ Abaixo está a estrutura de chaves definida para cada tabela no Modelo Lógico:
 | **FATURAMENTO** | `id_faturamento` | `id_pedido` (FK, UNIQUE), `id_nota_fiscal` (FK), `id_fechamento` (FK) |
 | **FECHAMENTO_CAIXA** | `id_fechamento` | `id_funcionario` (FK) |
 
-### 1.4 Processo de Normalização (1FN, 2FN e 3FN)
+### 1.4 Processo de normalização (1FN, 2FN e 3FN)
 
 O modelo foi submetido às três primeiras formas normais para eliminar redundâncias e anomalias de inserção, atualização e exclusão:
 - **Primeira Forma Normal (1FN):** Todos os atributos são atômicos. O atributo multivalorado de telefone foi isolado na tabela `TELEFONE`. A repetição de itens em um pedido foi resolvida com a tabela associativa `ITEM_PEDIDO`. Não há grupos repetitivos.
@@ -286,20 +286,20 @@ O modelo foi submetido às três primeiras formas normais para eliminar redundâ
 - **Terceira Forma Normal (3FN):** Não existem dependências transitivas. Os dados do fornecedor não estão na tabela `COMPRA` (estão em `FORNECEDOR`); os dados do produto não estão em `ITEM_PEDIDO` (estão em `PRODUTO`); e o endereço/cargo do funcionário não está em `FECHAMENTO_CAIXA`.
 - **Justificativa:** A normalização foi essencial para garantir que alterações de preço em um produto não afetem o histórico de vendas antigas (o `valor_aplicado` fica congelado no `ITEM_PEDIDO`), para evitar a duplicação de dados de clientes em pedidos, e para permitir que a organização cresça (ex: adicionar mais fornecedores) sem retrabalho estrutural.
 
-### 1.5 Justificativas Técnicas das Decisões
+### 1.5 Justificativas técnicas das decisões
 
-- **Chaves Primárias (PKs):** Optou-se pelo uso de chaves substitutas (surrogadas) auto-incrementais (ex: `id_pedido` em vez de usar a data do pedido). Isso garante estabilidade (o ID nunca muda), melhor desempenho na indexação e independência das regras de negócio.
-- **Chaves Estrangeiras (FKs) e Relacionamentos:** As FKs garantem a integridade referencial. A opção por permitir `NULL` em chaves como `id_mesa` (na tabela `PEDIDO`) foi intencional: atende à **RN02** (pedidos de retirada não ocupam mesa). O `id_recebimento` em `MOVIMENTACAO_ESTOQUE` também aceita `NULL` para atender à **RN15** (ajustes manuais e descartes não vêm de uma compra).
-- **Restrições de Integridade:**
+- **Chaves primárias (PKs):** Optou-se pelo uso de chaves substitutas (surrogadas) auto-incrementais (ex: `id_pedido` em vez de usar a data do pedido). Isso garante estabilidade (o ID nunca muda), melhor desempenho na indexação e independência das regras de negócio.
+- **Chaves estrangeiras (FKs) e Relacionamentos:** As FKs garantem a integridade referencial. A opção por permitir `NULL` em chaves como `id_mesa` (na tabela `PEDIDO`) foi intencional: atende à **RN02** (pedidos de retirada não ocupam mesa). O `id_recebimento` em `MOVIMENTACAO_ESTOQUE` também aceita `NULL` para atender à **RN15** (ajustes manuais e descartes não vêm de uma compra).
+- **Restrições de integridade:**
   - *Obrigatoriedade (NOT NULL):* Aplicada a campos essenciais como `nome` em `PESSOA` (**RN03**) e `data_hora_abertura` em `PEDIDO`.
   - *Unicidade (UNIQUE):* Aplicada às FKs de relacionamentos 1:1, como `id_pessoa` em `CLIENTE`, `id_pedido` em `FATURAMENTO` e `id_compra` em `RECEBIMENTO`, garantindo que um pagamento pertença a apenas um pedido.
   - *Valores Permitidos (CHECK):* Restringe domínios para evitar erros, como `forma_pagamento` em `FATURAMENTO` (aceitar apenas Pix, Dinheiro, Débito, Crédito - **RN09**) e `tipo` em `MOVIMENTACAO_ESTOQUE` (Entrada, Saída, Ajuste - **RN15**).
   - *Valores Padrão (DEFAULT):* Facilita a operação definindo estados iniciais, como `situacao = 'Aberto'` em `PEDIDO`, `situacao = 'Pendente'` em `FATURAMENTO` e `disponibilidade = true` em `PRODUTO`.
-- **Decisão Arquitetural (Herança):** A opção por tabelas separadas para `CLIENTE` e `FUNCIONARIO` evita valores nulos excessivos (que ocorreriam se fosse uma tabela única) e mantém a integridade dos dados cadastrais básicos em `PESSOA`.
+- **Decisão arquitetural:** A opção por tabelas separadas para `CLIENTE` e `FUNCIONARIO` evita valores nulos excessivos (que ocorreriam se fosse uma tabela única) e mantém a integridade dos dados cadastrais básicos em `PESSOA`.
 
 ### 1.6 Proposta de Arquitetura Analítica para BI e IA
 
-**Informações Estratégicas e KPIs (Indicadores):**
+**Informações estratégicas e KPIs:**
 O banco de dados foi estruturado para permitir que a gestão do restaurante extraia as seguintes métricas:
 1. **Ticket Médio:** Valor médio gasto por pedido (por dia, fim de semana ou mês).
 2. **Faturamento por Forma de Pagamento:** Divisão das receitas entre Pix, Dinheiro, Débito e Crédito.
@@ -308,13 +308,13 @@ O banco de dados foi estruturado para permitir que a gestão do restaurante extr
 5. **Insumos Abaixo do Estoque Mínimo:** Lista de compras urgentes.
 6. **Desempenho de Fornecedores:** Frequência de divergências registradas no recebimento por fornecedor.
 
-**Potencial para BI (Business Intelligence):**
+**Potencial para Business Intelligence:**
 A estrutura relacional permite a criação de *dashboards* (painéis visuais) no Power BI ou Google Data Studio. O gestor poderá visualizar em tempo real o faturamento do fim de semana, a evolução do custo dos insumos e o histórico de vendas por período, substituindo a conferência manual da máquina de pagamento por relatórios consolidados.
 
-**Aplicações Analíticas e de IA (Inteligência Artificial):**
-- **Previsão de Demanda (Preditiva):** Com o histórico de pedidos, um modelo de IA pode prever quantos frangos devem ser assados no próximo sábado com base no clima, feriados ou média histórica, reduzindo perdas e rupturas.
-- **Análise de Cesta de Compras:** Identificar quais bebidas são frequentemente compradas junto com o frango assado, sugerindo combos promocionais.
-- **Precificação Dinâmica:** Análise de elasticidade para sugerir ajustes de preços em itens com baixa margem ou pouca saída.
+**Aplicações analíticas e de Inteligência Artificial:**
+- **Previsão de demanda:** Com o histórico de pedidos, um modelo de IA pode prever quantos frangos devem ser assados no próximo sábado com base no clima, feriados ou média histórica, reduzindo perdas e rupturas.
+- **Análise de cesta de compras:** Identificar quais bebidas são frequentemente compradas junto com o frango assado, sugerindo combos promocionais.
+- **Precificação dinâmica:** Análise de elasticidade para sugerir ajustes de preços em itens com baixa margem ou pouca saída.
 
 **Rastreabilidade (Problemas e KPIs → Tabelas e Consultas SQL):**
 
