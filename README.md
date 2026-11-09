@@ -14,13 +14,13 @@
 
 ## Metadados dos estudantes
 
-| Nome completo do estudante | RGM |
-| :--- | :--- |
+| Nome completo do estudante | RGM | Nome de usuário do GitHub 
+| :--- | :--- | :--- |
 | Alessa Araújo Ctvrtnik | 49508610 |
 | João Vitor Mendes Almeida | 49744453 |
 | Matheus Ferreira da Silva | 47903520 |
 | Otávio Teixeira Lopes da Silva| 47880414 |
-| Paulo Sergio Olivastro | 47962241 |
+| Paulo Sergio Olivastro | 47962241 | paulo-dev-coder
 
 ## 1. Relatório Técnico Final
 
