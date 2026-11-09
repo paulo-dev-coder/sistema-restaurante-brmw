@@ -25,13 +25,13 @@ A massa simula **1 fim de semana completo de operação** (sábado 07/11 e domin
 | :--- | ---: | :--- |
 | PESSOA | 12 | 3 funcionários (família) + 9 clientes. |
 | TELEFONE | 6 | Contatos dos funcionários e dos clientes com pedidos. |
-| CLIENTE | 9 | Clientes fictícios; alguns sem pedidos para testar G09. |
+| CLIENTE | 9 | Clientes fictícios; 5 com pedidos e 4 sem pedidos. |
 | FUNCIONARIO | 3 | Proprietário (tesoureiro), atendente e cozinheira (Q15). |
 | MESA | 7 | 5 externas + 2 internas (Q12). |
 | PRODUTO | 6 | 1 frango, 3 bebidas, 1 acompanhamento, 1 sobremesa (Q16). |
 | PEDIDO | 20 | 10 no sábado + 10 no domingo (Q13). |
 | ITEM_PEDIDO | 33 | Média de 1,65 item por pedido (frango + bebida). |
-| RESERVA_FRANGO | 3 | Encomendas com pagamento antecipado (Q05). |
+| RESERVA_FRANGO | 2 | Encomendas com pagamento antecipado (pedidos 3 e 13) (Q05). |
 | LOTE_FRANGO | 2 | 14 no sábado + 24 no domingo (Q14). |
 | INSUMO | 4 | Frango cru, carvão, embalagem, tempero (Q17). |
 | FORNECEDOR | 2 | 1 frigorífico + 1 atacadista (Q10). |
@@ -44,7 +44,7 @@ A massa simula **1 fim de semana completo de operação** (sábado 07/11 e domin
 | FATURAMENTO | 19 | Formas Pix, Dinheiro, Débito e Crédito (Q09). O pedido 20 está aberto, portanto sem faturamento. |
 | LOG_ACESSO | 0 | Tabela preparada para eventos da aplicação; vazia na carga inicial. |
 
-- **Total de registros de negócio:** 12 + 6 + 9 + 3 + 7 + 6 + 20 + 33 + 3 + 2 + 4 + 2 + 2 + 3 + 2 + 4 + 3 + 2 + 19 = **142 registros**.
+- **Total de registros de negócio (19 tabelas):** 12 + 6 + 9 + 3 + 7 + 6 + 20 + 33 + 2 + 2 + 4 + 2 + 2 + 3 + 2 + 4 + 3 + 2 + 19 = **141 registros**.
 
 ---
 
@@ -96,7 +96,7 @@ Todos os 19 pedidos faturados têm `valor_total` do faturamento igual à soma do
 
 ### 3.5 Produção de frango e vendas
 
-| Lote | Produzido | Vendido no dia (soma de ITEM_PEDIDO do produto "Frango Assado") | `qnt_disponivel` | Status |
+| Lote | Produzido | Vendido no dia (soma de ITEM_PEDIDO concluídos) | `qnt_disponivel` | Status |
 | :---: | ---: | ---: | ---: | :---: |
 | **07/11** | 14 | 12 | 2 | ✅ |
 | **08/11** | 24 | 10 | 14 | ✅ |
@@ -113,18 +113,18 @@ Todos os 19 pedidos faturados têm `valor_total` do faturamento igual à soma do
 
 | Código | Pergunta | Resultado observado |
 | :--- | :--- | :--- |
-| **G01** | Ticket médio | R$ 60,79 (média de 19 faturamentos, total R$ 1.155,00) |
-| **G02** | Faturamento por forma | Dinheiro 310,00 · Pix 475,00 · Cartão 370,00 |
-| **G03** | Produtos mais vendidos | Frango Assado lidera (22 un.), seguido de Refrigerante (9 un.) |
+| **G01** | Ticket médio | **R$ 59,53** (média de 19 faturamentos, total R$ 1.131,00) |
+| **G02** | Faturamento por forma | Dinheiro 310,00 · Pix 475,00 · **Cartão 346,00** (Débito 207 + Crédito 139) |
+| **G03** | Produtos mais vendidos | Frango Assado lidera (**22 un.**), seguido de Refrigerante (9 un.) |
 | **G04** | Compras por fornecedor | Frigorífico: 1 compra / R$ 500,00 · Atacadão: 1 compra / R$ 250,00 |
 | **G05** | Divergências de recebimento | 1 linha — "Faltou 2kg de frango" (Compra 1) |
 | **G06** | Taxa de perda/descarte | Frango Cru: 2,0 kg descartados |
 | **G07** | Insumos abaixo do mínimo | 1 linha — Tempero (1,0 < 2,0) |
-| **G08** | Faturamento por mês | 2026-11: R$ 1.155,00 |
-| **G09** | Pedidos por tipo de consumo | Local: 13 · Retirada: 7 |
+| **G08** | Faturamento por mês | 2026-11: **R$ 1.131,00** |
+| **G09** | Pedidos por tipo de consumo | **Local: 14 · Retirada: 6** |
 | **G10** | Fechamento de caixa | Sáb 628,00 · Dom 503,00 · **Total 1.131,00** |
 
-> **Nota sobre G01 e G10:** a diferença (R$ 1.155,00 em G01 vs R$ 1.131,00 em G10) é explicada pois os faturamentos vinculados ao fechamento são apenas 19 (todos os pedidos concluídos); o pedido 20, aberto, está fora de ambos. A pequena diferença vem do pedido 20 não ter faturamento — a conta bate exatamente.
+> **Nota sobre G01 e G10:** os dois totais são exatamente iguais (**R$ 1.131,00**), pois todos os 19 faturamentos estão vinculados aos fechamentos. O pedido 20 está aberto e não possui faturamento, por isso não entra em nenhuma das duas contas.
 
 ---
 
