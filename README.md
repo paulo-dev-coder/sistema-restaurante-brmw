@@ -231,9 +231,7 @@ A entrevista com o representante legal (Sergio Olivastro) e a revisão do escopo
 - **Ferramenta utilizada para criar o DER:** BRModeloWeb
 - **Imagem do diagrama de entidade e relacionamento:** ![Diagrama de entidade e relacionamento do restaurante](./DER%20conceitual/Modelagem%20de%20banco%20de%20dados%20-%20Diagrama%20de%20caso%20e%20relacionamento.jpg)
 
----
-
-## 6.1 Alterações do DER em relação à entrega 1
+### 6.1 Alterações do DER em relação à entrega 1
 
 Conforme exigido no esqueleto da Entrega 2, abaixo estão registrados os apontamentos recebidos na correção da Entrega 1 e as respectivas soluções aplicadas no novo DER.
 
