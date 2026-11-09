@@ -117,23 +117,23 @@ A entrevista com o representante legal e a revisão do escopo foram fundamentais
 
 **Principais processos mapeados e representados no DER:**
 
-- **Cadastro de pessoas, clientes e telefones:** nome, telefone com número e tipo; cliente com data de cadastro.
-- **Cadastro de funcionários:** nome, salário, cargo e situação.
-- **Cadastro de produtos do cardápio:** nome, descrição, preço, categoria e disponibilidade.
-- **Cadastro de insumos:** frango, temperos, embalagens e bebidas; unidade, quantidade em estoque e estoque mínimo.
-- **Cadastro de fornecedores:** nome, contato e itens fornecidos.
-- **Gestão de mesas:** controle das 7 mesas (5 externas e 2 internas), com capacidade e status de ocupação.
-- **Compra de frango e insumos:** data, fornecedor, itens, quantidade, valor unitário, valor total e situação.
-- **Recebimento da mercadoria:** data, compra vinculada, itens conferidos pelo tesoureiro, quantidade recebida e registro de divergências.
-- **Movimentação de estoque:** entrada por recebimento, saída por consumo, ajuste manual; quantidade, data, motivo e descarte de perdas.
-- **Atendimento e registro do pedido:** data/hora de abertura, tipo de consumo (local/retirada), vínculo com a mesa (quando local), cliente, funcionário responsável e situação.
-- **Composição do pedido:** produto, quantidade, valor aplicado e observação.
-- **Encomenda antecipada de frango:** pedido de origem, quantidade, horário de retirada, pagamento antecipado, emissão de duas vias (empresa e cliente) e situação.
-- **Produção de frango por lote:** data de produção, quantidade produzida (14 no sábado, 24 no domingo), quantidade disponível e produto.
-- **Faturamento ou pagamento:** pedido, data de pagamento, valor total, forma (dinheiro, Pix, débito, crédito) e situação; sem armazenar dados de cartão.
-- **Emissão de Nota Fiscal:** geração do documento fiscal (número, série, data e tipo) vinculado ao faturamento.
-- **Fechamento do caixa do dia:** data, tesoureiro responsável, fechamento pela máquina, conferência do dinheiro em espécie e divergências.
-- **Preparo e retirada:** o pedido é efetuado, pago, preparado pela cozinha, o cliente é avisado e o pedido é entregue/encerrado.
+- **PN01:** **Cadastro de pessoas, clientes e telefones:** nome, telefone com número e tipo; cliente com data de cadastro.
+- **PN02:** **Cadastro de funcionários:** nome, salário, cargo e situação.
+- **PN03:** **Cadastro de produtos do cardápio:** nome, descrição, preço, categoria e disponibilidade.
+- **PN04:** **Cadastro de insumos:** frango, temperos, embalagens e bebidas; unidade, quantidade em estoque e estoque mínimo.
+- **PN05:** **Cadastro de fornecedores:** nome, contato e itens fornecidos.
+- **PN06:** **Gestão de mesas:** controle das 7 mesas (5 externas e 2 internas), com capacidade e status de ocupação.
+- **PN07:** **Compra de frango e insumos:** data, fornecedor, itens, quantidade, valor unitário, valor total e situação.
+- **PN08:** **Recebimento da mercadoria:** data, compra vinculada, itens conferidos pelo tesoureiro, quantidade recebida e registro de divergências.
+- **PN09:** **Movimentação de estoque:** entrada por recebimento, saída por consumo, ajuste manual; quantidade, data, motivo e descarte de perdas.
+- **PN10:** **Atendimento e registro do pedido:** data/hora de abertura, tipo de consumo (local/retirada), vínculo com a mesa (quando local), cliente, funcionário responsável e situação.
+- **PN11:** **Composição do pedido:** produto, quantidade, valor aplicado e observação.
+- **PN12:** **Encomenda antecipada de frango:** pedido de origem, quantidade, horário de retirada, pagamento antecipado, emissão de duas vias (empresa e cliente) e situação.
+- **PN13:** **Produção de frango por lote:** data de produção, quantidade produzida (14 no sábado, 24 no domingo), quantidade disponível e produto.
+- **PN14:** **Faturamento ou pagamento:** pedido, data de pagamento, valor total, forma (dinheiro, Pix, débito, crédito) e situação; sem armazenar dados de cartão.
+- **PN15:** **Emissão de Nota Fiscal:** geração do documento fiscal (número, série, data e tipo) vinculado ao faturamento.
+- **PN16:** **Fechamento do caixa do dia:** data, tesoureiro responsável, fechamento pela máquina, conferência do dinheiro em espécie e divergências.
+- **PN17:** **Preparo e retirada:** o pedido é efetuado, pago, preparado pela cozinha, o cliente é avisado e o pedido é entregue/encerrado.
 - **Fluxograma:** A organização optou por não inserir o fluxograma.
 
 **Processos prováveis não incluídos e justificativa:**
