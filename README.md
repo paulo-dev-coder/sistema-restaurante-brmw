@@ -1,4 +1,4 @@
-# Entrega 2 — Modelo Lógico, implementação SQL e apresentação Final
+# Entrega 2 — Modelo lógico, implementação SQL e apresentação Final
 
 ### Modelagem de dados para um sistema de uma organização de pequeno porte
 
@@ -24,7 +24,7 @@
 
 ## 1. Relatório Técnico Final
 
-### 1.1 Revisão do Modelo Conceitual
+### 1.1 Revisão do modelo conceitual
 
 - **Nome oficial do estabelecimento:** A Frangueria
 
