@@ -259,7 +259,7 @@ O modelo lógico foi obtido a partir do DER conceitual aplicando as regras forma
   - `PEDIDO N:N PRODUTO` → **ITEM_PEDIDO** (contém `quantidade`, `valor_aplicado` e `observacao`).
   - `COMPRA N:N INSUMO` → **ITEM_COMPRA** (contém `quantidade` e `valor_unitario`).
 
-### 1.3 Definição de Chaves Primárias e Estrangeiras
+### 1.3 Definição de chaves primárias e estrangeiras
 
 **Chaves primárias (PKs):**
 Todas as tabelas de entidades utilizam chaves substitutas do tipo `INT AUTO_INCREMENT`. Nenhum dado de negócio como nome ou telefone serve como chave, pois estes se repetem ou mudam com o tempo. Um inteiro curto e sem significado agiliza as buscas e nunca precisa ser alterado. 
@@ -292,7 +292,7 @@ As tabelas associativas (`ITEM_PEDIDO` e `ITEM_COMPRA`) utilizam chave primária
 
 **Justificativa das FKs:** As FKs garantem a integridade referencial (o banco recusa um pedido de um cliente inexistente). As chaves estrangeiras não utilizam exclusão em cascata (`RESTRICT`), pois o histórico financeiro e de movimentações deve ser preservado (conforme RN24).
 
-### 1.4 Processo de Normalização (1FN, 2FN e 3FN)
+### 1.4 Processo de normalização (1FN, 2FN e 3FN)
 
 O modelo foi submetido às três formas normais para eliminar redundâncias e anomalias de atualização:
 
@@ -300,7 +300,7 @@ O modelo foi submetido às três formas normais para eliminar redundâncias e an
 - **2ª Forma Normal (2FN):** Aplica-se às tabelas com chave composta. Em `ITEM_PEDIDO`, a `quantidade` e o `valor_aplicado` dependem do par `(id_pedido, id_produto)` inteiro. O nome ou o preço atual do produto não ficam aqui, pois dependeriam apenas do `id_produto` (parte da chave), então foram alocados corretamente em `PRODUTO`.
 - **3ª Forma Normal (3FN):** Não há dependências transitivas. O `LOTE_FRANGO` não guarda as informações do produto frango, apenas o `id_produto`. O `PEDIDO` não guarda os dados do cliente (nome/telefone), apenas o `id_cliente`. O `FATURAMENTO` aponta diretamente para o `PEDIDO`, não para o `CLIENTE`.
 
-### 1.5 Justificativas Técnicas das Decisões
+### 1.5 Justificativas técnicas das decisões
 
 - **Chaves:** O uso de `INT AUTO_INCREMENT` nas PKs garante estabilidade. As FKs com restrição `UNIQUE` (em CLIENTE, FUNCIONARIO, RESERVA_FRANGO, FATURAMENTO e RECEBIMENTO) são a forma relacional de garantir os relacionamentos 1:1 desenhados no DER.
 - **Restrições de Integridade (CHECK e DEFAULT):**
@@ -310,9 +310,9 @@ O modelo foi submetido às três formas normais para eliminar redundâncias e an
 - **Decisão arquitetural (Evitar FLOAT no SQL):** Apesar de o modelo lógico exibir `FLOAT`, o script SQL do MySQL utilizará `DECIMAL(10,2)` para todos os valores monetários. Isso evita o erro de arredondamento que o `FLOAT` acumula em somas de relatórios.
 - **Ausência de Dados Desnecessários:** Conforme **RN18**, a tabela PESSOA contém apenas `nome`, e a tabela TELEFONE contém apenas o número e tipo. Atributos como CPF, e-mail e data de nascimento não foram criados, respeitando a LGPD e o porte da organização.
 
-### 1.6 Proposta de Arquitetura Analítica para BI e IA
+### 1.6 Proposta de arquitetura analítica para BI e IA
 
-**Informações Estratégicas e KPIs:**
+**Informações estratégicas e KPIs:**
 Os dados estão estruturados para permitir consultas gerenciais e painéis (Dashboards) de BI, focando nos gargalos identificados na entrevista.
 
 | KPI / Métrica | Fórmula / Definição | Período | Tabelas envolvidas | Consulta SQL |
