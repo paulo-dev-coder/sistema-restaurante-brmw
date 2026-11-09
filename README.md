@@ -92,6 +92,10 @@ https://maps.app.goo.gl/pjqxhT2Ltq6g1c2D7?g_st=ac
     ![ Foto retirada no escritório administrativo do restaurante, durante a entrevista semiestruturada, com destaque para o computador e os materiais de anotação.](evidencias/foto_entrevista_1.jpg)
     ![Foto retirada no escritório administrativo, registrando o momento em que o integrante do grupo anota as respostas fornecidas pelo proprietário sobre a rotina operacional.](evidencias/foto_entrevista_2.jpg)
 
+  - **Responsável pela organização:**
+    - **Nome:** Sergio Olivastro
+    - **Número de telefone para contato, caso queira confirmar as informações:** +55 11 92017-3732
+
 ### Relato da entrevista
 
 **Quem:** A entrevista foi realizada com **Sergio Olivastro**, o proprietário e representante legal do restaurante. Quem participou da visita foi o integrante do grupo **Paulo Sergio Olivastro**.
@@ -101,14 +105,14 @@ https://maps.app.goo.gl/pjqxhT2Ltq6g1c2D7?g_st=ac
 **Comprovação:** A presença no local e a realização da entrevista estão documentadas por fotos em JPG, armazenadas na pasta `evidencias/` do repositório. O levantamento completo, com as 22 perguntas e respostas, está disponível no arquivo [`levantamento/levantamento.md`](levantamento/levantamento.md).
 
 **O que foi levantado e o que mudou em relação à primeira entrega:** 
-A entrevista com o representante legal (Sergio Olivastro) e a revisão do escopo foram fundamentais para corrigir as falhas apontadas na correção da Entrega 1 (Issue). As principais mudanças, alinhadas aos critérios da correção, foram:
+A entrevista com o representante legal e a revisão do escopo foram fundamentais para corrigir as falhas apontadas na correção da Entrega 1. As principais mudanças, alinhadas aos critérios da correção, foram:
 
 - **Comprovação da entrevista:** Na primeira entrega, não havia comprovação de contato. Nesta entrega, a visita presencial foi realizada, documentada com fotos no repositório e detalhada neste relato;
 - **Caracterização com números:** A primeira entrega foi penalizada por utilizar adjetivos vagos como "operação compacta". Agora, a caracterização apresenta dados reais coletados na visita: sete mesas, sendo 5 externas e 2 internas, capacidade para 24 pessoas, e um volume de 20 a 28 pedidos por semana;
-- **Processos e regras de negócio:** A correção apontou ausência de processos como compras e estoque, além de regras genéricas (com marcas de IA). Foram adicionados os processos de Compra, Recebimento e Estoque (que agora cobrem P4 e P5), e as regras de negócio foram reescritas com base na realidade (ex: a máquina faz o fechamento em 5 minutos; não há rateio de lote);
+- **Processos e regras de negócio:** A correção apontou ausência de processos como compras e estoque, além de regras genéricas. Foram adicionados os processos de Compra, Recebimento e Estoque, e as regras de negócio foram reescritas com base na realidade como por exemplo: a máquina faz o fechamento em 5 minutos; não há rateio de lote;
 - **Correção estrutural do DER:** A primeira entrega tinha erros graves: relacionamentos `(1,n)` em ambos os lados, chaves estrangeiras desenhadas e a entidade `LOTE_FRANGUERIA` com chave duplicada. O DER da E2 resolveu tudo isso, adotou a generalização para Pessoa/Cliente/Funcionário e promoveu MESA a entidade própria, conforme exigido pelo professor;
-- **Registro de pedidos e fechamento de Caixa:** Descobertas importantes da entrevista alteraram o modelo. O que antes se achava que era caderneta, na verdade é um registro **no computador** e na **máquina de pagamento** (justificando os problemas P1 e P2);
-- **Cardápio e produção:** Confirmou-se que o cardápio tem **5 itens fixos** e a produção diária é de **14 frangos no sábado e 24 no domingo** (justificando a entidade `LOTE_FRANGO`);
+- **Registro de pedidos e fechamento de Caixa:** Descobertas importantes da entrevista alteraram o modelo. O que antes se achava que era caderneta, na verdade é um registro no computador e na máquina de pagamento, o que justifica os problemas P1 e P2;
+- **Cardápio e produção:** Confirmou-se que o cardápio tem **5 itens fixos** e a produção diária é de 14 frangos no sábado e 24 no domingo, o que justifica a entidade `LOTE_FRANGO`;
 - **Escopo de dados e LGPD:** A primeira entrega coletava dados desnecessários. A entrevista confirmou que apenas nome e telefone são coletados, eliminando CPF, e-mail e data de nascimento do modelo. Além disso, a entidade `NOTA_FISCAL` foi incluída para refletir a emissão fiscal permanente citada pelo proprietário;
 - **Exclusões confirmadas:** A pesquisa em campo confirmou que **não há reserva de mesa**, **não há delivery** e **não há rastreio de lote por encomenda** (apenas nota de saída), removendo essas premissas incorretas da E1.
 
