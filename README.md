@@ -258,10 +258,9 @@ O modelo lógico foi obtido a partir do DER conceitual aplicando as regras forma
 
 ### 1.3 Definição de chaves primárias e estrangeiras
 
-**Chaves primárias (PKs):**
-Todas as tabelas de entidades utilizam chaves substitutas do tipo `INT AUTO_INCREMENT`. Nenhum dado de negócio como nome ou telefone serve como chave, pois estes se repetem ou mudam com o tempo. Um inteiro curto e sem significado agiliza as buscas e nunca precisa ser alterado. 
+**Chaves primárias (PKs):** Todas as tabelas do modelo utilizam chaves substitutas do tipo `INT AUTO_INCREMENT`. Isso inclui as tabelas associativas (`ITEM_PEDIDO` e `ITEM_COMPRA`), que receberam identificadores próprios (`id_item_pedido` e `id_item_compra`) em vez de chaves compostas. 
 
-As tabelas associativas (`ITEM_PEDIDO` e `ITEM_COMPRA`) utilizam chave primária composta, ou seja as duas FKs juntas, o que impede que o mesmo produto/insumo apareça repetido no mesmo pedido compra.
+Essa decisão técnica oferece duas vantagens: mantém o padrão de chaves do restante do banco, o que facilita a manutenção e o código da aplicação e permite que o mesmo produto apareça mais de uma vez no mesmo pedido, caso o cliente solicite preparos diferentes, como por exemplo: um frango com farofa e outro sem farofa, usando o campo de observação. Nenhum dado de negócio como nome ou telefone é utilizado como chave, pois estes dados podem se repetir ou mudar com o tempo.
 
 **Resumo de chaves e restrições:**
 
@@ -270,24 +269,24 @@ As tabelas associativas (`ITEM_PEDIDO` e `ITEM_COMPRA`) utilizam chave primária
 | **PESSOA** | `id_pessoa` | — | — |
 | **CLIENTE** | `id_cliente` | `id_pessoa` → PESSOA | `id_pessoa` é **UNIQUE** (Relação 1:1) |
 | **FUNCIONARIO** | `id_funcionario` | `id_pessoa` → PESSOA | `id_pessoa` é **UNIQUE** (Relação 1:1) |
-| **TELEFONE** | `id_telefone` | `id_pessoa` → PESSOA | — |
+| **TELEFONE** | `id_telefone` | `id_pessoa` → PESSOA | Unicidade composta de `(id_pessoa, numero)` |
 | **MESA** | `id_mesa` | — | — |
 | **PEDIDO** | `id_pedido` | `id_cliente` → CLIENTE<br>`id_funcionario` → FUNCIONARIO<br>`id_mesa` → MESA | `id_mesa` aceita **NULL** (para retiradas, conforme RN02) |
-| **ITEM_PEDIDO** | `(id_pedido, id_produto)` | `id_pedido` → PEDIDO<br>`id_produto` → PRODUTO | PK Composta. Evita produto repetido no pedido. |
+| **ITEM_PEDIDO** | `id_item_pedido` | `id_pedido` → PEDIDO<br>`id_produto` → PRODUTO | `quantidade > 0`. Permite o mesmo produto em linhas diferentes com observações distintas. |
 | **RESERVA_FRANGO**| `id_reserva_frango` | `id_pedido` → PEDIDO | `id_pedido` é **UNIQUE** (Relação 1:1, conforme RN08) |
-| **PRODUTO** | `id_produto` | — | — |
-| **LOTE_FRANGO** | `id_lote` | `id_produto` → PRODUTO | — |
-| **INSUMO** | `id_insumo` | — | — |
-| **FORNECEDOR** | `id_fornecedor` | — | — |
-| **COMPRA** | `id_compra` | `id_fornecedor` → FORNECEDOR | — |
-| **ITEM_COMPRA** | `(id_compra, id_insumo)` | `id_compra` → COMPRA<br>`id_insumo` → INSUMO | PK Composta. Evita insumo repetido na compra. |
+| **PRODUTO** | `id_produto` | — | `preco > 0` |
+| **LOTE_FRANGO** | `id_lote` | `id_produto` → PRODUTO | `qnt_produzida >= 0` e `qnt_disponivel >= 0` |
+| **INSUMO** | `id_insumo` | — | `qtd_estoque >= 0` |
+| **FORNECEDOR** | `id_fornecedor` | — | `cnpj` é **UNIQUE** |
+| **COMPRA** | `id_compra` | `id_fornecedor` → FORNECEDOR | `valor_total >= 0` |
+| **ITEM_COMPRA** | `id_item_compra` | `id_compra` → COMPRA<br>`id_insumo` → INSUMO | `quantidade > 0` |
 | **RECEBIMENTO** | `id_recebimento` | `id_compra` → COMPRA<br>`id_funcionario` → FUNCIONARIO| `id_compra` é **UNIQUE** (Relação 1:1, conforme RN14) |
 | **MOV. ESTOQUE** | `id_movimentacao`| `id_insumo` → INSUMO<br>`id_recebimento` → RECEBIMENTO| `id_recebimento` aceita **NULL** (saídas/ajustes sem compra, conforme RN15) |
 | **NOTA_FISCAL** | `id_nota` | — | — |
-| **FATURAMENTO** | `id_faturamento` | `id_pedido` → PEDIDO<br>`id_nota_fiscal` → NOTA_FISCAL<br>`id_fechamento` → FECHAMENTO_CAIXA | `id_pedido` é **UNIQUE** (1:1)<br>`id_nota_fiscal` aceita NULL (emitida depois) |
+| **FATURAMENTO** | `id_faturamento` | `id_pedido` → PEDIDO<br>`id_nota_fiscal` → NOTA_FISCAL<br>`id_fechamento` → FECHAMENTO_CAIXA | `id_pedido` é **UNIQUE** (1:1)<br>`id_nota_fiscal` aceita **NULL** (emitida depois) |
 | **FECHAMENTO_CAIXA**| `id_fechamento` | `id_funcionario` → FUNCIONARIO | — |
 
-**Justificativa das FKs:** As FKs garantem a integridade referencial (o banco recusa um pedido de um cliente inexistente). As chaves estrangeiras não utilizam exclusão em cascata (`RESTRICT`), pois o histórico financeiro e de movimentações deve ser preservado (conforme RN24).
+**Justificativa das FKs:** As FKs garantem a integridade referencial (o banco recusa um pedido de um cliente inexistente). As chaves estrangeiras não utilizam exclusão em cascata (`ON DELETE RESTRICT`), pois o histórico financeiro e de movimentações deve ser preservado (conforme RN24).
 
 ### 1.4 Processo de normalização (1FN, 2FN e 3FN)
 
