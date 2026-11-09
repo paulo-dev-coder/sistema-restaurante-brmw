@@ -21,6 +21,7 @@ SET NAMES utf8mb4;
 -- ETAPAS 2 e 3: CREATE TABLE + CONSTRAINTS
 
 -- Modulo de pessoas e acesso
+
 CREATE TABLE PESSOA (
     id_pessoa INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL
@@ -53,6 +54,7 @@ CREATE TABLE FUNCIONARIO (
 ) ENGINE=InnoDB;
 
 -- Modulo de atendimento e vendas
+
 CREATE TABLE MESA (
     id_mesa INT AUTO_INCREMENT PRIMARY KEY,
     numero INT NOT NULL,
@@ -110,7 +112,8 @@ CREATE TABLE RESERVA_FRANGO (
     CONSTRAINT chk_qnt_reservada CHECK (qnt_reservada > 0)
 ) ENGINE=InnoDB;
 
--- Modulo de producao e estoque
+-- Modulo de produção e estoque
+
 CREATE TABLE LOTE_FRANGO (
     id_lote INT AUTO_INCREMENT PRIMARY KEY,
     data_producao DATE NOT NULL,
@@ -182,7 +185,8 @@ CREATE TABLE MOVIMENTACAO_ESTOQUE (
     CONSTRAINT chk_qtde_mov CHECK (quantidade > 0)
 ) ENGINE=InnoDB;
 
--- Modulo Financeiro e Fiscal
+-- Modulo financeiro e fiscal
+
 CREATE TABLE NOTA_FISCAL (
     id_nota INT AUTO_INCREMENT PRIMARY KEY,
     numero VARCHAR(20) NOT NULL,
@@ -217,7 +221,8 @@ CREATE TABLE FATURAMENTO (
     CONSTRAINT chk_forma_pgto CHECK (forma_pagamento IN ('Pix', 'Dinheiro', 'Cartao de Debito', 'Cartao de Credito'))
 ) ENGINE=InnoDB;
 
--- Tabela tecnica de auditoria
+-- Tabela técnica de auditiria
+
 CREATE TABLE LOG_ACESSO (
     id_evento INT AUTO_INCREMENT PRIMARY KEY,
     dh_evento DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -229,7 +234,7 @@ CREATE TABLE LOG_ACESSO (
     CONSTRAINT chk_log_resultado CHECK (tp_resultado IN ('sucesso', 'negado', 'erro'))
 ) ENGINE=InnoDB;
 
--- INDICES PARA OTIMIZACAO
+-- Indices para otimização
 CREATE INDEX idx_pedido_data_situacao ON PEDIDO (data_hora, situacao);
 CREATE INDEX idx_faturamento_pagamento ON FATURAMENTO (data_pagamento, forma_pagamento);
 CREATE INDEX idx_mov_data ON MOVIMENTACAO_ESTOQUE (data_movimento, tipo);
@@ -237,6 +242,7 @@ CREATE INDEX idx_mov_data ON MOVIMENTACAO_ESTOQUE (data_movimento, tipo);
 -- ===========================================================================
 -- ETAPA 4: INSERT INTO - MASSA DE DADOS CONSISTENTE
 -- ===========================================================================
+
 -- 1. Pessoas e subtipos
 INSERT INTO PESSOA (nome) VALUES 
 ('Antonio Proprietario'), ('Ana Atendente'), ('Joao Cozinheiro'),
@@ -258,6 +264,7 @@ INSERT INTO TELEFONE (numero, tipo_telefone, id_pessoa) VALUES
 ('11999990004', 'Celular', 4), ('11999990005', 'Celular', 5), ('11999990006', 'Celular', 6);
 
 -- 2. Mesas e produtos
+
 INSERT INTO MESA (numero, localizacao, capacidade) VALUES 
 (1, 'Externa', 4), (2, 'Externa', 4), (3, 'Externa', 2), 
 (4, 'Externa', 2), (5, 'Externa', 4), (6, 'Interna', 4), (7, 'Interna', 2);
@@ -271,6 +278,7 @@ INSERT INTO PRODUTO (nome, descricao, preco, categoria) VALUES
 ('Pudim', 'Pudim de leite condensado', 10.00, 'Sobremesa');
 
 -- 3. Estoque e fornecedores
+
 INSERT INTO INSUMO (nome, unidade, qtd_estoque, estoque_minimo) VALUES 
 ('Frango Cru', 'Kg', 21.0, 10.0),    -- 23 entrada - 2 saída = 21
 ('Carvao', 'Kg', 50.0, 5.0),          -- 50 entrada
@@ -301,13 +309,14 @@ INSERT INTO MOVIMENTACAO_ESTOQUE (data_movimento, quantidade, tipo, motivo, id_i
 ('2026-11-06 08:00:00', 100.0, 'Entrada', 'Recebimento de compra', 3, 2),
 ('2026-11-07 15:00:00', 2.0, 'Saida', 'Perda por vencimento', 1, NULL);
 
--- 4. Producao e pedidos
+-- 4. Produção e pedidos
 
 INSERT INTO LOTE_FRANGO (data_producao, qnt_produzida, qnt_disponivel, id_produto) VALUES 
 ('2026-11-07', 14, 2, 1),    -- 14 produzidos - 12 vendidos = 2
 ('2026-11-08', 24, 14, 1);   -- 24 produzidos - 10 vendidos = 14
 
 -- Pedidos no sábado (10 pedidos)
+
 INSERT INTO PEDIDO (data_hora, tipo_consumo, situacao, id_cliente, id_funcionario, id_mesa) VALUES 
 ('2026-11-07 11:30:00', 'Local', 'Concluido', 1, 2, 1),
 ('2026-11-07 12:00:00', 'Local', 'Concluido', 2, 2, 2),
@@ -321,6 +330,7 @@ INSERT INTO PEDIDO (data_hora, tipo_consumo, situacao, id_cliente, id_funcionari
 ('2026-11-07 19:30:00', 'Local', 'Concluido', 2, 2, 2);
 
 -- Pedidos no domingo (10 pedidos)
+
 INSERT INTO PEDIDO (data_hora, tipo_consumo, situacao, id_cliente, id_funcionario, id_mesa) VALUES 
 ('2026-11-08 11:30:00', 'Local', 'Concluido', 3, 2, 6),
 ('2026-11-08 12:00:00', 'Local', 'Concluido', 4, 2, 7),
@@ -398,12 +408,14 @@ INSERT INTO FECHAMENTO_CAIXA (data_fechamento, valor_dinheiro, valor_pix, valor_
 ('2026-11-08', 149.00, 200.00, 154.00, 1);
 
 -- Associando faturamentos aos fechamentos
+
 UPDATE FATURAMENTO SET id_fechamento = 1 WHERE id_pedido IN (1,2,3,4,5,6,7,8,9,10);
 UPDATE FATURAMENTO SET id_fechamento = 2 WHERE id_pedido IN (11,12,13,14,15,16,17,18,19);
 
 -- ===========================================================================
 -- ETAPA 5: SELECT COM JOIN (Relacionamentos)
 -- ===========================================================================
+
 SELECT p.id_pedido, p.data_hora, p.tipo_consumo, c.nome AS cliente, f.nome AS atendente, m.numero AS mesa, p.situacao
 FROM PEDIDO p
 JOIN CLIENTE cl ON p.id_cliente = cl.id_cliente
