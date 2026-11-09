@@ -135,9 +135,9 @@ O vínculo familiar entre o entrevistador e o proprietário foi declarado à dis
 
 ---
 
-## 3. Achados da observação presencial
+## 3. Observações
 
-A observação foi feita durante a visita, **separada das respostas do entrevistado**. O grupo chegou ao estabelecimento às **10h30**, logo na abertura, quando o salão ainda estava vazio e sem clientes. Isso permitiu observar a rotina de preparação antes do movimento.
+A observação foi feita durante a visita, **separada das respostas do entrevistado**. O integrante chegou ao estabelecimento às **10h30**, logo na abertura, quando o salão ainda estava vazio e sem clientes. O que permitiu observar a rotina de preparação antes do movimento.
 
 **Ambiente e infraestrutura:**
 - O escritório administrativo possui computador, calculadora, porta-notas com documentos fiscais e dinheiro.
@@ -152,7 +152,7 @@ A observação foi feita durante a visita, **separada das respostas do entrevist
 - O fechamento do caixa é feito pela máquina, e o dinheiro em espécie é conferido pelo tesoureiro.
 
 **Movimento do salão:**
-- Como a visita ocorreu na abertura (10h30), não havia clientes no salão. O movimento começou a aumentar por volta das 11h30, com a chegada dos primeiros pedidos.
+- Como a visita ocorreu na abertura (10h30), não havia clientes no salão. O movimento começou a aumentar por volta das 11h30, com a chegada dos primeiros clientes.
 
 **Documentos e papéis:**
 - Havia notas fiscais e comprovantes guardados no porta-notas do escritório.
@@ -160,7 +160,7 @@ A observação foi feita durante a visita, **separada das respostas do entrevist
 
 ---
 
-## 4. Síntese dos achados
+## 4. Síntese das observações
 
 A A Frangueria é uma microempresa familiar com **3 pessoas na equipe**, **7 mesas** (5 externas + 2 internas) e volume de **20 a 28 pedidos por semana**. O cardápio é fixo, com **5 itens de refeição**, e a produção diária é de **14 frangos no sábado e 24 no domingo**. O preço médio do conjunto (prato + bebida) fica entre R$ 25,00 e R$ 30,00, e a bebida isolada varia de R$ 4,00 a R$ 15,00.
 
@@ -190,5 +190,3 @@ Com base no levantamento, os seguintes ajustes foram aplicados ao DER, às regra
 | Produção de 14/24 frangos (Q14) | Entidade `LOTE_FRANGO` com `qnt_produzida` e `qnt_disponivel`. |
 | 7 mesas (Q12) | Entidade `MESA` como própria, com `localizacao` e `capacidade`. |
 | Volume de 20–28 pedidos/semana (Q13) | Massa de dados com 20 pedidos simulando 1 fim de semana. |
-
-Esses ajustes estão refletidos no README (seção 1.1), no DER final (seção 2), no script SQL (seção 3) e na massa de dados (seção 4).
