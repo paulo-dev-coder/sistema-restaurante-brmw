@@ -163,7 +163,7 @@ A observação foi feita durante a visita, **separada das respostas do entrevist
 
 ## 4. Síntese das observações
 
-A A Frangueria é uma microempresa familiar com **3 pessoas na equipe**, **7 mesas** (5 externas + 2 internas) e volume de **20 a 28 pedidos por semana**. O cardápio é fixo, com **5 itens de refeição**, e a produção diária é de **14 frangos no sábado e 24 no domingo**. O preço médio do conjunto (prato + bebida) fica entre R$ 25,00 e R$ 30,00, e a bebida isolada varia de R$ 4,00 a R$ 15,00.
+A Frangueria é uma microempresa familiar com **3 pessoas na equipe**, **7 mesas** (5 externas + 2 internas) e volume de **20 a 28 pedidos por semana**. O cardápio é fixo, com **5 itens de refeição**, e a produção diária é de **14 frangos no sábado e 24 no domingo**. O preço médio do conjunto (prato + bebida) fica entre R$ 25,00 e R$ 30,00, e a bebida isolada varia de R$ 4,00 a R$ 15,00.
 
 Os pedidos são registrados no **computador** (pelo representante legal) e na **máquina de pagamento**, sem integração entre os dois registros. O fechamento de caixa é feito pela máquina em 5 minutos, com conferência manual do dinheiro pelo tesoureiro.
 
