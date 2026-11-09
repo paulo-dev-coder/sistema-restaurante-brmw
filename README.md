@@ -334,17 +334,157 @@ A estrutura relacional permite a criação de *dashboards* (painéis visuais) no
 | **KPI** — Produtos mais vendidos | ITEM_PEDIDO, PRODUTO | G08 |
 | **KPI** — Insumos abaixo do estoque mínimo | INSUMO, MOVIMENTACAO_ESTOQUE | G09 |
 
-
-## 9. Justificativa Técnica
-*(vale 7,5% — sozinho, é o subcritério de maior peso dentro da Dimensão Conceitual)*
-
-O modelo separa os conceitos que têm identidade e ciclo próprios. Pessoa concentra os dados cadastrais, enquanto Cliente representa seu papel nas compras; Funcionário identifica o operador que registra pedidos. Telefone foi separado para permitir mais de um contato por pessoa. Pedido é a transação principal, e Item_pedido resolve a relação muitos-para-muitos entre pedido e produto, além de guardar quantidade, valor aplicado e observação por item. Produto mantém o catálogo e a disponibilidade. Faturamento separa o registro financeiro do atendimento. Reserva_mesa e Reserva_frango representam dois processos específicos mostrados no DER, e Lote_frangueria permite relacionar as encomendas antecipadas à produção disponível.
-
-As cardinalidades devem refletir a ocorrência mínima e máxima real, não simplesmente repetir (1,n) em todas as linhas. Em particular, cliente e produto podem existir sem pedido/venda; um pedido deve possuir itens e estar associado ao cliente e ao funcionário que o registrou; um item pertence a um pedido e referencia um produto. O vínculo entre pedido e faturamento depende de a organização registrar um pagamento consolidado ou vários pagamentos. A associação entre reserva de frango e lote depende de como a produção é separada; se vários lotes atenderem uma reserva, a quantidade fornecida em cada associação precisa ser registrada.
-
-A decomposição evita repetir dados do produto em cada pedido e permite preservar o valor aplicado no momento da venda. A separação Pessoa–Cliente e Pessoa–Funcionário facilita distinguir dados cadastrais de papéis, mas o DER deve representá-la como especialização ou vínculo 1:1 claramente definido. A modelagem inclui reservas e cadastro pessoal adicional porque aparecem no diagrama recebido; a pesquisa de campo deve confirmar que esses processos e dados existem e são necessários. CPF, e-mail, data de nascimento e salário-base não devem ser coletados sem finalidade operacional definida. A ausência de entidade de entrega é coerente com a regra de que o estabelecimento não oferece delivery.
-
 ---
+
+## 2. Modelo lógico relacional
+
+O modelo lógico Rrlacional foi construído a partir da conversão do DER (Modelo conceitual), aplicando as regras de mapeamento de relacionamentos 1:1, 1:N, N:N e a estratégia de especialização. 
+
+**Ferramenta utilizada para criar o DER lógico:** BRModeloWeb
+**Arquivo do DER lógico:** ![Modelo lógico do diagrama de entidade e relacionamento do restaurante](./DER%20logico/Modelagem%20de%20banco%20de%20dados%20-%20Modelo%20lógico%20do%20diagrama%20de%20caso%20e%20relacionamento.jpg)
+> **Nota sobre as limitações da ferramenta BRModeloWeb:**
+>
+> O modelo lógico foi desenhado utilizando a versão web do brModelo. Devido a limitações desta versão, não é possível especificar o tamanho dos campos de texto como por exemplo: (`VARCHAR(100)`) nem utilizar o tipo exato para valores monetários (`DECIMAL`). 
+> 
+> Para tentar resolver o problema no diagrama, utilizou-se o tipo genérico `VARCHAR` e o tipo `FLOAT` para dinheiro e quantidades.
+
+Abaixo está a descrição textual do modelo lógico para fins de auditoria e conferência, contendo as tabelas, colunas, tipos de dados, chaves primárias (PK), chaves estrangeiras (FK) e a conversão das cardinalidades. *(Nota: As restrições de integridade como NOT NULL, UNIQUE, CHECK e DEFAULT estão documentadas no Dicionário de Dados e implementadas no Script SQL).*
+
+### 2.1 Estrutura das tabelas e tipos de Dados
+
+**Módulo de Pessoas**
+*   **PESSOA** 
+    *   `id_pessoa` (INT, PK)
+    *   `nome` (VARCHAR(100))
+*   **CLIENTE** *(Especialização 1:1)*
+    *   `id_cliente` (INT, PK)
+    *   `data_cadastro` (DATE)
+    *   `id_pessoa` (INT, FK -> PESSOA)
+*   **FUNCIONARIO** *(Especialização 1:1)*
+    *   `id_funcionario` (INT, PK)
+    *   `cargo` (VARCHAR(50))
+    *   `salario_base` (FLOAT)
+    *   `status` (VARCHAR(20))
+    *   `id_pessoa` (INT, FK -> PESSOA)
+*   **TELEFONE** *(1:N)*
+    *   `id_telefone` (INT, PK)
+    *   `numero` (VARCHAR(20))
+    *   `tipo_telefone` (VARCHAR(20))
+    *   `id_pessoa` (INT, FK -> PESSOA)
+
+**Módulo de Atendimento e Vendas**
+*   **MESA**
+    *   `id_mesa` (INT, PK)
+    *   `numero` (INT)
+    *   `localizacao` (VARCHAR(20))
+    *   `capacidade` (INT)
+    *   `status` (VARCHAR(20))
+*   **PEDIDO**
+    *   `id_pedido` (INT, PK)
+    *   `data_hora_abertura` (DATETIME)
+    *   `tipo_consumo` (VARCHAR(20))
+    *   `situacao` (VARCHAR(30))
+    *   `id_cliente` (INT, FK -> CLIENTE)
+    *   `id_funcionario` (INT, FK -> FUNCIONARIO)
+    *   `id_mesa` (INT, FK -> MESA, aceita NULL)
+*   **ITEM_PEDIDO** *(Tabela Associativa N:N)*
+    *   `id_item_pedido` (INT, PK)
+    *   `quantidade` (INT)
+    *   `valor_aplicado` (FLOAT)
+    *   `observacao` (VARCHAR(255))
+    *   `id_pedido` (INT, FK -> PEDIDO)
+    *   `id_produto` (INT, FK -> PRODUTO)
+*   **RESERVA_FRANGO** *(Relacionamento 1:1 com PEDIDO)*
+    *   `id_reserva_frango` (INT, PK)
+    *   `qnt_reservada` (INT)
+    *   `horario_retirada` (DATETIME)
+    *   `pagamento_antecipado` (BOOLEAN/CHAR(1))
+    *   `situacao` (VARCHAR(30))
+    *   `id_pedido` (INT, FK -> PEDIDO)
+
+**Módulo de Produção e Estoque**
+*   **PRODUTO**
+    *   `id_produto` (INT, PK)
+    *   `nome` (VARCHAR(100))
+    *   `descricao` (VARCHAR(255))
+    *   `preco` (FLOAT)
+    *   `categoria` (VARCHAR(50))
+    *   `disponibilidade` (BOOLEAN)
+*   **LOTE_FRANGO** *(1:N com PRODUTO)*
+    *   `id_lote` (INT, PK)
+    *   `data_producao` (DATE)
+    *   `qnt_produzida` (INT)
+    *   `qnt_disponivel` (INT)
+    *   `id_produto` (INT, FK -> PRODUTO)
+*   **INSUMO**
+    *   `id_insumo` (INT, PK)
+    *   `nome` (VARCHAR(100))
+    *   `unidade` (VARCHAR(10))
+    *   `qtd_estoque` (FLOAT)
+    *   `estoque_minimo` (FLOAT)
+*   **FORNECEDOR**
+    *   `id_fornecedor` (INT, PK)
+    *   `nome` (VARCHAR(100))
+    *   `contato` (VARCHAR(50))
+    *   `cnpj` (VARCHAR(18))
+*   **COMPRA** *(1:N com FORNECEDOR)*
+    *   `id_compra` (INT, PK)
+    *   `data_compra` (DATE)
+    *   `valor_total` (FLOAT)
+    *   `situacao` (VARCHAR(30))
+    *   `id_fornecedor` (INT, FK -> FORNECEDOR)
+*   **ITEM_COMPRA** *(Tabela Associativa N:N)*
+    *   `id_item_compra` (INT, PK)
+    *   `quantidade` (FLOAT)
+    *   `valor_unitario` (FLOAT)
+    *   `id_compra` (INT, FK -> COMPRA)
+    *   `id_insumo` (INT, FK -> INSUMO)
+*   **RECEBIMENTO** *(1:1 com COMPRA e 1:N com FUNCIONARIO)*
+    *   `id_recebimento` (INT, PK)
+    *   `data_recebimento` (DATE)
+    *   `divergencia` (VARCHAR(255), aceita NULL)
+    *   `id_compra` (INT, FK -> COMPRA)
+    *   `id_funcionario` (INT, FK -> FUNCIONARIO)
+*   **MOVIMENTACAO_ESTOQUE** *(1:N com INSUMO e RECEBIMENTO)*
+    *   `id_movimentacao` (INT, PK)
+    *   `data_movimento` (DATETIME)
+    *   `quantidade` (FLOAT)
+    *   `tipo` (VARCHAR(20))
+    *   `motivo` (VARCHAR(100))
+    *   `id_insumo` (INT, FK -> INSUMO)
+    *   `id_recebimento` (INT, FK -> RECEBIMENTO, aceita NULL)
+
+**Módulo Financeiro e Fiscal**
+*   **NOTA_FISCAL**
+    *   `id_nota` (INT, PK)
+    *   `numero` (VARCHAR(20))
+    *   `serie` (VARCHAR(5))
+    *   `data_emissao` (DATETIME)
+    *   `tipo` (VARCHAR(30))
+*   **FECHAMENTO_CAIXA** *(1:N com FUNCIONARIO)*
+    *   `id_fechamento` (INT, PK)
+    *   `data_fechamento` (DATE)
+    *   `valor_dinheiro` (FLOAT)
+    *   `valor_pix` (FLOAT)
+    *   `valor_cartao` (FLOAT)
+    *   `observacao` (VARCHAR(255))
+    *   `id_funcionario` (INT, FK -> FUNCIONARIO)
+*   **FATURAMENTO** *(1:1 com PEDIDO, 1:1 com NOTA_FISCAL, 1:N com FECHAMENTO)*
+    *   `id_faturamento` (INT, PK)
+    *   `data_pagamento` (DATETIME)
+    *   `valor_total` (FLOAT)
+    *   `forma_pagamento` (VARCHAR(30))
+    *   `situacao` (VARCHAR(30))
+    *   `id_pedido` (INT, FK -> PEDIDO)
+    *   `id_nota_fiscal` (INT, FK -> NOTA_FISCAL, aceita NULL)
+    *   `id_fechamento` (INT, FK -> FECHAMENTO_CAIXA, aceita NULL)
+
+### 2.2 Conversão de Cardinalidades (Resumo do Modelo Lógico)
+
+- **1:1 (Um para Um):** Resolvidos pela inserção da FK na tabela dependente com a restrição `UNIQUE`. Exemplo: `CLIENTE` herda `id_pessoa` (UNIQUE); `RESERVA_FRANGO` possui `id_pedido` (UNIQUE); `FATURAMENTO` possui `id_pedido` (UNIQUE).
+- **1:N (Um para Muitos):** Resolvidos pela inserção da FK na tabela do lado "N". Exemplo: `PEDIDO` recebe `id_cliente`, `id_funcionario` e `id_mesa`; `COMPRA` recebe `id_fornecedor`; `MOVIMENTACAO_ESTOQUE` recebe `id_insumo`.
+- **N:N (Muitos para Muitos):** Resolvidos pela criação de tabelas associativas. Exemplo: `ITEM_PEDIDO` (conecta PEDIDO e PRODUTO) e `ITEM_COMPRA` (conecta COMPRA e INSUMO). Ambas possuem chaves primárias próprias.
+
 ## 10. Utilização de Inteligência Artificial
 
 O grupo utilizou o ChatGPT como apoio para *organizar e revisar a documentação do trabalho*, e não como fonte principal de informações sobre a organização. As informações sobre o funcionamento do estabelecimento e os seus processos foram confirmadas pelo grupo por meio da pesquisa de campo.
