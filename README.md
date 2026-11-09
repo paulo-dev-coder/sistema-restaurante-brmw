@@ -92,9 +92,7 @@ https://maps.app.goo.gl/pjqxhT2Ltq6g1c2D7?g_st=ac
     ![ Foto retirada no escritório administrativo do restaurante, durante a entrevista semiestruturada, com destaque para o computador e os materiais de anotação.](evidencias/foto_entrevista_1.jpg)
     ![Foto retirada no escritório administrativo, registrando o momento em que o integrante do grupo anota as respostas fornecidas pelo proprietário sobre a rotina operacional.](evidencias/foto_entrevista_2.jpg)
 
----
-
-## 2. Relato da entrevista
+### Relato da entrevista
 
 **Quem:** A entrevista foi realizada com **Sergio Olivastro**, o proprietário e representante legal do restaurante. Quem participou da visita foi o integrante do grupo **Paulo Sergio Olivastro**.
 
@@ -114,9 +112,7 @@ A entrevista com o representante legal (Sergio Olivastro) e a revisão do escopo
 - **Escopo de dados e LGPD:** A primeira entrega coletava dados desnecessários. A entrevista confirmou que apenas nome e telefone são coletados, eliminando CPF, e-mail e data de nascimento do modelo. Além disso, a entidade `NOTA_FISCAL` foi incluída para refletir a emissão fiscal permanente citada pelo proprietário;
 - **Exclusões confirmadas:** A pesquisa em campo confirmou que **não há reserva de mesa**, **não há delivery** e **não há rastreio de lote por encomenda** (apenas nota de saída), removendo essas premissas incorretas da E1.
 
----
-
-## 3. Processos de negócio
+### Processos de negócio
 
 **Principais processos mapeados e representados no DER:**
 
@@ -145,11 +141,9 @@ A entrevista com o representante legal (Sergio Olivastro) e a revisão do escopo
 - **Rateio de encomenda por lote:** não incluído porque a organização não registra de qual lote específico saiu cada parte da encomenda; o controle é feito apenas pela nota de saída (conforme Q21).
 - **Controle automatizado de ingredientes por receita:** não existe, pois a baixa de estoque é feita por movimentação manual e conferência visual da equipe.
 
----
+### Requisitos do sistema
 
-## 4. Requisitos do sistema
-
-### 4.1 Requisitos funcionais
+#### Requisitos funcionais
 
 | Código | Requisito funcional |
 | :--- | :--- |
@@ -174,7 +168,7 @@ A entrevista com o representante legal (Sergio Olivastro) e a revisão do escopo
 | **RF19** | Consultar pedidos, encomendas, disponibilidade de produtos, estoque, compras e informações financeiras por seus dados de identificação e situação. |
 | **RF20** | Acompanhar as situações de pedidos, encomendas, compras, recebimentos e faturamentos até a conclusão de cada processo. |
 
-### 4.2 Requisitos não funcionais
+#### Requisitos não funcionais
 
 | Código | Requisito não funcional |
 | :--- | :--- |
@@ -187,8 +181,7 @@ A entrevista com o representante legal (Sergio Olivastro) e a revisão do escopo
 | **RNF07 - Cópia de segurança** | Os registros devem ter cópia de segurança diária para recuperação em caso de falha do sistema. |
 | **RNF08 - Disponibilidade** | O sistema deve estar disponível durante o horário de atendimento, aos sábados e domingos, das 10h às 20h. 
 
-## 5. Regras de negócio
-*(esta seção DIVIDE com a Seção 3 "Requisitos do Sistema" os mesmos 7,5% da dimensão conceitual — juntas valem 7,5%, não 7,5% cada — + 4% exclusivos desta seção na documentação. "Regras de negócio" é o termo técnico usado em modelagem de dados para as regras de funcionamento de qualquer organização, com ou sem fins lucrativos)*
+### Regras de negócio
 
 - **Regras operacionais:**
   - **RN01:** O atendimento ao público ocorre aos sábados e domingos, das 10h às 20h, com possibilidade de extensão do horário quando ainda houver clientes no local.
@@ -226,12 +219,12 @@ A entrevista com o representante legal (Sergio Olivastro) e a revisão do escopo
 
 ---
 
-## 6. Notação do DER Conceitual
+### Notação do DER Conceitual
 
 - **Ferramenta utilizada para criar o DER:** BRModeloWeb
 - **Imagem do diagrama de entidade e relacionamento:** ![Diagrama de entidade e relacionamento do restaurante](./DER%20conceitual/Modelagem%20de%20banco%20de%20dados%20-%20Diagrama%20de%20caso%20e%20relacionamento.jpg)
 
-### 6.1 Alterações do DER em relação à entrega 1
+#### Alterações do DER em relação à entrega 1
 
 Conforme exigido no esqueleto da Entrega 2, abaixo estão registrados os apontamentos recebidos na correção da Entrega 1 e as respectivas soluções aplicadas no novo DER.
 
