@@ -103,97 +103,128 @@ https://maps.app.goo.gl/pjqxhT2Ltq6g1c2D7?g_st=ac
 **Comprovação:** A presença no local e a realização da entrevista estão documentadas por fotos em JPG, armazenadas na pasta `evidencias/` do repositório. O levantamento completo, com as 22 perguntas e respostas, está disponível no arquivo [`levantamento/levantamento.md`](levantamento/levantamento.md).
 
 **O que foi levantado e o que mudou em relação à primeira entrega:** 
-A entrevista com o representante legal permitiu corrigir e refinar diversas premissas da Entrega 1, que inicialmente haviam sido baseadas em uma conversa informal com a cozinheira. As principais mudanças foram:
-- **Registro de pedidos:** Na primeira entrega, acreditava-se que era feito em caderneta; constatou-se que o controle é feito no **computador** sob controle do representante e na **máquina de pagamento**. Essa fragmentação justifica o problema P1.
-- **Fechamento de caixa:** constatou-se que a máquina de pagamento já realiza o fechamento automático em 5 minutos, restando ao tesoureiro a conferência manual do dinheiro em espécie, justificando o P2.
-- **Mesas:** o número real foi confirmado em **7 mesas**, 5 externas e 2 internas, com capacidade para 24 pessoas. A mesa foi promovida a entidade própria no DER.
-- **Cardápio e produção:** o restaurante tem **5 itens de refeição fixos** e produz lotes diários de **14 frangos no sábado e 24 no domingo**.
-- **Nota fiscal e vigilância sanitária:** foi confirmada a emissão permanente de nota fiscal, exigindo a entidade `NOTA_FISCAL` e o cumprimento das regras sanitárias.
-- **Exclusões:** confirmou-se que **não há reserva de mesa** e **não há rateio de lote por encomenda**. A coleta de dados pessoais limita-se a **nome e telefone**.
+A entrevista com o representante legal (Sergio Olivastro) e a revisão do escopo foram fundamentais para corrigir as falhas apontadas na correção da Entrega 1 (Issue). As principais mudanças, alinhadas aos critérios da correção, foram:
+
+- **Comprovação da entrevista:** Na primeira entrega, não havia comprovação de contato. Nesta entrega, a visita presencial foi realizada, documentada com fotos no repositório e detalhada neste relato;
+- **Caracterização com números:** A primeira entrega foi penalizada por utilizar adjetivos vagos como "operação compacta". Agora, a caracterização apresenta dados reais coletados na visita: sete mesas, sendo 5 externas e 2 internas, capacidade para 24 pessoas, e um volume de 20 a 28 pedidos por semana;
+- **Processos e regras de negócio:** A correção apontou ausência de processos como compras e estoque, além de regras genéricas (com marcas de IA). Foram adicionados os processos de Compra, Recebimento e Estoque (que agora cobrem P4 e P5), e as regras de negócio foram reescritas com base na realidade (ex: a máquina faz o fechamento em 5 minutos; não há rateio de lote);
+- **Correção estrutural do DER:** A primeira entrega tinha erros graves: relacionamentos `(1,n)` em ambos os lados, chaves estrangeiras desenhadas e a entidade `LOTE_FRANGUERIA` com chave duplicada. O DER da E2 resolveu tudo isso, adotou a generalização para Pessoa/Cliente/Funcionário e promoveu MESA a entidade própria, conforme exigido pelo professor;
+- **Registro de pedidos e fechamento de Caixa:** Descobertas importantes da entrevista alteraram o modelo. O que antes se achava que era caderneta, na verdade é um registro **no computador** e na **máquina de pagamento** (justificando os problemas P1 e P2);
+- **Cardápio e produção:** Confirmou-se que o cardápio tem **5 itens fixos** e a produção diária é de **14 frangos no sábado e 24 no domingo** (justificando a entidade `LOTE_FRANGO`);
+- **Escopo de dados e LGPD:** A primeira entrega coletava dados desnecessários. A entrevista confirmou que apenas nome e telefone são coletados, eliminando CPF, e-mail e data de nascimento do modelo. Além disso, a entidade `NOTA_FISCAL` foi incluída para refletir a emissão fiscal permanente citada pelo proprietário;
+- **Exclusões confirmadas:** A pesquisa em campo confirmou que **não há reserva de mesa**, **não há delivery** e **não há rastreio de lote por encomenda** (apenas nota de saída), removendo essas premissas incorretas da E1.
+
+---
 
 ## 3. Processos de negócio
 *(vale 10% — Dimensão Procedimental)*
 
-- **Principais processos mapeados e representados no DER:**
-  - **Cadastro de pessoas, clientes e telefones:** nome, telefone com número e tipo; cliente com data de cadastro.
-  - **Cadastro de funcionários:** nome, salário, cargo, situação.
-  - **Cadastro de produtos do cardápio:** nome, descrição, preço, categoria, disponibilidade.
-  - **Cadastro de insumos:** frango, temperos, embalagens, bebidas; unidade, quantidade em estoque, estoque mínimo.
-  - **Cadastro de fornecedores:** nome, contato, itens fornecidos.
-  - **Compra de frango e insumos:** data, fornecedor, itens, quantidade, valor unitário, valor total, situação.
-  - **Recebimento da mercadoria:** data, compra, itens conferidos pelo tesoureiro, quantidade recebida, divergências.
-  - **Movimentação de estoque:** entrada por recebimento, saída por consumo, ajuste; quantidade, data, motivo, descarte de perdas.
-  - **Atendimento e registro do pedido:** data/hora de abertura, tipo de consumo (local/retirada), mesa quando local, cliente, funcionário responsável, situação.
-  - **Composição do pedido:** produto, quantidade, valor aplicado, observação.
-  - **Encomenda antecipada de frango:** pedido de origem, quantidade, horário de retirada, pagamento antecipado, duas vias (empresa e cliente), situação.
-  - **Produção de frango por lote:** data de produção, quantidade produzida (14 sábado, 24 domingo), quantidade disponível, produto.
-  - **Faturamento ou pagamento:** pedido, data de pagamento, valor total, forma (dinheiro, Pix, débito, crédito), situação; sem armazenar dados de cartão.
-  - **Fechamento do caixa do dia:** data, tesoureiro responsável, fechamento pela máquina, conferência do dinheiro em espécie, divergências.
-  - **Preparo e retirada:** ordem de preparo, aviso ao cliente, encerramento após serviço e pagamento.
-  - **Fluxograma:** A organização optou por não inserir o fluxograma.
+**Principais processos mapeados e representados no DER:**
+
+- **Cadastro de pessoas, clientes e telefones:** nome, telefone com número e tipo; cliente com data de cadastro.
+- **Cadastro de funcionários:** nome, salário, cargo e situação.
+- **Cadastro de produtos do cardápio:** nome, descrição, preço, categoria e disponibilidade.
+- **Cadastro de insumos:** frango, temperos, embalagens e bebidas; unidade, quantidade em estoque e estoque mínimo.
+- **Cadastro de fornecedores:** nome, contato e itens fornecidos.
+- **Gestão de mesas:** controle das 7 mesas (5 externas e 2 internas), com capacidade e status de ocupação.
+- **Compra de frango e insumos:** data, fornecedor, itens, quantidade, valor unitário, valor total e situação.
+- **Recebimento da mercadoria:** data, compra vinculada, itens conferidos pelo tesoureiro, quantidade recebida e registro de divergências.
+- **Movimentação de estoque:** entrada por recebimento, saída por consumo, ajuste manual; quantidade, data, motivo e descarte de perdas.
+- **Atendimento e registro do pedido:** data/hora de abertura, tipo de consumo (local/retirada), vínculo com a mesa (quando local), cliente, funcionário responsável e situação.
+- **Composição do pedido:** produto, quantidade, valor aplicado e observação.
+- **Encomenda antecipada de frango:** pedido de origem, quantidade, horário de retirada, pagamento antecipado, emissão de duas vias (empresa e cliente) e situação.
+- **Produção de frango por lote:** data de produção, quantidade produzida (14 no sábado, 24 no domingo), quantidade disponível e produto.
+- **Faturamento ou pagamento:** pedido, data de pagamento, valor total, forma (dinheiro, Pix, débito, crédito) e situação; sem armazenar dados de cartão.
+- **Emissão de Nota Fiscal:** geração do documento fiscal (número, série, data e tipo) vinculado ao faturamento.
+- **Fechamento do caixa do dia:** data, tesoureiro responsável, fechamento pela máquina, conferência do dinheiro em espécie e divergências.
+- **Preparo e retirada:** o pedido é efetuado, pago, preparado pela cozinha, o cliente é avisado e o pedido é entregue/encerrado.
+- **Fluxograma:** A organização optou por não inserir o fluxograma.
+
+**Processos prováveis não incluídos e justificativa:**
+- **Entrega em domicílio:** não incluído porque a organização não realiza entregas, atuando apenas no local e por retirada (conforme Q22).
+- **Reserva de mesa:** não incluído porque o restaurante não trabalha com agendamento prévio de mesas (conforme Q4).
+- **Rateio de encomenda por lote:** não incluído porque a organização não registra de qual lote específico saiu cada parte da encomenda; o controle é feito apenas pela nota de saída (conforme Q21).
+- **Controle automatizado de ingredientes por receita:** não existe, pois a baixa de estoque é feita por movimentação manual e conferência visual da equipe.
 
 ---
 
 ## 4. Requisitos do sistema
 *(esta seção e a Seção 4 "Regras de Negócio" DIVIDEM 7,5% na dimensão conceitual — juntas valem 7,5%, não 7,5% cada — + 4% exclusivos desta seção na organização/documentação)*
 
-### 4.1 Requisitos Funcionais
+### 4.1 Requisitos funcionais
+
 | Código | Requisito funcional |
-|--------|---------------------|
-| RF01 | Cadastrar produtos do cardápio com nome, descrição, preço, categoria e disponibilidade. |
-| RF02 | Cadastrar pessoas e clientes, mantendo os dados cadastrais indicados no DER. |
-| RF03 | Registrar um ou mais telefones associados à pessoa, com número e tipo. |
-| RF04 | Cadastrar funcionários que operam o sistema, com cargo, salário-base e situação. |
-| RF05 | Registrar pedidos com data e hora de abertura, tipo de consumo e identificador de mesa quando aplicável. |
-| RF06 | Associar o pedido ao cliente e ao funcionário responsável pelo registro. |
-| RF07 | Incluir no pedido os itens, com quantidade, valor aplicado e observação, cada qual relacionado a um produto. |
-| RF08 | Registrar reservas de mesa vinculadas ao cliente, com data e hora, quantidade de pessoas e situação. |
-| RF09 | Registrar reserva antecipada de frango originada do pedido, com quantidade reservada, horário de retirada e situação, e associá-la ao lote que a atende. |
-| RF10 | Registrar o faturamento associado ao pedido, com data do pagamento, valor total, forma e situação. |
-| RF11 | Consultar pedidos, reservas, disponibilidade de produtos e informações financeiras por seus dados de identificação e situação. |
-| RF12 | Acompanhar as situações de pedidos, reservas e faturamentos até a conclusão de cada atendimento. |
+| :--- | :--- |
+| **RF01** | Cadastrar produtos do cardápio com nome, descrição, preço, categoria e disponibilidade. |
+| **RF02** | Cadastrar pessoas e clientes, mantendo os dados cadastrais (nome). |
+| **RF03** | Registrar um ou mais telefones associados à pessoa, com número e tipo. |
+| **RF04** | Cadastrar funcionários que operam o sistema, com cargo, salário-base e situação. |
+| **RF05** | Cadastrar as mesas do restaurante com número, localização (externa/interna), capacidade e status de ocupação. |
+| **RF06** | Cadastrar insumos (frango, temperos, embalagens, bebidas) com unidade de medida, quantidade em estoque e estoque mínimo. |
+| **RF07** | Cadastrar fornecedores com nome, contato e CNPJ. |
+| **RF08** | Registrar compras semanais com data, fornecedor, valor total e situação. |
+| **RF09** | Registrar os itens de cada compra, contendo o insumo, a quantidade e o valor unitário. |
+| **RF10** | Registrar o recebimento da mercadoria, contendo a data, a compra vinculada, quem conferiu (funcionário) e eventuais divergências. |
+| **RF11** | Registrar movimentações de estoque (entrada por recebimento, saída por consumo, ajuste manual ou descarte de perdas), com quantidade, data e motivo. |
+| **RF12** | Registrar a produção diária de frango por lote, contendo data, quantidade produzida e quantidade disponível. |
+| **RF13** | Registrar pedidos com data/hora de abertura, tipo de consumo (local/retirada), cliente, funcionário responsável e mesa associada (quando consumo local). |
+| **RF14** | Incluir no pedido os itens, com quantidade, valor aplicado e observação, cada qual relacionado a um produto. |
+| **RF15** | Registrar encomenda antecipada de frango vinculada ao pedido, com quantidade reservada, horário de retirada, pagamento antecipado e situação. |
+| **RF16** | Registrar o faturamento associado ao pedido, com data do pagamento, valor total, forma (dinheiro, Pix, débito, crédito) e situação. |
+| **RF17** | Registrar a emissão de Nota Fiscal, contendo número, série, data de emissão e tipo, vinculada ao faturamento. |
+| **RF18** | Registrar o fechamento diário do caixa, contendo a data, o tesoureiro responsável, os totais por forma de pagamento (dinheiro, Pix, cartão) e observações. |
+| **RF19** | Consultar pedidos, encomendas, disponibilidade de produtos, estoque, compras e informações financeiras por seus dados de identificação e situação. |
+| **RF20** | Acompanhar as situações de pedidos, encomendas, compras, recebimentos e faturamentos até a conclusão de cada processo. |
 
-### 4.2 Requisitos Não Funcionais
+### 4.2 Requisitos não funcionais
+
 | Código | Requisito não funcional |
-|--------|--------------------------|
-| RNF01 - Usabilidade | A tela de registro deve ser simples e utilizável pelos membros da família sem treinamento técnico. |
-| RNF02 - Rapidez | As operações de consulta e gravação devem responder em até 3 segundos em condições normais de uso. |
-| RNF03 - Acesso | O sistema deve funcionar em computador, tablet ou celular disponível no restaurante. |
-| RNF04 - Segurança | O acesso deve ser restrito aos membros da família autorizados, por autenticação individual. |
-| RNF05 - Privacidade | Devem ser coletados somente dados pessoais necessários à operação. Não se armazenam dados de cartão. O CPF, e-mail e data de nascimento constantes no DER devem ser confirmados como necessários antes da implementação. |
-| RNF06 - Integridade | Pessoas, clientes, telefones, pedidos, itens, produtos, reservas, lotes e faturamentos devem manter suas associações válidas. |
-| RNF07 - Cópia de segurança | Os registros devem ter cópia de segurança diária para recuperação em caso de falha. |
-| RNF08 - Disponibilidade | O sistema deve estar disponível durante o atendimento informado, aos sábados e domingos, das 10h às 20h. |
-
----
+| :--- | :--- |
+| **RNF01 - Usabilidade** | A tela de registro deve ser simples e utilizável pelos membros da família sem treinamento técnico avançado. |
+| **RNF02 - Rapidez** | As operações de consulta e gravação devem responder em até 3 segundos em condições normais de uso. |
+| **RNF03 - Acesso** | O sistema deve funcionar em computador, tablet ou celular disponível no restaurante. |
+| **RNF04 - Segurança** | O acesso deve ser restrito aos membros da família autorizados, por autenticação individual. |
+| **RNF05 - Privacidade** | Devem ser coletados apenas nome e telefone dos clientes. Não se armazenam dados de cartão de crédito/débito nem dados sensíveis (como CPF ou e-mail). |
+| **RNF06 - Integridade** | Pessoas, clientes, pedidos, itens, produtos, mesas, insumos, movimentações de estoque, lotes e faturamentos devem manter suas associações e históricos válidos. |
+| **RNF07 - Cópia de segurança** | Os registros devem ter cópia de segurança diária para recuperação em caso de falha do sistema. |
+| **RNF08 - Disponibilidade** | O sistema deve estar disponível durante o horário de atendimento, aos sábados e domingos, das 10h às 20h. 
 
 ## 5. Regras de negócio
 *(esta seção DIVIDE com a Seção 3 "Requisitos do Sistema" os mesmos 7,5% da dimensão conceitual — juntas valem 7,5%, não 7,5% cada — + 4% exclusivos desta seção na documentação. "Regras de negócio" é o termo técnico usado em modelagem de dados para as regras de funcionamento de qualquer organização, com ou sem fins lucrativos)*
 
 - **Regras operacionais:**
-  - **RN01:** O atendimento ao público ocorre aos sábados e domingos, das 10h às 20h.
-  - **RN02:** Cada pedido deve registrar tipo de consumo; o identificador de mesa é aplicável ao consumo no local. Para retirada, deve haver telefone de contato disponível para o aviso de pedido pronto.
-  - **RN03:** O cliente deve estar associado a uma pessoa cadastrada; uma pessoa pode possuir telefones cadastrados conforme a necessidade de contato.
+  - **RN01:** O atendimento ao público ocorre aos sábados e domingos, das 10h às 20h, com possibilidade de extensão do horário quando ainda houver clientes no local.
+  - **RN02:** Cada pedido deve registrar o tipo de consumo (local ou retirada). O vínculo com a mesa aplica-se apenas ao consumo local. Para retirada, deve haver telefone de contato associado ao cliente.
+  - **RN03:** Todo cliente deve estar associado a uma pessoa cadastrada; uma pessoa pode possuir telefones cadastrados conforme a necessidade de contato.
   - **RN04:** Cada pedido é registrado por um funcionário (neste contexto, membro da família autorizado a operar o sistema).
   - **RN05:** Um pedido é composto por itens relacionados a produtos do cardápio. Cada item registra quantidade, valor aplicado e, quando necessário, observação.
-  - **RN06:** A disponibilidade dos produtos deve ser conferida com a equipe antes da confirmação. A indisponibilidade leva à substituição ou remoção do item conforme escolha do cliente.
-  - **RN07:** O pedido confirmado deve conter ao menos um item e cada quantidade deve ser maior que zero.
-  - **RN08:** O cliente pode agendar reserva de mesa; a reserva registra data e hora, quantidade de pessoas e situação.
-  - **RN09:** A encomenda antecipada de frango é registrada como reserva de frango derivada de pedido e contém quantidade reservada, horário de retirada e situação.
-  - **RN10:** Cada reserva de frango deve ser atendida por um ou mais lotes de frango produzidos no dia; a quantidade reservada não pode exceder a quantidade disponível nos lotes. Se uma reserva consumir mais de um lote, o sistema deve registrar a quantidade fornecida por lote.
-  - **RN11:** O pedido deve possuir registro de faturamento com data de pagamento, valor total, forma de pagamento e situação. São aceitos dinheiro, Pix e cartão; dados do cartão não devem ser armazenados.
-  - **RN12:** O pedido só é encerrado após ser servido ou retirado e o registro financeiro ser realizado.
-  - **RN13:** Alterações ou cancelamentos devem ser comunicados à equipe responsável e refletidos na situação do pedido ou reserva correspondente.
-  - **RN14:** A organização não realiza entrega domiciliar; os pedidos são consumidos no local ou retirados pelo cliente.
+  - **RN06:** A disponibilidade dos produtos deve ser conferida pela cozinheira (com acompanhamento do representante legal) antes da confirmação. Quando o produto acaba, as vendas daquele item são encerradas.
+  - **RN07:** O pedido confirmado deve conter ao menos um item, e cada quantidade deve ser maior que zero.
+  - **RN08:** A encomenda antecipada de frango é registrada com pagamento antecipado, quantidade, horário de retirada e emissão de duas vias (empresa e cliente).
+  - **RN09:** O faturamento registra data, valor total, forma de pagamento e situação. As formas aceitas são Pix, dinheiro, cartão de débito e cartão de crédito. Dados de cartão não devem ser armazenados.
+  - **RN10:** O pedido é efetuado e liberado para preparo somente após a confirmação do pagamento.
+  - **RN11:** Não há regra formal de cancelamento; cancelamentos são raros e devem ser registrados na situação do pedido.
+  - **RN12:** A organização não realiza entrega em domicílio; atende apenas no local e por retirada.
+  - **RN13:** Toda compra de insumos deve registrar fornecedor, data, itens, quantidade, valor unitário e situação.
+  - **RN14:** O recebimento da mercadoria é conferido pelo tesoureiro. Divergências de quantidade ou qualidade devem ser registradas.
+  - **RN15:** Toda movimentação de estoque deve registrar tipo (entrada, saída, ajuste ou descarte), quantidade, data e motivo.
+  - **RN16:** Insumo abaixo da quantidade mínima de segurança deve gerar alerta gerencial.
+  - **RN17:** O fechamento do caixa é feito pela máquina de pagamento, em cerca de 5 minutos, pelo tesoureiro. O total em dinheiro em espécie é conferido separadamente.
+  - **RN18:** São coletados apenas nome e telefone do cliente. CPF, e-mail e data de nascimento não são coletados.
+  - **RN19:** Todas as exigências da vigilância sanitária devem ser cumpridas, incluindo armazenamento em freezer e em caixas com isolamento.
+  - **RN20:** Há emissão de nota fiscal permanente para as vendas.
+  - **RN21:** O acesso ao caixa e ao controle financeiro é restrito ao tesoureiro e ao representante legal da empresa.
+  - **RN22:** Os dados dos clientes são mantidos no computador por tempo indeterminado, sem prazo definido de descarte.
+  - **RN23:** A produção de frango deve ser registrada por lote diário: 14 frangos no sábado e 24 no domingo, para controle de disponibilidade.
+  - **RN24:** Os registros financeiros e pessoais não devem ser apagados sem autorização; alterações devem ser refletidas na situação do pedido ou do faturamento.
 
 - **Restrições organizacionais:**
-  - **Equipe familiar reduzida:** os registros de funcionário correspondem aos membros da família autorizados; não há terceirizados ou voluntários segundo o contexto informado.
-  - **Operação somente aos fins de semana:** o funcionamento informado é sábado e domingo, das 10h às 20h.
-  - **Dados pessoais mínimos:** o DER apresenta CPF, e-mail e data de nascimento em Pessoa, além de telefone. Esses dados ampliam a coleta descrita inicialmente e só devem ser mantidos se a pesquisa de campo confirmar necessidade e finalidade. Não incluir dados reais nos exemplos.
-  - **Registro atual em caderneta:** o sistema proposto deve ser simples e adequado à rotina familiar.
-  - **Sem baixa automática de ingredientes:** a disponibilidade de produtos/lotes é confirmada pela equipe; o modelo não implica controle de ingredientes nem movimentação automatizada de estoque.
-  - **Escopo das reservas:** reservas de mesa e encomendas antecipadas de frango passam a integrar o escopo porque constam no DER; o grupo deve confirmar em pesquisa de campo que esses processos realmente ocorrem na organização.
-
+  - **Equipe familiar reduzida:** os registros de funcionário correspondem apenas em três membros da família autorizados na cozinha, caixa e atendimento; não há terceirizados ou voluntários.
+  - **Operação somente aos fins de semana:** o funcionamento é aos sábados e domingos, das 10h às 20h.
+  - **Dados pessoais mínimos:** a coleta limita-se a nome e telefone, visando a privacidade do cliente.
+  - **Registro atual:** o controle de pedidos é feito no computador pelo representante legal e na máquina de pagamento.
+  - **Sem baixa automática de ingredientes:** a disponibilidade é confirmada pela equipe; o modelo não implica controle de ingredientes por receita nem movimentação automatizada de estoque, apenas controle geral de insumos.
+  - **Sem reserva de mesa e sem delivery:** esses processos não integram o escopo porque não ocorrem na organização (conforme pesquisa de campo).
 ---
 
 ## 6. Dicionário de dados conceitual (Preliminar)
