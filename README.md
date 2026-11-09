@@ -294,7 +294,7 @@ As tabelas associativas (`ITEM_PEDIDO` e `ITEM_COMPRA`) utilizam chave primária
 O modelo foi submetido às três formas normais para eliminar redundâncias e anomalias de atualização:
 
 - **1ª Forma Normal (1FN):** Todos os atributos são atômicos (não há listas dentro de células). O atributo multivalorado de Telefone foi isolado na tabela `TELEFONE`. A repetição de produtos em um pedido foi resolvida com a tabela associativa `ITEM_PEDIDO`.
-- **2ª Forma Normal (2FN):** Aplica-se às tabelas com chave composta. Em `ITEM_PEDIDO`, a `quantidade` e o `valor_aplicado` dependem do par `(id_pedido, id_produto)` inteiro. O nome ou o preço atual do produto não ficam aqui, pois dependeriam apenas do `id_produto` (parte da chave), então foram alocados corretamente em `PRODUTO`.
+- **2ª Forma Normal (2FN):** Como as tabelas utilizam chaves primárias substitutas de coluna única como `id_item_pedido, id_item_compra`, a 2FN é atendida automaticamente — todos os atributos não-chave dependem integralmente da chave primária. A escolha por chaves substitutas garante que quantidade e valor_aplicado em `ITEM_PEDIDO` não dependam apenas do `id_produto`, mas da linha do item como um todo. Dessa forma, os dados do produto (nome, preço atual) permanecem corretamente alocados na tabela PRODUTO, sem duplicação no item.
 - **3ª Forma Normal (3FN):** Não há dependências transitivas. O `LOTE_FRANGO` não guarda as informações do produto frango, apenas o `id_produto`. O `PEDIDO` não guarda os dados do cliente (nome/telefone), apenas o `id_cliente`. O `FATURAMENTO` aponta diretamente para o `PEDIDO`, não para o `CLIENTE`.
 
 ### 1.5 Justificativas técnicas das decisões
