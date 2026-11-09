@@ -223,8 +223,8 @@ A entrevista com o representante legal (Sergio Olivastro) e a revisão do escopo
   - **Registro atual:** o controle de pedidos é feito no computador pelo representante legal e na máquina de pagamento.
   - **Sem baixa automática de ingredientes:** a disponibilidade é confirmada pela equipe; o modelo não implica controle de ingredientes por receita nem movimentação automatizada de estoque, apenas controle geral de insumos.
   - **Sem reserva de mesa e sem delivery:** esses processos não integram o escopo porque não ocorrem na organização (conforme pesquisa de campo).
----
 
+---
 
 ## 6. Notação do DER Conceitual
 
@@ -232,6 +232,24 @@ A entrevista com o representante legal (Sergio Olivastro) e a revisão do escopo
 - **Imagem do diagrama de entidade e relacionamento:** ![Diagrama de entidade e relacionamento do restaurante](./DER%20conceitual/Modelagem%20de%20banco%20de%20dados%20-%20Diagrama%20de%20caso%20e%20relacionamento.jpg)
 
 ---
+
+## 6.1 Alterações do DER em relação à entrega 1
+
+Conforme exigido no esqueleto da Entrega 2, abaixo estão registrados os apontamentos recebidos na correção da Entrega 1 e as respectivas soluções aplicadas no novo DER.
+
+| Apontamento da correção da E1 | O que mudou no DER (Entrega 2) | Por quê |
+| :--- | :--- | :--- |
+| **Falta da entidade MESA** (estava apenas como atributo do pedido). | A entidade **MESA** foi criada e ligada a `PEDIDO` pelo relacionamento "ocupa" (MESA 0,n — PEDIDO 0,1). O atributo `identificador_mesa` foi removido de PEDIDO. | Para representar corretamente as 7 mesas físicas (5 externas e 2 internas) com suas capacidades e status, permitindo o controle individual. |
+| **Relacionamentos `(1,n)` nos dois lados** em quase todas as associações. | Todas as cardinalidades foram revistas e corrigidas (ex: `(0,1)` - `(1,1)`, `(0,n)` - `(1,1)`). Nenhum relacionamento ficou N:N sem ser via entidade associativa. | Para refletir a regra de negócio real (ex: um pedido pertence a um cliente, não a vários) e evitar inconsistências no modelo lógico. |
+| **Chaves estrangeiras desenhadas no DER** (ex: `id_pessoa` em Telefone, `id_produto` em Lote). | Todas as FKs foram removidas do diagrama conceitual. As ligações agora são feitas exclusivamente pelos losangos de relacionamento. | O DER conceitual deve mostrar apenas os relacionamentos; as chaves estrangeiras são uma decisão do modelo lógico. |
+| **`LOTE_FRANGUERIA` com `id_produto` como identificador** (colisão de chaves). | A entidade foi renomeada para **`LOTE_FRANGO`** e recebeu identificador próprio **`id_lote`**. | Para evitar conflito com a PK da entidade PRODUTO e permitir o controle correto da quantidade produzida e disponível. |
+| **Relacionamento "gera" sem sentido** (PESSOA-FATURAMENTO). | O relacionamento foi **removido**. O faturamento agora se liga a `PEDIDO` (losango "possui") e a `NOTA_FISCAL` (losango "emite"). | Um faturamento pertence a um pedido, não a uma pessoa. O vínculo financeiro deve ser rastreável à transação de venda. |
+| **Pessoa, Cliente e Funcionário com relacionamentos ambíguos** `(1,n)`. | Adotou-se a **Generalização/Especialização** por meio de triângulo (PESSOA → CLIENTE e FUNCIONARIO), com cardinalidades 1:1. | Para representar corretamente que Cliente e Funcionário são papéis exercidos por uma Pessoa, e não entidades soltas que se multiplicam. |
+| **Ausência de entidades de Compras, Estoque e Fornecedores.** | Foram adicionadas as entidades: **FORNECEDOR, COMPRA, ITEM_COMPRA, RECEBIMENTO, INSUMO e MOVIMENTACAO_ESTOQUE**. | Para cobrir os processos reais da organização (Q10 e Q11) e resolver os problemas de falta de histórico de compras (P4) e perdas de estoque (P5). |
+| **Ausência de controle fiscal e de caixa fechado.** | Foram adicionadas as entidades **NOTA_FISCAL** e **FECHAMENTO_CAIXA**. | A entrevista confirmou a emissão permanente de nota fiscal (Q20) e a necessidade de registrar o fechamento diário do caixa pela máquina (Q8). |
+| **Entidades que constavam no DER da E1, mas não existem na realidade.** | As entidades **RESERVA_MESA** e **RESERVA_LOTE** foram removidas do DER. | A entrevista confirmou que não há reserva de mesa (Q4) e não há rateio de lote por encomenda (Q21, apenas nota de saída). |
+| **Dados pessoais em excesso** (CPF, e-mail, data de nascimento). | Os atributos `cpf`, `email` e `data_nascimento` foram removidos da entidade PESSOA. | A entrevista confirmou (Q6) que a organização coleta apenas nome e telefone, respeitando o princípio da minimização de dados (LGPD). |
+| **Itens no DER sem quantidade ou valor (N:N puro).** | As entidades associativas **ITEM_PEDIDO** e **ITEM_COMPRA** foram criadas com os atributos `quantidade`, `valor_aplicado` e `valor_unitario`. | Sem essas entidades associativas, seria impossível saber quanto de cada produto foi vendido ou quanto de cada insumo foi comprado. |
 
 ## 9. Justificativa Técnica
 *(vale 7,5% — sozinho, é o subcritério de maior peso dentro da Dimensão Conceitual)*
