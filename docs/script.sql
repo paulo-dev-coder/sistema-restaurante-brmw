@@ -7,10 +7,9 @@
 -- PESSOA, TELEFONE, CLIENTE, FUNCIONARIO, MESA, PRODUTO, PEDIDO, ITEM_PEDIDO,
 -- RESERVA_FRANGO, LOTE_FRANGO, INSUMO, FORNECEDOR, COMPRA, ITEM_COMPRA,
 -- RECEBIMENTO, MOVIMENTACAO_ESTOQUE, NOTA_FISCAL, FECHAMENTO_CAIXA, FATURAMENTO.
--- Nao sao criadas tabelas extras, visoes, procedures ou triggers.
--- Dados 100% ficticios (incluindo clientes, telefones e valores).
--- Volume demonstrativo: 40 pedidos simulando 2 fins de semana (sabado e domingo).
--- O volume e ficticio e serve somente para demonstracao academica.
+-- Dados 100% ficticios, incluindo clientes, telefones e valores.
+-- Volume demonstrativo: 40 pedidos simulando os dois fins de semana.
+-- O volume é fictício e serve somente para demonstração acadêmica.
 -- ===========================================================================
 
 -- ETAPA 1: CREATE DATABASE
