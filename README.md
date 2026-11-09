@@ -22,9 +22,6 @@
 | Otávio Teixeira Lopes da Silva| 47880414 |
 | Paulo Sergio Olivastro | 47962241 |
 
-## Link do dicionário de dados em HTML
-- https://paulo-dev-coder.github.io/sistema-restaurante-brmw/
-
 ## 1. Relatório Técnico Final
 
 ### 1.1 Revisão do Modelo Conceitual
@@ -376,7 +373,91 @@ O script foi testado do zero em uma instância MySQL 8.0.46 local. Todos os test
 
 ---
 
-## 4.
+## 4. Massa de dados
+
+A massa de dados utilizada para validar o banco foi construída de maneira fictícia, no entanto, está coerente com as operações reais da organização. Nenhum nome, telefone, CPF ou valor real de clientes ou funcionários foi utilizado, em respeito à privacidade das informações coletadas durante a pesquisa de campo.
+
+O arquivo está incluído no próprio `docs/script.sql` (Etapa 4 — Carga de Dados), na mesma sessão de execução da estrutura. Garantindo que o script possa ser executado do zero e apresentando dados para as consultas gerenciais e de auditoria.
+
+### 4.1 Volume de registros e justificativa
+
+O volume da massa foi definido a partir dos números informados pelo proprietário durante a entrevista, simulando um fim de semana completo de operação como sábado e domingo. Essa escolha é coerente com o porte da organização e permite que as consultas gerenciais retornem resultados significativos sem inflar artificialmente os dados.
+
+| Tabela | Registros | Justificativa (com base na entrevista) |
+| :--- | ---: | :--- |
+| **PESSOA** | 12 | 3 funcionários (família) + 9 clientes cadastrados. |
+| **TELEFONE** | 6 | Contatos dos funcionários e dos clientes com pedidos registrados. |
+| **CLIENTE** | 9 | Clientes fictícios, alguns com pedidos no fim de semana e outros sem pedidos (para testar a consulta G09). |
+| **FUNCIONARIO** | 3 | Proprietário (tesoureiro), atendente e cozinheira, conforme **Q15** da entrevista. |
+| **MESA** | 7 | 5 mesas externas e 2 internas, conforme **Q12**. |
+| **PRODUTO** | 6 | 1 item de frango assado, 3 bebidas, 1 acompanhamento e 1 sobremesa — alinhado à faixa de preço de R$ 25 a R$ 30 informada na **Q16**. |
+| **PEDIDO** | 20 | 10 pedidos no sábado e 10 no domingo, dentro da faixa real de 20 a 28 pedidos por fim de semana (**Q13**). |
+| **ITEM_PEDIDO** | 31 | Média de 1,5 item por pedido, refletindo a venda combinada de frango + bebida descrita pelo proprietário. |
+| **RESERVA_FRANGO** | 3 | Encomendas antecipadas com pagamento prévio, conforme **Q05**. |
+| **LOTE_FRANGO** | 2 | 14 frangos no sábado e 24 no domingo, conforme **Q14**. |
+| **INSUMO** | 4 | Frango cru, carvão, embalagem e tempero — insumos citados em **Q17**. |
+| **FORNECEDOR** | 2 | 1 frigorífico e 1 atacadista de alimentos, conforme **Q10**. |
+| **COMPRA** | 2 | Compras semanais realizadas antes do fim de semana, conforme **Q10**. |
+| **ITEM_COMPRA** | 3 | Detalhamento dos insumos adquiridos nas compras. |
+| **RECEBIMENTO** | 2 | Conferência das compras pelo tesoureiro, conforme **Q11**. |
+| **MOVIMENTACAO_ESTOQUE** | 4 | Entradas por compra + 1 saída por perda/vencimento (para testar a consulta G06). |
+| **NOTA_FISCAL** | 3 | Emissão de nota fiscal permanente, conforme **Q20**. |
+| **FECHAMENTO_CAIXA** | 2 | 1 fechamento no sábado e 1 no domingo, conforme **Q08**. |
+| **FATURAMENTO** | 19 | Pagamentos registrados com as 4 formas aceitas (Pix, dinheiro, débito e crédito), conforme **Q09**. |
+
+### 4.2 Variedade de situações cobertas
+
+Para que as consultas gerenciais e de auditoria tenham dados significativos, a massa cobre situações reais que vão além do caso comum:
+
+- **Pedidos no local e para retirada:** distribuição equilibrada entre os dois tipos de consumo (**RN02**).
+- **Mesas ocupadas e mesas livres:** o pedido 20, em aberto, mantém a mesa 5 ocupada (testa a auditoria A07).
+- **Frangos em lotes diários:** 14 no sábado e 24 no domingo, ambos com quantidade disponível menor que a produzida, refletindo as vendas do dia (testa a auditoria A08).
+- **Pagamentos em 4 formas diferentes:** Pix, dinheiro, cartão de débito e cartão de crédito (**RN09**).
+- **Faturamentos conciliados com fechamento de caixa:** todos os 19 faturamentos estão vinculados ao fechamento do dia correspondente (**P2**).
+- **Divergência de recebimento registrada:** a compra 1 apresenta "Faltou 2kg de frango", testando a consulta G05 e a auditoria A02.
+- **Perda de insumo por vencimento:** 2 kg de frango cru descartados, testando a consulta G06.
+- **Insumo abaixo do estoque mínimo:** o tempero está no limite, testando a consulta G07.
+- **Cliente sem compras:** alguns clientes estão cadastrados, mas não têm pedidos vinculados, testando a consulta G09.
+- **Pedido sem faturamento (em aberto):** o pedido 20 está em `Aberto`, testando a auditoria A06.
+
+### 4.3 Dados fictícios utilizados
+
+Todos os nomes, telefones e valores são fictícios e foram padronizados para facilitar a leitura e evitar erros de encoding:
+
+- **Funcionários:** "Sergio Proprietario", "Ana Atendente", "Joao Cozinheiro".
+- **Clientes:** "Maria Souza", "Pedro Santos", "Lucia Oliveira", "Jose Silva", "Fernanda Lima", "Carlos Pereira", "Juliana Costa", "Marcos Rocha", "Patricia Alves".
+- **Telefones:** todos no padrão `1199999XXXX`, sem risco de conflito com números reais.
+- **Endereços:** não se aplicam, pois o restaurante não realiza entrega em domícilio (RN12).
+- **Datas:** todas concentradas em 07 e 08 de novembro de 2026 (sábado e domingo).
+- **Valores:** faixa de R$ 4,00 a R$ 45,00 por item, compatível com a faixa de preço informada na **Q16**.
+
+Nenhum dado foi copiado da caderneta da organização, do sistema da máquina de pagamento ou de qualquer documento real. Toda a massa é fictícia e foi construída para refletir os processos observados na visita de campo.
+
+### 4.4 Como a massa de dados foi constituída
+
+A massa foi construída manualmente com base no levantamento, e não gerada por ferramenta automática. Cada registro foi posicionado para:
+
+1. **Respeitar a integridade referencial:** os pedidos só referenciam clientes, mesas e funcionários existentes.
+2. **Manter a coerência dos valores:** a soma dos itens de cada pedido confere com o valor total faturado.
+3. **Cobrir as 4 formas de pagamento** para que a consulta G02 retorne dados de todas elas.
+4. **Cobrir o fechamento de caixa** para que a consulta G10 e o P2 tenham dados comparáveis.
+5. **Cobrir os 5 problemas declarados** (P1 a P5), garantindo que cada consulta gerencial tenha pelo menos um caso real para exibir.
+
+
+### 4.5 Como testar a massa de dados
+
+1. Abra o **MySQL Workbench** e conecte-se ao servidor local.
+2. Execute o arquivo `docs/script.sql` completo (a massa está incluída na Etapa 4).
+3. Verifique no painel *Action Output* que todas as inserções foram concluídas com ✅.
+4. Execute as consultas gerenciais (G01 a G10) e as consultas de auditoria (A01 a A08) para conferir os resultados.
+5. As consultas de auditoria **devem retornar 0 linhas**, comprovando a integridade da massa.
+
+---
+
+## 5. Dicionário de dados
+
+### Link do dicionário de dados em HTML
+  - https://paulo-dev-coder.github.io/sistema-restaurante-brmw/
 
 ## 6. Utilização de Inteligência Artificial
 
