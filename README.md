@@ -340,8 +340,8 @@ A estrutura relacional permite a criação de *dashboards* (painéis visuais) no
 
 O modelo lógico Rrlacional foi construído a partir da conversão do DER (Modelo conceitual), aplicando as regras de mapeamento de relacionamentos 1:1, 1:N, N:N e a estratégia de especialização. 
 
-**Ferramenta utilizada para criar o DER lógico:** BRModeloWeb
-**Arquivo do DER lógico:** ![Modelo lógico do diagrama de entidade e relacionamento do restaurante](./DER%20logico/Modelagem%20de%20banco%20de%20dados%20-%20Modelo%20lógico%20do%20diagrama%20de%20caso%20e%20relacionamento.jpg)
+- **Ferramenta utilizada para criar o DER lógico:** BRModeloWeb
+- **Arquivo do DER lógico:** ![Modelo lógico do diagrama de entidade e relacionamento do restaurante](./DER%20logico/Modelagem%20de%20banco%20de%20dados%20-%20Modelo%20lógico%20do%20diagrama%20de%20caso%20e%20relacionamento.jpg)
 > **Nota sobre as limitações da ferramenta BRModeloWeb:**
 >
 > O modelo lógico foi desenhado utilizando a versão web do brModelo. Devido a limitações desta versão, não é possível especificar o tamanho dos campos de texto como por exemplo: (`VARCHAR(100)`) nem utilizar o tipo exato para valores monetários (`DECIMAL`). 
