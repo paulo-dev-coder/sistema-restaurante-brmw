@@ -138,7 +138,7 @@ O vínculo familiar entre o entrevistador e o proprietário foi declarado à dis
 
 ## 3. Observações
 
-A observação foi feita durante a visita, **separada das respostas do entrevistado**. O integrante chegou ao estabelecimento às **10h30**, logo na abertura, quando o salão ainda estava vazio e sem clientes. O que permitiu observar a rotina de preparação antes do movimento.
+A observação foi feita durante a visita, **separada das respostas do entrevistado**. O integrante chegou ao estabelecimento às **10h10**, logo na abertura, quando o salão ainda estava vazio e sem clientes. O que permitiu observar a rotina de preparação antes do movimento.
 
 **Ambiente e infraestrutura:**
 - O escritório administrativo possui computador, calculadora, porta-notas com documentos fiscais e dinheiro.
