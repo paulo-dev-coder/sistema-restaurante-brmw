@@ -368,12 +368,10 @@ INSERT INTO ITEM_PEDIDO (quantidade, valor_aplicado, id_pedido, id_produto) VALU
 
 -- 6. Reservas, notas e faturamento
 
--- CORRIGIDO: Apenas os pedidos 3 e 13 têm reserva antecipada (o pedido 20 é Local/Aberto)
 INSERT INTO RESERVA_FRANGO (qnt_reservada, horario_retirada, pagamento_antecipado, situacao, id_pedido) VALUES 
 (1, '2026-11-07 18:00:00', TRUE, 'Retirado', 3),
 (1, '2026-11-08 18:00:00', TRUE, 'Retirado', 13);
 
--- CORRIGIDO: Todas as notas emitidas em 07/11
 INSERT INTO NOTA_FISCAL (numero, serie, data_emissao, tipo) VALUES 
 ('000101', '1', '2026-11-07 11:50:00', 'Venda'),
 ('000102', '1', '2026-11-07 12:20:00', 'Venda'),
@@ -409,7 +407,6 @@ INSERT INTO FECHAMENTO_CAIXA (data_fechamento, valor_dinheiro, valor_pix, valor_
 UPDATE FATURAMENTO SET id_fechamento = 1 WHERE id_pedido IN (1,2,3,4,5,6,7,8,9,10);
 UPDATE FATURAMENTO SET id_fechamento = 2 WHERE id_pedido IN (11,12,13,14,15,16,17,18,19);
 
--- CORRIGIDO: Mesa 5 fica ocupada porque o pedido 20 está em aberto (A07)
 UPDATE MESA SET status = 'Ocupada' WHERE id_mesa = 5;
 
 -- ===========================================================================
@@ -429,12 +426,12 @@ FROM ITEM_PEDIDO i
 JOIN PRODUTO pr ON i.id_produto = pr.id_produto;
 
 -- ===========================================================================
--- ETAPA 6: UPDATE E DELETE (Manipulacao de Dados)
+-- ETAPA 6: UPDATE E DELETE (Manipulação de dados)
 -- ===========================================================================
 -- U01: Acrescentar telefone alternativo a cliente
 UPDATE TELEFONE SET numero = '11988887777' WHERE id_telefone = 4;
 
--- D01: Inserir cliente temporario e deletar com seguranca (sem pedidos)
+-- D01: Inserir cliente temporário e deletar com segurança
 INSERT INTO PESSOA (nome) VALUES ('Cliente Teste DELETE');
 SET @id_novo_cliente = LAST_INSERT_ID();
 INSERT INTO CLIENTE (data_cadastro, id_pessoa) VALUES ('2026-11-09', @id_novo_cliente);
@@ -443,7 +440,6 @@ DELETE FROM CLIENTE
 WHERE id_cliente = LAST_INSERT_ID() 
   AND NOT EXISTS (SELECT 1 FROM PEDIDO p WHERE p.id_cliente = CLIENTE.id_cliente);
 
--- CORRIGIDO: Limpa a PESSOA órfã (Mantendo PESSOA = 12 no final)
 DELETE FROM PESSOA WHERE id_pessoa = @id_novo_cliente;
 
 -- ===========================================================================
