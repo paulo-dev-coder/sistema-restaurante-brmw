@@ -15,7 +15,7 @@
 
 A pesquisa de campo foi conduzida no ambiente da organização, combinando entrevista semiestruturada com observação direta da rotina de abertura, preparo e organização. A entrevista seguiu um questionário de 22 perguntas organizadas em blocos temáticos: funcionamento e registro de pedidos, reservas e encomendas, dados pessoais, caixa e formas de pagamento, fornecedores e compras, números da operação, equipe, cardápio e estoque, regras e restrições, e atendimento.
 
-As respostas foram registradas manualmente durante a conversa e formalizadas neste documento. Os **achados da observação presencial** estão separados na seção 3, para que o grupo não os confunda com as respostas do entrevistado.
+As respostas foram registradas manualmente durante a conversa e formalizadas neste documento. As observações estão separados na seção 3, para que o grupo não os confunda com as respostas do entrevistado.
 
 O vínculo familiar entre o entrevistador e o proprietário foi declarado à disciplina. Ele **não substitui** a comprovação da entrevista, registrada em foto no repositório.
 
