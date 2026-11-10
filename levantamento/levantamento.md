@@ -153,7 +153,7 @@ A observação foi feita durante a visita, **separada das respostas do entrevist
 - O fechamento do caixa é feito pela máquina, e o dinheiro em espécie é conferido pelo tesoureiro.
 
 **Movimento do salão:**
-- Como a visita ocorreu na abertura (10h30), não havia clientes no salão. O movimento começou a aumentar por volta das 11h30, com a chegada dos primeiros clientes.
+- Como a visita ocorreu na abertura, ou seja, às 10h10, não havia clientes no salão. O movimento começou a aumentar por volta das 10h55, com a chegada dos primeiros clientes.
 
 **Documentos e papéis:**
 - Havia notas fiscais e comprovantes guardados no porta-notas do escritório.
