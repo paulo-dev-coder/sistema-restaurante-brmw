@@ -413,7 +413,14 @@ UPDATE MESA SET status = 'Ocupada' WHERE id_mesa = 5;
 -- ETAPA 5: SELECT COM JOIN (Relacionamentos)
 -- ===========================================================================
 
-SELECT p.id_pedido, p.data_hora, p.tipo_consumo, c.nome AS cliente, f.nome AS atendente, m.numero AS mesa, p.situacao
+SELECT 
+    p.id_pedido, 
+    DATE_FORMAT(p.data_hora, '%d/%m/%Y às %H:%i:%s') AS Data_e_Hora, 
+    p.tipo_consumo, 
+    c.nome AS cliente, 
+    f.nome AS atendente, 
+    m.numero AS mesa, 
+    p.situacao
 FROM PEDIDO p
 JOIN CLIENTE cl ON p.id_cliente = cl.id_cliente
 JOIN PESSOA c ON cl.id_pessoa = c.id_pessoa
