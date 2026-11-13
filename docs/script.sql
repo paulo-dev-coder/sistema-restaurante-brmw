@@ -446,15 +446,18 @@ DELETE FROM PESSOA WHERE id_pessoa = @id_novo_cliente;
 -- ETAPA 7: CONSULTAS GERENCIAIS (G01 a G10)
 -- ===========================================================================
 
--- G01 — Ticket medio dos pedidos faturados
+-- G01 — Qual é o ticket médio dos pedidos faturados?
+-- Atende: P1 (Registro de pedidos fragmentado e sem consulta gerencial)
 SELECT ROUND(AVG(valor_total), 2) AS Ticket_Medio FROM FATURAMENTO;
 
--- G02 — Faturamento por forma de pagamento
+-- G02 — Qual é o faturamento total arrecadado por cada forma de pagamento?
+-- Atende: P2 (Conciliação manual entre máquina e dinheiro em espécie)
 SELECT forma_pagamento, SUM(valor_total) AS Total_Arrecadado
 FROM FATURAMENTO
 GROUP BY forma_pagamento;
 
--- G03 — Produtos mais vendidos (CORRIGIDO: Apenas pedidos concluídos)
+-- G03 — Quais são os produtos mais vendidos (considerando apenas pedidos concluídos)?
+-- Atende: P1 (Falta de histórico consolidado de vendas)
 SELECT pr.nome AS Produto, SUM(ip.quantidade) AS Total_Vendido
 FROM ITEM_PEDIDO ip
 JOIN PRODUTO pr ON ip.id_produto = pr.id_produto
@@ -463,42 +466,49 @@ WHERE pe.situacao = 'Concluido'
 GROUP BY pr.nome
 ORDER BY Total_Vendido DESC;
 
--- G04 — Valor comprado por fornecedor
+-- G04 — Quanto foi gasto em compras por cada fornecedor?
+-- Atende: P4 (Falta de histórico de compras por fornecedor e produto)
 SELECT f.nome AS Fornecedor, COUNT(c.id_compra) AS Qtd_Compras, SUM(c.valor_total) AS Total_Gasto
 FROM COMPRA c
 JOIN FORNECEDOR f ON c.id_fornecedor = f.id_fornecedor
 GROUP BY f.nome;
 
--- G05 — Divergencias nos recebimentos
+-- G05 — Quais recebimentos de mercadoria apresentaram divergências?
+-- Atende: P5 (Divergências e descartes sem registro)
 SELECT r.id_recebimento, c.id_compra, f.nome AS Fornecedor, r.data_recebimento, r.divergencia
 FROM RECEBIMENTO r
 JOIN COMPRA c ON r.id_compra = c.id_compra
 JOIN FORNECEDOR f ON c.id_fornecedor = f.id_fornecedor
 WHERE r.divergencia IS NOT NULL;
 
--- G06 — Taxa de perda/descarte de insumos
+-- G06 — Qual foi o total de insumos descartados por perda ou vencimento?
+-- Atende: P3 (Perdas e rastreio de lote sem registro)
 SELECT i.nome AS Insumo, SUM(m.quantidade) AS Total_Descartado
 FROM MOVIMENTACAO_ESTOQUE m
 JOIN INSUMO i ON m.id_insumo = i.id_insumo
 WHERE m.motivo LIKE '%Perda%' OR m.motivo LIKE '%Vencimento%'
 GROUP BY i.nome;
 
--- G07 — Insumos abaixo do estoque minimo
+-- G07 — Quais insumos estão com estoque abaixo do limite mínimo de segurança?
+-- Atende: RN16 (Insumo abaixo da quantidade mínima deve gerar alerta gerencial)
 SELECT nome, qtd_estoque, estoque_minimo
 FROM INSUMO
 WHERE qtd_estoque < estoque_minimo;
 
--- G08 — Faturamento total por mes
+-- G08 — Qual é o faturamento total consolidado por mês?
+-- Atende: P1 (Necessidade de consolidação financeira por período)
 SELECT DATE_FORMAT(data_pagamento, '%Y-%m') AS Mes, SUM(valor_total) AS Total_Faturado
 FROM FATURAMENTO
 GROUP BY DATE_FORMAT(data_pagamento, '%Y-%m');
 
--- G09 — Quantidade de pedidos por tipo de consumo
+-- G09 — Qual é a distribuição de pedidos por tipo de consumo (Local vs Retirada)?
+-- Atende: RN02 (Cada pedido deve registrar o tipo de consumo)
 SELECT tipo_consumo, COUNT(*) AS Qtd_Pedidos
 FROM PEDIDO
 GROUP BY tipo_consumo;
 
--- G10 — Fechamento de caixa e totais
+-- G10 — Qual é o resumo dos fechamentos de caixa e o total apurado por dia?
+-- Atende: P2 e RN17 (Fechamento do caixa e conferência de valores)
 SELECT data_fechamento, valor_dinheiro, valor_pix, valor_cartao, 
        (valor_dinheiro + valor_pix + valor_cartao) AS Total_Caixa
 FROM FECHAMENTO_CAIXA;
@@ -508,12 +518,14 @@ FROM FECHAMENTO_CAIXA;
 -- Todas devem retornar 0 linhas para o banco estar integro.
 -- ===========================================================================
 
--- A01 — Pedido sem nenhum item
+-- A01 — Existe algum pedido registrado sem nenhum item vinculado?
+-- Verifica: RN07 (O pedido confirmado deve conter ao menos um item)
 SELECT p.id_pedido, p.data_hora FROM PEDIDO p
 LEFT JOIN ITEM_PEDIDO ip ON p.id_pedido = ip.id_pedido
 WHERE ip.id_item_pedido IS NULL;
 
--- A02 — Faturamento cujo valor difere da soma dos itens
+-- A02 — Existe algum faturamento cujo valor total diverge da soma dos itens do pedido?
+-- Verifica: RN09 (O faturamento deve registrar o valor integral do pedido)
 SELECT f.id_faturamento, f.valor_total AS Valor_Faturado, SUM(ip.quantidade * ip.valor_aplicado) AS Valor_Itens
 FROM FATURAMENTO f
 JOIN PEDIDO p ON f.id_pedido = p.id_pedido
@@ -521,36 +533,42 @@ JOIN ITEM_PEDIDO ip ON p.id_pedido = ip.id_pedido
 GROUP BY f.id_faturamento, f.valor_total
 HAVING f.valor_total <> SUM(ip.quantidade * ip.valor_aplicado);
 
--- A03 — Movimentacao de estoque com quantidade negativa
+-- A03 — Existe alguma movimentação de estoque com quantidade menor ou igual a zero?
+-- Verifica: RN15 (Toda movimentação de estoque deve registrar quantidade válida)
 SELECT id_movimentacao, quantidade, tipo
 FROM MOVIMENTACAO_ESTOQUE
 WHERE quantidade <= 0;
 
--- A04 — Cliente sem pessoa associada
+-- A04 — Existe algum cliente cadastrado sem uma pessoa associada?
+-- Verifica: RN03 (Todo cliente deve estar associado a uma pessoa cadastrada)
 SELECT c.id_cliente
 FROM CLIENTE c
 LEFT JOIN PESSOA p ON c.id_pessoa = p.id_pessoa
 WHERE p.id_pessoa IS NULL;
 
--- A05 — Produto com preco zerado
+-- A05 — Existe algum produto cadastrado com preço zerado ou negativo?
+-- Verifica: RN06 (Os produtos devem ter preço válido para venda)
 SELECT id_produto, nome, preco
 FROM PRODUTO
 WHERE preco <= 0;
 
--- A06 — Pedido com situacao 'Concluido' mas sem faturamento pago
+-- A06 — Existe algum pedido com situação 'Concluido' que não possui faturamento pago?
+-- Verifica: RN10 (O pedido é liberado somente após a confirmação do pagamento)
 SELECT p.id_pedido, p.situacao 
 FROM PEDIDO p
 LEFT JOIN FATURAMENTO f ON p.id_pedido = f.id_pedido
 WHERE p.situacao = 'Concluido' AND (f.situacao IS NULL OR f.situacao <> 'Pago');
 
--- A07 — Mesa com status inconsistente (ocupada sem pedido aberto)
+-- A07 — Existe alguma mesa marcada como 'Ocupada' que não possui um pedido em aberto?
+-- Verifica: RN02 (O vínculo com a mesa aplica-se apenas ao consumo local e pedidos ativos)
 SELECT m.id_mesa, m.status
 FROM MESA m
 WHERE m.status = 'Ocupada' AND NOT EXISTS (
     SELECT 1 FROM PEDIDO p WHERE p.id_mesa = m.id_mesa AND p.situacao = 'Aberto'
 );
 
--- A08 — Lote de frango com quantidade disponivel maior que a produzida
+-- A08 — Existe algum lote de frango com quantidade disponível maior que a quantidade produzida?
+-- Verifica: RN23 (A produção de frango deve ser registrada por lote diário com saldo coerente)
 SELECT id_lote, qnt_produzida, qnt_disponivel
 FROM LOTE_FRANGO
 WHERE qnt_disponivel > qnt_produzida;
