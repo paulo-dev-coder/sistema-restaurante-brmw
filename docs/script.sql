@@ -1,7 +1,7 @@
 -- ===========================================================================
 -- docs/script.sql  |  A Frangueria
 -- Modelo relacional: DER Logico + Dicionario de Dados (Entrega 2).
--- Banco-alvo: MySQL 8.0.16+ (recomendado MySQL 8.0.46).
+-- Banco-alvo: MySQL 8.0.16+ (recomendado MySQL 8.0.46 no laboratório).
 -- ===========================================================================
 -- ESCOPO ESTRITO: 19 TABELAS DO DIAGRAMA, COM NOMES E COLUNAS DO DICIONARIO:
 -- PESSOA, TELEFONE, CLIENTE, FUNCIONARIO, MESA, PRODUTO, PEDIDO, ITEM_PEDIDO,
