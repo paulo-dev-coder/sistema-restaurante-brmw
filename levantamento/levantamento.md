@@ -1,13 +1,13 @@
 # Levantamento de requisitos — A Frangueria
 
-**Organização:** A Frangueria (Restaurante e Galeteria)  
-**Endereço:** Av. Celso Garcia, nº 1115 — Catumbi, São Paulo/SP  
-**Entrevistado:** Sergio Olivastro (proprietário e representante legal)  
-**Entrevistador:** Paulo Sergio Olivastro (integrante do grupo, filho do proprietário)  
-**Data da entrevista:** 01 de novembro de 2026  
-**Duração:** aproximadamente 45 minutos  
-**Forma de contato:** entrevista semiestruturada presencial e observação direta da rotina  
-**Comprovação:** fotos no repositório em `evidencias/`
+- **Organização:** A Frangueria (Restaurante e Galeteria)  
+- **Endereço:** Av. Celso Garcia, nº 1115 — Catumbi, São Paulo/SP  
+- **Entrevistado:** Sergio Olivastro (proprietário e representante legal)  
+- **Entrevistador:** Paulo Sergio Olivastro (integrante do grupo, filho do proprietário)  
+- **Data da entrevista:** 01 de novembro de 2026  
+- **Duração:** aproximadamente 45 minutos  
+- **Forma de contato:** entrevista semiestruturada presencial e observação direta da rotina  
+- **Comprovação:** fotos no repositório em `evidencias/`
 
 ---
 
