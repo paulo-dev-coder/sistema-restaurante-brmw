@@ -7,7 +7,7 @@
 -- PESSOA, TELEFONE, CLIENTE, FUNCIONARIO, MESA, PRODUTO, PEDIDO, ITEM_PEDIDO,
 -- RESERVA_FRANGO, LOTE_FRANGO, INSUMO, FORNECEDOR, COMPRA, ITEM_COMPRA,
 -- RECEBIMENTO, MOVIMENTACAO_ESTOQUE, NOTA_FISCAL, FECHAMENTO_CAIXA, FATURAMENTO.
--- Dados 100% ficticios, incluindo clientes, telefones e valores.
+-- Dados 100% ficticios, incluindo clientes, telefones e valores por questões de privacidade.
 -- Volume demonstrativo: 20 pedidos simulando um fim de semana.
 -- O volume é fictício e serve somente para demonstração acadêmica.
 -- ===========================================================================
