@@ -48,7 +48,7 @@ A massa simula **1 fim de semana completo de operação** (sábado 07/11 e domin
 
 ---
 
-## 3. Validação Matemática (Consistência dos valores)
+## 3. Validação matemática (Consistência dos valores)
 
 ### 3.1 Compras e itens
 
