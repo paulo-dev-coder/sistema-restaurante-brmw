@@ -1,9 +1,9 @@
 # Validação do Script SQL — Entrega 2
 
-**Trabalho:** A Frangueria
-**Data da execução:** 09/11/2026  
-**Ambiente de teste:** MySQL 8.0.46 local · InnoDB · utf8mb4  
-**Arquivo avaliado:** `docs/script.sql`
+- **Trabalho:** A Frangueria
+- **Data da execução:** 09/11/2026  
+- **Ambiente de teste:** MySQL 8.0.46 local · InnoDB · utf8mb4  
+- **Arquivo avaliado:** `docs/script.sql`
 
 ---
 
