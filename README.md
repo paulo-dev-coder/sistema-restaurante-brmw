@@ -565,7 +565,7 @@ A inteligência artificial produziu textos claros e bem estruturados, mas demons
 
 A apresentação final será um **pitch cronometrado de 8 minutos**, com slides em estética limpa e minimalista, seguindo a ordem exigida pelo esqueleto da Entrega 2:
 
-- **[Link para a apresentação corporativa (Canva)](./docs/Modelagem%20de%20banco%20de%20dados%20-%20%20Apresentação%20corporativa.pdf)**
+- Link para a apresentação corporativa: [`docs/Modelagem de banco de dados -  Apresentação corporativa`](./docs/Modelagem%20de%20banco%20de%20dados%20-%20%20Apresentação%20corporativa.pdf)**
 
 1. **Contextualização e Introdução** — Apresentação da A Frangueria, justificativa da escolha (acesso facilitado) e os cinco problemas (P1 a P5) identificados na pesquisa de campo.
 2. **Apresentação da solução** — O sistema de gestão proposto e como o banco de dados resolve cada problema declarado.
