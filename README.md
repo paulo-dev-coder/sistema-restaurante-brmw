@@ -567,7 +567,7 @@ A apresentação final será um **pitch cronometrado de 8 minutos**, com slides 
 
 - **Link para a apresentação corporativa: [`Modelagem de banco de dados -  Apresentação corporativa`](./docs/Modelagem%20de%20banco%20de%20dados%20-%20%20Apresentação%20corporativa.pdf)**
 
-1. **Contextualização e Introdução** — Apresentação da A Frangueria, justificativa da escolha (acesso facilitado) e os cinco problemas (P1 a P5) identificados na pesquisa de campo.
+1. **Contextualização e introdução** — Apresentação da Frangueria, justificativa da escolha e os cinco problemas (P1 a P5) identificados na pesquisa de campo.
 2. **Apresentação da solução** — O sistema de gestão proposto e como o banco de dados resolve cada problema declarado.
 3. **Apresentação do modelo lógico** — O DER simplificado com as 10 entidades principais, destacando a generalização PESSOA → CLIENTE/FUNCIONARIO e as tabelas de vendas.
 4. **Demonstração da implementação** — execução do script `docs/script.sql` no MySQL Workbench, mostrando a criação das tabelas e a carga da massa de dados.
