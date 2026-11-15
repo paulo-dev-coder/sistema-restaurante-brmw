@@ -563,14 +563,14 @@ A inteligência artificial produziu textos claros e bem estruturados, mas demons
 
 ## 7. Apresentação Corporativa Final
 
-> **Status:** Em desenvolvimento. Os slides serão adicionados em breve.
-
 A apresentação final será um **pitch cronometrado de 8 minutos**, com slides em estética limpa e minimalista, seguindo a ordem exigida pelo esqueleto da Entrega 2:
 
-1. **Contextualização do problema institucional/organizacional** — apresentação da A Frangueria, dos cinco problemas (P1 a P5) identificados na pesquisa de campo e do impacto deles na gestão da organização.
-2. **Apresentação da solução** — o sistema de gestão proposto, o escopo do banco de dados e como ele resolve cada problema declarado.
-3. **Apresentação do modelo lógico** — o DER final com as 19 entidades, destacando a generalização PESSOA → CLIENTE/FUNCIONARIO, a entidade MESA como própria e as entidades associativas ITEM_PEDIDO e ITEM_COMPRA.
+- **[Link para a apresentação corporativa (Canva)](./docs/Modelagem%20de%20banco%20de%20dados%20-%20%20Apresentação%20corporativa.pdf)**
+
+1. **Contextualização e Introdução** — Apresentação da A Frangueria, justificativa da escolha (acesso facilitado) e os cinco problemas (P1 a P5) identificados na pesquisa de campo.
+2. **Apresentação da solução** — O sistema de gestão proposto e como o banco de dados resolve cada problema declarado.
+3. **Apresentação do modelo lógico** — O DER simplificado com as 10 entidades principais, destacando a generalização PESSOA → CLIENTE/FUNCIONARIO e as tabelas de vendas.
 4. **Demonstração da implementação** — execução do script `docs/script.sql` no MySQL Workbench, mostrando a criação das tabelas e a carga da massa de dados.
 5. **Demonstração de consultas** — execução das consultas gerenciais (G01 a G10) e de auditoria (A01 a A08) com resultados em tempo real, destacando o ticket médio, o faturamento por forma de pagamento, os produtos mais vendidos e a conciliação de caixa.
-6. **Potencial para BI e IA** — os KPIs propostos (ticket médio, faturamento por forma de pagamento, produtos mais vendidos, insumos abaixo do mínimo, taxa de perda), o potencial dos dados para dashboards e as aplicações analíticas (previsão de demanda, alerta de reposição, análise de cesta).
-7. **Benefícios diretos para a tomada de decisão** — como o sistema substitui a caderneta e a conferência manual, reduzindo retrabalho, melhorando o controle de estoque e permitindo que o proprietário tome decisões com base em dados reais.
+6. **Potencial para BI e IA** — Propostas de dashboards gerenciais, previsão de demanda e detecção de anomalias financeiras.
+7. **Benefícios diretos** — O impacto da solução no dia a dia (redução de desperdício, fim do retrabalho, auditoria de fornecedores e gestão baseada em dados).
